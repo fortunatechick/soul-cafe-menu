@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144" width="144" height="144" role="img" aria-label="Soul">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#1e3151"/>
+      <stop offset="100%" stop-color="#0d2233"/>
+    </radialGradient>
+  </defs>
+  <circle cx="72" cy="72" r="72" fill="url(#g)"/>
+  <circle cx="72" cy="72" r="66" fill="none" stroke="#e88131" stroke-opacity="0.35" stroke-width="1.5"/>
+  <text x="72" y="88" text-anchor="middle"
+        font-family="Playfair Display, Georgia, serif" font-size="56" font-weight="600"
+        fill="#e88131" letter-spacing="2">S</text>
+  <text x="72" y="112" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="9" font-weight="500"
+        fill="#acc1c0" letter-spacing="4">SOUL</text>
+</svg>
