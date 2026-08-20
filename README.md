@@ -64,17 +64,25 @@ change what an order costs.
 
 ## The menu data
 
-`src/data/menu.json` was generated from the café's own PetPooja export
-(`items_388482_*.csv` + `Category_Report.csv`), so names, descriptions, prices,
-categories and category order all match the POS.
+`src/data/menu.json` is generated from the café's own PetPooja area-wise price
+export (`Item_AreawisePrice_388482.xlsx`, plus `Category_Report.csv` for category
+order), so names, descriptions, prices, categories and ordering all match the POS.
 
-- **203 items across 28 categories.**
-- Categories with no *Online Display Name* in PetPooja (`Add-Ons`, `Monsoon Menu`,
-  `The Joy Pizzateria`) are treated as POS-only and left off the website.
-- 68 items carry variations (Regular/Large, Jain/Regular, combo drink choice).
-  Their card shows `from ₹X` and tapping **Add** opens a picker.
-- `posShortCode` is kept on every item so PetPooja can match the line back to its
-  own item when the POS integration goes live.
+- **211 items across 29 categories.**
+- Only rows PetPooja marks `ExposeToOnline = Yes` are published. The `Add-Ons` and
+  `The Joy Pizzateria` categories are POS/other-outlet only and are skipped
+  wholesale.
+- 69 items carry variations (Regular/Large, Jain/Regular, combo drink choice),
+  which arrive as separate `Name (Variation)` rows in the export and are folded
+  back into one item. Their card shows `from ₹X` and tapping **Add** opens a picker.
+- 4 items are unavailable for home delivery in the POS. They carry
+  `"deliveryAvailable": false`, show a **Pickup only** badge, and are rejected by
+  `/api/orders/place` if the order type is delivery.
+- `posItemId` and `posShortCode` are kept on every item so PetPooja can match a
+  line back to its own record when the POS integration goes live.
+
+Regenerating: the export is read straight from the spreadsheet, so re-running the
+generator after a fresh PetPooja export is the intended way to update the menu.
 
 Category names keep the café's own spelling from the POS (e.g. "Hot Bevarages").
 Fix them in PetPooja and regenerate, or edit `menu.json` directly.
@@ -209,5 +217,6 @@ src/
 
 media/                           # drop item photos here
 public/menu/                     # generated — served photos
+scripts/generate-menu.py           # rebuilds menu.json from the PetPooja xlsx
 scripts/sync-media.mjs
 ```

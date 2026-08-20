@@ -137,6 +137,9 @@ function MenuCard({ item, index, onAdd }) {
         {hasVariations ? (
           <span className="card__variation-hint">{item.variations.length} options</span>
         ) : null}
+        {item.deliveryAvailable === false ? (
+          <span className="card__variation-hint">🏪 Pickup only</span>
+        ) : null}
       </div>
     </article>
   );

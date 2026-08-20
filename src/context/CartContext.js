@@ -53,6 +53,7 @@ export function CartProvider({ children }) {
           name: item.name,
           slug: item.slug,
           posShortCode: item.posShortCode || '',
+          deliveryAvailable: item.deliveryAvailable !== false,
           variation: variation?.name || null,
           unitPrice: variation?.price ?? item.price,
           quantity,

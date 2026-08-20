@@ -48,6 +48,9 @@ export async function POST(request) {
     const item = ITEMS.get(line.menuItemId);
     if (!item) return bad(`"${line.itemName || 'An item'}" is no longer on the menu.`);
     if (item.available === false) return bad(`"${item.name}" is currently unavailable.`);
+    if (orderType === 'delivery' && item.deliveryAvailable === false) {
+      return bad(`"${item.name}" is available for pickup only.`);
+    }
 
     const quantity = Number(line.quantity);
     if (!Number.isInteger(quantity) || quantity < 1 || quantity > 50) {

@@ -28,6 +28,10 @@ export default function CheckoutPage() {
   const deliveryCharge = orderType === 'delivery' ? DELIVERY_CHARGE : 0;
   const total = subtotal + deliveryCharge;
 
+  // A few items the café only hands over at the counter.
+  const pickupOnly = lines.filter((l) => l.deliveryAvailable === false);
+  const blockedByDelivery = orderType === 'delivery' && pickupOnly.length > 0;
+
   // An empty cart has nothing to check out.
   useEffect(() => {
     if (hydrated && lines.length === 0 && !submitting) router.replace('/');
@@ -56,6 +60,16 @@ export default function CheckoutPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     setFormError('');
+    if (blockedByDelivery) {
+      setFormError(
+        `${pickupOnly.map((l) => l.name).join(', ')} ${
+          pickupOnly.length > 1 ? 'are' : 'is'
+        } available for pickup only. Switch to pickup, or remove ${
+          pickupOnly.length > 1 ? 'them' : 'it'
+        } from your order.`
+      );
+      return;
+    }
     if (!validate()) return;
 
     setSubmitting(true);
@@ -176,6 +190,12 @@ export default function CheckoutPage() {
               </button>
             ))}
           </div>
+          {blockedByDelivery ? (
+            <p className="form-error">
+              {pickupOnly.map((l) => l.name).join(', ')}{' '}
+              {pickupOnly.length > 1 ? 'are' : 'is'} available for pickup only.
+            </p>
+          ) : null}
         </section>
 
         <section className="block">

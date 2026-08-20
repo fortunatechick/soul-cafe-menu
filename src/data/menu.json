@@ -5,7 +5,81 @@
     "address": "Shop 6, Platinum 53, Building 15, West Durvankur CHS, Azad Nagar, Andheri West, Mumbai"
   },
   "updatedAt": "2026-08-20",
+  "source": "PetPooja Item_AreawisePrice_388482 export",
   "categories": [
+    {
+      "id": "monsoon-menu",
+      "name": "Monsoon Menu",
+      "posCategory": "Monsoon Menu",
+      "items": [
+        {
+          "id": "99d56211-0cb6-5c74-bf45-70bd211e3665",
+          "slug": "baarish-wali-maggi-and-cinnamon-hot-chocolate",
+          "name": "Baarish wali Maggi and Cinnamon Hot Chocolate",
+          "description": "Baarish wali Maggi & Cinnamon Hot Chocolate",
+          "price": 399,
+          "veg": true,
+          "available": true,
+          "posItemId": "1311804191",
+          "posShortCode": "BWMCMC"
+        },
+        {
+          "id": "aba283f5-ef07-57eb-9ca3-3734746a3d9c",
+          "slug": "vada-paav-tacos-and-soul-kadak-chai",
+          "name": "Vada Paav Tacos and Soul Kadak Chai",
+          "description": "Vada Paav Tacos & Soul Kadak Chai",
+          "price": 349,
+          "veg": true,
+          "available": true,
+          "posItemId": "1311804335",
+          "posShortCode": "vptskc"
+        },
+        {
+          "id": "555b9828-6870-5c58-9664-b1cd1621088d",
+          "slug": "soul-hot-chocolate-and-flaky-butter-croissant",
+          "name": "Soul Hot Chocolate and Flaky Butter Croissant",
+          "description": "Soul Hot Chocolate & Flaky Butter Croissant",
+          "price": 399,
+          "veg": true,
+          "available": true,
+          "posItemId": "1311804336",
+          "posShortCode": "shcbc"
+        },
+        {
+          "id": "60898a17-9c05-555a-8905-d141c5cb9c18",
+          "slug": "nutmeg-cinnamon-latte-and-chocolate-chip-cookie",
+          "name": "Nutmeg Cinnamon Latte and Chocolate Chip Cookie",
+          "description": "Nutmeg Cinnamon Latte and Chocolate Chip Cookie",
+          "price": 299,
+          "veg": true,
+          "available": true,
+          "posItemId": "1311804337",
+          "posShortCode": "nmlccp"
+        },
+        {
+          "id": "52cec920-1691-5098-ac9d-89715cd322d2",
+          "slug": "thecha-korean-bun-kahva-latte",
+          "name": "Thecha Korean Bun & Kahva Latte",
+          "description": "Thecha Korean Bun and Kahva Latte",
+          "price": 449,
+          "veg": true,
+          "available": true,
+          "posItemId": "1311804338",
+          "posShortCode": "tkbkl"
+        },
+        {
+          "id": "36402dca-dff5-5705-9876-adb6f164196e",
+          "slug": "chilli-cheese-toast-and-turmeric-latte",
+          "name": "Chilli Cheese Toast And Turmeric Latte",
+          "description": "Chilli Cheese Toast & Turmeric Latte",
+          "price": 449,
+          "veg": true,
+          "available": true,
+          "posItemId": "1311804339",
+          "posShortCode": "ccttl"
+        }
+      ]
+    },
     {
       "id": "summer-specials",
       "name": "Summer Specials",
@@ -19,6 +93,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "1302794859",
           "posShortCode": "soul aamras"
         },
         {
@@ -29,6 +104,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1302794860",
           "posShortCode": "mango mocha"
         },
         {
@@ -39,6 +115,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1302794861",
           "posShortCode": "watermelon coconut c"
         },
         {
@@ -49,6 +126,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1302794862",
           "posShortCode": "tropical litchi coff"
         },
         {
@@ -59,6 +137,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1302794863",
           "posShortCode": "mango iced latte"
         },
         {
@@ -69,6 +148,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1302794864",
           "posShortCode": "cwcc"
         },
         {
@@ -79,6 +159,7 @@
           "price": 255,
           "veg": true,
           "available": true,
+          "posItemId": "1302794865",
           "posShortCode": "watermelon hibiscus"
         },
         {
@@ -89,6 +170,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1302794866",
           "posShortCode": "mango matcha"
         },
         {
@@ -99,6 +181,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1302794867",
           "posShortCode": "coconut lemonade mat"
         },
         {
@@ -109,6 +192,7 @@
           "price": 355,
           "veg": true,
           "available": true,
+          "posItemId": "1302794868",
           "posShortCode": "mango coconut cream"
         },
         {
@@ -119,18 +203,19 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1302794869",
           "posShortCode": "mango cheesecake"
         },
         {
           "id": "7a7280ff-6142-5859-ba84-bf7299c768d8",
           "slug": "mango-coconut-cream-soul-cake",
           "name": "Mango Coconut Cream Soul Cake",
-          "description": "",
+          "description": "Soft chocolate sponge cake layered with mango and coconut cream",
           "price": 249,
           "veg": true,
           "available": true,
+          "posItemId": "1303772655",
           "posShortCode": "mango soul cake",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -157,8 +242,8 @@
           "price": 399,
           "veg": true,
           "available": true,
+          "posItemId": "1301890234",
           "posShortCode": "1-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Americano",
@@ -190,12 +275,12 @@
           "id": "3b0a9a55-e28b-51ad-bd2f-01bfae3cc554",
           "slug": "thecha-korean-bun-cold-coffee-creamy-spice-slow-stories",
           "name": "Thecha Korean Bun + Cold Coffee - Creamy Spice & Slow Stories",
-          "description": "Thecha Korean Bun with Classic Cold Coffee",
+          "description": "",
           "price": 349,
           "veg": true,
           "available": true,
+          "posItemId": "1301924741",
           "posShortCode": "2-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Classic Cold Coffee",
@@ -231,8 +316,8 @@
           "price": 349,
           "veg": true,
           "available": true,
+          "posItemId": "1301926809",
           "posShortCode": "3-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Cappuccino",
@@ -264,12 +349,12 @@
           "id": "e9f94056-bc5c-596d-8f65-5d0526d17d9e",
           "slug": "coffee-muffin-muffins-and-murmurs",
           "name": "Coffee + Muffin - Muffins And Murmurs",
-          "description": "Coffee with a Soft-Baked Muffin",
+          "description": "",
           "price": 299,
           "veg": true,
           "available": true,
+          "posItemId": "1302049205",
           "posShortCode": "4-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Americano",
@@ -301,12 +386,12 @@
           "id": "36c5e32a-9b5f-5d7d-93dc-e768f1fd097d",
           "slug": "bagel-cold-coffee-bagels-and-backstories",
           "name": "Bagel + Cold Coffee - Bagels And Backstories",
-          "description": "Bagel with Cold Coffee",
+          "description": "",
           "price": 369,
           "veg": true,
           "available": true,
+          "posItemId": "1302055188",
           "posShortCode": "5-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Classic Cold Coffee",
@@ -338,12 +423,12 @@
           "id": "cc21de9e-f4b4-524f-93bc-122a8813f1f9",
           "slug": "chai-puff-chai-and-chapters",
           "name": "Chai + Puff - Chai And Chapters",
-          "description": "Chai with a Crispy Puff",
+          "description": "",
           "price": 249,
           "veg": true,
           "available": true,
+          "posItemId": "1302078973",
           "posShortCode": "6-D",
-          "variationGroup": "Preparation",
           "variations": [
             {
               "name": "House Chai",
@@ -363,12 +448,12 @@
           "id": "866ad40c-23ac-5266-86d2-f9a78de627fb",
           "slug": "wrap-coffee-wraps-and-reflections",
           "name": "Wrap + Coffee - Wraps And Reflections",
-          "description": "A hearty Wrap with Coffee",
+          "description": "",
           "price": 399,
           "veg": true,
           "available": true,
+          "posItemId": "1302084111",
           "posShortCode": "7-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Americano",
@@ -400,12 +485,12 @@
           "id": "429f2169-f16c-53bc-a396-f282e614c3b9",
           "slug": "coffee-sandwich-between-slices-and-sips",
           "name": "Coffee + Sandwich - Between Slices And Sips",
-          "description": "Sandwich with Coffee",
+          "description": "",
           "price": 429,
           "veg": true,
           "available": true,
+          "posItemId": "1302086683",
           "posShortCode": "8-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Americano",
@@ -437,12 +522,12 @@
           "id": "ecf60d83-f651-57e5-9f31-c9e052a22195",
           "slug": "soul-fusion-food-soul-special-bevarage-bold-bites-and-bright-gossips",
           "name": "Soul Fusion Food + Soul Special Bevarage - Bold Bites And Bright Gossips",
-          "description": "Soul Fusion Food with a Soul Special Beverage",
+          "description": "",
           "price": 499,
           "veg": true,
           "available": true,
+          "posItemId": "1302090651",
           "posShortCode": "9-D",
-          "variationGroup": "Customisation",
           "variations": [
             {
               "name": "Velvet Pineapple Dusk",
@@ -483,15 +568,16 @@
           ]
         },
         {
-          "id": "f84ff834-4c65-516e-a578-91ecef5ae74d",
+          "id": "932cacac-5dd8-514c-ae81-2e84499fca01",
           "slug": "soul-cake-coffee-cakes-and-little-joys",
-          "name": "Soul Cake + Coffee - Cakes And Little Joys",
-          "description": "Two Cold Coffees and one Fusion Dish",
+          "name": "Soul Cake + Coffee - Cakes and Little Joys",
+          "description": "",
           "price": 299,
           "veg": true,
           "available": true,
+          "posItemId": "1302092454",
           "posShortCode": "10-D",
-          "variationGroup": "Customisation",
+          "deliveryAvailable": false,
           "variations": [
             {
               "name": "Americano",
@@ -527,6 +613,7 @@
           "price": 475,
           "veg": true,
           "available": true,
+          "posItemId": "1309706114",
           "posShortCode": "A-20"
         },
         {
@@ -537,6 +624,7 @@
           "price": 399,
           "veg": true,
           "available": true,
+          "posItemId": "1309706115",
           "posShortCode": "A-21"
         },
         {
@@ -547,6 +635,7 @@
           "price": 399,
           "veg": true,
           "available": true,
+          "posItemId": "1309706116",
           "posShortCode": "A-22"
         },
         {
@@ -557,6 +646,7 @@
           "price": 425,
           "veg": true,
           "available": true,
+          "posItemId": "1309706117",
           "posShortCode": "A-23"
         },
         {
@@ -567,6 +657,7 @@
           "price": 415,
           "veg": true,
           "available": true,
+          "posItemId": "1309706118",
           "posShortCode": "A-24"
         }
       ]
@@ -584,8 +675,8 @@
           "price": 149,
           "veg": true,
           "available": true,
+          "posItemId": "1301790316",
           "posShortCode": "swiss milk chocolate",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -605,8 +696,8 @@
           "price": 149,
           "veg": true,
           "available": true,
+          "posItemId": "1301790318",
           "posShortCode": "dark chocolate soul",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -626,8 +717,8 @@
           "price": 149,
           "veg": true,
           "available": true,
+          "posItemId": "1301790320",
           "posShortCode": "hazelnut nutella sou",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -647,8 +738,8 @@
           "price": 149,
           "veg": true,
           "available": true,
+          "posItemId": "1301790322",
           "posShortCode": "lotus biscoff soul c",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -668,8 +759,8 @@
           "price": 179,
           "veg": true,
           "available": true,
+          "posItemId": "1301790324",
           "posShortCode": "viral matilda soul c",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -689,8 +780,8 @@
           "price": 199,
           "veg": true,
           "available": true,
+          "posItemId": "1301790326",
           "posShortCode": "tiramisu soul cake",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -717,8 +808,8 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721835",
           "posShortCode": "62",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -738,8 +829,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721837",
           "posShortCode": "63",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -759,8 +850,8 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721839",
           "posShortCode": "64",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -780,8 +871,8 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721843",
           "posShortCode": "66",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -801,8 +892,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721845",
           "posShortCode": "67",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -822,8 +913,8 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721849",
           "posShortCode": "69",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -843,8 +934,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721851",
           "posShortCode": "70",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -864,8 +955,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721853",
           "posShortCode": "71",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -885,8 +976,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294567340",
           "posShortCode": "501",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -906,8 +997,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294567367",
           "posShortCode": "115",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -927,8 +1018,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294567437",
           "posShortCode": "117",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -948,8 +1039,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294567509",
           "posShortCode": "127",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -977,6 +1068,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294971365",
           "posShortCode": "178"
         },
         {
@@ -987,18 +1079,19 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1309654404",
           "posShortCode": "ql"
         },
         {
           "id": "c71ca0fb-8fc7-5860-a386-189a9dee52eb",
           "slug": "coconut-iced-filter-coffee",
           "name": "Coconut Iced Filter Coffee",
-          "description": "",
+          "description": "Strong filter coffee chilled and finished with milk - rich, nostalgic, and proudly rooted.",
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1309706123",
           "posShortCode": "A-1",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1014,12 +1107,12 @@
           "id": "d0db6716-d0e0-592a-b95c-304da5548568",
           "slug": "mont-blanc",
           "name": "Mont Blanc",
-          "description": "",
+          "description": "House cold brew with orange juice over ice, finished with vanilla-orange cream foam - citrusy, creamy, and refreshingly smooth.",
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "1309706125",
           "posShortCode": "A-4",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1039,6 +1132,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1309970913",
           "posShortCode": "qa"
         },
         {
@@ -1049,6 +1143,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1310151882",
           "posShortCode": "cyb"
         },
         {
@@ -1059,8 +1154,8 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "1310216670",
           "posShortCode": "smooth af",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1080,8 +1175,8 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "1313279669",
           "posShortCode": "csfc",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1108,6 +1203,7 @@
           "price": 100,
           "veg": true,
           "available": true,
+          "posItemId": "159721728",
           "posShortCode": "38"
         },
         {
@@ -1118,6 +1214,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721729",
           "posShortCode": "39"
         },
         {
@@ -1128,6 +1225,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721730",
           "posShortCode": "40"
         },
         {
@@ -1138,8 +1236,8 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721795",
           "posShortCode": "41",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1159,8 +1257,8 @@
           "price": 215,
           "veg": true,
           "available": true,
+          "posItemId": "159721797",
           "posShortCode": "42",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1180,8 +1278,8 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "159721799",
           "posShortCode": "43",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1201,8 +1299,8 @@
           "price": 235,
           "veg": true,
           "available": true,
+          "posItemId": "159721801",
           "posShortCode": "44",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1222,8 +1320,8 @@
           "price": 255,
           "veg": true,
           "available": true,
+          "posItemId": "159721803",
           "posShortCode": "45",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1243,8 +1341,8 @@
           "price": 255,
           "veg": true,
           "available": true,
+          "posItemId": "159721805",
           "posShortCode": "46",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1264,8 +1362,8 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "159721807",
           "posShortCode": "47",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1285,8 +1383,8 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "159721809",
           "posShortCode": "48",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1306,8 +1404,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721811",
           "posShortCode": "205",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1323,12 +1421,12 @@
           "id": "57b4b036-f33f-5b61-819e-7a40938aa3d2",
           "slug": "french-hot-chocolate",
           "name": "French Hot Chocolate",
-          "description": "",
+          "description": "Thick dark chocolate folded into milk - intense, velvety, and unapologetically rich.",
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721813",
           "posShortCode": "50",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1348,8 +1446,8 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "159721815",
           "posShortCode": "51",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1369,6 +1467,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1295098434",
           "posShortCode": "189"
         },
         {
@@ -1379,8 +1478,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1295461689",
           "posShortCode": "207",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1400,7 +1499,19 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "1298905499",
           "posShortCode": "279"
+        },
+        {
+          "id": "a586c6d5-cc0d-5799-ba6d-4ebc83a23729",
+          "slug": "blueberry-vanilla-latte",
+          "name": "Blueberry Vanilla Latte",
+          "description": "",
+          "price": 255,
+          "veg": true,
+          "available": true,
+          "posItemId": "1314079509",
+          "posShortCode": "bvl"
         }
       ]
     },
@@ -1417,8 +1528,8 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721817",
           "posShortCode": "52",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1438,8 +1549,8 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "159721819",
           "posShortCode": "53",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1459,8 +1570,8 @@
           "price": 235,
           "veg": true,
           "available": true,
+          "posItemId": "159721821",
           "posShortCode": "54",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1480,8 +1591,8 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721823",
           "posShortCode": "55",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1501,8 +1612,8 @@
           "price": 235,
           "veg": true,
           "available": true,
+          "posItemId": "159721825",
           "posShortCode": "56",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1522,8 +1633,8 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "159721827",
           "posShortCode": "57",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1543,8 +1654,8 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "159721829",
           "posShortCode": "58",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1564,8 +1675,8 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "159721831",
           "posShortCode": "59",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1585,8 +1696,8 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "159721847",
           "posShortCode": "68",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1606,6 +1717,7 @@
           "price": 215,
           "veg": true,
           "available": true,
+          "posItemId": "1289691363",
           "posShortCode": "401"
         },
         {
@@ -1616,6 +1728,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1289865271",
           "posShortCode": "109"
         },
         {
@@ -1626,6 +1739,7 @@
           "price": 350,
           "veg": true,
           "available": true,
+          "posItemId": "1305301635",
           "posShortCode": "WBACPOI"
         },
         {
@@ -1636,6 +1750,7 @@
           "price": 450,
           "veg": true,
           "available": true,
+          "posItemId": "1305341596",
           "posShortCode": "EPO"
         },
         {
@@ -1646,6 +1761,7 @@
           "price": 450,
           "veg": true,
           "available": true,
+          "posItemId": "1305341603",
           "posShortCode": "TPO"
         },
         {
@@ -1656,6 +1772,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1309471963",
           "posShortCode": "pcc"
         }
       ]
@@ -1673,8 +1790,8 @@
           "price": 245,
           "veg": true,
           "available": true,
+          "posItemId": "159721833",
           "posShortCode": "60",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1694,8 +1811,8 @@
           "price": 275,
           "veg": true,
           "available": true,
+          "posItemId": "159721841",
           "posShortCode": "65",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1708,6 +1825,28 @@
           ]
         },
         {
+          "id": "74f04c70-4242-51cb-b386-ff0fa2d5e28c",
+          "slug": "creamed-bee",
+          "name": "Creamed Bee",
+          "description": "",
+          "price": 225,
+          "veg": true,
+          "available": true,
+          "posItemId": "1289457905",
+          "posShortCode": "108",
+          "deliveryAvailable": false,
+          "variations": [
+            {
+              "name": "Regular",
+              "price": 225
+            },
+            {
+              "name": "Large",
+              "price": 255
+            }
+          ]
+        },
+        {
           "id": "82cb1a6d-e7f6-54d2-ade9-3e11300790c1",
           "slug": "ginger-ale-cold-brew",
           "name": "Ginger Ale Cold Brew",
@@ -1715,8 +1854,8 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1294568203",
           "posShortCode": "108",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1736,8 +1875,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294568632",
           "posShortCode": "112",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1753,12 +1892,12 @@
           "id": "84a18dac-fcb8-5f2f-9aea-c4e029a183ad",
           "slug": "sweet-vanilla-cream-cold-brew",
           "name": "Sweet Vanilla Cream Cold Brew",
-          "description": "",
+          "description": "Classic cold brew topped with sweet vanilla cream - silky, mellow, and beautifully balanced.",
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294569709",
           "posShortCode": "140",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1774,12 +1913,12 @@
           "id": "313e07bc-1dc9-529e-8204-55b56daab100",
           "slug": "sweet-hazelnut-cream-cold-brew",
           "name": "Sweet Hazelnut Cream Cold Brew",
-          "description": "",
+          "description": "Cold brew crowned with sweet hazelnut cream - nutty, smooth, and indulgently rich.",
           "price": 255,
           "veg": true,
           "available": true,
+          "posItemId": "1294569890",
           "posShortCode": "511",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1799,8 +1938,8 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1301607351",
           "posShortCode": "268",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1820,8 +1959,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1301607369",
           "posShortCode": "lavender bloom",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1841,8 +1980,8 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1301607372",
           "posShortCode": "sparkling vanilla br",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1862,8 +2001,8 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1301607380",
           "posShortCode": "tiramisu cloud cold",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1879,12 +2018,12 @@
           "id": "0ae8317f-f951-53a2-adbb-2225871674d3",
           "slug": "blueberry-cold-brew",
           "name": "Blueberry Cold Brew",
-          "description": "Slow-steeped cold brew infused with blueberry",
+          "description": "House cold brew infused with actual blueberries, topped with rich cold foam - bold and refreshingly smooth with blueberry sweetness.",
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "1302457025",
           "posShortCode": "blueberry cold brew",
-          "variationGroup": "Size",
           "variations": [
             {
               "name": "Regular",
@@ -1904,18 +2043,20 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1307827506",
           "posShortCode": "1000"
         },
         {
-          "id": "0eae6588-5ad5-54ce-a29c-7a843274b055",
-          "slug": "bombay-cream-cold-brew",
-          "name": "Bombay Cream Cold Brew",
+          "id": "f154efc1-bced-547b-8b06-97d34e7c2554",
+          "slug": "bombay-ice-cream-soda-cold-brew",
+          "name": "Bombay Ice Cream Soda Cold Brew",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posShortCode": "bccb",
-          "variationGroup": "Size",
+          "posItemId": "1309706127",
+          "posShortCode": "A-7",
+          "deliveryAvailable": false,
           "variations": [
             {
               "name": "Regular",
@@ -1928,15 +2069,15 @@
           ]
         },
         {
-          "id": "f154efc1-bced-547b-8b06-97d34e7c2554",
-          "slug": "bombay-ice-cream-soda-cold-brew",
-          "name": "Bombay Ice Cream Soda Cold Brew",
+          "id": "0eae6588-5ad5-54ce-a29c-7a843274b055",
+          "slug": "bombay-cream-cold-brew",
+          "name": "Bombay Cream Cold Brew",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posShortCode": "A-7",
-          "variationGroup": "Size",
+          "posItemId": "1309999097",
+          "posShortCode": "bccb",
           "variations": [
             {
               "name": "Regular",
@@ -1963,6 +2104,7 @@
           "price": 275,
           "veg": true,
           "available": true,
+          "posItemId": "159721791",
           "posShortCode": "101"
         },
         {
@@ -1973,6 +2115,7 @@
           "price": 295,
           "veg": true,
           "available": true,
+          "posItemId": "159721792",
           "posShortCode": "102"
         },
         {
@@ -1983,6 +2126,7 @@
           "price": 335,
           "veg": true,
           "available": true,
+          "posItemId": "159721793",
           "posShortCode": "103"
         },
         {
@@ -1993,6 +2137,7 @@
           "price": 350,
           "veg": true,
           "available": true,
+          "posItemId": "159721794",
           "posShortCode": "104"
         },
         {
@@ -2003,6 +2148,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1309706106",
           "posShortCode": "A-10"
         },
         {
@@ -2013,7 +2159,9 @@
           "price": 475,
           "veg": true,
           "available": true,
-          "posShortCode": "A-11"
+          "posItemId": "1309706107",
+          "posShortCode": "A-11",
+          "deliveryAvailable": false
         }
       ]
     },
@@ -2030,6 +2178,7 @@
           "price": 145,
           "veg": true,
           "available": true,
+          "posItemId": "159721780",
           "posShortCode": "90"
         },
         {
@@ -2040,6 +2189,7 @@
           "price": 175,
           "veg": true,
           "available": true,
+          "posItemId": "159721781",
           "posShortCode": "91"
         },
         {
@@ -2050,6 +2200,7 @@
           "price": 165,
           "veg": true,
           "available": true,
+          "posItemId": "159721782",
           "posShortCode": "92"
         },
         {
@@ -2060,6 +2211,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721783",
           "posShortCode": "93"
         },
         {
@@ -2070,6 +2222,7 @@
           "price": 195,
           "veg": true,
           "available": true,
+          "posItemId": "159721784",
           "posShortCode": "94"
         },
         {
@@ -2080,6 +2233,7 @@
           "price": 195,
           "veg": true,
           "available": true,
+          "posItemId": "159721785",
           "posShortCode": "95"
         },
         {
@@ -2090,6 +2244,7 @@
           "price": 165,
           "veg": true,
           "available": true,
+          "posItemId": "1298532298",
           "posShortCode": "237"
         },
         {
@@ -2100,6 +2255,7 @@
           "price": 139,
           "veg": true,
           "available": true,
+          "posItemId": "1300578964",
           "posShortCode": "284"
         },
         {
@@ -2110,6 +2266,7 @@
           "price": 149,
           "veg": true,
           "available": true,
+          "posItemId": "1300578965",
           "posShortCode": "285"
         },
         {
@@ -2120,6 +2277,7 @@
           "price": 149,
           "veg": true,
           "available": true,
+          "posItemId": "1300578966",
           "posShortCode": "286"
         },
         {
@@ -2130,6 +2288,7 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "1303384428",
           "posShortCode": "MCL"
         }
       ]
@@ -2147,6 +2306,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721786",
           "posShortCode": "96"
         },
         {
@@ -2157,6 +2317,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721787",
           "posShortCode": "97"
         },
         {
@@ -2167,6 +2328,7 @@
           "price": 195,
           "veg": true,
           "available": true,
+          "posItemId": "159721788",
           "posShortCode": "98"
         },
         {
@@ -2177,6 +2339,7 @@
           "price": 195,
           "veg": true,
           "available": true,
+          "posItemId": "159721789",
           "posShortCode": "99"
         },
         {
@@ -2187,6 +2350,7 @@
           "price": 195,
           "veg": true,
           "available": true,
+          "posItemId": "159721790",
           "posShortCode": "100"
         },
         {
@@ -2197,6 +2361,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "1296789497",
           "posShortCode": "657"
         },
         {
@@ -2207,6 +2372,7 @@
           "price": 195,
           "veg": true,
           "available": true,
+          "posItemId": "1302460190",
           "posShortCode": "blueberry iced tea"
         }
       ]
@@ -2224,6 +2390,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721773",
           "posShortCode": "83"
         },
         {
@@ -2234,6 +2401,7 @@
           "price": 245,
           "veg": true,
           "available": true,
+          "posItemId": "159721774",
           "posShortCode": "84"
         },
         {
@@ -2244,6 +2412,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721775",
           "posShortCode": "85"
         },
         {
@@ -2254,6 +2423,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721776",
           "posShortCode": "86"
         },
         {
@@ -2264,6 +2434,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721777",
           "posShortCode": "87"
         },
         {
@@ -2274,6 +2445,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "159721778",
           "posShortCode": "88"
         },
         {
@@ -2284,6 +2456,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721779",
           "posShortCode": "89"
         },
         {
@@ -2294,6 +2467,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "1293996306",
           "posShortCode": "146"
         },
         {
@@ -2304,6 +2478,7 @@
           "price": 320,
           "veg": true,
           "available": true,
+          "posItemId": "1308558968",
           "posShortCode": "10000"
         }
       ]
@@ -2321,6 +2496,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "159721691",
           "posShortCode": "1"
         },
         {
@@ -2331,6 +2507,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "159721692",
           "posShortCode": "2"
         },
         {
@@ -2341,6 +2518,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "1309706108",
           "posShortCode": "A-16"
         },
         {
@@ -2351,6 +2529,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1309706109",
           "posShortCode": "A-17"
         },
         {
@@ -2361,6 +2540,7 @@
           "price": 315,
           "veg": true,
           "available": true,
+          "posItemId": "1310993660",
           "posShortCode": "MHVT"
         },
         {
@@ -2371,6 +2551,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1311605561",
           "posShortCode": "cht"
         }
       ]
@@ -2388,6 +2569,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721693",
           "posShortCode": "3"
         },
         {
@@ -2398,6 +2580,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721694",
           "posShortCode": "4"
         },
         {
@@ -2408,6 +2591,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "159721695",
           "posShortCode": "5"
         },
         {
@@ -2418,6 +2602,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "159721697",
           "posShortCode": "7"
         }
       ]
@@ -2435,6 +2620,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "159721704",
           "posShortCode": "14"
         },
         {
@@ -2445,6 +2631,7 @@
           "price": 245,
           "veg": true,
           "available": true,
+          "posItemId": "159721705",
           "posShortCode": "15"
         },
         {
@@ -2455,6 +2642,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "1301467782",
           "posShortCode": "swicy cheesy mushroo"
         },
         {
@@ -2465,6 +2653,7 @@
           "price": 355,
           "veg": true,
           "available": true,
+          "posItemId": "1301467783",
           "posShortCode": "pizzalicious bagel"
         },
         {
@@ -2475,6 +2664,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1301510878",
           "posShortCode": "guacamole cream chee"
         }
       ]
@@ -2492,6 +2682,7 @@
           "price": 245,
           "veg": true,
           "available": true,
+          "posItemId": "159721710",
           "posShortCode": "20"
         },
         {
@@ -2502,6 +2693,7 @@
           "price": 275,
           "veg": true,
           "available": true,
+          "posItemId": "159721711",
           "posShortCode": "21"
         },
         {
@@ -2512,6 +2704,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721712",
           "posShortCode": "22"
         }
       ]
@@ -2529,6 +2722,7 @@
           "price": 355,
           "veg": true,
           "available": true,
+          "posItemId": "159721703",
           "posShortCode": "13"
         },
         {
@@ -2539,6 +2733,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "1298890974",
           "posShortCode": "278"
         },
         {
@@ -2549,6 +2744,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "1299231643",
           "posShortCode": "230"
         }
       ]
@@ -2566,6 +2762,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1294529788",
           "posShortCode": "503"
         },
         {
@@ -2576,6 +2773,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1294529789",
           "posShortCode": "504"
         },
         {
@@ -2586,6 +2784,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "1294529790",
           "posShortCode": "505"
         }
       ]
@@ -2603,6 +2802,7 @@
           "price": 295,
           "veg": true,
           "available": true,
+          "posItemId": "159721701",
           "posShortCode": "11"
         },
         {
@@ -2613,6 +2813,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721702",
           "posShortCode": "12"
         },
         {
@@ -2623,6 +2824,7 @@
           "price": 225,
           "veg": true,
           "available": true,
+          "posItemId": "1293713215",
           "posShortCode": "145"
         },
         {
@@ -2633,6 +2835,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "1309706110",
           "posShortCode": "A-18"
         }
       ]
@@ -2650,6 +2853,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "159721699",
           "posShortCode": "9"
         },
         {
@@ -2660,6 +2864,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "159721700",
           "posShortCode": "10"
         },
         {
@@ -2670,6 +2875,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1290357071",
           "posShortCode": "500"
         },
         {
@@ -2680,6 +2886,7 @@
           "price": 250,
           "veg": true,
           "available": true,
+          "posItemId": "1306752125",
           "posShortCode": "sdl"
         }
       ]
@@ -2697,6 +2904,7 @@
           "price": 285,
           "veg": true,
           "available": true,
+          "posItemId": "159721708",
           "posShortCode": "18"
         },
         {
@@ -2707,6 +2915,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "159721709",
           "posShortCode": "19"
         },
         {
@@ -2717,6 +2926,7 @@
           "price": 295,
           "veg": true,
           "available": true,
+          "posItemId": "1298700198",
           "posShortCode": "275"
         }
       ]
@@ -2734,6 +2944,7 @@
           "price": 100,
           "veg": true,
           "available": true,
+          "posItemId": "159721721",
           "posShortCode": "31"
         },
         {
@@ -2744,6 +2955,7 @@
           "price": 100,
           "veg": true,
           "available": true,
+          "posItemId": "159721723",
           "posShortCode": "33"
         }
       ]
@@ -2761,6 +2973,7 @@
           "price": 165,
           "veg": true,
           "available": true,
+          "posItemId": "159721713",
           "posShortCode": "23"
         },
         {
@@ -2771,6 +2984,7 @@
           "price": 165,
           "veg": true,
           "available": true,
+          "posItemId": "159721714",
           "posShortCode": "24"
         },
         {
@@ -2781,6 +2995,7 @@
           "price": 165,
           "veg": true,
           "available": true,
+          "posItemId": "159721715",
           "posShortCode": "25"
         }
       ]
@@ -2798,6 +3013,7 @@
           "price": 155,
           "veg": true,
           "available": true,
+          "posItemId": "159721706",
           "posShortCode": "16"
         },
         {
@@ -2808,8 +3024,8 @@
           "price": 175,
           "veg": true,
           "available": true,
+          "posItemId": "1294561433",
           "posShortCode": "17",
-          "variationGroup": "Preparation",
           "variations": [
             {
               "name": "Jain",
@@ -2836,6 +3052,7 @@
           "price": 155,
           "veg": true,
           "available": true,
+          "posItemId": "159721724",
           "posShortCode": "34"
         },
         {
@@ -2846,6 +3063,7 @@
           "price": 185,
           "veg": true,
           "available": true,
+          "posItemId": "159721725",
           "posShortCode": "35"
         },
         {
@@ -2856,6 +3074,7 @@
           "price": 235,
           "veg": true,
           "available": true,
+          "posItemId": "159721726",
           "posShortCode": "36"
         },
         {
@@ -2866,6 +3085,7 @@
           "price": 245,
           "veg": true,
           "available": true,
+          "posItemId": "1294564324",
           "posShortCode": "508"
         },
         {
@@ -2876,6 +3096,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1309706113",
           "posShortCode": "A-19"
         }
       ]
@@ -2893,6 +3114,7 @@
           "price": 60,
           "veg": true,
           "available": true,
+          "posItemId": "1289949183",
           "posShortCode": "soul special cilantr"
         },
         {
@@ -2903,6 +3125,7 @@
           "price": 60,
           "veg": true,
           "available": true,
+          "posItemId": "1289949184",
           "posShortCode": "soul special srirach"
         },
         {
@@ -2913,6 +3136,7 @@
           "price": 50,
           "veg": true,
           "available": true,
+          "posItemId": "1301930018",
           "posShortCode": "hot cheese dip"
         }
       ]
@@ -2930,6 +3154,7 @@
           "price": 255,
           "veg": true,
           "available": true,
+          "posItemId": "159721716",
           "posShortCode": "26"
         },
         {
@@ -2940,6 +3165,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "159721717",
           "posShortCode": "27"
         },
         {
@@ -2950,6 +3176,7 @@
           "price": 275,
           "veg": true,
           "available": true,
+          "posItemId": "159721718",
           "posShortCode": "28"
         },
         {
@@ -2960,6 +3187,7 @@
           "price": 295,
           "veg": true,
           "available": true,
+          "posItemId": "159721719",
           "posShortCode": "29"
         },
         {
@@ -2970,6 +3198,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "159721720",
           "posShortCode": "30"
         },
         {
@@ -2980,6 +3209,7 @@
           "price": 255,
           "veg": true,
           "available": true,
+          "posItemId": "159721751",
           "posShortCode": "61"
         },
         {
@@ -2990,16 +3220,18 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1294588509",
           "posShortCode": "201"
         },
         {
-          "id": "551d8496-cf95-504d-a828-c07a11d3d56b",
-          "slug": "banana-walnut-loaf-sugar-free-vegan-gluten-free",
-          "name": "Banana Walnut Loaf(Sugar Free, Vegan, Gluten Free)",
+          "id": "bc49fdae-ea5e-58ca-b60a-3953afff2f41",
+          "slug": "banana-walnut-loaf",
+          "name": "Banana Walnut Loaf",
           "description": "",
           "price": 700,
           "veg": true,
           "available": true,
+          "posItemId": "1298276239",
           "posShortCode": "271"
         },
         {
@@ -3010,6 +3242,7 @@
           "price": 195,
           "veg": true,
           "available": true,
+          "posItemId": "1302254882",
           "posShortCode": "banana walnut bread"
         },
         {
@@ -3020,6 +3253,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1309302349",
           "posShortCode": "velvet tiramisu indu"
         },
         {
@@ -3030,6 +3264,7 @@
           "price": 345,
           "veg": true,
           "available": true,
+          "posItemId": "1309302350",
           "posShortCode": "blueberry pistachio"
         },
         {
@@ -3040,6 +3275,7 @@
           "price": 265,
           "veg": true,
           "available": true,
+          "posItemId": "1311803528",
           "posShortCode": "CHB"
         },
         {
@@ -3050,6 +3286,7 @@
           "price": 1500,
           "veg": true,
           "available": true,
+          "posItemId": "1312914264",
           "posShortCode": "CC1"
         }
       ]
@@ -3067,6 +3304,7 @@
           "price": 60,
           "veg": true,
           "available": true,
+          "posItemId": "159721769",
           "posShortCode": "79"
         },
         {
@@ -3077,6 +3315,7 @@
           "price": 60,
           "veg": true,
           "available": true,
+          "posItemId": "159721770",
           "posShortCode": "80"
         },
         {
@@ -3087,6 +3326,7 @@
           "price": 60,
           "veg": true,
           "available": true,
+          "posItemId": "159721771",
           "posShortCode": "81"
         },
         {
@@ -3097,6 +3337,7 @@
           "price": 60,
           "veg": true,
           "available": true,
+          "posItemId": "159721772",
           "posShortCode": "82"
         },
         {
@@ -3107,6 +3348,7 @@
           "price": 60,
           "veg": true,
           "available": true,
+          "posItemId": "1290020445",
           "posShortCode": "114"
         }
       ]
@@ -3124,6 +3366,7 @@
           "price": 325,
           "veg": true,
           "available": true,
+          "posItemId": "1309570367",
           "posShortCode": "protein cold coffee"
         },
         {
@@ -3134,6 +3377,7 @@
           "price": 355,
           "veg": true,
           "available": true,
+          "posItemId": "1309570368",
           "posShortCode": "protein milk shake"
         },
         {
@@ -3144,6 +3388,7 @@
           "price": 385,
           "veg": true,
           "available": true,
+          "posItemId": "1309570369",
           "posShortCode": "protein matcha"
         }
       ]
