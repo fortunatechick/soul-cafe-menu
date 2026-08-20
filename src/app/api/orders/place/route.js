@@ -59,15 +59,20 @@ export async function POST(request) {
 
     let unitPrice = item.price;
     let variation = null;
+    // Each size is its own PetPooja item, so the chosen one carries the id
+    // the POS must be sent.
+    let posItemId = item.id;
     if (item.variations?.length) {
       const match = item.variations.find((v) => v.name === line.variation);
       if (!match) return bad(`Please pick an option for "${item.name}".`);
       unitPrice = match.price;
       variation = match.name;
+      posItemId = match.id;
     }
 
     items.push({
       menuItemId: item.id,
+      posItemId,
       itemName: item.name,
       posShortCode: item.posShortCode || '',
       category: item.category,

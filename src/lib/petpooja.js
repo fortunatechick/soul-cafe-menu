@@ -66,7 +66,7 @@ export function buildPetPoojaPayload(order) {
         },
         OrderItem: {
           details: order.items.map((it, i) => ({
-            id: it.posShortCode || it.menuItemId,
+            id: it.posItemId,
             name: it.itemName,
             gst_liability: 'restaurant',
             item_tax: [],

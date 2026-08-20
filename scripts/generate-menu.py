@@ -7,7 +7,7 @@ Variations arrive as separate rows suffixed "(Regular)", "(Large)", etc. and are
 folded back into one item here.
 """
 
-import json, re, unicodedata, hashlib, collections
+import json, re, unicodedata, collections
 import openpyxl
 
 XLSX = r'C:/Users/omcha/Downloads/Item_AreawisePrice_388482.xlsx'
@@ -22,15 +22,6 @@ def slugify(s):
     s = unicodedata.normalize('NFKD', s).lower()
     s = re.sub(r'[^a-z0-9]+', '-', s)
     return s.strip('-')
-
-
-def uuid_for(key):
-    h = hashlib.sha1(('soul-menu:' + key).encode()).digest()
-    b = bytearray(h[:16])
-    b[6] = (b[6] & 0x0F) | 0x50
-    b[8] = (b[8] & 0x3F) | 0x80
-    x = bytes(b).hex()
-    return f'{x[:8]}-{x[8:12]}-{x[12:16]}-{x[16:20]}-{x[20:]}'
 
 
 # ---- category display names + ordering, straight from the POS report ----
@@ -106,29 +97,31 @@ for r in rows:
     rec['hd_avail'].append((r[COL['hd_avail']] or '').strip() == 'Yes')
     rec['veg'] = (r[COL['dietary']] or 'veg').strip().lower() != 'nonveg'
 
+    # Every row — including each size — is its own PetPooja item, so the
+    # variation keeps the id the POS will actually be asked for.
     if variation and not any(v['name'] == variation for v in rec['variations']):
-        rec['variations'].append({'name': variation, 'price': price,
-                                  'posItemId': str(r[COL['item_id']])})
+        rec['variations'].append({'id': str(r[COL['item_id']]),
+                                  'name': variation, 'price': price})
 
 buckets = collections.defaultdict(list)
 
 for (category, base), rec in groups.items():
+    # id IS the PetPooja ItemID — for an item with sizes, the first (base) row.
     item = {
-        'id': uuid_for(f'{base}|{category}'),
+        'id': rec['item_ids'][0],
         'slug': slugify(base),
         'name': base,
         'description': rec['description'],
         'price': min(rec['prices']),
         'veg': rec['veg'],
         'available': True,
-        'posItemId': rec['item_ids'][0],
         'posShortCode': rec['short_codes'][0] if rec['short_codes'] else '',
     }
     # Items the café does not send out for delivery stay orderable for pickup.
     if not any(rec['hd_avail']):
         item['deliveryAvailable'] = False
     if len(rec['variations']) > 1:
-        item['variations'] = [{'name': v['name'], 'price': v['price']} for v in rec['variations']]
+        item['variations'] = rec['variations']
     buckets[category].append(item)
 
 categories = []

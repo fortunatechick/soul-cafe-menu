@@ -94,18 +94,27 @@ Item shape:
 
 ```json
 {
-  "id": "uuid",
-  "slug": "iced-latte",
-  "name": "Iced Latte",
-  "description": "…",
-  "price": 245,
+  "id": "159721795",
+  "slug": "americano",
+  "name": "Americano",
+  "description": "Espresso eased with hot water …",
+  "price": 185,
   "veg": true,
   "available": true,
-  "posShortCode": "57",
-  "variationGroup": "Size",
-  "variations": [{ "name": "Regular", "price": 245 }, { "name": "Large", "price": 295 }]
+  "posShortCode": "41",
+  "variations": [
+    { "id": "159721795", "name": "Regular", "price": 185 },
+    { "id": "159721796", "name": "Large", "price": 235 }
+  ]
 }
 ```
+
+**`id` is the PetPooja `ItemID`, copied verbatim from the export** — not a
+generated key. PetPooja treats every size as its own item with its own ItemID, so
+each variation carries the id the POS will actually be asked for; an item with
+sizes takes its base row's id. When an order is placed, the line records
+`posItemId` for the *chosen* variation (Americano Large → `159721796`), and that
+is the id sent to `save_order`.
 
 Set `"available": false` to grey an item out and block it at checkout.
 

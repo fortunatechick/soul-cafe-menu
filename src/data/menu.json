@@ -13,69 +13,63 @@
       "posCategory": "Monsoon Menu",
       "items": [
         {
-          "id": "99d56211-0cb6-5c74-bf45-70bd211e3665",
+          "id": "1311804191",
           "slug": "baarish-wali-maggi-and-cinnamon-hot-chocolate",
           "name": "Baarish wali Maggi and Cinnamon Hot Chocolate",
           "description": "Baarish wali Maggi & Cinnamon Hot Chocolate",
           "price": 399,
           "veg": true,
           "available": true,
-          "posItemId": "1311804191",
           "posShortCode": "BWMCMC"
         },
         {
-          "id": "aba283f5-ef07-57eb-9ca3-3734746a3d9c",
+          "id": "1311804335",
           "slug": "vada-paav-tacos-and-soul-kadak-chai",
           "name": "Vada Paav Tacos and Soul Kadak Chai",
           "description": "Vada Paav Tacos & Soul Kadak Chai",
           "price": 349,
           "veg": true,
           "available": true,
-          "posItemId": "1311804335",
           "posShortCode": "vptskc"
         },
         {
-          "id": "555b9828-6870-5c58-9664-b1cd1621088d",
+          "id": "1311804336",
           "slug": "soul-hot-chocolate-and-flaky-butter-croissant",
           "name": "Soul Hot Chocolate and Flaky Butter Croissant",
           "description": "Soul Hot Chocolate & Flaky Butter Croissant",
           "price": 399,
           "veg": true,
           "available": true,
-          "posItemId": "1311804336",
           "posShortCode": "shcbc"
         },
         {
-          "id": "60898a17-9c05-555a-8905-d141c5cb9c18",
+          "id": "1311804337",
           "slug": "nutmeg-cinnamon-latte-and-chocolate-chip-cookie",
           "name": "Nutmeg Cinnamon Latte and Chocolate Chip Cookie",
           "description": "Nutmeg Cinnamon Latte and Chocolate Chip Cookie",
           "price": 299,
           "veg": true,
           "available": true,
-          "posItemId": "1311804337",
           "posShortCode": "nmlccp"
         },
         {
-          "id": "52cec920-1691-5098-ac9d-89715cd322d2",
+          "id": "1311804338",
           "slug": "thecha-korean-bun-kahva-latte",
           "name": "Thecha Korean Bun & Kahva Latte",
           "description": "Thecha Korean Bun and Kahva Latte",
           "price": 449,
           "veg": true,
           "available": true,
-          "posItemId": "1311804338",
           "posShortCode": "tkbkl"
         },
         {
-          "id": "36402dca-dff5-5705-9876-adb6f164196e",
+          "id": "1311804339",
           "slug": "chilli-cheese-toast-and-turmeric-latte",
           "name": "Chilli Cheese Toast And Turmeric Latte",
           "description": "Chilli Cheese Toast & Turmeric Latte",
           "price": 449,
           "veg": true,
           "available": true,
-          "posItemId": "1311804339",
           "posShortCode": "ccttl"
         }
       ]
@@ -86,142 +80,132 @@
       "posCategory": "Summer Specials",
       "items": [
         {
-          "id": "93c06e73-ff6d-5989-b7e2-d2861184b215",
+          "id": "1302794859",
           "slug": "soul-aamras",
           "name": "Soul Aamras",
           "description": "Alphonso mangoes blended into a silky traditional delight",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "1302794859",
           "posShortCode": "soul aamras"
         },
         {
-          "id": "c3964c03-cd7b-51e0-87cc-dac656aa82aa",
+          "id": "1302794860",
           "slug": "mango-mocha",
           "name": "Mango Mocha",
           "description": "Chocolate, espresso and mango brought together over ice",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1302794860",
           "posShortCode": "mango mocha"
         },
         {
-          "id": "e470057e-d1c1-552f-924e-2d16a9f92cab",
+          "id": "1302794861",
           "slug": "watermelon-coconut-coffee-cloud",
           "name": "Watermelon Coconut Coffee Cloud",
           "description": "Fresh Watermelon juice topped with cloud of Coconut milk and bold espresso",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1302794861",
           "posShortCode": "watermelon coconut c"
         },
         {
-          "id": "1af56805-d3d7-5690-bdab-d68020be989b",
+          "id": "1302794862",
           "slug": "tropical-litchi-coffee-cloud",
           "name": "Tropical Litchi Coffee Cloud",
           "description": "Tropical litchi juice crowned with a cloud of coffee",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1302794862",
           "posShortCode": "tropical litchi coff"
         },
         {
-          "id": "14246abb-e515-5ebd-b7a1-e08da7e06229",
+          "id": "1302794863",
           "slug": "mango-iced-latte",
           "name": "Mango Iced Latte",
           "description": "Espresso layered with sweet mango and chilled milk",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1302794863",
           "posShortCode": "mango iced latte"
         },
         {
-          "id": "b09d8df9-aef5-50c4-b744-fcf3defef596",
+          "id": "1302794864",
           "slug": "coconut-water-coffee-cloud",
           "name": "Coconut Water Coffee Cloud",
           "description": "Chilled coconut water topped with a velvety coffee cloud",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1302794864",
           "posShortCode": "cwcc"
         },
         {
-          "id": "f5503eaf-2265-5bc9-8f46-77e20a1098d3",
+          "id": "1302794865",
           "slug": "watermelon-hibiscus-iced-tea",
           "name": "Watermelon Hibiscus Iced Tea",
           "description": "Watermelon and hibiscus infused into chilled tea",
           "price": 255,
           "veg": true,
           "available": true,
-          "posItemId": "1302794865",
           "posShortCode": "watermelon hibiscus"
         },
         {
-          "id": "783136b3-873b-54a3-9d56-fd943a113508",
+          "id": "1302794866",
           "slug": "mango-matcha",
           "name": "Mango Matcha",
           "description": "House Matcha blended with mango",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1302794866",
           "posShortCode": "mango matcha"
         },
         {
-          "id": "ced31f5c-1ef5-57d1-8137-9841e9a7708c",
+          "id": "1302794867",
           "slug": "coconut-matcha-cloud",
           "name": "Coconut Matcha CLoud",
           "description": "Chilled coconut water finished with a thick matcha cloud",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1302794867",
           "posShortCode": "coconut lemonade mat"
         },
         {
-          "id": "24550b47-52a5-54cf-8fa1-5f7e255ec024",
+          "id": "1302794868",
           "slug": "mango-coconut-cream-french-toast",
           "name": "Mango Coconut Cream French Toast",
           "description": "",
           "price": 355,
           "veg": true,
           "available": true,
-          "posItemId": "1302794868",
           "posShortCode": "mango coconut cream"
         },
         {
-          "id": "e62e35ec-6d9a-505f-b262-4df91f43db3b",
+          "id": "1302794869",
           "slug": "mango-cheesecake",
           "name": "Mango Cheesecake",
           "description": "Creamy cheesecake layered with ripe mangoes",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1302794869",
           "posShortCode": "mango cheesecake"
         },
         {
-          "id": "7a7280ff-6142-5859-ba84-bf7299c768d8",
+          "id": "1303772655",
           "slug": "mango-coconut-cream-soul-cake",
           "name": "Mango Coconut Cream Soul Cake",
           "description": "Soft chocolate sponge cake layered with mango and coconut cream",
           "price": 249,
           "veg": true,
           "available": true,
-          "posItemId": "1303772655",
           "posShortCode": "mango soul cake",
           "variations": [
             {
+              "id": "1303772655",
               "name": "Regular",
               "price": 249
             },
             {
+              "id": "1303772656",
               "name": "Large",
               "price": 349
             }
@@ -235,429 +219,474 @@
       "posCategory": "Soul Combos",
       "items": [
         {
-          "id": "c00e4f46-086c-58a9-b9be-e5914da97530",
+          "id": "1301890234",
           "slug": "avocado-sourdough-toast-coffee-toasts-and-tales",
           "name": "Avocado Sourdough Toast + Coffee - Toasts And Tales",
           "description": "Avocado sourdough with coffee",
           "price": 399,
           "veg": true,
           "available": true,
-          "posItemId": "1301890234",
           "posShortCode": "1-D",
           "variations": [
             {
+              "id": "1301890234",
               "name": "Americano",
               "price": 399
             },
             {
+              "id": "1301890235",
               "name": "Cappuccino",
               "price": 429
             },
             {
+              "id": "1301914888",
               "name": "Latte",
               "price": 439
             },
             {
+              "id": "1301914889",
               "name": "Flat White",
               "price": 449
             },
             {
+              "id": "1301914890",
               "name": "Classic Cold Coffee",
               "price": 439
             },
             {
+              "id": "1301914891",
               "name": "Classic Cold Brew",
               "price": 459
             }
           ]
         },
         {
-          "id": "3b0a9a55-e28b-51ad-bd2f-01bfae3cc554",
+          "id": "1301924741",
           "slug": "thecha-korean-bun-cold-coffee-creamy-spice-slow-stories",
           "name": "Thecha Korean Bun + Cold Coffee - Creamy Spice & Slow Stories",
           "description": "",
           "price": 349,
           "veg": true,
           "available": true,
-          "posItemId": "1301924741",
           "posShortCode": "2-D",
           "variations": [
             {
+              "id": "1301924741",
               "name": "Classic Cold Coffee",
               "price": 349
             },
             {
+              "id": "1301924742",
               "name": "Classic Cold Brew",
               "price": 399
             },
             {
+              "id": "1301924743",
               "name": "Americano",
               "price": 359
             },
             {
+              "id": "1301924744",
               "name": "Cappuccino",
               "price": 379
             },
             {
+              "id": "1301924745",
               "name": "Latte",
               "price": 389
             },
             {
+              "id": "1301924746",
               "name": "Flat White",
               "price": 399
             }
           ]
         },
         {
-          "id": "7adcd18c-60ae-5d35-9e06-5a46c27a2302",
+          "id": "1301926809",
           "slug": "coffee-croissant-crumbs-and-conversations",
           "name": "Coffee + Croissant - Crumbs And Conversations",
           "description": "Hot Coffee with a Flaky Croissant",
           "price": 349,
           "veg": true,
           "available": true,
-          "posItemId": "1301926809",
           "posShortCode": "3-D",
           "variations": [
             {
+              "id": "1301926809",
               "name": "Cappuccino",
               "price": 349
             },
             {
+              "id": "1301926810",
               "name": "Latte",
               "price": 359
             },
             {
+              "id": "1301926811",
               "name": "Flat White",
               "price": 369
             },
             {
+              "id": "1301926812",
               "name": "Americano",
               "price": 349
             },
             {
+              "id": "1301926813",
               "name": "Classic Cold Coffee",
               "price": 359
             },
             {
+              "id": "1301926814",
               "name": "Classic Cold Brew",
               "price": 369
             }
           ]
         },
         {
-          "id": "e9f94056-bc5c-596d-8f65-5d0526d17d9e",
+          "id": "1302049205",
           "slug": "coffee-muffin-muffins-and-murmurs",
           "name": "Coffee + Muffin - Muffins And Murmurs",
           "description": "",
           "price": 299,
           "veg": true,
           "available": true,
-          "posItemId": "1302049205",
           "posShortCode": "4-D",
           "variations": [
             {
+              "id": "1302049205",
               "name": "Americano",
               "price": 299
             },
             {
+              "id": "1302049207",
               "name": "Cappuccino",
               "price": 329
             },
             {
+              "id": "1302049208",
               "name": "Latte",
               "price": 339
             },
             {
+              "id": "1302049209",
               "name": "Flat White",
               "price": 349
             },
             {
+              "id": "1302049210",
               "name": "Classic Cold Coffee",
               "price": 329
             },
             {
+              "id": "1302049211",
               "name": "Classic Cold Brew",
               "price": 349
             }
           ]
         },
         {
-          "id": "36c5e32a-9b5f-5d7d-93dc-e768f1fd097d",
+          "id": "1302055188",
           "slug": "bagel-cold-coffee-bagels-and-backstories",
           "name": "Bagel + Cold Coffee - Bagels And Backstories",
           "description": "",
           "price": 369,
           "veg": true,
           "available": true,
-          "posItemId": "1302055188",
           "posShortCode": "5-D",
           "variations": [
             {
+              "id": "1302055188",
               "name": "Classic Cold Coffee",
               "price": 369
             },
             {
+              "id": "1302055189",
               "name": "Classic Cold Brew",
               "price": 389
             },
             {
+              "id": "1302055190",
               "name": "Americano",
               "price": 369
             },
             {
+              "id": "1302055191",
               "name": "Cappuccino",
               "price": 379
             },
             {
+              "id": "1302055192",
               "name": "Latte",
               "price": 389
             },
             {
+              "id": "1302055193",
               "name": "Flat White",
               "price": 399
             }
           ]
         },
         {
-          "id": "cc21de9e-f4b4-524f-93bc-122a8813f1f9",
+          "id": "1302078973",
           "slug": "chai-puff-chai-and-chapters",
           "name": "Chai + Puff - Chai And Chapters",
           "description": "",
           "price": 249,
           "veg": true,
           "available": true,
-          "posItemId": "1302078973",
           "posShortCode": "6-D",
           "variations": [
             {
+              "id": "1302078973",
               "name": "House Chai",
               "price": 249
             },
             {
+              "id": "1302078974",
               "name": "Ginger Chai",
               "price": 259
             },
             {
+              "id": "1302078975",
               "name": "Masala Chai",
               "price": 259
             }
           ]
         },
         {
-          "id": "866ad40c-23ac-5266-86d2-f9a78de627fb",
+          "id": "1302084111",
           "slug": "wrap-coffee-wraps-and-reflections",
           "name": "Wrap + Coffee - Wraps And Reflections",
           "description": "",
           "price": 399,
           "veg": true,
           "available": true,
-          "posItemId": "1302084111",
           "posShortCode": "7-D",
           "variations": [
             {
+              "id": "1302084111",
               "name": "Americano",
               "price": 399
             },
             {
+              "id": "1302084112",
               "name": "Cappuccino",
               "price": 399
             },
             {
+              "id": "1302084113",
               "name": "Latte",
               "price": 409
             },
             {
+              "id": "1302084114",
               "name": "Flat White",
               "price": 419
             },
             {
+              "id": "1302084115",
               "name": "Classic Cold Coffee",
               "price": 399
             },
             {
+              "id": "1302084116",
               "name": "Classic Cold Brew",
               "price": 419
             }
           ]
         },
         {
-          "id": "429f2169-f16c-53bc-a396-f282e614c3b9",
+          "id": "1302086683",
           "slug": "coffee-sandwich-between-slices-and-sips",
           "name": "Coffee + Sandwich - Between Slices And Sips",
           "description": "",
           "price": 429,
           "veg": true,
           "available": true,
-          "posItemId": "1302086683",
           "posShortCode": "8-D",
           "variations": [
             {
+              "id": "1302086683",
               "name": "Americano",
               "price": 429
             },
             {
+              "id": "1302086684",
               "name": "Cappuccino",
               "price": 429
             },
             {
+              "id": "1302086685",
               "name": "Latte",
               "price": 439
             },
             {
+              "id": "1302086686",
               "name": "Flat White",
               "price": 449
             },
             {
+              "id": "1302086687",
               "name": "Classic Cold Coffee",
               "price": 429
             },
             {
+              "id": "1302086688",
               "name": "Classic Cold Brew",
               "price": 449
             }
           ]
         },
         {
-          "id": "ecf60d83-f651-57e5-9f31-c9e052a22195",
+          "id": "1302090651",
           "slug": "soul-fusion-food-soul-special-bevarage-bold-bites-and-bright-gossips",
           "name": "Soul Fusion Food + Soul Special Bevarage - Bold Bites And Bright Gossips",
           "description": "",
           "price": 499,
           "veg": true,
           "available": true,
-          "posItemId": "1302090651",
           "posShortCode": "9-D",
           "variations": [
             {
+              "id": "1302090651",
               "name": "Velvet Pineapple Dusk",
               "price": 499
             },
             {
+              "id": "1302090652",
               "name": "Vietnamese Shakerato",
               "price": 499
             },
             {
+              "id": "1302090653",
               "name": "Blue Pea Tea Iced Latte",
               "price": 499
             },
             {
+              "id": "1302090654",
               "name": "Iced Tiramisu Latte",
               "price": 499
             },
             {
+              "id": "1302090655",
               "name": "Montblanc",
               "price": 499
             },
             {
+              "id": "1302090657",
               "name": "Creamed Bee",
               "price": 499
             },
             {
+              "id": "1302090658",
               "name": "Apple Crumble Pie Latte",
               "price": 499
             },
             {
+              "id": "1302090659",
               "name": "Purple Sunset",
               "price": 499
             },
             {
+              "id": "1302090660",
               "name": "Sparkling Cascara",
               "price": 499
             }
           ]
         },
         {
-          "id": "932cacac-5dd8-514c-ae81-2e84499fca01",
+          "id": "1302092454",
           "slug": "soul-cake-coffee-cakes-and-little-joys",
           "name": "Soul Cake + Coffee - Cakes and Little Joys",
           "description": "",
           "price": 299,
           "veg": true,
           "available": true,
-          "posItemId": "1302092454",
           "posShortCode": "10-D",
           "deliveryAvailable": false,
           "variations": [
             {
+              "id": "1302092454",
               "name": "Americano",
               "price": 299
             },
             {
+              "id": "1302094528",
               "name": "Cappuccino",
               "price": 299
             },
             {
+              "id": "1302094529",
               "name": "Latte",
               "price": 309
             },
             {
+              "id": "1302094530",
               "name": "Flat White",
               "price": 319
             },
             {
+              "id": "1302094532",
               "name": "Classic Cold Coffee",
               "price": 299
             },
             {
+              "id": "1302094533",
               "name": "Classic Cold Brew",
               "price": 319
             }
           ]
         },
         {
-          "id": "825c1008-a094-5d39-bd29-32c4d8fa9d1d",
+          "id": "1309706114",
           "slug": "avocado-guacamole-pesto-sourdough-toast-coffee",
           "name": "Avocado Guacamole Pesto Sourdough Toast + Coffee",
           "description": "Avocado sourdough with coffee - creamy, toasted comfort paired with a smooth, steady sip.",
           "price": 475,
           "veg": true,
           "available": true,
-          "posItemId": "1309706114",
           "posShortCode": "A-20"
         },
         {
-          "id": "293a58ac-88f8-58d2-9cec-dd2900d75d31",
+          "id": "1309706115",
           "slug": "bagel-cold-coffee",
           "name": "Bagel + Cold Coffee",
           "description": "Bagel with Cold Coffee - chewy, satisfying bites paired with a chilled, energizing brew.",
           "price": 399,
           "veg": true,
           "available": true,
-          "posItemId": "1309706115",
           "posShortCode": "A-21"
         },
         {
-          "id": "c2123c00-50ae-5b39-a324-17aff2971af7",
+          "id": "1309706116",
           "slug": "croissant-coffee",
           "name": "Croissant + Coffee",
           "description": "Hot Coffee with a Flaky Croissant - warm, buttery layers and a comforting brew made for long talks.",
           "price": 399,
           "veg": true,
           "available": true,
-          "posItemId": "1309706116",
           "posShortCode": "A-22"
         },
         {
-          "id": "1f983fcc-6e7f-5d6e-91ec-085ab4bc28f4",
+          "id": "1309706117",
           "slug": "pizza-flatbread-iced-tea",
           "name": "Pizza Flatbread + Iced Tea",
           "description": "Pizza Flatbread with Iced Tea - warm, cheesy comfort paired with a crisp, refreshing sip.",
           "price": 425,
           "veg": true,
           "available": true,
-          "posItemId": "1309706117",
           "posShortCode": "A-23"
         },
         {
-          "id": "4ec65a77-9477-541f-b7e9-11f1ba1c2ffc",
+          "id": "1309706118",
           "slug": "thecha-korean-bun-cold-coffee",
           "name": "Thecha Korean Bun + Cold Coffee",
           "description": "Thecha Korean Bun with Classic Cold Coffee - fiery, buttery heat balanced by cool, creamy sweetness.",
           "price": 415,
           "veg": true,
           "available": true,
-          "posItemId": "1309706118",
           "posShortCode": "A-24"
         }
       ]
@@ -668,126 +697,132 @@
       "posCategory": "Soul Cake (Bowl Cake)",
       "items": [
         {
-          "id": "72c885a3-17bf-53ad-ac19-b734774128d8",
+          "id": "1301790316",
           "slug": "swiss-milk-chocolate-soul-cake",
           "name": "Swiss Milk Chocolate Soul Cake",
           "description": "Rich Swiss Milk Chocolate layered with moist chocolate spongecake and whipped cream - silky, comforting, and beautifully indulgent.",
           "price": 149,
           "veg": true,
           "available": true,
-          "posItemId": "1301790316",
           "posShortCode": "swiss milk chocolate",
           "variations": [
             {
+              "id": "1301790316",
               "name": "Regular",
               "price": 149
             },
             {
+              "id": "1301790317",
               "name": "Large",
               "price": 249
             }
           ]
         },
         {
-          "id": "7f4aa6d3-4095-53a0-a5dd-de3343e336dd",
+          "id": "1301790318",
           "slug": "dark-chocolate-soul-cake",
           "name": "Dark Chocolate Soul Cake",
           "description": "Indulgent Dark Chocolate layered with moist chocolate spongecake and whipped cream - intense, velvety, and unapologetically decadent.",
           "price": 149,
           "veg": true,
           "available": true,
-          "posItemId": "1301790318",
           "posShortCode": "dark chocolate soul",
           "variations": [
             {
+              "id": "1301790318",
               "name": "Regular",
               "price": 149
             },
             {
+              "id": "1301790319",
               "name": "Large",
               "price": 249
             }
           ]
         },
         {
-          "id": "e7a782e4-4012-51ae-b5ec-912b5740f468",
+          "id": "1301790320",
           "slug": "hazelnut-nutella-soul-cake",
           "name": "Hazelnut Nutella Soul Cake",
           "description": "Creamy Nutella layered with moist chocolate spongecake and whipped cream - velvety, creamy, and irresistibly rich.",
           "price": 149,
           "veg": true,
           "available": true,
-          "posItemId": "1301790320",
           "posShortCode": "hazelnut nutella sou",
           "variations": [
             {
+              "id": "1301790320",
               "name": "Regular",
               "price": 149
             },
             {
+              "id": "1301790321",
               "name": "Large",
               "price": 249
             }
           ]
         },
         {
-          "id": "9839ce82-978d-5c63-a4fd-7f5140d2f1d3",
+          "id": "1301790322",
           "slug": "lotus-biscoff-soul-cake",
           "name": "Lotus Biscoff Soul Cake",
           "description": "Lotus Biscoff Cream layered with moist chocolate spongecake and whipped cream - caramelised and indulgently smooth.",
           "price": 149,
           "veg": true,
           "available": true,
-          "posItemId": "1301790322",
           "posShortCode": "lotus biscoff soul c",
           "variations": [
             {
+              "id": "1301790322",
               "name": "Regular",
               "price": 149
             },
             {
+              "id": "1301790323",
               "name": "Large",
               "price": 249
             }
           ]
         },
         {
-          "id": "6bb266db-4ea9-5c5c-bcc4-3fb25facb4aa",
+          "id": "1301790324",
           "slug": "viral-matilda-soul-cake",
           "name": "Viral Matilda Soul Cake",
           "description": "Chocolate cake smothered in rich chocolate layer and some coffee - dense, gooey, and every chocolate lover's dream.",
           "price": 179,
           "veg": true,
           "available": true,
-          "posItemId": "1301790324",
           "posShortCode": "viral matilda soul c",
           "variations": [
             {
+              "id": "1301790324",
               "name": "Regular",
               "price": 179
             },
             {
+              "id": "1301790325",
               "name": "Large",
               "price": 279
             }
           ]
         },
         {
-          "id": "0d041d27-6462-5f45-8f29-7ae59f863fea",
+          "id": "1301790326",
           "slug": "tiramisu-soul-cake",
           "name": "Tiramisu Soul Cake",
           "description": "Coffee-soaked sponge layered with mascarpone cream and cocoa - silky, luxurious, and deeply indulgent.",
           "price": 199,
           "veg": true,
           "available": true,
-          "posItemId": "1301790326",
           "posShortCode": "tiramisu soul cake",
           "variations": [
             {
+              "id": "1301790326",
               "name": "Regular",
               "price": 199
             },
             {
+              "id": "1301790327",
               "name": "Large",
               "price": 299
             }
@@ -801,388 +836,402 @@
       "posCategory": "Soul Specials Bevarages",
       "items": [
         {
-          "id": "7a7c66f6-eca4-57b5-9b5e-7d7a172297e6",
+          "id": "159721835",
           "slug": "velvet-pineapple-dusk",
           "name": "Velvet Pineapple Dusk",
           "description": "Crystal-cold pineapple juice finished with espresso velvet foam - bright tropical sweetness melting into a creamy, softly bold sip.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721835",
           "posShortCode": "62",
           "variations": [
             {
+              "id": "159721835",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "159721836",
               "name": "Large",
               "price": 355
             }
           ]
         },
         {
-          "id": "76bc4439-5c81-5160-a3fc-efa04e73fa8e",
+          "id": "159721837",
           "slug": "double-coffee",
           "name": "Double Coffee",
           "description": "Cascara brew and Espresso syrup poured over ice with sparkling tonic water - intense, vibrant, and refreshingly complex.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721837",
           "posShortCode": "63",
           "variations": [
             {
+              "id": "159721837",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "159721838",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "e1755847-78ee-56da-b606-ae8b2f6d7455",
+          "id": "159721839",
           "slug": "sparkling-cascara",
           "name": "Sparkling Cascara",
           "description": "Cascara (Sun-dried coffee cherry) brew, topped up with sparkling tonic water with a dash of lemon and mint leaves - lightly fruity, crisp and gently sweet.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721839",
           "posShortCode": "64",
           "variations": [
             {
+              "id": "159721839",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "159721840",
               "name": "Large",
               "price": 355
             }
           ]
         },
         {
-          "id": "41665bff-c487-5c40-8a8e-6f07fb9ac3ce",
+          "id": "159721843",
           "slug": "vietnamese-shakerato",
           "name": "Vietnamese Shakerato",
           "description": "Double espresso shaken with condensed milk, ice, cinnamon, and mint - bold, sweet, spiced, and refreshingly smooth.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721843",
           "posShortCode": "66",
           "variations": [
             {
+              "id": "159721843",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "159721844",
               "name": "Large",
               "price": 355
             }
           ]
         },
         {
-          "id": "24465c1c-25ca-5af2-afcc-006a51f427d9",
+          "id": "159721845",
           "slug": "blue-pea-tea-latte",
           "name": "Blue Pea Tea Latte",
           "description": "Blue pea flower",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721845",
           "posShortCode": "67",
           "variations": [
             {
+              "id": "159721845",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "159721846",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "89180bf5-0631-5b96-9a27-21311597e582",
+          "id": "159721849",
           "slug": "iced-tiramisu-latte",
           "name": "Iced Tiramisu Latte",
           "description": "Bold iced coffee crowned with tiramisu cream foam - rich, velvety, and irresistibly smooth.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721849",
           "posShortCode": "69",
           "variations": [
             {
+              "id": "159721849",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "159721850",
               "name": "Large",
               "price": 355
             }
           ]
         },
         {
-          "id": "2a81d859-a062-5df5-b08a-65105ebf8503",
+          "id": "159721851",
           "slug": "creamed-bee",
           "name": "Creamed Bee",
           "description": "Iced milk and espresso finished with honey-espresso cream foam - creamy, gently sweet, and richly comforting in every sip.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721851",
           "posShortCode": "70",
           "variations": [
             {
+              "id": "159721851",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "159721852",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "0ffb356c-d22f-58b2-93c3-cb60921e583c",
+          "id": "159721853",
           "slug": "blue-awakening",
           "name": "Blue Awakening",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721853",
           "posShortCode": "71",
           "variations": [
             {
+              "id": "159721853",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "159721854",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "e0ee477c-7dd4-5128-93b0-4f8d6eb29246",
+          "id": "1294567340",
           "slug": "peppermint-mocha",
           "name": "Peppermint Mocha",
           "description": "Espresso and chocolate lifted with cool peppermint - bold warmth with a refreshing twist.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294567340",
           "posShortCode": "501",
           "variations": [
             {
+              "id": "1294567340",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1294567341",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "a8924ea1-67cd-5e7b-97cb-dfb10f7ecd34",
+          "id": "1294567367",
           "slug": "bombon",
           "name": "Bombon",
           "description": "Espresso poured over condensed milk - sweet meets strong in a beautiful contrast.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294567367",
           "posShortCode": "115",
           "variations": [
             {
+              "id": "1294567367",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1294567374",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "ca1f6909-c0b9-5b23-8e41-29c0f9b73b9b",
+          "id": "1294567437",
           "slug": "citrus-sunrise",
           "name": "Citrus Sunrise",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294567437",
           "posShortCode": "117",
           "variations": [
             {
+              "id": "1294567437",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1294567438",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "f161d66d-1170-5268-b0de-bf41fd150c58",
+          "id": "1294567509",
           "slug": "salted-caramel-mocha",
           "name": "Salted Caramel Mocha",
           "description": "Espresso layered with chocolate and salted caramel - decadent, buttery, and bold.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294567509",
           "posShortCode": "127",
           "variations": [
             {
+              "id": "1294567509",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1294567510",
               "name": "Large",
               "price": 325
             },
             {
+              "id": "1294568065",
               "name": "Hot",
               "price": 285
             },
             {
+              "id": "1294568066",
               "name": "Iced",
               "price": 285
             }
           ]
         },
         {
-          "id": "a7d6172c-dba9-5ea9-958a-81b630e3cc9b",
+          "id": "1294971365",
           "slug": "purple-sunset",
           "name": "Purple Sunset",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294971365",
           "posShortCode": "178"
         },
         {
-          "id": "dc64f731-9b53-5497-a0d0-7d97173e3ee8",
+          "id": "1309654404",
           "slug": "qahva-latte",
           "name": "Qahva Latte",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1309654404",
           "posShortCode": "ql"
         },
         {
-          "id": "c71ca0fb-8fc7-5860-a386-189a9dee52eb",
+          "id": "1309706123",
           "slug": "coconut-iced-filter-coffee",
           "name": "Coconut Iced Filter Coffee",
           "description": "Strong filter coffee chilled and finished with milk - rich, nostalgic, and proudly rooted.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1309706123",
           "posShortCode": "A-1",
           "variations": [
             {
+              "id": "1309706123",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1309706124",
               "name": "Large",
               "price": 335
             }
           ]
         },
         {
-          "id": "d0db6716-d0e0-592a-b95c-304da5548568",
+          "id": "1309706125",
           "slug": "mont-blanc",
           "name": "Mont Blanc",
           "description": "House cold brew with orange juice over ice, finished with vanilla-orange cream foam - citrusy, creamy, and refreshingly smooth.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "1309706125",
           "posShortCode": "A-4",
           "variations": [
             {
+              "id": "1309706125",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "1309706126",
               "name": "Large",
               "price": 355
             }
           ]
         },
         {
-          "id": "4fa8aa66-1ad5-5315-9891-bc962189fd05",
+          "id": "1309970913",
           "slug": "qahva-americano",
           "name": "Qahva Americano",
           "description": "",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1309970913",
           "posShortCode": "qa"
         },
         {
-          "id": "d0f98b75-8391-50d2-a4e3-a3658427d059",
+          "id": "1310151882",
           "slug": "craft-your-bevarage",
           "name": "Craft Your Bevarage",
           "description": "",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1310151882",
           "posShortCode": "cyb"
         },
         {
-          "id": "0df932c1-3a47-5d1b-90cd-89b413eebeab",
+          "id": "1310216670",
           "slug": "smooth-af",
           "name": "Smooth AF",
           "description": "Chocolate espresso over ice with a hint of sea salt - sweet, bold, and subtly lifted.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "1310216670",
           "posShortCode": "smooth af",
           "variations": [
             {
+              "id": "1310216670",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "1310216671",
               "name": "Large",
               "price": 355
             }
           ]
         },
         {
-          "id": "ae7acdd2-e28b-5f26-8ad4-b9989fbd055a",
+          "id": "1313279669",
           "slug": "cococnut-signature-filter-coffee",
           "name": "Cococnut Signature Filter Coffee",
           "description": "",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "1313279669",
           "posShortCode": "csfc",
           "variations": [
             {
+              "id": "1313279669",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "1313279670",
               "name": "Large",
               "price": 365
             }
@@ -1196,321 +1245,327 @@
       "posCategory": "Hot Bevarages",
       "items": [
         {
-          "id": "7e9bf645-b180-5769-8546-a3b598ad24fe",
+          "id": "159721728",
           "slug": "espresso",
           "name": "Espresso",
           "description": "A concentrated shot with a golden crema - pure intensity in its simplest form.",
           "price": 100,
           "veg": true,
           "available": true,
-          "posItemId": "159721728",
           "posShortCode": "38"
         },
         {
-          "id": "245dea68-7c36-52b1-aa58-55ff6fd48aed",
+          "id": "159721729",
           "slug": "cortado",
           "name": "Cortado",
           "description": "",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721729",
           "posShortCode": "39"
         },
         {
-          "id": "15814007-ccda-5549-a368-a1676ae1789e",
+          "id": "159721730",
           "slug": "macchiato",
           "name": "Macchiato",
           "description": "",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721730",
           "posShortCode": "40"
         },
         {
-          "id": "13cf8143-a211-583d-a77d-5f314cf1cccc",
+          "id": "159721795",
           "slug": "americano",
           "name": "Americano",
           "description": "Espresso eased with hot water - strong, steady, and unhurried.",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721795",
           "posShortCode": "41",
           "variations": [
             {
+              "id": "159721795",
               "name": "Regular",
               "price": 185
             },
             {
+              "id": "159721796",
               "name": "Large",
               "price": 235
             }
           ]
         },
         {
-          "id": "3608a3d7-8cd0-554d-af23-1169ce9fed78",
+          "id": "159721797",
           "slug": "cappuccino",
           "name": "Cappuccino",
           "description": "Espresso wrapped in steamed milk and cloud-like foam - light, creamy, and comforting.",
           "price": 215,
           "veg": true,
           "available": true,
-          "posItemId": "159721797",
           "posShortCode": "42",
           "variations": [
             {
+              "id": "159721797",
               "name": "Regular",
               "price": 215
             },
             {
+              "id": "159721798",
               "name": "Large",
               "price": 265
             }
           ]
         },
         {
-          "id": "7db45df4-ae77-5ec0-b861-60e5c19dc94c",
+          "id": "159721799",
           "slug": "latte",
           "name": "Latte",
           "description": "Espresso stretched with velvety milk - gentle, mellow, and made to stay awhile.",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "159721799",
           "posShortCode": "43",
           "variations": [
             {
+              "id": "159721799",
               "name": "Regular",
               "price": 225
             },
             {
+              "id": "159721800",
               "name": "Large",
               "price": 275
             }
           ]
         },
         {
-          "id": "02d70060-ef41-581b-84d7-444c5a33bc0a",
+          "id": "159721801",
           "slug": "flat-white",
           "name": "Flat White",
           "description": "Silky microfoam folded into rich espresso - bold beneath, smooth above.",
           "price": 235,
           "veg": true,
           "available": true,
-          "posItemId": "159721801",
           "posShortCode": "44",
           "variations": [
             {
+              "id": "159721801",
               "name": "Regular",
               "price": 235
             },
             {
+              "id": "159721802",
               "name": "Large",
               "price": 285
             }
           ]
         },
         {
-          "id": "b5d878c3-dcf9-5b8e-8e77-8f13107cf1bd",
+          "id": "159721803",
           "slug": "mocha",
           "name": "Mocha",
           "description": "Espresso melted into chocolate and milk - deep, indulgent, and slow-sipping worthy.",
           "price": 255,
           "veg": true,
           "available": true,
-          "posItemId": "159721803",
           "posShortCode": "45",
           "variations": [
             {
+              "id": "159721803",
               "name": "Regular",
               "price": 255
             },
             {
+              "id": "159721804",
               "name": "Large",
               "price": 305
             }
           ]
         },
         {
-          "id": "85cd8721-05d6-5207-960a-e85c3b23134b",
+          "id": "159721805",
           "slug": "sea-salt-mocha",
           "name": "Sea Salt Mocha",
           "description": "Espresso blended with rich chocolate and milk, finished with a hint of sea salt - indulgent, velvety, and beautifully balanced.",
           "price": 255,
           "veg": true,
           "available": true,
-          "posItemId": "159721805",
           "posShortCode": "46",
           "variations": [
             {
+              "id": "159721805",
               "name": "Regular",
               "price": 255
             },
             {
+              "id": "159721806",
               "name": "Large",
               "price": 305
             }
           ]
         },
         {
-          "id": "1894d179-e138-5077-9654-71a7d10bc03d",
+          "id": "159721807",
           "slug": "nutmeg-cinnamon-latte",
           "name": "Nutmeg Cinnamon Latte",
           "description": "Espresso warmed with nutmeg and cinnamon - spiced, aromatic, and softly nostalgic.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "159721807",
           "posShortCode": "47",
           "variations": [
             {
+              "id": "159721807",
               "name": "Regular",
               "price": 265
             },
             {
+              "id": "159721808",
               "name": "Large",
               "price": 315
             }
           ]
         },
         {
-          "id": "909bfee7-e098-54a0-afe7-ed5ec492dc44",
+          "id": "159721809",
           "slug": "hot-chocolate",
           "name": "Hot Chocolate",
           "description": "Thick dark chocolate folded into milk",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "159721809",
           "posShortCode": "48",
           "variations": [
             {
+              "id": "159721809",
               "name": "Regular",
               "price": 225
             },
             {
+              "id": "159721810",
               "name": "Large",
               "price": 265
             }
           ]
         },
         {
-          "id": "6127ddc8-e530-5393-8ebf-7d028b7c4c08",
+          "id": "159721811",
           "slug": "peppermint-hot-chocolate",
           "name": "Peppermint Hot Chocolate",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721811",
           "posShortCode": "205",
           "variations": [
             {
+              "id": "159721811",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "159721812",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "57b4b036-f33f-5b61-819e-7a40938aa3d2",
+          "id": "159721813",
           "slug": "french-hot-chocolate",
           "name": "French Hot Chocolate",
           "description": "Thick dark chocolate folded into milk - intense, velvety, and unapologetically rich.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721813",
           "posShortCode": "50",
           "variations": [
             {
+              "id": "159721813",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "159721814",
               "name": "Large",
               "price": 355
             }
           ]
         },
         {
-          "id": "f7256ba3-97e6-5101-8d67-bf365e39a5e5",
+          "id": "159721815",
           "slug": "manual-brew-pour-over",
           "name": "Manual Brew - Pour Over",
           "description": "",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "159721815",
           "posShortCode": "51",
           "variations": [
             {
+              "id": "159721815",
               "name": "Regular",
               "price": 225
             },
             {
+              "id": "159721816",
               "name": "Large",
               "price": 265
             }
           ]
         },
         {
-          "id": "2ca38a50-56fa-58d6-9151-08819d59db6f",
+          "id": "1295098434",
           "slug": "biscoff-latte",
           "name": "Biscoff Latte",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1295098434",
           "posShortCode": "189"
         },
         {
-          "id": "2f1f7003-d614-5cfb-b9f3-22f544590c4a",
+          "id": "1295461689",
           "slug": "fluffy-smores-hot-chocolate",
           "name": "Fluffy Smores Hot Chocolate",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1295461689",
           "posShortCode": "207",
           "variations": [
             {
+              "id": "1295461689",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1295461690",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "e0368f17-3a24-55c0-bb4b-adfc0c8bf757",
+          "id": "1298905499",
           "slug": "fillter-coffee",
           "name": "Fillter Coffee",
           "description": "",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "1298905499",
           "posShortCode": "279"
         },
         {
-          "id": "a586c6d5-cc0d-5799-ba6d-4ebc83a23729",
+          "id": "1314079509",
           "slug": "blueberry-vanilla-latte",
           "name": "Blueberry Vanilla Latte",
           "description": "",
           "price": 255,
           "veg": true,
           "available": true,
-          "posItemId": "1314079509",
           "posShortCode": "bvl"
         }
       ]
@@ -1521,258 +1576,261 @@
       "posCategory": "Iced Bevarages",
       "items": [
         {
-          "id": "0ab4bf76-7ee1-5ecd-b804-15e82212f65a",
+          "id": "159721817",
           "slug": "iced-americano",
           "name": "Iced Americano",
           "description": "Espresso poured over ice and water - bold, clean, and sharply refreshing.",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721817",
           "posShortCode": "52",
           "variations": [
             {
+              "id": "159721817",
               "name": "Regular",
               "price": 185
             },
             {
+              "id": "159721818",
               "name": "Large",
               "price": 235
             }
           ]
         },
         {
-          "id": "ffaf0974-2772-5cb8-a14b-ac9ea38869fd",
+          "id": "159721819",
           "slug": "iced-cappuccino",
           "name": "Iced Cappuccino",
           "description": "Espresso shaken cold with milk and light foam - creamy, airy, and refreshingly balanced.",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "159721819",
           "posShortCode": "53",
           "variations": [
             {
+              "id": "159721819",
               "name": "Regular",
               "price": 225
             },
             {
+              "id": "159721820",
               "name": "Large",
               "price": 275
             }
           ]
         },
         {
-          "id": "43c363e0-c26c-5055-9211-cb73cfff0c63",
+          "id": "159721821",
           "slug": "iced-latte",
           "name": "Iced Latte",
           "description": "Espresso poured over ice and milk - smooth, mellow, and coolly comforting.",
           "price": 235,
           "veg": true,
           "available": true,
-          "posItemId": "159721821",
           "posShortCode": "54",
           "variations": [
             {
+              "id": "159721821",
               "name": "Regular",
               "price": 235
             },
             {
+              "id": "159721822",
               "name": "Large",
               "price": 285
             }
           ]
         },
         {
-          "id": "b8bef55f-ad0b-520d-8d2e-cf8c7c2d1e4f",
+          "id": "159721823",
           "slug": "iced-flat-white",
           "name": "Iced Flat White",
           "description": "",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721823",
           "posShortCode": "55",
           "variations": [
             {
+              "id": "159721823",
               "name": "Regular",
               "price": 185
             },
             {
+              "id": "159721824",
               "name": "Large",
               "price": 225
             }
           ]
         },
         {
-          "id": "bb278c2f-3e3c-5797-a41b-1e3e0755c5ae",
+          "id": "159721825",
           "slug": "classic-cold-coffee",
           "name": "Classic Cold Coffee",
           "description": "Chilled, Creamy, Smooth and Classic Coffee - sweet, nostalgic, and effortlessly refreshing.",
           "price": 235,
           "veg": true,
           "available": true,
-          "posItemId": "159721825",
           "posShortCode": "56",
           "variations": [
             {
+              "id": "159721825",
               "name": "Regular",
               "price": 235
             },
             {
+              "id": "159721826",
               "name": "Large",
               "price": 285
             }
           ]
         },
         {
-          "id": "8d516b7d-28ff-5a8a-a0ea-4832e007995a",
+          "id": "159721827",
           "slug": "signature-filter-coffee",
           "name": "Signature Filter Coffee",
           "description": "",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "159721827",
           "posShortCode": "57",
           "variations": [
             {
+              "id": "159721827",
               "name": "Regular",
               "price": 225
             },
             {
+              "id": "159721828",
               "name": "Large",
               "price": 255
             }
           ]
         },
         {
-          "id": "c09011eb-cd20-562a-9a2f-4b3553c42369",
+          "id": "159721829",
           "slug": "iced-mocha",
           "name": "Iced Mocha",
           "description": "Espresso and chocolate over ice with milk - deep, creamy, and indulgently refreshing.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "159721829",
           "posShortCode": "58",
           "variations": [
             {
+              "id": "159721829",
               "name": "Regular",
               "price": 265
             },
             {
+              "id": "159721830",
               "name": "Large",
               "price": 315
             }
           ]
         },
         {
-          "id": "1f95e011-3211-5918-baf0-eca5debed1ea",
+          "id": "159721831",
           "slug": "iced-chocolate",
           "name": "Iced Chocolate",
           "description": "Real chocolate blended cold with milk - creamy, comforting, and deeply satisfying.",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "159721831",
           "posShortCode": "59",
           "variations": [
             {
+              "id": "159721831",
               "name": "Regular",
               "price": 225
             },
             {
+              "id": "159721832",
               "name": "Large",
               "price": 255
             }
           ]
         },
         {
-          "id": "3939acfb-b802-536c-877d-742c174428af",
+          "id": "159721847",
           "slug": "iced-sea-salt-mocha",
           "name": "Iced Sea Salt Mocha",
           "description": "Espresso and chocolate over ice with milk - deep, creamy, and indulgently refreshing.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "159721847",
           "posShortCode": "68",
           "variations": [
             {
+              "id": "159721847",
               "name": "Regular",
               "price": 265
             },
             {
+              "id": "159721848",
               "name": "Large",
               "price": 315
             }
           ]
         },
         {
-          "id": "35ddb756-e876-569a-870a-2fd2dc2d5f51",
+          "id": "1289691363",
           "slug": "tonic-water-espresso",
           "name": "Tonic Water Espresso",
           "description": "",
           "price": 215,
           "veg": true,
           "available": true,
-          "posItemId": "1289691363",
           "posShortCode": "401"
         },
         {
-          "id": "e633edfc-1b54-541f-9be0-2cce557f1e50",
+          "id": "1289865271",
           "slug": "tiramisu-latte",
           "name": "Tiramisu Latte",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1289865271",
           "posShortCode": "109"
         },
         {
-          "id": "9bc4bcd6-c9e5-56bc-b0e7-d171058a0d7b",
+          "id": "1305301635",
           "slug": "whisky-barrel-aged-po-iced",
           "name": "Whisky Barrel Aged Po Iced",
           "description": "",
           "price": 350,
           "veg": true,
           "available": true,
-          "posItemId": "1305301635",
           "posShortCode": "WBACPOI"
         },
         {
-          "id": "931c0fc3-8eef-5c97-9056-aaed1856e633",
+          "id": "1305341596",
           "slug": "ethopian-pour-over",
           "name": "Ethopian Pour Over",
           "description": "",
           "price": 450,
           "veg": true,
           "available": true,
-          "posItemId": "1305341596",
           "posShortCode": "EPO"
         },
         {
-          "id": "38b7517e-8c68-5275-bc5a-7fb98f54fcf0",
+          "id": "1305341603",
           "slug": "tanzanian-pour-over",
           "name": "Tanzanian Pour Over",
           "description": "",
           "price": 450,
           "veg": true,
           "available": true,
-          "posItemId": "1305341603",
           "posShortCode": "TPO"
         },
         {
-          "id": "a1ac3b4a-73ed-5779-8f33-3740ba5aa72c",
+          "id": "1309471963",
           "slug": "protien-cold-coffee",
           "name": "Protien Cold Coffee",
           "description": "Soul's Signature Cold Coffee blended with 25g Protein - smooth, creamy, refreshing, and built to keep you going.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1309471963",
           "posShortCode": "pcc"
         }
       ]
@@ -1783,307 +1841,320 @@
       "posCategory": "Cold Brews",
       "items": [
         {
-          "id": "c6689c2a-b9a3-509a-8797-e465b6554ec1",
+          "id": "159721833",
           "slug": "classic-cold-brew",
           "name": "Classic Cold Brew",
           "description": "Slow-steeped fine coffee grounds brewed cold for 24 hours - Intense, bold, crisp and deeply refreshing.",
           "price": 245,
           "veg": true,
           "available": true,
-          "posItemId": "159721833",
           "posShortCode": "60",
           "variations": [
             {
+              "id": "159721833",
               "name": "Regular",
               "price": 245
             },
             {
+              "id": "159721834",
               "name": "Large",
               "price": 295
             }
           ]
         },
         {
-          "id": "dddadc71-d0d8-5428-bfeb-eded2630624b",
+          "id": "159721841",
           "slug": "vietnamese-cold-brew",
           "name": "Vietnamese Cold Brew",
           "description": "Cold brew sweetened and elevated with condensed milk - strong, creamy, and indulgently smooth.",
           "price": 275,
           "veg": true,
           "available": true,
-          "posItemId": "159721841",
           "posShortCode": "65",
           "variations": [
             {
+              "id": "159721841",
               "name": "Regular",
               "price": 275
             },
             {
+              "id": "159721842",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "74f04c70-4242-51cb-b386-ff0fa2d5e28c",
+          "id": "1289457905",
           "slug": "creamed-bee",
           "name": "Creamed Bee",
           "description": "",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "1289457905",
           "posShortCode": "108",
           "deliveryAvailable": false,
           "variations": [
             {
+              "id": "1289457905",
               "name": "Regular",
               "price": 225
             },
             {
+              "id": "1289457906",
               "name": "Large",
               "price": 255
             }
           ]
         },
         {
-          "id": "82cb1a6d-e7f6-54d2-ade9-3e11300790c1",
+          "id": "1294568203",
           "slug": "ginger-ale-cold-brew",
           "name": "Ginger Ale Cold Brew",
           "description": "Cold brew lifted with crisp ginger ale - bold coffee with a sparkling, spicy edge.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1294568203",
           "posShortCode": "108",
           "variations": [
             {
+              "id": "1294568203",
               "name": "Regular",
               "price": 265
             },
             {
+              "id": "1294568204",
               "name": "Large",
               "price": 285
             }
           ]
         },
         {
-          "id": "d4acb5d4-d81f-5920-8040-f9ea33068a06",
+          "id": "1294568632",
           "slug": "chocolate-cold-foam-cold-brew",
           "name": "Chocolate Cold Foam Cold Brew",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294568632",
           "posShortCode": "112",
           "variations": [
             {
+              "id": "1294568632",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1294568633",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "84a18dac-fcb8-5f2f-9aea-c4e029a183ad",
+          "id": "1294569709",
           "slug": "sweet-vanilla-cream-cold-brew",
           "name": "Sweet Vanilla Cream Cold Brew",
           "description": "Classic cold brew topped with sweet vanilla cream - silky, mellow, and beautifully balanced.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294569709",
           "posShortCode": "140",
           "variations": [
             {
+              "id": "1294569709",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1294569710",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "313e07bc-1dc9-529e-8204-55b56daab100",
+          "id": "1294569890",
           "slug": "sweet-hazelnut-cream-cold-brew",
           "name": "Sweet Hazelnut Cream Cold Brew",
           "description": "Cold brew crowned with sweet hazelnut cream - nutty, smooth, and indulgently rich.",
           "price": 255,
           "veg": true,
           "available": true,
-          "posItemId": "1294569890",
           "posShortCode": "511",
           "variations": [
             {
+              "id": "1294569890",
               "name": "Regular",
               "price": 255
             },
             {
+              "id": "1294569891",
               "name": "Large",
               "price": 285
             }
           ]
         },
         {
-          "id": "e10e77d2-fd90-5741-b043-c63ce8a965e6",
+          "id": "1301607351",
           "slug": "orange-cold-brew",
           "name": "Orange Cold Brew",
           "description": "Cold brew brightened with orange juice - citrusy, vibrant, and unexpectedly smooth.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1301607351",
           "posShortCode": "268",
           "variations": [
             {
+              "id": "1301607351",
               "name": "Regular",
               "price": 265
             },
             {
+              "id": "1301607356",
               "name": "Large",
               "price": 295
             }
           ]
         },
         {
-          "id": "7cb9d62a-9661-50a8-b42e-b123d6096aae",
+          "id": "1301607369",
           "slug": "lavender-bloom",
           "name": "Lavender Bloom",
           "description": "Cold brew infused with delicate lavender - floral, calming, and softly aromatic.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1301607369",
           "posShortCode": "lavender bloom",
           "variations": [
             {
+              "id": "1301607369",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1301607370",
               "name": "Large",
               "price": 335
             }
           ]
         },
         {
-          "id": "be6fe1d2-a3de-51a8-bab0-22726f99d2e9",
+          "id": "1301607372",
           "slug": "sparkling-vanilla-brew",
           "name": "Sparkling Vanilla Brew",
           "description": "Cold brew kissed with sparkling water and vanilla - smooth, lightly sweet, and refreshingly crisp.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1301607372",
           "posShortCode": "sparkling vanilla br",
           "variations": [
             {
+              "id": "1301607372",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1301607373",
               "name": "Large",
               "price": 335
             }
           ]
         },
         {
-          "id": "e966e06b-af5f-5e3a-bf8d-115f921889a1",
+          "id": "1301607380",
           "slug": "tiramisu-cloud-cold-brew",
           "name": "Tiramisu Cloud Cold Brew",
           "description": "Deep cold brew finished with tiramisu cream cloud - dessert-rich, bold, and luxuriously smooth.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1301607380",
           "posShortCode": "tiramisu cloud cold",
           "variations": [
             {
+              "id": "1301607380",
               "name": "Regular",
               "price": 325
             },
             {
+              "id": "1301607381",
               "name": "Large",
               "price": 375
             }
           ]
         },
         {
-          "id": "0ae8317f-f951-53a2-adbb-2225871674d3",
+          "id": "1302457025",
           "slug": "blueberry-cold-brew",
           "name": "Blueberry Cold Brew",
           "description": "House cold brew infused with actual blueberries, topped with rich cold foam - bold and refreshingly smooth with blueberry sweetness.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "1302457025",
           "posShortCode": "blueberry cold brew",
           "variations": [
             {
+              "id": "1302457025",
               "name": "Regular",
               "price": 315
             },
             {
+              "id": "1302457026",
               "name": "Large",
               "price": 365
             }
           ]
         },
         {
-          "id": "6c84ef77-8aed-5512-9cbc-5afe9a4350aa",
+          "id": "1307827506",
           "slug": "ice-cream-coldbrew",
           "name": "Ice Cream Coldbrew",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1307827506",
           "posShortCode": "1000"
         },
         {
-          "id": "f154efc1-bced-547b-8b06-97d34e7c2554",
+          "id": "1309706127",
           "slug": "bombay-ice-cream-soda-cold-brew",
           "name": "Bombay Ice Cream Soda Cold Brew",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1309706127",
           "posShortCode": "A-7",
           "deliveryAvailable": false,
           "variations": [
             {
+              "id": "1309706127",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1309706128",
               "name": "Large",
               "price": 325
             }
           ]
         },
         {
-          "id": "0eae6588-5ad5-54ce-a29c-7a843274b055",
+          "id": "1309999097",
           "slug": "bombay-cream-cold-brew",
           "name": "Bombay Cream Cold Brew",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1309999097",
           "posShortCode": "bccb",
           "variations": [
             {
+              "id": "1309999097",
               "name": "Regular",
               "price": 285
             },
             {
+              "id": "1309999098",
               "name": "Large",
               "price": 325
             }
@@ -2097,69 +2168,63 @@
       "posCategory": "Matcha",
       "items": [
         {
-          "id": "aead5291-1d5a-5069-8c2c-8639a95e4316",
+          "id": "159721791",
           "slug": "classic-matcha",
           "name": "Classic Matcha",
           "description": "Pure Matcha, whisked with water - Earthy, smooth and quietly energising",
           "price": 275,
           "veg": true,
           "available": true,
-          "posItemId": "159721791",
           "posShortCode": "101"
         },
         {
-          "id": "43c8719c-69fa-5a8a-a199-5c13a3557079",
+          "id": "159721792",
           "slug": "matcha-latte",
           "name": "Matcha Latte",
           "description": "Stone-ground matcha blended with milk - creamy, grassy, and gently uplifting.",
           "price": 295,
           "veg": true,
           "available": true,
-          "posItemId": "159721792",
           "posShortCode": "102"
         },
         {
-          "id": "f7f9d9ca-4903-55ab-a98e-7e95c14b5c3d",
+          "id": "159721793",
           "slug": "strawberry-cold-foam-matcha",
           "name": "Strawberry Cold Foam Matcha",
           "description": "Iced matcha topped with strawberry cold foam - vibrant, silky, and delicately sweet.",
           "price": 335,
           "veg": true,
           "available": true,
-          "posItemId": "159721793",
           "posShortCode": "103"
         },
         {
-          "id": "e1cb2154-afe2-5f0d-9715-6bae8aefd1b5",
+          "id": "159721794",
           "slug": "dirty-matcha",
           "name": "Dirty Matcha",
           "description": "Matcha and milk layered with a bold espresso shot - earthy meets intense in perfect balance.",
           "price": 350,
           "veg": true,
           "available": true,
-          "posItemId": "159721794",
           "posShortCode": "104"
         },
         {
-          "id": "571e3d84-74b4-5e8a-b3ef-8512c4964ff2",
+          "id": "1309706106",
           "slug": "coconut-water-matcha-cloud",
           "name": "Coconut Water Matcha Cloud",
           "description": "Chilled coconut water topped with a velvety matcha cloud - light, tropical, and beautifully uplifting.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1309706106",
           "posShortCode": "A-10"
         },
         {
-          "id": "72fb3318-ae36-51ce-ac3a-d5f3db9115cd",
+          "id": "1309706107",
           "slug": "infused-blueberry-matcha",
           "name": "Infused Blueberry Matcha",
           "description": "",
           "price": 475,
           "veg": true,
           "available": true,
-          "posItemId": "1309706107",
           "posShortCode": "A-11",
           "deliveryAvailable": false
         }
@@ -2171,124 +2236,113 @@
       "posCategory": "Tea",
       "items": [
         {
-          "id": "ba70a0a3-7eea-5715-bc76-2dbf204580af",
+          "id": "159721780",
           "slug": "classic-green-tea",
           "name": "Classic Green Tea",
           "description": "Light green tea leaves steeped gently - clean, grassy, and softly refreshing.",
           "price": 145,
           "veg": true,
           "available": true,
-          "posItemId": "159721780",
           "posShortCode": "90"
         },
         {
-          "id": "3b1798b4-8023-5455-a8e9-256304edf465",
+          "id": "159721781",
           "slug": "english-breakfast-tea",
           "name": "English Breakfast Tea",
           "description": "A refined classic English Breakfast Black Tea, brewed to elegant strength - smooth, timelessly sophisticated and best enjoyed unhurried",
           "price": 175,
           "veg": true,
           "available": true,
-          "posItemId": "159721781",
           "posShortCode": "91"
         },
         {
-          "id": "409493d9-480f-5c1a-b48f-dbb52e333ab2",
+          "id": "159721782",
           "slug": "chamomile-tea",
           "name": "Chamomile Tea",
           "description": "Whole chamomile flowers steeped slow - floral, calming, and delicately soothing.",
           "price": 165,
           "veg": true,
           "available": true,
-          "posItemId": "159721782",
           "posShortCode": "92"
         },
         {
-          "id": "cc7d8723-9322-5b51-9d7a-f013739a5d12",
+          "id": "159721783",
           "slug": "himalayan-butterfly-blue-pea-tea",
           "name": "Himalayan Butterfly Blue Pea Tea",
           "description": "Blue pea flowers brewed pure - earthy, floral, and naturally vibrant.",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721783",
           "posShortCode": "93"
         },
         {
-          "id": "fd8fe836-45e5-5c95-91d8-965942ab0737",
+          "id": "159721784",
           "slug": "cool-green-ocean-tea",
           "name": "Cool Green Ocean Tea",
           "description": "Our house blend of Spearmint, Peppermint, and Stevia leaves brewed together - fresh, minty, and naturally sweet.",
           "price": 195,
           "veg": true,
           "available": true,
-          "posItemId": "159721784",
           "posShortCode": "94"
         },
         {
-          "id": "663663a1-d2cb-59ef-8cd0-1792b3095daa",
+          "id": "159721785",
           "slug": "4-pm-purple-tea",
           "name": "4 Pm Purple Tea",
           "description": "Our house blend of Hibiscus and Blue Pea flowers steeped bright - tangy, floral, and beautifully balanced.",
           "price": 195,
           "veg": true,
           "available": true,
-          "posItemId": "159721785",
           "posShortCode": "95"
         },
         {
-          "id": "d6515477-08fc-516c-a7b9-f30d2a628f87",
+          "id": "1298532298",
           "slug": "lemon-tea",
           "name": "Lemon Tea",
           "description": "",
           "price": 165,
           "veg": true,
           "available": true,
-          "posItemId": "1298532298",
           "posShortCode": "237"
         },
         {
-          "id": "fd8fe29d-c6cf-5433-9cf0-0951c8969aeb",
+          "id": "1300578964",
           "slug": "house-chai",
           "name": "House Chai",
           "description": "Slow-brewed classic tea with milk and sugar will be on the side",
           "price": 139,
           "veg": true,
           "available": true,
-          "posItemId": "1300578964",
           "posShortCode": "284"
         },
         {
-          "id": "44317b68-2df7-5344-86ae-0829fa8ca522",
+          "id": "1300578965",
           "slug": "masala-chai",
           "name": "Masala Chai",
           "description": "Spiced milk tea brewed with aromatic Indian spices - rich, warming, and deeply nostalgic.",
           "price": 149,
           "veg": true,
           "available": true,
-          "posItemId": "1300578965",
           "posShortCode": "285"
         },
         {
-          "id": "9f36ff24-b5ee-5a9a-a2bb-8e0c911f1917",
+          "id": "1300578966",
           "slug": "ginger-chai",
           "name": "Ginger Chai",
           "description": "Milk tea simmered with fresh ginger - warm, bold, and gently fiery.",
           "price": 149,
           "veg": true,
           "available": true,
-          "posItemId": "1300578966",
           "posShortCode": "286"
         },
         {
-          "id": "b3bb8bd3-d1ff-5e97-8715-34a6a9d914a6",
+          "id": "1303384428",
           "slug": "masala-chai-large",
           "name": "Masala Chai Large",
           "description": "",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "1303384428",
           "posShortCode": "MCL"
         }
       ]
@@ -2299,80 +2353,73 @@
       "posCategory": "Ice Tea",
       "items": [
         {
-          "id": "c4cde819-b580-56d7-9468-db0cebff7f08",
+          "id": "159721786",
           "slug": "lemon-iced-tea",
           "name": "Lemon Iced Tea",
           "description": "Black tea chilled with fresh lemon flavour - citrusy, sweet, brisk, and refreshingly sharp.",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721786",
           "posShortCode": "96"
         },
         {
-          "id": "17bb6042-4e66-5711-a9a9-ca93cbcf9770",
+          "id": "159721787",
           "slug": "peach-iced-tea",
           "name": "Peach Iced Tea",
           "description": "Chilled tea infused with peach flavour - fruity, smooth, and gently sweet.",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721787",
           "posShortCode": "97"
         },
         {
-          "id": "e0a8fca2-7cc0-503e-9cb5-6df056e73386",
+          "id": "159721788",
           "slug": "blue-pea-tea-iced-tea",
           "name": "Blue Pea Tea Iced Tea",
           "description": "Iced blue pea brew - floral, crisp, and visually vibrant.",
           "price": 195,
           "veg": true,
           "available": true,
-          "posItemId": "159721788",
           "posShortCode": "98"
         },
         {
-          "id": "c2db4e47-8dd7-550d-851e-6578159a79e3",
+          "id": "159721789",
           "slug": "cool-green-ocean-iced-tea",
           "name": "Cool Green Ocean Iced Tea",
           "description": "House Peppermint, Spearmint and stevia brew poured over ice - cool, clean, and refreshingly light.",
           "price": 195,
           "veg": true,
           "available": true,
-          "posItemId": "159721789",
           "posShortCode": "99"
         },
         {
-          "id": "a24005e0-0b40-5a34-8560-9e1ff57f341d",
+          "id": "159721790",
           "slug": "purple-iced-tea",
           "name": "Purple Iced Tea",
           "description": "House Hibiscus and blue pea brewed over ice - tangy, floral, and brightly refreshing.",
           "price": 195,
           "veg": true,
           "available": true,
-          "posItemId": "159721790",
           "posShortCode": "100"
         },
         {
-          "id": "1bfe5f56-5f12-505c-b359-3c64c751f6cd",
+          "id": "1296789497",
           "slug": "fresh-lime-soda",
           "name": "Fresh Lime Soda",
           "description": "",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "1296789497",
           "posShortCode": "657"
         },
         {
-          "id": "2203eb98-217f-5697-839a-79154a735726",
+          "id": "1302460190",
           "slug": "blueberry-iced-tea",
           "name": "Blueberry Iced Tea",
           "description": "Chilled iced tea infused with refreshing blueberry - vibrant, sweet, and cleanly crisp.",
           "price": 195,
           "veg": true,
           "available": true,
-          "posItemId": "1302460190",
           "posShortCode": "blueberry iced tea"
         }
       ]
@@ -2383,102 +2430,93 @@
       "posCategory": "Frappes",
       "items": [
         {
-          "id": "4b0afa33-ed55-5296-8a56-b42ba0d8e685",
+          "id": "159721773",
           "slug": "chocolate-frappe",
           "name": "Chocolate Frappe",
           "description": "Thick chocolate and milk with a touch of coffee - deep, creamy, and decadently smooth.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721773",
           "posShortCode": "83"
         },
         {
-          "id": "be78d4de-3fb2-5079-9f20-71855c66188b",
+          "id": "159721774",
           "slug": "strawberry-frappe",
           "name": "Strawberry Frappe",
           "description": "Thick strawberry and milk - fruity, creamy, and dessert-like.",
           "price": 245,
           "veg": true,
           "available": true,
-          "posItemId": "159721774",
           "posShortCode": "84"
         },
         {
-          "id": "804c3dae-89f8-5f44-8a68-1ed5204b984f",
+          "id": "159721775",
           "slug": "vanilla-frappe",
           "name": "Vanilla Frappe",
           "description": "Thick vanilla and milk with a hint of coffee - creamy, smooth, and indulgently rich.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721775",
           "posShortCode": "85"
         },
         {
-          "id": "acb06c29-ccf0-506e-a79a-b6a158214021",
+          "id": "159721776",
           "slug": "hazelnut-frappe",
           "name": "Hazelnut Frappe",
           "description": "Thick hazelnut and milk with gentle coffee depth - nutty, creamy, and velvety rich.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721776",
           "posShortCode": "86"
         },
         {
-          "id": "bdbd58b8-c66a-5ef2-81e9-aa2d6e9f71e4",
+          "id": "159721777",
           "slug": "tiramisu-frappe",
           "name": "Tiramisu Frappe",
           "description": "Thick tiramisu cream with soft coffee notes - dessert-heavy, creamy, and irresistibly smooth.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721777",
           "posShortCode": "87"
         },
         {
-          "id": "ea5484d5-f51d-570f-974f-b6bc01d5e806",
+          "id": "159721778",
           "slug": "caramel-frappe",
           "name": "Caramel Frappe",
           "description": "Thick caramel and milk with a subtle coffee note - buttery, sweet, and luxuriously smooth.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "159721778",
           "posShortCode": "88"
         },
         {
-          "id": "b7c5ec22-1687-535a-8566-a3d9dd5d9a26",
+          "id": "159721779",
           "slug": "chocolate-hazelnut-frappe",
           "name": "Chocolate Hazelnut Frappe",
           "description": "",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721779",
           "posShortCode": "89"
         },
         {
-          "id": "c04fe66c-ab39-574b-97ba-c18bf469b3f5",
+          "id": "1293996306",
           "slug": "kitkat-milk-shake",
           "name": "Kitkat Milk Shake",
           "description": "",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "1293996306",
           "posShortCode": "146"
         },
         {
-          "id": "b1a2b8e8-b294-5d69-9091-ee444ec18697",
+          "id": "1308558968",
           "slug": "vietnamese-cold-brew-1",
           "name": "Vietnamese Cold Brew 1",
           "description": "",
           "price": 320,
           "veg": true,
           "available": true,
-          "posItemId": "1308558968",
           "posShortCode": "10000"
         }
       ]
@@ -2489,69 +2527,63 @@
       "posCategory": "Toast",
       "items": [
         {
-          "id": "bc548267-2c98-5f0b-9a7c-68fded4f4ba8",
+          "id": "159721691",
           "slug": "avocado-guacamole-pesto-sourdough-toast",
           "name": "Avocado Guacamole Pesto Sourdough Toast",
           "description": "Layered Avocado on Fresh House Pesto and Buffala Mozarella lined up on toasted sourdough - creamy, herby, and beautifully balanced.",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "159721691",
           "posShortCode": "1"
         },
         {
-          "id": "2f6e325e-7c8d-56fb-bbf8-3831d26991d6",
+          "id": "159721692",
           "slug": "confit-garlic-mushroom-toast",
           "name": "Confit Garlic Mushroom Toast",
           "description": "Sauted mushrooms on crisp sourdough lined with Confit Garic Butter - earthy, buttery, and deeply savoury.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "159721692",
           "posShortCode": "2"
         },
         {
-          "id": "c13d8975-9e2b-5d69-83b5-66689096f919",
+          "id": "1309706108",
           "slug": "hummus-veggies-mediterranean-toast",
           "name": "Hummus Veggies Mediterranean Toast",
           "description": "Creamy hummus layered with fresh olives, cucumber, cherry tomato and bufala cheese on toasted sourdough - vibrant, wholesome, and beautifully balanced.",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "1309706108",
           "posShortCode": "A-16"
         },
         {
-          "id": "d2613d16-5409-5259-9078-d8e65374925a",
+          "id": "1309706109",
           "slug": "veg-chilly-cheese-toast",
           "name": "Veg Chilly Cheese Toast",
           "description": "Melted cheese layered with crisp vegetables and a hint of chilli - gooey, spicy, and irresistibly satisfying.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1309706109",
           "posShortCode": "A-17"
         },
         {
-          "id": "9c8f25e6-8a09-51cf-b2ac-e9fb3b46bf3d",
+          "id": "1310993660",
           "slug": "mediterrian-hummus-veggie-toast",
           "name": "Mediterrian Hummus Veggie Toast",
           "description": "",
           "price": 315,
           "veg": true,
           "available": true,
-          "posItemId": "1310993660",
           "posShortCode": "MHVT"
         },
         {
-          "id": "d3c4d6d1-5f17-54fb-bdf1-6eeec5ac7f44",
+          "id": "1311605561",
           "slug": "chilli-chesse-toast",
           "name": "Chilli Chesse Toast",
           "description": "",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1311605561",
           "posShortCode": "cht"
         }
       ]
@@ -2562,47 +2594,43 @@
       "posCategory": "Soul Special Fusion Food",
       "items": [
         {
-          "id": "2746771b-9eb0-5fc4-a439-6b2fbd37e13f",
+          "id": "159721693",
           "slug": "vada-paav-soft-shell-tacos",
           "name": "Vada Paav Soft Shell Tacos",
           "description": "Bombay Soul Spiced Potatoes, tangy pickles, and chutney fire in a soft taco embrace.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721693",
           "posShortCode": "3"
         },
         {
-          "id": "0120dff6-79d2-5279-917b-4c188efee481",
+          "id": "159721694",
           "slug": "samosa-quesadilla-with-soul-in-house-dip",
           "name": "Samosa Quesadilla With Soul In-House Dip",
           "description": "Crispy Hot samosa melting into molten cheese and smoky Schezwan and Sriracha spice.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721694",
           "posShortCode": "4"
         },
         {
-          "id": "eb9fe5e3-7cca-54fe-9c05-613c56cc4b2b",
+          "id": "159721695",
           "slug": "thecha-korean-bun",
           "name": "Thecha Korean Bun",
           "description": "Fiery Maharashtrian thecha tucked in a warm, creamy and cheesy Korean hug.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "159721695",
           "posShortCode": "5"
         },
         {
-          "id": "f612d5f0-6c6e-5d89-9033-e127cadb056e",
+          "id": "159721697",
           "slug": "garlic-knots-with-hot-cheese-dip",
           "name": "Garlic Knots With Hot Cheese Dip",
           "description": "Buttery, garlicky knots surrendering to molten cheese heat.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "159721697",
           "posShortCode": "7"
         }
       ]
@@ -2613,58 +2641,53 @@
       "posCategory": "Bagels",
       "items": [
         {
-          "id": "64f6de10-8060-503e-9ee7-e3e639509d0b",
+          "id": "159721704",
           "slug": "pesto-bagel-sandwich",
           "name": "Pesto Bagel Sandwich",
           "description": "Toasted bagel stacked with fragrant pesto and savoury fillings - herby, creamy, and flavour-packed.",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "159721704",
           "posShortCode": "14"
         },
         {
-          "id": "9001747a-286b-5773-af79-191e28c57b49",
+          "id": "159721705",
           "slug": "classic-cream-cheese-bagel",
           "name": "Classic Cream Cheese Bagel",
           "description": "Soft, toasted bagel spread with smooth cream cheese - creamy, classic, and perfectly comforting.",
           "price": 245,
           "veg": true,
           "available": true,
-          "posItemId": "159721705",
           "posShortCode": "15"
         },
         {
-          "id": "da61b5b8-2fca-5b86-a8ba-fbb1edb81012",
+          "id": "1301467782",
           "slug": "swicy-cheesy-mushroom-bagel",
           "name": "Swicy Cheesy Mushroom Bagel",
           "description": "Cheesy mushroom bagel with a sweet-spicy kick - savoury, melty, and irresistibly bold.",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "1301467782",
           "posShortCode": "swicy cheesy mushroo"
         },
         {
-          "id": "c29b59fd-3ade-5262-86fa-7b6cae370249",
+          "id": "1301467783",
           "slug": "pizzalicious-bagel",
           "name": "Pizzalicious Bagel",
           "description": "Pizza-inspired bagel loaded with cheese and classic toppings - cheesy, saucy, and comfort in every bite.",
           "price": 355,
           "veg": true,
           "available": true,
-          "posItemId": "1301467783",
           "posShortCode": "pizzalicious bagel"
         },
         {
-          "id": "8bb941bf-0aeb-5f40-9171-3bcfaf9563bc",
+          "id": "1301510878",
           "slug": "guacamole-cream-cheese-bagel",
           "name": "Guacamole Cream Cheese Bagel",
           "description": "Fresh guacamole and creamy cheese layered in a toasted bagel - smooth, vibrant, and indulgently fresh.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1301510878",
           "posShortCode": "guacamole cream chee"
         }
       ]
@@ -2675,36 +2698,33 @@
       "posCategory": "Croissants",
       "items": [
         {
-          "id": "6a95b98c-b2a4-5f74-90c9-4900fd943ebf",
+          "id": "159721710",
           "slug": "butter-croissant",
           "name": "Butter Croissant",
           "description": "Golden, flaky croissant layered with rich butter - warm, delicate, and simply irresistible.",
           "price": 245,
           "veg": true,
           "available": true,
-          "posItemId": "159721710",
           "posShortCode": "20"
         },
         {
-          "id": "57e39b45-cba1-55b4-b4de-4324d82be9da",
+          "id": "159721711",
           "slug": "almond-croissant",
           "name": "Almond Croissant",
           "description": "Toasted croissant stuffed with silky almond cream - nutty, caramelised, and beautifully indulgent.",
           "price": 275,
           "veg": true,
           "available": true,
-          "posItemId": "159721711",
           "posShortCode": "21"
         },
         {
-          "id": "8f3bb9a6-fadf-5a97-9ea6-b832fe4c1055",
+          "id": "159721712",
           "slug": "chocolate-croissant",
           "name": "Chocolate Croissant",
           "description": "Buttery croissant filled with molten chocolate - crisp on the outside, luxuriously soft within.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721712",
           "posShortCode": "22"
         }
       ]
@@ -2715,36 +2735,33 @@
       "posCategory": "Croissant Sandwiches",
       "items": [
         {
-          "id": "0199687d-97cd-5322-818f-a2fcc0912ca9",
+          "id": "159721703",
           "slug": "pesto-croissant-sandwich",
           "name": "Pesto Croissant Sandwich",
           "description": "Buttery croissant filled with fresh pesto and vibrant layers - herby, creamy, and irresistibly fresh.",
           "price": 355,
           "veg": true,
           "available": true,
-          "posItemId": "159721703",
           "posShortCode": "13"
         },
         {
-          "id": "31c5d0a3-0783-5958-8d31-7cc840c96889",
+          "id": "1298890974",
           "slug": "loaded-mushroom-croissant-sandwich",
           "name": "Loaded Mushroom Croissant Sandwich",
           "description": "Warm croissant layered generously with seasoned mushrooms and melted cheese - rich, savoury, and deeply satisfying.",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "1298890974",
           "posShortCode": "278"
         },
         {
-          "id": "b6fa46ee-4765-5055-8e4c-2c589245ca9e",
+          "id": "1299231643",
           "slug": "paneer-tikka-croissant-sandwich",
           "name": "Paneer Tikka Croissant Sandwich",
           "description": "Warm, flaky croissant layered with spiced paneer and melted cheese - savoury, gooey, and comfort-packed.",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "1299231643",
           "posShortCode": "230"
         }
       ]
@@ -2755,36 +2772,33 @@
       "posCategory": "Sourdough Sandwiches",
       "items": [
         {
-          "id": "eae6133d-0d20-565d-aef4-222474f7db33",
+          "id": "1294529788",
           "slug": "loaded-mushroom-sandwich",
           "name": "Loaded Mushroom Sandwich",
           "description": "Sauteed mushrooms, molten cheese, and hot honey layered between sourdough - rich, gooey, and beautifully balanced.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1294529788",
           "posShortCode": "503"
         },
         {
-          "id": "43c3a802-a08e-5cf3-8c5c-aa3d5633669f",
+          "id": "1294529789",
           "slug": "double-cheese-pesto-sandwich",
           "name": "Double Cheese Pesto Sandwich",
           "description": "",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1294529789",
           "posShortCode": "504"
         },
         {
-          "id": "f039ba96-8725-5538-8e16-a9861d6775fb",
+          "id": "1294529790",
           "slug": "og-paneer-tikka-sandwich",
           "name": "OG Paneer Tikka Sandwich",
           "description": "Tender Paneer Tikka, crisp vegetables and creamy sauces layered between sourdough - Cheesy, spicy and deeply satisfying",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "1294529790",
           "posShortCode": "505"
         }
       ]
@@ -2795,47 +2809,43 @@
       "posCategory": "Wraps",
       "items": [
         {
-          "id": "a3508b98-a346-5350-b8af-3de432edb18b",
+          "id": "159721701",
           "slug": "spicy-hummus-falafel-wrap",
           "name": "Spicy Hummus & Falafel Wrap",
           "description": "Spiced falafel and creamy hummus wrapped with fresh greens - earthy, zesty, and wholesome with a kick.",
           "price": 295,
           "veg": true,
           "available": true,
-          "posItemId": "159721701",
           "posShortCode": "11"
         },
         {
-          "id": "cb43a8c9-08df-5396-8502-ecde425700f9",
+          "id": "159721702",
           "slug": "paneer-tikka-wrap",
           "name": "Paneer Tikka Wrap",
           "description": "Smoky paneer tikka rolled with sauces and fresh layers - juicy, bold, and comfort-packed.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721702",
           "posShortCode": "12"
         },
         {
-          "id": "00b0bde1-571c-5f1c-b461-3ab696064abd",
+          "id": "1293713215",
           "slug": "desi-aloo-tikki-wrap",
           "name": "Desi Aloo Tikki Wrap",
           "description": "Crisp desi aloo tikki wrapped warm with chutneys and fresh crunch - spicy, tangy, and unapologetically satisfying.",
           "price": 225,
           "veg": true,
           "available": true,
-          "posItemId": "1293713215",
           "posShortCode": "145"
         },
         {
-          "id": "0080804a-cab8-5ace-b827-a5d90ceff847",
+          "id": "1309706110",
           "slug": "avocado-and-paneer-wrap",
           "name": "Avocado And Paneer Wrap",
           "description": "Fresh avocado and tender paneer wrapped in Spinach tortilla with spicy hummus base - creamy, wholesome, and flavour-packed.",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "1309706110",
           "posShortCode": "A-18"
         }
       ]
@@ -2846,47 +2856,43 @@
       "posCategory": "Burgers",
       "items": [
         {
-          "id": "da00b327-4f90-5ec5-86e3-bac5fdaf1f6e",
+          "id": "159721699",
           "slug": "barbeque-triple-mushroom-cheese-burger",
           "name": "Barbeque Triple Mushroom Cheese Burger",
           "description": "Juicy barbecue mushrooms layered with melted cheese in a toasted bun - smoky, gooey, and deeply satisfying. Comes with a side of fries.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "159721699",
           "posShortCode": "9"
         },
         {
-          "id": "12699c3d-8065-5b1d-889e-9c2ac2a81ba1",
+          "id": "159721700",
           "slug": "black-beans-guacamole-vegan-burger",
           "name": "Black Beans Guacamole Vegan Burger",
           "description": "Hearty black bean patty with fresh guacamole in a soft bun - creamy, vibrant, and plant-powered bold.",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "159721700",
           "posShortCode": "10"
         },
         {
-          "id": "87b216b3-eabe-5694-8022-a4a0efdb3f6f",
+          "id": "1290357071",
           "slug": "aloo-tikki-burger",
           "name": "Aloo Tikki Burger",
           "description": "Golden aloo tikki stacked in a soft bun with chutneys - crisp, nostalgic, and street-style indulgent.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1290357071",
           "posShortCode": "500"
         },
         {
-          "id": "55915a03-cbc1-5bc7-9e6b-28a78704ce78",
+          "id": "1306752125",
           "slug": "sourdoug-loaf",
           "name": "Sourdoug Loaf",
           "description": "",
           "price": 250,
           "veg": true,
           "available": true,
-          "posItemId": "1306752125",
           "posShortCode": "sdl"
         }
       ]
@@ -2897,36 +2903,33 @@
       "posCategory": "Pizza Flat Breads",
       "items": [
         {
-          "id": "ec151d50-e67f-5468-9450-34df0bd1293a",
+          "id": "159721708",
           "slug": "pesto-pizza-flatbread",
           "name": "Pesto Pizza Flatbread",
           "description": "Crisp flatbread spread with fragrant pesto and bubbling cheese - herby, creamy, and beautifully indulgent.",
           "price": 285,
           "veg": true,
           "available": true,
-          "posItemId": "159721708",
           "posShortCode": "18"
         },
         {
-          "id": "6298b09a-7941-5e24-a051-0622ac0636f8",
+          "id": "159721709",
           "slug": "margerita-pizza-flatbread",
           "name": "Margerita Pizza Flatbread",
           "description": "Crisp flatbread topped with fresh tomato sauce and melted mozzarella - simple, classic, and irresistibly cheesy.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "159721709",
           "posShortCode": "19"
         },
         {
-          "id": "c5c3a5f5-0f4d-5592-a3ba-0804dcfbee69",
+          "id": "1298700198",
           "slug": "paneer-tikka-pizza-flatbread",
           "name": "Paneer Tikka Pizza Flatbread",
           "description": "Crisp flatbread topped with smoky paneer tikka, Onions, Capsicum and melted cheese - bold, flavour-packed, and irresistibly satisfying.",
           "price": 295,
           "veg": true,
           "available": true,
-          "posItemId": "1298700198",
           "posShortCode": "275"
         }
       ]
@@ -2937,25 +2940,23 @@
       "posCategory": "Cookies",
       "items": [
         {
-          "id": "5619244e-5a61-527b-9525-e31bcdafea40",
+          "id": "159721721",
           "slug": "coffee-butter-cookies-x2",
           "name": "Coffee Butter Cookies (X2)",
           "description": "Crisp coffee butter cookies - lightly sweet, aromatic, and perfect with a sip.",
           "price": 100,
           "veg": true,
           "available": true,
-          "posItemId": "159721721",
           "posShortCode": "31"
         },
         {
-          "id": "acaef2a4-0777-5527-bac5-242e6e9106bb",
+          "id": "159721723",
           "slug": "chocolate-chips-cookie",
           "name": "Chocolate Chips Cookie",
           "description": "Fresh-baked chocolate chip cookie - crisp-edged, chewy-centred, and deeply satisfying.",
           "price": 100,
           "veg": true,
           "available": true,
-          "posItemId": "159721723",
           "posShortCode": "33"
         }
       ]
@@ -2966,36 +2967,33 @@
       "posCategory": "Muffins",
       "items": [
         {
-          "id": "35a52062-8677-58c5-af17-60a0331fa5fd",
+          "id": "159721713",
           "slug": "apple-cinnamon-muffin",
           "name": "Apple Cinnamon Muffin",
           "description": "Moist muffin infused with apple and cinnamon - sweet, spiced, and warmly comforting.",
           "price": 165,
           "veg": true,
           "available": true,
-          "posItemId": "159721713",
           "posShortCode": "23"
         },
         {
-          "id": "fb6add60-f8b1-5f18-94b9-4ae1e8f1239b",
+          "id": "159721714",
           "slug": "chocochip-orange-zest-muffin",
           "name": "Chocochip Orange Zest Muffin",
           "description": "Soft chocolate chip muffin lifted with fresh orange zest - citrusy, chocolatey, and beautifully aromatic.",
           "price": 165,
           "veg": true,
           "available": true,
-          "posItemId": "159721714",
           "posShortCode": "24"
         },
         {
-          "id": "d6b42e6b-c49a-5179-bb03-5eddbbda3122",
+          "id": "159721715",
           "slug": "blueberry-muffin",
           "name": "Blueberry Muffin",
           "description": "Tender muffin bursting with blueberries - juicy, buttery, and gently sweet.",
           "price": 165,
           "veg": true,
           "available": true,
-          "posItemId": "159721715",
           "posShortCode": "25"
         }
       ]
@@ -3006,32 +3004,32 @@
       "posCategory": "Puffs",
       "items": [
         {
-          "id": "58c8bff9-68a3-5756-86e1-132fad5d26da",
+          "id": "159721706",
           "slug": "mushroom-corn-puff",
           "name": "Mushroom Corn Puff",
           "description": "Flaky puff filled with buttery mushrooms and sweet corn - warm, savoury, and deeply comforting.",
           "price": 155,
           "veg": true,
           "available": true,
-          "posItemId": "159721706",
           "posShortCode": "16"
         },
         {
-          "id": "ca261052-faa7-5c3f-a7ab-1880d1fd8eb5",
+          "id": "1294561433",
           "slug": "pesto-paneer-puff",
           "name": "Pesto Paneer Puff",
           "description": "",
           "price": 175,
           "veg": true,
           "available": true,
-          "posItemId": "1294561433",
           "posShortCode": "17",
           "variations": [
             {
+              "id": "1294561433",
               "name": "Jain",
               "price": 175
             },
             {
+              "id": "1294561434",
               "name": "Regular",
               "price": 175
             }
@@ -3045,58 +3043,53 @@
       "posCategory": "Fries and Pockets",
       "items": [
         {
-          "id": "4906e4c7-4155-57ed-9d3f-eaabf0af3541",
+          "id": "159721724",
           "slug": "salted-fries",
           "name": "Salted Fries",
           "description": "Golden fries tossed in sea salt - crisp outside, fluffy inside, and endlessly addictive.",
           "price": 155,
           "veg": true,
           "available": true,
-          "posItemId": "159721724",
           "posShortCode": "34"
         },
         {
-          "id": "c1bbfb0f-b33e-5bda-a1d3-f524b1e4880f",
+          "id": "159721725",
           "slug": "peri-peri-fries",
           "name": "Peri Peri Fries",
           "description": "Hot fries dusted with peri peri spice - fiery, tangy, and boldly satisfying.",
           "price": 185,
           "veg": true,
           "available": true,
-          "posItemId": "159721725",
           "posShortCode": "35"
         },
         {
-          "id": "f24c9c5f-ec49-5227-862e-4c406cb5c3b9",
+          "id": "159721726",
           "slug": "loaded-fries",
           "name": "Loaded Fries",
           "description": "Crisp fries smothered in molten cheese and toppings - gooey, indulgent, and impossible to stop at one bite.",
           "price": 235,
           "veg": true,
           "available": true,
-          "posItemId": "159721726",
           "posShortCode": "36"
         },
         {
-          "id": "3ade53b9-696f-5bcb-9ea6-5e8cc18cf212",
+          "id": "1294564324",
           "slug": "sweet-potato-fries",
           "name": "Sweet Potato Fries",
           "description": "Sweet potato fries fried to golden perfection - lightly sweet, crisp-edged, and irresistibly moreish.",
           "price": 245,
           "veg": true,
           "available": true,
-          "posItemId": "1294564324",
           "posShortCode": "508"
         },
         {
-          "id": "34a50900-d440-50cf-a1cc-6f1d2b92082f",
+          "id": "1309706113",
           "slug": "pizza-pockets",
           "name": "Pizza Pockets",
           "description": "Delicious pizza pockets loaded with pizza toppings and melted cheese - gooey, flavourful, and impossible to stop at one.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1309706113",
           "posShortCode": "A-19"
         }
       ]
@@ -3107,36 +3100,33 @@
       "posCategory": "Dips",
       "items": [
         {
-          "id": "c10a158a-cb45-5ea5-ac27-9093c5c92ce5",
+          "id": "1289949183",
           "slug": "soul-special-cilantro-dip",
           "name": "Soul Special Cilantro Dip",
           "description": "",
           "price": 60,
           "veg": true,
           "available": true,
-          "posItemId": "1289949183",
           "posShortCode": "soul special cilantr"
         },
         {
-          "id": "be2ef046-3165-5056-9420-e86468f9aeb3",
+          "id": "1289949184",
           "slug": "soul-special-sriracha-dip",
           "name": "Soul Special Sriracha Dip",
           "description": "",
           "price": 60,
           "veg": true,
           "available": true,
-          "posItemId": "1289949184",
           "posShortCode": "soul special srirach"
         },
         {
-          "id": "e64955a6-e6a4-542b-aec1-536b66758fc5",
+          "id": "1301930018",
           "slug": "hot-cheese-dip",
           "name": "hot cheese dip",
           "description": "",
           "price": 50,
           "veg": true,
           "available": true,
-          "posItemId": "1301930018",
           "posShortCode": "hot cheese dip"
         }
       ]
@@ -3147,146 +3137,133 @@
       "posCategory": "Desserts",
       "items": [
         {
-          "id": "f5016501-9483-5b04-95c1-d7a61cc74ad2",
+          "id": "159721716",
           "slug": "classic-new-york-cheesecake",
           "name": "Classic New York Cheesecake",
           "description": "Creamy New York - style cheesecake with a buttery base - rich, smooth, and timelessly indulgent.",
           "price": 255,
           "veg": true,
           "available": true,
-          "posItemId": "159721716",
           "posShortCode": "26"
         },
         {
-          "id": "b3fae8d6-55ba-5f99-9743-75188d89d31b",
+          "id": "159721717",
           "slug": "blueberry-cheesecake",
           "name": "Blueberry Cheesecake",
           "description": "Classic cheesecake swirled with blueberry compote - creamy, tangy, and fruit-forward.",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "159721717",
           "posShortCode": "27"
         },
         {
-          "id": "aee7fecc-6897-52e9-9212-2281247f3e06",
+          "id": "159721718",
           "slug": "nutella-cheesecake",
           "name": "Nutella Cheesecake",
           "description": "Silky cheesecake layered with Nutella - chocolate-hazelnut rich and decadently smooth.",
           "price": 275,
           "veg": true,
           "available": true,
-          "posItemId": "159721718",
           "posShortCode": "28"
         },
         {
-          "id": "c4cd9c9d-d436-52c1-a4f8-08fbd01c8473",
+          "id": "159721719",
           "slug": "burnt-basque-cheesecake",
           "name": "Burnt Basque Cheesecake",
           "description": "Lightly caramelised Basque cheesecake with a molten centre - smoky-edged, creamy, and beautifully bold.",
           "price": 295,
           "veg": true,
           "available": true,
-          "posItemId": "159721719",
           "posShortCode": "29"
         },
         {
-          "id": "1df28982-4109-5e66-b316-e027ac95b8de",
+          "id": "159721720",
           "slug": "pizookie-with-vanilla-icecream",
           "name": "Pizookie With Vanilla Icecream",
           "description": "Warm, gooey cookie baked fresh and served with vanilla ice cream - melty, creamy, and pure dessert joy.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "159721720",
           "posShortCode": "30"
         },
         {
-          "id": "51e6ff15-90a6-519a-9416-569fdc85c605",
+          "id": "159721751",
           "slug": "affogato",
           "name": "Affogato",
           "description": "Hot espresso poured over vanilla ice cream - bold, creamy, and beautifully dramatic.",
           "price": 255,
           "veg": true,
           "available": true,
-          "posItemId": "159721751",
           "posShortCode": "61"
         },
         {
-          "id": "4d563d2b-8376-5efc-8f6f-9100e7aa65e7",
+          "id": "1294588509",
           "slug": "pistachio-chocolate-croissant",
           "name": "Pistachio Chocolate Croissant",
           "description": "Buttery croissant filled with pistachio cream and chocolate - flaky, nutty, and indulgently rich.",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1294588509",
           "posShortCode": "201"
         },
         {
-          "id": "bc49fdae-ea5e-58ca-b60a-3953afff2f41",
+          "id": "1298276239",
           "slug": "banana-walnut-loaf",
           "name": "Banana Walnut Loaf",
           "description": "",
           "price": 700,
           "veg": true,
           "available": true,
-          "posItemId": "1298276239",
           "posShortCode": "271"
         },
         {
-          "id": "bdbaf9f5-7f8f-5d54-83fc-475b6b52d9b7",
+          "id": "1302254882",
           "slug": "banana-walnut-bread-sugar-free-gluten-free-vegan",
           "name": "Banana Walnut Bread (Sugar-free, Gluten-free, Vegan)",
           "description": "Wholesome banana walnut loaf - naturally sweet, nutty, and guilt-free indulgent.",
           "price": 195,
           "veg": true,
           "available": true,
-          "posItemId": "1302254882",
           "posShortCode": "banana walnut bread"
         },
         {
-          "id": "ab3d1d81-26ae-5a6b-9793-2b252cde35d9",
+          "id": "1309302349",
           "slug": "velvet-tiramisu-indulgence",
           "name": "velvet tiramisu indulgence",
           "description": "",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1309302349",
           "posShortCode": "velvet tiramisu indu"
         },
         {
-          "id": "7cbe3c4e-99a4-55e7-b315-6916e0f4cb7d",
+          "id": "1309302350",
           "slug": "blueberry-pistachio-cream-french-toast",
           "name": "blueberry pistachio cream french toast",
           "description": "",
           "price": 345,
           "veg": true,
           "available": true,
-          "posItemId": "1309302350",
           "posShortCode": "blueberry pistachio"
         },
         {
-          "id": "2a9c3432-6741-5754-8ae8-89477fb9e2b5",
+          "id": "1311803528",
           "slug": "chocochip-hazelnut-brownie-limited-time",
           "name": "Chocochip Hazelnut Brownie (Limited Time)",
           "description": "A rich hazelnut brownie with a soft, fudgy bite and bursts of melty chocolate chips",
           "price": 265,
           "veg": true,
           "available": true,
-          "posItemId": "1311803528",
           "posShortCode": "CHB"
         },
         {
-          "id": "fd00046f-85f2-569b-af13-5d588c6505be",
+          "id": "1312914264",
           "slug": "custom-cake-1-5-kg",
           "name": "Custom Cake 1.5 Kg",
           "description": "",
           "price": 1500,
           "veg": true,
           "available": true,
-          "posItemId": "1312914264",
           "posShortCode": "CC1"
         }
       ]
@@ -3297,58 +3274,53 @@
       "posCategory": "Alternative Milks",
       "items": [
         {
-          "id": "1666000b-9a11-5a2d-b6ec-8d6aa86ff3c7",
+          "id": "159721769",
           "slug": "almond-milk",
           "name": "Almond Milk",
           "description": "Almond milk - light, nutty, and delicately smooth.",
           "price": 60,
           "veg": true,
           "available": true,
-          "posItemId": "159721769",
           "posShortCode": "79"
         },
         {
-          "id": "6dc635ca-8e8e-58e9-84c3-43907da3d748",
+          "id": "159721770",
           "slug": "oat-milk",
           "name": "Oat Milk",
           "description": "Oat milk - creamy, mellow, and naturally balanced.",
           "price": 60,
           "veg": true,
           "available": true,
-          "posItemId": "159721770",
           "posShortCode": "80"
         },
         {
-          "id": "a9f6ca14-1ad8-5085-8a6b-41050ab5fe0c",
+          "id": "159721771",
           "slug": "soy-milk",
           "name": "Soy Milk",
           "description": "Soy milk - smooth, plant-based, and subtly nutty.",
           "price": 60,
           "veg": true,
           "available": true,
-          "posItemId": "159721771",
           "posShortCode": "81"
         },
         {
-          "id": "adf88638-7b7c-52ab-9b62-c9ddd75d7d73",
+          "id": "159721772",
           "slug": "coconut-milk",
           "name": "Coconut Milk",
           "description": "Coconut milk - creamy, tropical, and softly sweet.",
           "price": 60,
           "veg": true,
           "available": true,
-          "posItemId": "159721772",
           "posShortCode": "82"
         },
         {
-          "id": "c2ab258e-09ea-54b5-868b-f4e1f14c6bcf",
+          "id": "1290020445",
           "slug": "regular-milk",
           "name": "Regular Milk",
           "description": "Fresh regular milk - smooth, creamy, and naturally comforting.",
           "price": 60,
           "veg": true,
           "available": true,
-          "posItemId": "1290020445",
           "posShortCode": "114"
         }
       ]
@@ -3359,36 +3331,33 @@
       "posCategory": "Protein Series",
       "items": [
         {
-          "id": "68ac6ee2-8c1e-552a-ae09-19b43d061dec",
+          "id": "1309570367",
           "slug": "protein-cold-coffee",
           "name": "Protein Cold Coffee",
           "description": "Soul's Signature Cold Coffee blended with 25g Protein",
           "price": 325,
           "veg": true,
           "available": true,
-          "posItemId": "1309570367",
           "posShortCode": "protein cold coffee"
         },
         {
-          "id": "55dae08f-2887-5ddf-9b8e-dff195f41b21",
+          "id": "1309570368",
           "slug": "protein-milk-shake",
           "name": "Protein Milk Shake",
           "description": "A rich, indulgent chocolate shake packed with 25g Protein",
           "price": 355,
           "veg": true,
           "available": true,
-          "posItemId": "1309570368",
           "posShortCode": "protein milk shake"
         },
         {
-          "id": "aae9a758-0027-571b-97ff-43e977bb4f5f",
+          "id": "1309570369",
           "slug": "protein-matcha",
           "name": "Protein Matcha",
           "description": "House Matcha whisked with milk and 25g Protein",
           "price": 385,
           "veg": true,
           "available": true,
-          "posItemId": "1309570369",
           "posShortCode": "protein matcha"
         }
       ]
