@@ -32,11 +32,19 @@ npm run sync-media   # pull item photos from /media into /public/menu
 | Language | JavaScript (JSX) |
 | Styling | One plain CSS file — `src/app/globals.css` |
 | State | React Context (`CartContext`) |
-| Fonts | Inter (body) + Playfair Display (headings) |
+| Fonts | Inter (body) + Prata (display headings) |
 | Icons | Emoji |
 | Hosting | Vercel |
 
 No Tailwind, no CSS modules, no icon library, no UI kit — same as the spec.
+
+**Typography note:** the spec called for Playfair Display, but the display face is
+now **Prata** — the closest free match to the logo wordmark's high-contrast serif.
+Prata ships in 400 only, so every display heading is pinned to `font-weight: 400`;
+requesting 600 would give a synthesised bold, which smears a face with hairlines
+this fine. Display serif is used for the hero title, section titles, the checkout
+top bar, the options sheet and the confirmation title. Everything else — item
+names, descriptions, prices, chips, labels, buttons — is Inter.
 
 ---
 
@@ -78,8 +86,9 @@ order), so names, descriptions, prices, categories and ordering all match the PO
 - 4 items are unavailable for home delivery in the POS. They carry
   `"deliveryAvailable": false`, show a **Pickup only** badge, and are rejected by
   `/api/orders/place` if the order type is delivery.
-- `posItemId` and `posShortCode` are kept on every item so PetPooja can match a
-  line back to its own record when the POS integration goes live.
+- Item ids **are** the PetPooja `ItemID`s (see below), and `posShortCode` is kept
+  alongside, so PetPooja can match a line back to its own record when the POS
+  integration goes live.
 
 Regenerating: the export is read straight from the spreadsheet, so re-running the
 generator after a fresh PetPooja export is the intended way to update the menu.
