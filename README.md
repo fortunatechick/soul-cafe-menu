@@ -19,7 +19,7 @@ Open http://localhost:3000
 ```bash
 npm run build    # production build
 npm run start    # serve the production build
-npm run sync-media   # pull item photos from /media into /public/menu
+npm run sync-media   # match, resize and publish item photos
 ```
 
 ---
@@ -131,21 +131,39 @@ Set `"available": false` to grey an item out and block it at checkout.
 
 ## Item photos
 
-1. Drop photos into **`/media`**, named after the menu item.
-   Case, spaces and punctuation don't matter — `Iced Latte.jpg`,
-   `iced-latte.png` and `ICED_LATTE.webp` all match the same item.
-   `media/README.md` has the full checklist of item names.
-2. Run:
+Photos live in **`/menu_images`** (or `/media` — both are scanned), named after
+the menu item. Run:
 
-   ```bash
-   npm run sync-media
-   ```
+```bash
+npm run sync-media
+```
 
-3. Commit and push. Vercel redeploys.
+That matches each file to a menu item, downscales it and writes it to
+`public/menu/`, then regenerates `src/data/media-manifest.json`, which the menu
+page reads. Items without a photo render text-only, so partial coverage is fine.
 
-The script copies matched files into `public/menu/`, writes
-`src/data/media-manifest.json`, and prints any filename it could not match.
-Items without a photo render text-only, so partial coverage is fine.
+**29 photos are wired up, covering 30 of 211 items** (Creamed Bee appears on the
+menu twice and shares one photo).
+
+Matching ignores case, spacing and punctuation, and strips export suffixes like
+`_linkedin_post_1200x627`. Where a photo's name genuinely differs from the POS
+name — `cheesy loaded fries` vs the menu's `Loaded Fries` — add an entry to
+`ALIASES` in `scripts/sync-media.py` rather than renaming the file, so
+re-exporting the photos does not break the mapping.
+
+The script prints any file it could not match, so a typo fails loudly instead of
+silently dropping a photo.
+
+**Sizing:** the source photos are square (the `1200x627` in their filenames is a
+naming template, not their real size — they are 2767px to 4000px square) and
+average 700 KB. `sync-media` resizes each to 600px and re-encodes it, which took
+the current set from 19.5 MB to 1.2 MB. Serving the originals would have made the
+menu page a ~20 MB download. This step needs Pillow (`pip install pillow`);
+without it the script still runs but copies at full size and warns.
+
+The originals in `menu_images/` are committed so the set can be re-synced at a
+different size later. If the photo library grows much beyond this, consider
+keeping originals out of git and syncing them from Drive instead.
 
 **Logo:** `public/soul-logo.svg` is a placeholder. Drop the real
 `soul-logo.png` into `public/` and the hero picks it up automatically.
@@ -233,8 +251,9 @@ src/
     ├── store.js                 # temporary in-memory order store
     └── petpooja.js              # POS payload builder (inactive)
 
-media/                           # drop item photos here
+menu_images/                     # source item photos
+media/                           # alternate photo source
 public/menu/                     # generated — served photos
-scripts/generate-menu.py           # rebuilds menu.json from the PetPooja xlsx
-scripts/sync-media.mjs
+scripts/generate-menu.py         # rebuilds menu.json from the PetPooja xlsx
+scripts/sync-media.py            # matches, resizes and publishes item photos
 ```

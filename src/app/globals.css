@@ -353,7 +353,9 @@ a { color: inherit; text-decoration: none; }
   width: 92px;
 }
 
-/* Item photo — rendered only when a matching file exists in /public/menu */
+/* Item photo — rendered only when a matching file exists in /public/menu.
+   The source photos are square (the "1200x627" in their filenames is a naming
+   template, not their real size), so a square thumbnail crops nothing. */
 .card__photo {
   width: 92px;
   height: 92px;

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sync-media": "node scripts/sync-media.mjs"
+    "sync-media": "python scripts/sync-media.py"
   },
   "dependencies": {
     "next": "16.3.1",
