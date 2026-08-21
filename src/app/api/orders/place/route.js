@@ -4,7 +4,9 @@ import { pushToPetPooja } from '@/lib/petpooja';
 
 export const dynamic = 'force-dynamic';
 
-const DELIVERY_CHARGE = 30;
+// Delivery is free. The charge is kept as a field (at zero) because the order
+// shape feeds PetPooja's delivery_charges, and to make reinstating it one edit.
+const DELIVERY_CHARGE = 0;
 const PAYMENT_METHODS = ['upi', 'cash', 'card'];
 const ORDER_TYPES = ['delivery', 'pickup'];
 

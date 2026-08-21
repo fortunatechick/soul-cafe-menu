@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { placeOrder, formatINR } from '@/lib/api';
 
-const DELIVERY_CHARGE = 30;
+// Delivery is free — kept as a constant so reinstating a fee is one edit here
+// and one in the order API, which is the authority on what actually gets charged.
+const DELIVERY_CHARGE = 0;
 
 const PAYMENT_OPTIONS = [
   { id: 'upi', emoji: '📱', label: 'UPI', hint: 'Pay online — link sent on WhatsApp' },

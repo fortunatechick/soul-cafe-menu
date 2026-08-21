@@ -179,7 +179,7 @@ The customer enters four things, all captured today:
 3. **Payment method** — UPI, Cash or Card
 4. **Address** (delivery only; hidden for pickup)
 
-Delivery adds ₹30; pickup is free. On submit the order is validated and priced
+Delivery and pickup are both free. On submit the order is validated and priced
 server-side, given an order number (`SOUL-XXXXXX`), and the confirmation page
 offers a pre-filled WhatsApp message to the café.
 
