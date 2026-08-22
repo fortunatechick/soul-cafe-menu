@@ -125,11 +125,13 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 12px;
 }
 
+/* Sized to spill past the logo: the artwork is opaque now, so a glow smaller
+   than the mark would be hidden behind it entirely. */
 .hero__logo-wrap::before {
   content: '';
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 360px;
+  height: 360px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

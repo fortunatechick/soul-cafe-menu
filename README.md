@@ -165,21 +165,28 @@ The originals in `menu_images/` are committed so the set can be re-synced at a
 different size later. If the photo library grows much beyond this, consider
 keeping originals out of git and syncing them from Drive instead.
 
-**Logo:** the hero shows the brand lockup exactly as supplied —
-`public/soul-logo.jpg` is a byte-identical copy of `soul_logo.jpg` in the project
-root, uncropped and unaltered, and it is also the favicon and touch icon.
+**Logo:** `public/soul-logo.png` is the supplied lockup with its background
+recoloured to the site's `--bg-primary`. The artwork is untouched — same square,
+same crop, same lockup — only the flat backdrop changes, so the mark now sits
+flush on the page instead of reading as a lighter navy panel.
 
-Two things follow from using the original square. Its background is `#1c3055`
-while the page is `#0d2233`, so the artwork reads as a slightly lighter navy
-panel rather than sitting flush on the background. And roughly 40% of the square
-is empty margin, so the lockup is smaller than the space it occupies. Both are
-inherent to the source file; a trimmed or background-keyed variant would avoid
-them but would no longer be the logo as provided.
+Regenerate it from `soul_logo.jpg` with:
 
-Because the lockup already carries the name and the tagline, the hero's `<h1>`
-and tagline are `.sr-only` — present for search engines and screen readers, not
-drawn twice. `public/soul-logo.svg` remains only as the fallback if the JPEG ever
-fails to load.
+```bash
+python scripts/make-logo.py
+```
+
+Rather than keying the old background out and recompositing (which leaves navy
+fringes around the letterforms), it applies the difference directly:
+`out = src + (1 - a) * (new_bg - old_bg)`, where `a` is each pixel's coverage.
+Fully-background pixels land exactly on the new colour, solid artwork is
+untouched, and anti-aliased edges blend without a halo. Verified by sampling the
+rendered image: corner `#0d2233`, matching the page exactly.
+
+The same file is the favicon and touch icon. Because the lockup already carries
+the name and the tagline, the hero's `<h1>` and tagline are `.sr-only` — present
+for search engines and screen readers, not drawn twice. `public/soul-logo.svg`
+remains only as the fallback if the PNG ever fails to load.
 
 ---
 

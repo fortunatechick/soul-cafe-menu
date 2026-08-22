@@ -95,7 +95,7 @@ function VegMark({ veg }) {
 }
 
 function SoulLogo() {
-  const [src, setSrc] = useState('/soul-logo.jpg');
+  const [src, setSrc] = useState('/soul-logo.png');
   return (
     <img
       className="hero__mark"

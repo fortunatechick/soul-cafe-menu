@@ -6,7 +6,7 @@ export const metadata = {
   description:
     'Browse the menu and order from Soul — Speciality Coffees & Fusion Bakehouse.',
   keywords: 'soul cafe, coffee, bakehouse, menu, order, whatsapp',
-  icons: { icon: '/soul-logo.jpg', apple: '/soul-logo.jpg' },
+  icons: { icon: '/soul-logo.png', apple: '/soul-logo.png' },
   appleWebApp: {
     capable: true,
     title: 'Soul',
