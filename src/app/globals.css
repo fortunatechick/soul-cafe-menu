@@ -1610,6 +1610,97 @@ a { color: inherit; text-decoration: none; }
 
 .empty-search { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
+/* ---------------- Premium motion ---------------- */
+
+/* Every page arrives the same way, so moving between them reads as one
+   continuous surface rather than three separate loads. */
+.page-enter {
+  animation: pageEnter 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ...and the menu concedes the screen before the router swaps it out. */
+.page--leaving {
+  animation: pageLeave 0.22s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pageLeave {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(-6px) scale(0.995); }
+}
+
+/* The cart bar commits before it navigates: a quick press-in, so the tap has a
+   visible consequence rather than a dead beat while the route loads. */
+.fab--leaving {
+  animation: fabCommit 0.22s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes fabCommit {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.96); }
+  100% { transform: scale(1.02); box-shadow: 0 10px 40px var(--accent-glow-strong); }
+}
+
+/* Adding something pulses the bar it landed in. */
+.fab--bump .fab__badge { animation: badgeBump 0.42s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+@keyframes badgeBump {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}
+
+/* The dot thrown from an Add button into the cart bar. */
+.flydot {
+  position: fixed;
+  z-index: 60;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow-strong);
+  pointer-events: none;
+}
+
+/* Category rows settle in as they scroll into view.
+
+   Hiding is gated behind .reveal-ready, which the observer sets only once it is
+   actually running. Without it — no JS, an error, an old browser — the rows are
+   simply visible, because a menu that depends on an animation to be readable is
+   broken. */
+.cat {
+  transition: opacity var(--transition-slow), transform var(--transition-slow),
+    border-color var(--transition-normal), background var(--transition-normal);
+}
+
+.reveal-ready .cat { opacity: 0; transform: translateY(14px); }
+.reveal-ready .cat.is-revealed { opacity: 1; transform: translateY(0); }
+
+/* Rows that were on screen from the start never animate, so a stalled
+   transition cannot leave them blank. */
+.reveal-ready .cat--instant { transition: none; opacity: 1; transform: none; }
+
+/* The sticky nav gains weight once the page has moved under it. */
+.catnav {
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.catnav--lifted {
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  border-bottom-color: var(--border-hover);
+}
+
+/* No JavaScript should be able to leave a row invisible: if the observer never
+   runs, the reveal state is irrelevant and everything stays on screen. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .cat { opacity: 1; transform: none; }
+}
+
 /* ---------------- Animations ---------------- */
 
 @keyframes addBounce {
