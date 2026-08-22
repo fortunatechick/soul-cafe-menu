@@ -235,6 +235,7 @@ export const QUESTIONS = [
     multi: false,
     options: [
       { value: 300, label: '₹300', emoji: '🪙' },
+      { value: 450, label: '₹450', emoji: '💸' },
       { value: null, label: 'No limit', emoji: '✨' },
     ],
   },
