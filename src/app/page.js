@@ -561,7 +561,8 @@ export default function MenuPage() {
       <footer className="footer">
         <div className="container">
           <p>
-            © {new Date().getFullYear()} {menu.store?.name || STORE_NAME} — all day, every day.
+            © {new Date().getFullYear()} {menu.store?.name || STORE_NAME} — Specialty Coffee and
+            Fusion Bakehouse
           </p>
           {menu.store?.address ? <p className="footer__address">{menu.store.address}</p> : null}
         </div>
