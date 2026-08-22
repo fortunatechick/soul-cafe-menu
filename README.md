@@ -259,6 +259,28 @@ croissant", and `nut` matched *coconut* and *nutmeg*. The patterns use
 lookarounds for these. When adding menu items with unusual names, check the
 traits look sane.
 
+### Motion
+
+Two touches only, and **no dependencies**. Framer Motion (~35 KB gzipped) and
+Lenis were considered and declined: a menu loading on mobile data should not
+carry an animation runtime, and smooth-scroll libraries hijack the momentum
+scrolling phones already do better.
+
+- **Menu → checkout** — the cart bar presses in, the menu fades back, then the
+  route changes after 200ms and the checkout rises in. All pages share
+  `page-enter`, so navigation reads as one surface.
+- **Scroll** — category rows settle in as they come into view.
+
+Both are skipped under `prefers-reduced-motion`.
+
+**The reveal state lives in React, not in a class poked onto the DOM.** `.cat`
+has a React-managed `className`, so an imperative `classList.add` is wiped by
+the next render — opening a section or typing in search rewrites that attribute
+and the row would vanish. Rows already on screen are marked revealed before
+first paint, and a 4-second failsafe covers the case where
+IntersectionObserver never fires: its callbacks ride the frame lifecycle, so a
+tab that is not rendering never receives them.
+
 ### The loading screen
 
 `BrewLoader` in `src/app/page.js` is a CSS-only coffee pour — stream, filling

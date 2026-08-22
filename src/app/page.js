@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { fetchMenu, formatINR } from '@/lib/api';
 import mediaManifest from '@/data/media-manifest.json';
@@ -345,6 +345,12 @@ export default function MenuPage() {
   const [activeCat, setActiveCat] = useState('');
   const [sheetItem, setSheetItem] = useState(null);
   const [recommendOpen, setRecommendOpen] = useState(false);
+  const [leaving, setLeaving] = useState(false);
+  // Revealed rows are React state, not a class poked onto the DOM: .cat's
+  // className is React-managed, so opening a section or typing in search would
+  // rewrite it and strip an imperative class straight back off.
+  const [revealed, setRevealed] = useState(() => new Set());
+  const router = useRouter();
 
   const railRef = useRef(null);
   const sectionRefs = useRef({});
@@ -426,6 +432,56 @@ export default function MenuPage() {
       return next;
     });
     setActiveCat(id);
+  }
+
+  // Settle rows in as they scroll into view. Anything already on screen is
+  // marked revealed straight away, so the first paint is never blank, and a
+  // failsafe reveals the rest if the observer never fires — its callbacks ride
+  // the frame lifecycle, so a tab that is not rendering never receives them.
+  useEffect(() => {
+    if (!menu) return undefined;
+
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const nodes = Object.entries(sectionRefs.current).filter(([, el]) => el);
+
+    if (reduce || typeof IntersectionObserver === 'undefined') {
+      setRevealed(new Set(nodes.map(([id]) => id)));
+      return undefined;
+    }
+
+    const onScreen = nodes
+      .filter(([, el]) => el.getBoundingClientRect().top < window.innerHeight * 1.1)
+      .map(([id]) => id);
+    if (onScreen.length) {
+      setRevealed((prev) => new Set([...prev, ...onScreen]));
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const seen = entries.filter((e) => e.isIntersecting).map((e) => e.target.dataset.category);
+        if (!seen.length) return;
+        setRevealed((prev) => new Set([...prev, ...seen]));
+      },
+      { rootMargin: '0px 0px -6% 0px', threshold: 0.02 }
+    );
+    nodes.forEach(([, el]) => observer.observe(el));
+
+    const failsafe = setTimeout(() => setRevealed(new Set(nodes.map(([id]) => id))), 4000);
+
+    return () => {
+      clearTimeout(failsafe);
+      observer.disconnect();
+    };
+  }, [menu, categories]);
+
+  // Let the tap land before the route changes, so the handover has a beat.
+  function goToCheckout() {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      router.push('/checkout');
+      return;
+    }
+    setLeaving(true);
+    setTimeout(() => router.push('/checkout'), 200);
   }
 
   function jumpTo(id) {
@@ -513,7 +569,11 @@ export default function MenuPage() {
   return (
     // The cart bar is fixed over the bottom of the viewport, so the footer
     // needs extra clearance whenever it is showing, or it sits on the links.
-    <main className={`page${totalItems > 0 ? ' page--cart-open' : ''}`}>
+    <main
+      className={`page page-enter${totalItems > 0 ? ' page--cart-open' : ''}${
+        leaving ? ' page--leaving' : ''
+      }`}
+    >
       <header className="hero">
         <div className="container">
           <div className="hero__logo-wrap">
@@ -609,7 +669,9 @@ export default function MenuPage() {
                 <section
                   key={c.id}
                   id={c.id}
-                  className={`cat${openNow ? ' cat--open' : ''}`}
+                  className={`cat${openNow ? ' cat--open' : ''}${
+                    revealed.has(c.id) ? ' cat--in' : ''
+                  }`}
                   data-category={c.id}
                   ref={(el) => {
                     sectionRefs.current[c.id] = el;
@@ -683,12 +745,12 @@ export default function MenuPage() {
 
       {totalItems > 0 ? (
         <div className="fab-wrap">
-          <Link href="/checkout" className="fab">
+          <button className={`fab${leaving ? ' fab--leaving' : ''}`} onClick={goToCheckout}>
             <span className="fab__left">
               🛒 <span className="fab__badge">{totalItems}</span> View Cart
             </span>
             <span>{formatINR(subtotal)}</span>
-          </Link>
+          </button>
         </div>
       ) : null}
 
