@@ -179,18 +179,15 @@ To swap the logo, drop a new file into `public/` and update the two references
 (`src/app/page.js` for the hero, `src/app/layout.js` for the icons).
 
 **Link previews:** sharing the URL on WhatsApp, iMessage or Slack shows
-`src/app/opengraph-image.jpg` — the logo centred on the site background at
-1200x630. Next serves it as `og:image` by file convention, filling in the URL,
-dimensions and mime type. Rebuild it after a logo change with:
+`src/app/opengraph-image.jpg` — the dedicated card supplied as
+`soul_whatsapp_logo.jpg` in the project root, copied in byte for byte. Next
+serves it as `og:image` by file convention, filling in the URL, dimensions and
+mime type.
 
-```bash
-python scripts/make-og.py
-```
-
-The background is baked in rather than left transparent, because WhatsApp
-composites transparency against an unpredictable colour and the artwork's dark
-navy detail would disappear on a white fill. It is a JPEG (19 KB) because
-WhatsApp skips previews over roughly 300 KB.
+It is 1200x630 (the OpenGraph standard, and the aspect scrapers crop least) and
+45 KB, well under the ~300 KB above which WhatsApp skips the preview entirely.
+To replace it, overwrite `src/app/opengraph-image.jpg` with another 1200x630
+JPEG.
 
 `og:image` must be absolute, so the origin has to be known at build time — and
 it has to be the *stable* origin. `VERCEL_URL` is deliberately not used: it is
