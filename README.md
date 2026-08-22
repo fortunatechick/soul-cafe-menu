@@ -38,6 +38,23 @@ npm run sync-media   # match, resize and publish item photos
 
 No Tailwind, no CSS modules, no icon library, no UI kit — same as the spec.
 
+**Responsive:** the stylesheet is mobile-first and the phone layout is the base —
+every wider-screen rule lives in `min-width` media queries at the end of
+`globals.css`, so a phone never evaluates one of them and the mobile design is
+untouched by anything done for desktop. Breakpoints:
+
+| Width | Container | Menu cards | Checkout |
+|---|---|---|---|
+| < 768px | 480px | one column | one column |
+| >= 768px | 720px | two columns | one column |
+| >= 1024px | 960px | two columns | two columns |
+| >= 1280px | 1120px | three columns | two columns |
+
+On desktop the checkout puts the basket on the left and the fields on the right,
+so the form is reachable without scrolling past the order. Pointer devices also
+get visible scrollbars on the category and featured rails, which a mouse cannot
+flick.
+
 **Typography note:** the spec called for Playfair Display, but the display face is
 now **Prata** — the closest free match to the logo wordmark's high-contrast serif.
 Prata ships in 400 only, so every display heading is pinned to `font-weight: 400`;

@@ -1174,3 +1174,94 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
   border: 0;
 }
+
+/* ============================================================
+   Wider screens
+   ------------------------------------------------------------
+   Everything above is the mobile layout and is deliberately left
+   untouched — these are all min-width queries, so phones never see a
+   single one of the rules below. The site is otherwise a 480px column
+   marooned in the middle of a laptop screen.
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .container { max-width: 720px; }
+  .catnav__rail { max-width: 720px; }
+  .footer-cta__inner { max-width: 720px; }
+
+  .hero { padding: 38px 0 28px; }
+  .hero__mark { width: min(340px, 60%); }
+
+  /* Cards tile instead of stacking — one 340px-wide card per row reads as a
+     phone screenshot at this width. */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .cat__panel[data-open='true'] .cat__panel-inner,
+  .cat__panel-inner { padding: 4px 16px 18px; }
+
+  .cat__head { padding: 16px 18px; }
+  .cat__name { font-size: 1.1rem; }
+
+  .featured__rail { margin: 0; padding-left: 0; padding-right: 0; }
+  .fcard { width: 186px; height: 204px; }
+  .fcard__name { font-size: 0.84rem; }
+
+  .fab { max-width: 520px; }
+}
+
+@media (min-width: 1024px) {
+  .container { max-width: 960px; }
+  .catnav__rail { max-width: 960px; }
+  .footer-cta__inner { max-width: 960px; }
+
+  .cards { gap: 14px; }
+  .fcard { width: 208px; height: 224px; }
+
+  /* Checkout splits: the order on the left, everything the customer has to
+     fill in on the right, so the form is visible without scrolling past the
+     basket. Placement is explicit by section order — .block 1 is the order
+     summary, 2 order type, 3 payment, 4 details. */
+  .checkout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 32px;
+    align-items: start;
+  }
+
+  .checkout > .block:nth-of-type(1) { grid-column: 1; grid-row: 1 / span 3; }
+  .checkout > .block:nth-of-type(2) { grid-column: 2; grid-row: 1; }
+  .checkout > .block:nth-of-type(3) { grid-column: 2; grid-row: 2; }
+  .checkout > .block:nth-of-type(4) { grid-column: 2; grid-row: 3; }
+}
+
+@media (min-width: 1280px) {
+  .container { max-width: 1120px; }
+  .catnav__rail { max-width: 1120px; }
+  .footer-cta__inner { max-width: 1120px; }
+
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero__mark { width: min(380px, 46%); }
+}
+
+/* A mouse has no thumb to flick with, so give the horizontal rails a visible
+   scrollbar on pointer devices rather than hiding it as on touch. */
+@media (min-width: 1024px) and (hover: hover) {
+  .catnav__rail.no-scrollbar,
+  .featured__rail.no-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-hover) transparent;
+  }
+
+  .catnav__rail.no-scrollbar::-webkit-scrollbar,
+  .featured__rail.no-scrollbar::-webkit-scrollbar { display: block; height: 6px; }
+
+  .catnav__rail.no-scrollbar::-webkit-scrollbar-thumb,
+  .featured__rail.no-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border-hover);
+    border-radius: var(--radius-full);
+  }
+}
