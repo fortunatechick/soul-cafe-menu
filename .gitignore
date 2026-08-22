@@ -11,3 +11,6 @@ build/
 Thumbs.db
 npm-debug.log*
 yarn-error.log*
+
+# Local reference doc, deliberately not committed
+ARCHITECTURE.html
