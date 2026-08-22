@@ -178,6 +178,29 @@ fails to load.
 To swap the logo, drop a new file into `public/` and update the two references
 (`src/app/page.js` for the hero, `src/app/layout.js` for the icons).
 
+**Link previews:** sharing the URL on WhatsApp, iMessage or Slack shows
+`src/app/opengraph-image.jpg` — the logo centred on the site background at
+1200x630. Next serves it as `og:image` by file convention, filling in the URL,
+dimensions and mime type. Rebuild it after a logo change with:
+
+```bash
+python scripts/make-og.py
+```
+
+The background is baked in rather than left transparent, because WhatsApp
+composites transparency against an unpredictable colour and the artwork's dark
+navy detail would disappear on a white fill. It is a JPEG (19 KB) because
+WhatsApp skips previews over roughly 300 KB.
+
+`og:image` must be absolute, so the origin has to be known at build time.
+Vercel's `VERCEL_URL` covers preview deployments automatically; set
+`NEXT_PUBLIC_SITE_URL` once a custom domain is attached, since `VERCEL_URL`
+points at the per-deployment hostname rather than the domain people share.
+
+WhatsApp caches previews for a long time, so a link shared before the site was
+deployed may keep showing the old (empty) preview. Adding `?v=2` to the URL
+forces a fresh scrape.
+
 ---
 
 ## Ordering flow
