@@ -863,9 +863,18 @@ a { color: inherit; text-decoration: none; }
 .lineitem__body { flex: 1 1 auto; min-width: 0; }
 .lineitem__name { font-size: 0.88rem; font-weight: 500; }
 .lineitem__meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
-.lineitem__price { font-size: 0.88rem; font-weight: 600; min-width: 62px; text-align: right; }
+.lineitem__price {
+  flex: 0 0 auto;
+  font-size: 0.88rem;
+  font-weight: 600;
+  min-width: 62px;
+  text-align: right;
+}
 
+/* Never shrink: a flex item defaults to shrinkable, and with overflow hidden a
+   long item name would squeeze this and clip the "+" clean off. */
 .qty {
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   border-radius: var(--radius-sm);
@@ -874,6 +883,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .qty__btn {
+  flex: 0 0 auto;
   width: 28px;
   height: 28px;
   color: var(--accent);
@@ -886,7 +896,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .qty__btn:hover { background: var(--accent-glow); }
-.qty__count { min-width: 26px; text-align: center; font-size: 0.82rem; font-weight: 600; }
+.qty__count { flex: 0 0 auto; min-width: 26px; text-align: center; font-size: 0.82rem; font-weight: 600; }
 
 .totals {
   margin-top: 16px;
