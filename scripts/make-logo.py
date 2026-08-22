@@ -32,6 +32,11 @@ OUT = os.path.join(ROOT, 'public', 'soul-logo.png')
 NEW_BG = (0x0d, 0x22, 0x33)   # --bg-primary
 LO, HI = 12.0, 60.0           # distance from the old background -> coverage ramp
 
+# The source square is ~40% empty above and below the lockup. Crop that dead
+# band off, keeping the full width and a little breathing room, so the mark
+# reads at a usable size in the hero.
+PAD_Y = 90
+
 img = Image.open(SRC).convert('RGB')
 src = np.asarray(img).astype(np.float32)
 
@@ -44,11 +49,18 @@ alpha = np.clip((dist - LO) / (HI - LO), 0.0, 1.0)[..., None]
 out = src + (1.0 - alpha) * (new_bg - old_bg)
 out = np.clip(out, 0, 255).astype(np.uint8)
 
+# vertical extent of the artwork, so the crop follows the lockup, not fixed numbers
+rows = np.where(alpha[..., 0].max(axis=1) > 0.25)[0]
+top = max(0, int(rows[0]) - PAD_Y)
+bottom = min(out.shape[0], int(rows[-1]) + 1 + PAD_Y)
+out = out[top:bottom, :, :]
+
 Image.fromarray(out).save(OUT, 'PNG', optimize=True)
 
 corner = tuple(int(v) for v in out[0, 0])
 print(f'source     : {img.size[0]}x{img.size[1]}  background #%02x%02x%02x' % tuple(int(v) for v in old_bg))
 print(f'written    : {OUT}')
-print(f'  size     : {os.path.getsize(OUT) // 1024} KB, unchanged crop')
+print(f'  cropped  : rows {top}-{bottom} of {img.size[1]}  -> {out.shape[1]}x{out.shape[0]}')
+print(f'  size     : {os.path.getsize(OUT) // 1024} KB')
 print(f'  corner   : #%02x%02x%02x  (target #%02x%02x%02x)' % (corner + NEW_BG))
 print(f'  artwork  : {int((alpha > 0.5).sum())} px kept at full strength')

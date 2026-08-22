@@ -165,10 +165,12 @@ The originals in `menu_images/` are committed so the set can be re-synced at a
 different size later. If the photo library grows much beyond this, consider
 keeping originals out of git and syncing them from Drive instead.
 
-**Logo:** `public/soul-logo.png` is the supplied lockup with its background
-recoloured to the site's `--bg-primary`. The artwork is untouched — same square,
-same crop, same lockup — only the flat backdrop changes, so the mark now sits
-flush on the page instead of reading as a lighter navy panel.
+**Logo:** `public/soul-logo.png` is the supplied lockup, recoloured onto the
+site's `--bg-primary` and cropped to the artwork. The source square is ~40% empty
+above and below the mark; that dead band is trimmed (full width kept), leaving a
+1080x613 landscape lockup that sits flush on the page with no panel and no glow
+behind it. The crop follows the artwork's own extent plus padding rather than
+fixed pixel numbers, so it survives the source being re-exported.
 
 Regenerate it from `soul_logo.jpg` with:
 

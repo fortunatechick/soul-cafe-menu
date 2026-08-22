@@ -102,7 +102,7 @@ function SoulLogo() {
       src={src}
       alt={`${STORE_NAME} — Speciality Coffees & Fusion Bakehouse`}
       width={1080}
-      height={1080}
+      height={613}
       onError={() => setSrc('/soul-logo.svg')}
     />
   );

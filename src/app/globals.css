@@ -125,26 +125,11 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 12px;
 }
 
-/* Sized to spill past the logo: the artwork is opaque now, so a glow smaller
-   than the mark would be hidden behind it entirely. */
-.hero__logo-wrap::before {
-  content: '';
-  position: absolute;
-  width: 360px;
-  height: 360px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* The brand lockup exactly as supplied - the original square artwork, its own
-   navy background included, uncropped and unaltered. */
+/* Landscape lockup on the page's own background - no panel, no glow. */
 .hero__mark {
   position: relative;
   display: block;
-  width: min(240px, 66%);
+  width: min(300px, 84%);
   height: auto;
   margin: 0 auto;
 }
