@@ -474,7 +474,9 @@ export default function MenuPage() {
   /* -------------------------------- render ------------------------------- */
 
   return (
-    <main className="page">
+    // The cart bar is fixed over the bottom of the viewport, so the footer
+    // needs extra clearance whenever it is showing, or it sits on the links.
+    <main className={`page${totalItems > 0 ? ' page--cart-open' : ''}`}>
       <header className="hero">
         <div className="container">
           <div className="hero__logo-wrap">

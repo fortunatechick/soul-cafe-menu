@@ -687,6 +687,14 @@ a { color: inherit; text-decoration: none; }
 
 .footer__icon { width: 15px; height: 15px; flex: 0 0 auto; }
 
+/* The cart bar floats over the bottom of the viewport (18px up, ~50px tall).
+   Without this the footer links sit underneath it once you reach the end of
+   the page. Only applied while the bar is actually showing, so an empty cart
+   does not leave dead space. */
+.page--cart-open .footer {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
 /* ---------------- Top bar (checkout) ---------------- */
 
 .topbar {
