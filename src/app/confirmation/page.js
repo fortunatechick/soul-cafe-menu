@@ -76,7 +76,7 @@ export default function ConfirmationPage() {
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waText)}`;
 
   return (
-    <main className="page page-enter">
+    <main className="page">
       <div className="container confirm">
         <span className="confirm__emoji">🎉</span>
         <h1 className="confirm__title">Order Placed!</h1>

@@ -259,31 +259,6 @@ croissant", and `nut` matched *coconut* and *nutmeg*. The patterns use
 lookarounds for these. When adding menu items with unusual names, check the
 traits look sane.
 
-### Motion
-
-`src/lib/motion.js` holds the interaction polish, and it adds **no dependencies**.
-Framer Motion (~35 KB gzipped) and Lenis were both considered and declined: a
-menu that loads on mobile data should not carry an animation runtime to make a
-button feel nice, and Lenis-style smooth scrolling hijacks the native momentum
-that phones already do better. The Web Animations API and IntersectionObserver
-cover all of it.
-
-- **Cart → checkout** — the bar plays a short commit press, then routes after
-  220ms, and the checkout arrives with a rise-and-fade. Every page carries the
-  same `page-enter`, so moving between them reads as one surface.
-- **Add to cart** — a dot arcs from the tapped button into the cart bar, the
-  badge bumps, and phones get a 12ms haptic tick.
-- **Scroll** — category rows settle in as they come into view, and the sticky
-  nav gains a shadow once the page has moved.
-
-Everything is skipped under `prefers-reduced-motion`, including the splash hold.
-
-**The reveal is deliberately paranoid**, because a menu that an animation can
-hide is a broken menu. Rows are only hidden once JS has set `.reveal-ready`;
-rows already on screen are shown outright with no transition to stall; and a
-4-second failsafe reveals anything still pending. Without JavaScript, or with a
-dead IntersectionObserver, the entire menu is simply visible.
-
 ### The loading screen
 
 `BrewLoader` in `src/app/page.js` is a CSS-only coffee pour — stream, filling

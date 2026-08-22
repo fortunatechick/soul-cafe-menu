@@ -1,12 +1,11 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { fetchMenu, formatINR } from '@/lib/api';
 import mediaManifest from '@/data/media-manifest.json';
 import RecommendSheet from '@/components/RecommendSheet';
-import { flyToCart, observeReveals, prefersReducedMotion, tapFeedback } from '@/lib/motion';
 
 const STORE_NAME = process.env.NEXT_PUBLIC_STORE_NAME || 'Soul';
 
@@ -175,7 +174,7 @@ function FeaturedRail({ items, onAdd }) {
             key={item.id}
             className="fcard animate-slide-up"
             style={{ animationDelay: `${Math.min(i, 10) * 50}ms` }}
-            onClick={(e) => onAdd(item, e.currentTarget)}
+            onClick={() => onAdd(item)}
           >
             <img className="fcard__img" src={mediaManifest[item.slug]} alt={item.name} loading="lazy" />
             <span className="fcard__scrim" />
@@ -264,12 +263,10 @@ function MenuCard({ item, index, onAdd }) {
   const soleLine = lines.filter((l) => l.id === item.id);
   const canStep = soleLine.length === 1;
 
-  const btnRef = useRef(null);
-
   function handleAdd() {
     setBounce(true);
     setTimeout(() => setBounce(false), 400);
-    onAdd(item, btnRef.current);
+    onAdd(item);
   }
 
   return (
@@ -316,7 +313,6 @@ function MenuCard({ item, index, onAdd }) {
           </div>
         ) : (
           <button
-            ref={btnRef}
             className={`add-btn${bounce ? ' add-btn--bounce' : ''}`}
             onClick={handleAdd}
             aria-label={`Add ${item.name}`}
@@ -349,10 +345,6 @@ export default function MenuPage() {
   const [activeCat, setActiveCat] = useState('');
   const [sheetItem, setSheetItem] = useState(null);
   const [recommendOpen, setRecommendOpen] = useState(false);
-  const [leaving, setLeaving] = useState(false);
-  const [bumpCart, setBumpCart] = useState(false);
-  const router = useRouter();
-  const prevCount = useRef(0);
 
   const railRef = useRef(null);
   const sectionRefs = useRef({});
@@ -436,46 +428,6 @@ export default function MenuPage() {
     setActiveCat(id);
   }
 
-  // Pulse the bar when the count changes, so an add lands somewhere visible.
-  useEffect(() => {
-    if (totalItems > prevCount.current) {
-      setBumpCart(true);
-      const t = setTimeout(() => setBumpCart(false), 420);
-      prevCount.current = totalItems;
-      return () => clearTimeout(t);
-    }
-    prevCount.current = totalItems;
-    return undefined;
-  }, [totalItems]);
-
-  // Reveal category rows as they scroll in.
-  useEffect(() => {
-    if (!menu) return undefined;
-    const stop = observeReveals('.cat');
-    return stop;
-  }, [menu, categories]);
-
-  // Lift the sticky nav once the page has moved.
-  useEffect(() => {
-    const nav = document.querySelector('.catnav');
-    if (!nav) return undefined;
-    const onScroll = () => nav.classList.toggle('catnav--lifted', window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [menu]);
-
-  // Hand off to checkout with a short commit animation, so the tap has a
-  // consequence on screen before the page changes.
-  function goToCheckout() {
-    if (prefersReducedMotion()) {
-      router.push('/checkout');
-      return;
-    }
-    setLeaving(true);
-    setTimeout(() => router.push('/checkout'), 220);
-  }
-
   function jumpTo(id) {
     setMounted((m) => new Set(m).add(id));
     setOpen((prev) => new Set(prev).add(id));
@@ -522,11 +474,9 @@ export default function MenuPage() {
     });
   }, [activeCat]);
 
-  function handleAdd(item, sourceEl) {
+  function handleAdd(item) {
     if (item.variations?.length) return setSheetItem(item);
     addItem(item);
-    tapFeedback();
-    flyToCart(sourceEl);
   }
 
   /* ------------------------------- states ------------------------------- */
@@ -563,11 +513,7 @@ export default function MenuPage() {
   return (
     // The cart bar is fixed over the bottom of the viewport, so the footer
     // needs extra clearance whenever it is showing, or it sits on the links.
-    <main
-      className={`page page-enter${totalItems > 0 ? ' page--cart-open' : ''}${
-        leaving ? ' page--leaving' : ''
-      }`}
-    >
+    <main className={`page${totalItems > 0 ? ' page--cart-open' : ''}`}>
       <header className="hero">
         <div className="container">
           <div className="hero__logo-wrap">
@@ -737,15 +683,12 @@ export default function MenuPage() {
 
       {totalItems > 0 ? (
         <div className="fab-wrap">
-          <button
-            className={`fab${leaving ? ' fab--leaving' : ''}${bumpCart ? ' fab--bump' : ''}`}
-            onClick={goToCheckout}
-          >
+          <Link href="/checkout" className="fab">
             <span className="fab__left">
               🛒 <span className="fab__badge">{totalItems}</span> View Cart
             </span>
             <span>{formatINR(subtotal)}</span>
-          </button>
+          </Link>
         </div>
       ) : null}
 

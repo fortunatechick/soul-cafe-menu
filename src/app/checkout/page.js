@@ -306,7 +306,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <main className="page page-enter">
+    <main className="page">
       <div className="topbar">
         <div className="topbar__inner">
           <Link href="/" className="topbar__back" aria-label="Back to menu">
