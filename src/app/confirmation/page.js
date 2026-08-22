@@ -56,6 +56,11 @@ export default function ConfirmationPage() {
     `Name: ${order.customerName}`,
     `Phone: ${order.customerPhone}`,
     `${order.orderType === 'delivery' ? `Address: ${order.customerAddress}` : 'Pickup from the café'}`,
+    ...(order.customerLocation
+      ? [
+          `Map: https://www.google.com/maps/search/?api=1&query=${order.customerLocation.lat},${order.customerLocation.lon}`,
+        ]
+      : []),
     `Payment: ${PAYMENT_LABEL[order.paymentMethod] || order.paymentMethod}`,
     '',
     ...order.items.map(

@@ -2,6 +2,8 @@ import menu from '@/data/menu.json';
 import { generateOrderNumber, saveOrder } from '@/lib/store';
 import { pushToPetPooja } from '@/lib/petpooja';
 import { evaluateCoupon } from '@/lib/coupons';
+import { verifyHuman } from '@/lib/botcheck';
+import { checkRateLimit, clientIp } from '@/lib/ratelimit';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,12 +24,31 @@ for (const category of menu.categories) {
 const bad = (error) => Response.json({ error }, { status: 400 });
 
 export async function POST(request) {
+  // Cheapest check first: cap how many orders one address can attempt at all,
+  // before doing any parsing or verification work.
+  const ip = clientIp(request);
+  const limit = checkRateLimit(ip);
+  if (!limit.allowed) {
+    return Response.json(
+      { error: 'Too many orders from this connection. Please try again shortly.' },
+      { status: 429, headers: { 'Retry-After': String(limit.retryAfterSec) } }
+    );
+  }
+
   let body;
   try {
     body = await request.json();
   } catch {
     return bad('Malformed request body.');
   }
+
+  // Then prove a human is behind it, before anything is priced or recorded.
+  const human = await verifyHuman({
+    turnstileToken: body.turnstileToken,
+    challengeToken: body.challengeToken,
+    ip,
+  });
+  if (!human.ok) return bad(human.reason || 'Verification failed.');
 
   const customerName = String(body.customerName || '').trim();
   const customerPhone = String(body.customerPhone || '').replace(/[^\d+]/g, '');
@@ -44,6 +65,19 @@ export async function POST(request) {
     return bad('Please enter a delivery address.');
   }
   if (!Array.isArray(body.items) || body.items.length === 0) return bad('Your cart is empty.');
+
+  // Optional pinned coordinates. Rejected rather than silently dropped if
+  // malformed, so a bad pin never reaches a rider as a plausible-looking link.
+  let location = null;
+  if (body.customerLat !== null && body.customerLat !== undefined) {
+    const lat = Number(body.customerLat);
+    const lon = Number(body.customerLon);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return bad('Invalid pinned location.');
+    if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+      return bad('Pinned location is out of range.');
+    }
+    location = { lat: Number(lat.toFixed(6)), lon: Number(lon.toFixed(6)) };
+  }
 
   // Re-price everything from the server's copy of the menu — client prices are ignored.
   const items = [];
@@ -109,6 +143,7 @@ export async function POST(request) {
     customerName,
     customerPhone,
     customerAddress: orderType === 'delivery' ? customerAddress : '',
+    customerLocation: orderType === 'delivery' ? location : null,
     orderType,
     paymentMethod,
     notes,

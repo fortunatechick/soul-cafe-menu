@@ -36,6 +36,8 @@ export function buildPetPoojaPayload(order) {
             name: order.customerName,
             address: order.customerAddress || '',
             phone: order.customerPhone,
+            latitude: order.customerLocation ? String(order.customerLocation.lat) : '',
+            longitude: order.customerLocation ? String(order.customerLocation.lon) : '',
           },
         },
         Order: {

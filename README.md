@@ -274,6 +274,45 @@ On a repeat visit the checkout pre-fills name, phone and address, shows a
    feature work today with no backend. Stored on the customer's device and
    cleared by them.
 
+### Pinning a location on a map
+
+Next to **Use my location** is **Pin on map**, for when GPS is off or lands on
+the wrong side of the building. It is a small slippy map written by hand
+(`src/components/MapPicker.js`) rather than Leaflet or the Google Maps SDK — the
+project ships no UI dependencies, and all this needs is a pannable tile grid
+with a fixed centre crosshair, so the pinned point is simply the map's centre.
+
+Tiles come from OpenStreetMap, which asks for attribution (shown on the map) and
+light traffic; a busy store should move to a keyed provider. The chosen point is
+reverse-geocoded into the address field, sent with the order as
+`customerLocation`, passed to PetPooja as customer latitude/longitude, and added
+to the WhatsApp message as a Google Maps link the rider can tap. If geocoding
+fails the pin is still kept — the map link is useful on its own.
+
+### Keeping bots out
+
+Order placement is gated twice, in `/api/orders/place`:
+
+1. **A per-IP rate limit** (`src/lib/ratelimit.js`) — 6 orders per 10 minutes,
+   checked before any parsing. This is what actually caps a flood of fake
+   tickets, and it needs no third party. In-memory, so it counts per serverless
+   instance; a shared store is the upgrade at real traffic.
+2. **A human check** (`src/lib/botcheck.js`). With `TURNSTILE_SECRET_KEY` and
+   `NEXT_PUBLIC_TURNSTILE_SITE_KEY` set this is **Cloudflare Turnstile**, whose
+   token is verified server-side — free keys, a few minutes to set up, and the
+   only one of the two that is real protection.
+
+Without Turnstile keys the form falls back to a tick-box backed by an
+HMAC-signed, 15-minute token plus a minimum fill time. **Be clear-eyed about
+this**: it stops blind POSTing and replay, but a script that fetches a token
+before each order will pass it. It exists so the form is not wide open before
+the keys are added — it is not a substitute for them.
+
+The token is only ever a claim; it is verified server-side before an order
+exists. Verified by posting directly at the API: no token, an invented token and
+a forged signature are all rejected, and a genuine token used faster than a human
+could type is rejected too.
+
 ### PetPooja — not connected yet
 
 `src/lib/petpooja.js` builds the order in PetPooja's `save_order` shape and POSTs

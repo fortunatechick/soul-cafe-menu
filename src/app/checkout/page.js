@@ -12,6 +12,12 @@ import {
   lookupCustomer,
 } from '@/lib/api';
 import { loadCustomer, saveCustomer, forgetCustomer } from '@/lib/customer';
+import MapPicker from '@/components/MapPicker';
+import HumanCheck from '@/components/HumanCheck';
+
+// Falls back to the café itself, so the map always opens somewhere useful for
+// a local delivery rather than mid-ocean.
+const CAFE_LATLON = { lat: 19.1197, lon: 72.8464 };
 
 // Delivery is free — kept as a constant so reinstating a fee is one edit here
 // and one in the order API, which is the authority on what actually gets charged.
@@ -41,7 +47,12 @@ export default function CheckoutPage() {
 
   const [locating, setLocating] = useState(false);
   const [locateMsg, setLocateMsg] = useState('');
+  const [pinnedAt, setPinnedAt] = useState(null);   // { lat, lon }
+  const [mapOpen, setMapOpen] = useState(false);
+  const [mapBusy, setMapBusy] = useState(false);
+  const [mapError, setMapError] = useState('');
 
+  const [verification, setVerification] = useState({});
   const [knownCustomer, setKnownCustomer] = useState(null);
   const lookedUp = useRef(new Set());
 
@@ -108,6 +119,11 @@ export default function CheckoutPage() {
     return () => clearTimeout(t);
   }, [form.phone, lookupByPhone]);
 
+  const handleVerified = useCallback((token) => {
+    setVerification(token || {});
+    setFormError('');
+  }, []);
+
   function handleForget() {
     forgetCustomer();
     setKnownCustomer(null);
@@ -133,6 +149,7 @@ export default function CheckoutPage() {
           });
           setForm((f) => ({ ...f, address }));
           setFieldErrors((f) => ({ ...f, address: '' }));
+          setPinnedAt({ lat: pos.coords.latitude, lon: pos.coords.longitude });
           setLocateMsg('Found you — add your flat or building number.');
         } catch (err) {
           setLocateMsg(err.message || 'Could not turn that into an address.');
@@ -150,6 +167,26 @@ export default function CheckoutPage() {
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
     );
+  }
+
+  async function handleMapConfirm({ lat, lon }) {
+    setMapBusy(true);
+    setMapError('');
+    try {
+      const { address } = await reverseGeocode({ lat, lon });
+      setForm((f) => ({ ...f, address }));
+      setFieldErrors((f) => ({ ...f, address: '' }));
+      setPinnedAt({ lat, lon });
+      setMapOpen(false);
+      setLocateMsg('Pinned — add your flat or building number.');
+    } catch (err) {
+      // The pin is still worth keeping even with no readable address: the
+      // rider gets a map link either way.
+      setPinnedAt({ lat, lon });
+      setMapError(err.message || 'Could not name that spot — the pin is saved anyway.');
+    } finally {
+      setMapBusy(false);
+    }
   }
 
   // ---- coupon -------------------------------------------------------------
@@ -214,6 +251,10 @@ export default function CheckoutPage() {
       );
       return;
     }
+    if (!verification.turnstileToken && !verification.challengeToken) {
+      setFormError('Please complete the verification below first.');
+      return;
+    }
     if (!validate()) return;
 
     setSubmitting(true);
@@ -225,6 +266,10 @@ export default function CheckoutPage() {
         orderType,
         paymentMethod,
         couponCode: coupon?.code || null,
+        customerLat: pinnedAt?.lat ?? null,
+        customerLon: pinnedAt?.lon ?? null,
+        turnstileToken: verification.turnstileToken || null,
+        challengeToken: verification.challengeToken || null,
         notes: form.notes.trim(),
         items: lines.map((l) => ({
           menuItemId: l.id,
@@ -245,6 +290,7 @@ export default function CheckoutPage() {
       router.push('/confirmation');
     } catch (err) {
       setFormError(err.message || 'Could not place the order. Please try again.');
+      setVerification({});
       setSubmitting(false);
     }
   }
@@ -468,14 +514,26 @@ export default function CheckoutPage() {
                 <label className="field__label" htmlFor="address">
                   Delivery Address
                 </label>
-                <button
-                  type="button"
-                  className="field__action"
-                  onClick={handleUseLocation}
-                  disabled={locating}
-                >
-                  {locating ? 'Locating…' : '📍 Use my location'}
-                </button>
+                <span className="field__actions">
+                  <button
+                    type="button"
+                    className="field__action"
+                    onClick={handleUseLocation}
+                    disabled={locating}
+                  >
+                    {locating ? 'Locating…' : '📍 Use my location'}
+                  </button>
+                  <button
+                    type="button"
+                    className="field__action"
+                    onClick={() => {
+                      setMapError('');
+                      setMapOpen(true);
+                    }}
+                  >
+                    🗺️ Pin on map
+                  </button>
+                </span>
               </div>
               <textarea
                 id="address"
@@ -487,6 +545,19 @@ export default function CheckoutPage() {
               />
               {fieldErrors.address ? <p className="field__error">{fieldErrors.address}</p> : null}
               {locateMsg ? <p className="field__hint">{locateMsg}</p> : null}
+              {pinnedAt ? (
+                <p className="field__hint field__hint--pinned">
+                  📍 Location pinned ({pinnedAt.lat.toFixed(5)}, {pinnedAt.lon.toFixed(5)}) — sent
+                  to the café with your order.{' '}
+                  <button
+                    type="button"
+                    className="field__inline-clear"
+                    onClick={() => setPinnedAt(null)}
+                  >
+                    Clear
+                  </button>
+                </p>
+              ) : null}
             </div>
           ) : null}
 
@@ -503,9 +574,21 @@ export default function CheckoutPage() {
             />
           </div>
 
+          <HumanCheck onToken={handleVerified} />
+
           {formError ? <p className="form-error">{formError}</p> : null}
         </section>
       </form>
+
+      {mapOpen ? (
+        <MapPicker
+          initial={pinnedAt || CAFE_LATLON}
+          busy={mapBusy}
+          error={mapError}
+          onCancel={() => setMapOpen(false)}
+          onConfirm={handleMapConfirm}
+        />
+      ) : null}
 
       <div className="footer-cta">
         <div className="footer-cta__inner">
