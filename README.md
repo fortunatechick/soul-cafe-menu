@@ -233,6 +233,31 @@ Delivery and pickup are both free. On submit the order is validated and priced
 server-side, given an order number (`SOUL-XXXXXX`), and the confirmation page
 offers a pre-filled WhatsApp message to the café.
 
+### Recommendations ("Help me choose")
+
+A button under the search opens four questions — mood, hot/cold, flavours,
+budget — and scores the menu against the answers, showing up to six picks with
+an **Add** button (or a size picker for items with variations). It runs entirely
+in the browser: the menu is already loaded, so there is no request and no wait.
+
+**The POS export has no tags** — an item is a name, a description, a price and a
+category — so `src/lib/recommend.js` derives traits from the category plus
+keyword patterns over the name and description. That keeps `menu.json` the
+single source of truth: new items are tagged on the next export with no parallel
+list to maintain. The cost is that a badly-worded item gets badly tagged, which
+is why each pick shows *why* it was chosen rather than a score.
+
+Mood and hot/cold are hard filters (a hot drink is a wrong answer to "cold",
+however well it scores); flavour and budget are scored, then relaxed in stages
+if nothing matches, with the relaxation named in the results. Results are capped
+at two per category so the list does not come back as six cold brews.
+
+Keyword tagging needs care, and the tests caught real mistakes: `cheese` matched
+inside *cheesecake*, `masala` made chai savoury, `toast` matched "**Toasted**
+croissant", and `nut` matched *coconut* and *nutmeg*. The patterns use
+lookarounds for these. When adding menu items with unusual names, check the
+traits look sane.
+
 ### Coupons
 
 Codes live in `src/data/coupons.json` (percent or flat, minimum subtotal, cap,

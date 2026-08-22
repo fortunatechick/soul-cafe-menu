@@ -336,6 +336,107 @@ a { color: inherit; text-decoration: none; }
 .cat__panel[data-open='true'] { opacity: 1; }
 .cat__panel-inner { padding: 2px 12px 14px; }
 
+/* Help me choose */
+
+.helpme {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px 15px;
+  border-radius: var(--radius-lg);
+  background: var(--accent-glow);
+  border: 1px dashed var(--border-accent);
+  text-align: left;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.helpme:hover { background: var(--accent-glow-strong); border-color: var(--accent); }
+
+.helpme__spark { font-size: 1.15rem; flex: 0 0 auto; }
+
+.helpme__text { flex: 1 1 auto; display: flex; flex-direction: column; gap: 1px; }
+.helpme__text strong { font-size: 0.86rem; font-weight: 600; color: var(--text-primary); }
+.helpme__text span { font-size: 0.74rem; color: var(--text-secondary); }
+
+.helpme__go { flex: 0 0 auto; color: var(--accent); font-size: 1.05rem; }
+
+.sheet--tall { max-height: 88dvh; }
+
+.recq { margin-bottom: 16px; }
+
+.recq__label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 8px;
+}
+
+.recq__opts { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.recq__opt {
+  padding: 8px 13px;
+  border-radius: var(--radius-full);
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.recq__opt:hover { background: var(--bg-glass-strong); }
+
+.recq__opt--on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-inverse);
+  font-weight: 600;
+}
+
+.recq__go { margin-top: 6px; }
+.recq__actions { display: flex; gap: 10px; margin-top: 14px; }
+
+.rec {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.rec__photo {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+}
+
+.rec__photo--none {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.rec__body { flex: 1 1 auto; min-width: 0; }
+.rec__name { font-size: 0.86rem; font-weight: 500; line-height: 1.3; }
+
+.rec__why {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  text-transform: lowercase;
+}
+
+.rec__price { font-size: 0.8rem; font-weight: 600; color: var(--accent-light); margin-top: 3px; }
+
 /* ---------------- Featured rail ---------------- */
 
 .featured { padding-top: 18px; }

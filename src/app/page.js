@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { fetchMenu, formatINR } from '@/lib/api';
 import mediaManifest from '@/data/media-manifest.json';
+import RecommendSheet from '@/components/RecommendSheet';
 
 const STORE_NAME = process.env.NEXT_PUBLIC_STORE_NAME || 'Soul';
 
@@ -318,6 +319,7 @@ export default function MenuPage() {
   const [mounted, setMounted] = useState(() => new Set());
   const [activeCat, setActiveCat] = useState('');
   const [sheetItem, setSheetItem] = useState(null);
+  const [recommendOpen, setRecommendOpen] = useState(false);
 
   const railRef = useRef(null);
   const sectionRefs = useRef({});
@@ -527,6 +529,21 @@ export default function MenuPage() {
           </div>
         </div>
 
+        {!searching ? (
+          <button className="helpme" onClick={() => setRecommendOpen(true)}>
+            <span className="helpme__spark" aria-hidden="true">
+              ✨
+            </span>
+            <span className="helpme__text">
+              <strong>Not sure what to get?</strong>
+              <span>Answer four quick questions</span>
+            </span>
+            <span className="helpme__go" aria-hidden="true">
+              →
+            </span>
+          </button>
+        ) : null}
+
         {!searching ? <FeaturedRail items={featured} onAdd={handleAdd} /> : null}
 
         <div className="menu">
@@ -638,6 +655,14 @@ export default function MenuPage() {
             <span>{formatINR(subtotal)}</span>
           </Link>
         </div>
+      ) : null}
+
+      {recommendOpen ? (
+        <RecommendSheet
+          categories={menu.categories}
+          onAdd={handleAdd}
+          onClose={() => setRecommendOpen(false)}
+        />
       ) : null}
 
       {sheetItem ? (
