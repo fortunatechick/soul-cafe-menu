@@ -46,6 +46,42 @@ const emojiFor = (id) => CATEGORY_EMOJI[id] || '🍴';
 
 /* ---------------------------------- bits ---------------------------------- */
 
+/* Simple geometric glyphs rather than an icon package — the spec keeps the
+   dependency list empty, and these two are the only non-emoji marks needed. */
+function PinIcon() {
+  return (
+    <svg className="footer__icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 22s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="11" r="2.6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg className="footer__icon" viewBox="0 0 24 24" aria-hidden="true">
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
 function VegMark({ veg }) {
   return (
     <span
@@ -62,11 +98,11 @@ function SoulLogo() {
   const [src, setSrc] = useState('/soul-logo.png');
   return (
     <img
-      className="hero__logo"
+      className="hero__mark"
       src={src}
-      alt={`${STORE_NAME} logo`}
-      width={72}
-      height={72}
+      alt={`${STORE_NAME} — Speciality Coffees & Fusion Bakehouse`}
+      width={840}
+      height={452}
       onError={() => setSrc('/soul-logo.svg')}
     />
   );
@@ -444,8 +480,10 @@ export default function MenuPage() {
           <div className="hero__logo-wrap">
             <SoulLogo />
           </div>
-          <h1 className="hero__title">{menu.store?.name || STORE_NAME}</h1>
-          <p className="hero__subtitle">
+          {/* The lockup already carries the name and the tagline, so the
+              headings stay for search engines and screen readers only. */}
+          <h1 className="sr-only">{menu.store?.name || STORE_NAME}</h1>
+          <p className="sr-only">
             {menu.store?.tagline || 'Speciality Coffees & Fusion Bakehouse'}
           </p>
         </div>
@@ -565,6 +603,27 @@ export default function MenuPage() {
             Fusion Bakehouse
           </p>
           {menu.store?.address ? <p className="footer__address">{menu.store.address}</p> : null}
+
+          <div className="footer__links">
+            <a
+              className="footer__link"
+              href="https://maps.app.goo.gl/3uecwRSdbySQzTFA8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PinIcon />
+              Visit us
+            </a>
+            <a
+              className="footer__link"
+              href="https://www.instagram.com/soulthecafe/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramIcon />
+              Instagram
+            </a>
+          </div>
         </div>
       </footer>
 

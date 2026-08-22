@@ -165,8 +165,20 @@ The originals in `menu_images/` are committed so the set can be re-synced at a
 different size later. If the photo library grows much beyond this, consider
 keeping originals out of git and syncing them from Drive instead.
 
-**Logo:** `public/soul-logo.svg` is a placeholder. Drop the real
-`soul-logo.png` into `public/` and the hero picks it up automatically.
+**Logo:** the hero shows the full brand lockup — bird, wordmark and tagline —
+from `public/soul-logo.png`. It is generated from `soul_logo.jpg` in the project
+root: cropped to the artwork (the source has ~40% dead margin) and with the flat
+navy background keyed out, because the logo's `#1c3055` does not match the page's
+`#0d2233` and would otherwise show as a mismatched block. Any residual edge
+fringe is navy on a navy page, so it is invisible.
+
+Because the lockup already carries the name and the tagline, the hero's `<h1>`
+and tagline are `.sr-only` — present for search engines and screen readers, not
+drawn twice.
+
+`public/icon.png` is the favicon and touch icon: the bird alone, since the full
+lockup is unreadable at 32px. `public/soul-logo.svg` remains only as the fallback
+if the PNG ever fails to load.
 
 ---
 
