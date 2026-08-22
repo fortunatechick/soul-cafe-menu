@@ -95,14 +95,14 @@ function VegMark({ veg }) {
 }
 
 function SoulLogo() {
-  const [src, setSrc] = useState('/soul-logo.png');
+  const [src, setSrc] = useState('/soul-logo.jpg');
   return (
     <img
       className="hero__mark"
       src={src}
       alt={`${STORE_NAME} — Speciality Coffees & Fusion Bakehouse`}
-      width={840}
-      height={452}
+      width={1080}
+      height={1080}
       onError={() => setSrc('/soul-logo.svg')}
     />
   );

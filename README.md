@@ -165,20 +165,21 @@ The originals in `menu_images/` are committed so the set can be re-synced at a
 different size later. If the photo library grows much beyond this, consider
 keeping originals out of git and syncing them from Drive instead.
 
-**Logo:** the hero shows the full brand lockup — bird, wordmark and tagline —
-from `public/soul-logo.png`. It is generated from `soul_logo.jpg` in the project
-root: cropped to the artwork (the source has ~40% dead margin) and with the flat
-navy background keyed out, because the logo's `#1c3055` does not match the page's
-`#0d2233` and would otherwise show as a mismatched block. Any residual edge
-fringe is navy on a navy page, so it is invisible.
+**Logo:** the hero shows the brand lockup exactly as supplied —
+`public/soul-logo.jpg` is a byte-identical copy of `soul_logo.jpg` in the project
+root, uncropped and unaltered, and it is also the favicon and touch icon.
+
+Two things follow from using the original square. Its background is `#1c3055`
+while the page is `#0d2233`, so the artwork reads as a slightly lighter navy
+panel rather than sitting flush on the background. And roughly 40% of the square
+is empty margin, so the lockup is smaller than the space it occupies. Both are
+inherent to the source file; a trimmed or background-keyed variant would avoid
+them but would no longer be the logo as provided.
 
 Because the lockup already carries the name and the tagline, the hero's `<h1>`
 and tagline are `.sr-only` — present for search engines and screen readers, not
-drawn twice.
-
-`public/icon.png` is the favicon and touch icon: the bird alone, since the full
-lockup is unreadable at 32px. `public/soul-logo.svg` remains only as the fallback
-if the PNG ever fails to load.
+drawn twice. `public/soul-logo.svg` remains only as the fallback if the JPEG ever
+fails to load.
 
 ---
 
