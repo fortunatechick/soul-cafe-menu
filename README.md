@@ -273,6 +273,15 @@ scrolling phones already do better.
 
 Both are skipped under `prefers-reduced-motion`.
 
+**The page animations move opacity only, never transform.** A transform on
+`.page` — including the `translateY(0)` it settles on — makes that element the
+containing block for every `position: fixed` descendant. That pins the cart bar
+and both bottom sheets to the bottom of the whole document rather than the
+viewport: the bar stops floating and a sheet opens thousands of pixels off
+screen, leaving only its blurred backdrop over an apparently dead page. Nothing
+that wraps fixed children may carry a transform, a filter, or `will-change` on
+those properties.
+
 **The reveal state lives in React, not in a class poked onto the DOM.** `.cat`
 has a React-managed `className`, so an imperative `classList.add` is wiped by
 the next render — opening a section or typing in search rewrites that attribute
