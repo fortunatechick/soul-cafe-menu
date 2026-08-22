@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import {
   placeOrder,
+  fetchMenu,
   formatINR,
   validateCoupon,
   reverseGeocode,
@@ -32,7 +33,8 @@ const PAYMENT_OPTIONS = [
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { lines, hydrated, subtotal, stepQuantity, clearCart } = useCart();
+  const { lines, hydrated, subtotal, stepQuantity, setLinePrice, removeItem, clearCart } =
+    useCart();
 
   const [orderType, setOrderType] = useState('delivery');
   const [paymentMethod, setPaymentMethod] = useState('upi');
@@ -53,6 +55,8 @@ export default function CheckoutPage() {
   const [mapBusy, setMapBusy] = useState(false);
   const [mapError, setMapError] = useState('');
 
+  const [cartNotice, setCartNotice] = useState('');
+  const reconciled = useRef(false);
   const [verification, setVerification] = useState({});
   const [knownCustomer, setKnownCustomer] = useState(null);
   const lookedUp = useRef(new Set());
@@ -72,6 +76,66 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (hydrated && lines.length === 0 && !submitting) router.replace('/');
   }, [hydrated, lines.length, submitting, router]);
+
+  /**
+   * Check the cart against the live menu once, on arrival.
+   *
+   * The cart is held in sessionStorage and can be hours old, while the menu is
+   * regenerated from the POS. Two things go wrong without this: an item pulled
+   * from the menu is only rejected at submit, and a repriced item is charged at
+   * the new price by the server while the customer was shown the old one. Both
+   * are corrected here, before anyone commits to a total.
+   */
+  useEffect(() => {
+    if (!hydrated || reconciled.current || lines.length === 0) return;
+    reconciled.current = true;
+
+    let cancelled = false;
+    fetchMenu()
+      .then((menu) => {
+        if (cancelled) return;
+        const byId = new Map();
+        for (const c of menu.categories) for (const i of c.items) byId.set(i.id, i);
+
+        const removed = [];
+        const repriced = [];
+
+        for (const line of lines) {
+          const item = byId.get(line.id);
+          if (!item) {
+            removed.push(line.name);
+            removeItem(line.key);
+            continue;
+          }
+          const current = line.variation
+            ? item.variations?.find((v) => v.name === line.variation)?.price
+            : item.price;
+          if (current != null && current !== line.unitPrice) {
+            repriced.push(`${line.name} is now ${formatINR(current)}`);
+            setLinePrice(line.key, current);
+          }
+        }
+
+        if (removed.length || repriced.length) {
+          setCartNotice(
+            [
+              removed.length ? `${removed.join(', ')} left the menu and ${removed.length > 1 ? 'were' : 'was'} removed.` : '',
+              repriced.length ? `Prices changed: ${repriced.join(', ')}.` : '',
+            ]
+              .filter(Boolean)
+              .join(' ')
+          );
+        }
+      })
+      .catch(() => {
+        // Offline or the menu route failed: the order API re-prices anyway, so
+        // this is a nicety, not a gate.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [hydrated, lines, removeItem, setLinePrice]);
 
   const set = (key) => (e) => {
     setForm((f) => ({ ...f, [key]: e.target.value }));
@@ -326,6 +390,14 @@ export default function CheckoutPage() {
       <form className="container checkout" onSubmit={handleSubmit}>
         <section className="block">
           <h2 className="block__title">Your Order</h2>
+          {cartNotice ? (
+            <p className="cart-notice">
+              {cartNotice}{' '}
+              <button type="button" className="cart-notice__ok" onClick={() => setCartNotice('')}>
+                Got it
+              </button>
+            </p>
+          ) : null}
           {lines.map((l) => (
             <div className="lineitem" key={l.key}>
               <div className="lineitem__body">

@@ -358,6 +358,25 @@ reverse-geocoded into the address field, sent with the order as
 to the WhatsApp message as a Google Maps link the rider can tap. If geocoding
 fails the pin is still kept — the map link is useful on its own.
 
+### The cart is checked against the live menu
+
+The cart lives in `sessionStorage` and can be hours old, while `menu.json` is
+regenerated from the POS. On arriving at checkout the cart is reconciled once
+against `/api/menu`: an item that has left the menu is removed, and a price that
+has moved is corrected, both reported in a notice above the order.
+
+Without this the customer sees a total the server will not honour — the order
+API re-prices from its own copy, so a stale cart quietly charges a different
+amount — and a withdrawn item is only rejected at submit.
+
+### Touch targets
+
+Interactive controls are at least 40px on their short edge. Apple asks for 44
+and Google for 48dp; 44px category chips make the sticky rail tall enough to eat
+the top of the menu on a small phone, so 40 is the deliberate compromise and the
+rail scrolls. The menu page has no control under 40px; it previously had 241,
+with quantity steppers at 28px.
+
 ### Order limits
 
 `src/lib/limits.js` holds the caps, imported by both the cart and the order API

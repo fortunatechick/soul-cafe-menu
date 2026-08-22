@@ -157,7 +157,13 @@ a { color: inherit; text-decoration: none; }
 
 .chip {
   flex: 0 0 auto;
-  padding: 7px 14px;
+  /* 10px vertical takes the chip to ~40px tall. Apple asks for 44 and Google
+     48dp, but a 44px chip makes the sticky rail tall enough to eat the top of
+     the menu on a small phone; 40 is the compromise, and the rail scrolls. */
+  padding: 10px 15px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
   border-radius: var(--radius-full);
   background: var(--bg-glass);
   border: 1px solid var(--border);
@@ -213,7 +219,12 @@ a { color: inherit; text-decoration: none; }
 
 .search__clear {
   position: absolute;
-  right: 12px;
+  right: 6px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-muted);
   font-size: 1rem;
   line-height: 1;
@@ -240,6 +251,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .menu__toggle {
+  min-height: 40px;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -378,7 +390,8 @@ a { color: inherit; text-decoration: none; }
 .recq__opts { display: flex; flex-wrap: wrap; gap: 7px; }
 
 .recq__opt {
-  padding: 8px 13px;
+  min-height: 40px;
+  padding: 9px 14px;
   border-radius: var(--radius-full);
   background: var(--bg-glass);
   border: 1px solid var(--border);
@@ -642,8 +655,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ADD button */
 .add-btn {
-  min-width: 82px;
-  padding: 8px 14px;
+  min-width: 92px;
+  min-height: 40px;
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   background: var(--accent);
   color: var(--text-inverse);
@@ -671,7 +685,7 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  min-width: 82px;
+  min-width: 92px;
   border-radius: var(--radius-sm);
   background: var(--accent);
   color: var(--text-inverse);
@@ -679,8 +693,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .stepper__btn {
-  width: 28px;
-  height: 32px;
+  width: 32px;
+  height: 42px;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-inverse);
@@ -821,8 +835,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .topbar__back {
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-full);
   background: var(--bg-glass);
   border: 1px solid var(--border);
@@ -850,6 +864,26 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   color: var(--text-secondary);
   margin-bottom: 12px;
+}
+
+.cart-notice {
+  margin-bottom: 12px;
+  padding: 11px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.32);
+  color: var(--amber);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.cart-notice__ok {
+  min-height: 40px;
+  padding: 0 4px;
+  color: var(--text-primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .lineitem {
@@ -884,8 +918,8 @@ a { color: inherit; text-decoration: none; }
 
 .qty__btn {
   flex: 0 0 auto;
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   color: var(--accent);
   font-size: 0.95rem;
   font-weight: 700;
@@ -896,7 +930,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .qty__btn:hover { background: var(--accent-glow); }
-.qty__count { flex: 0 0 auto; min-width: 26px; text-align: center; font-size: 0.82rem; font-weight: 600; }
+.qty__count { flex: 0 0 auto; min-width: 30px; text-align: center; font-size: 0.82rem; font-weight: 600; }
 
 .totals {
   margin-top: 16px;
@@ -1074,6 +1108,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .coupon__remove {
+  min-height: 40px;
+  padding: 6px 4px;
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -1106,6 +1142,8 @@ a { color: inherit; text-decoration: none; }
 
 .welcome__clear {
   flex: 0 0 auto;
+  min-height: 40px;
+  padding: 6px 4px;
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--accent);
@@ -1129,6 +1167,8 @@ a { color: inherit; text-decoration: none; }
 
 .field__action {
   flex: 0 0 auto;
+  min-height: 40px;
+  padding: 6px 2px;
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--accent);
@@ -1190,8 +1230,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .mappick__zoom button {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
   background: rgba(13, 34, 51, 0.88);
   border: 1px solid var(--border-hover);

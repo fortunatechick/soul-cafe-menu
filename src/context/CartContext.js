@@ -91,6 +91,11 @@ export function CartProvider({ children }) {
     });
   }
 
+  /** Correct a line's price when the menu has moved under the cart. */
+  function setLinePrice(key, unitPrice) {
+    setLines((prev) => prev.map((l) => (l.key === key ? { ...l, unitPrice } : l)));
+  }
+
   function clearCart() {
     setLines([]);
     try {
@@ -118,6 +123,7 @@ export function CartProvider({ children }) {
     removeItem,
     updateQuantity,
     stepQuantity,
+    setLinePrice,
     clearCart,
     quantityOfItem,
     totalItems,
