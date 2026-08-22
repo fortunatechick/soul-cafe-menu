@@ -1,6 +1,7 @@
 import menu from '@/data/menu.json';
 import { generateOrderNumber, saveOrder } from '@/lib/store';
 import { pushToPetPooja } from '@/lib/petpooja';
+import { evaluateCoupon } from '@/lib/coupons';
 
 export const dynamic = 'force-dynamic';
 
@@ -88,6 +89,19 @@ export async function POST(request) {
   const subtotal = items.reduce((n, it) => n + it.lineTotal, 0);
   const deliveryCharge = orderType === 'delivery' ? DELIVERY_CHARGE : 0;
 
+  // The coupon is re-evaluated here against the server's own subtotal. Whatever
+  // discount the browser thinks it earned is ignored entirely.
+  let discount = 0;
+  let couponCode = null;
+  if (body.couponCode) {
+    const result = evaluateCoupon(body.couponCode, { subtotal, orderType });
+    if (!result.ok) return bad(result.message);
+    discount = result.discount;
+    couponCode = result.coupon.code;
+  }
+
+  const total = Math.max(0, subtotal - discount + deliveryCharge);
+
   const order = {
     orderNumber: generateOrderNumber(),
     placedAt: new Date().toISOString(),
@@ -100,8 +114,10 @@ export async function POST(request) {
     notes,
     items,
     subtotal,
+    discount,
+    couponCode,
     deliveryCharge,
-    total: subtotal + deliveryCharge,
+    total,
   };
 
   const pos = await pushToPetPooja(order);

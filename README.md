@@ -233,6 +233,47 @@ Delivery and pickup are both free. On submit the order is validated and priced
 server-side, given an order number (`SOUL-XXXXXX`), and the confirmation page
 offers a pre-filled WhatsApp message to the café.
 
+### Coupons
+
+Codes live in `src/data/coupons.json` (percent or flat, minimum subtotal, cap,
+expiry, and which order types they apply to). `POST /api/coupons/validate` backs
+the live feedback in the cart, and `/api/orders/place` **re-evaluates the same
+coupon against its own subtotal** before charging — the browser sends only a
+code, never an amount, so a forged discount is impossible by construction. The
+resolved amount is passed to PetPooja as `discount_total` plus a Discount entry
+so the POS total reconciles.
+
+PetPooja owns discounts in its own system but exposes them through the POS API
+rather than a public offers endpoint, so this file is the source of truth until
+credentials exist.
+
+### Location autofill
+
+The address field has a **Use my location** button: the browser supplies
+coordinates, `/api/geocode` turns them into an address. PetPooja has no
+geocoder — it stores whatever address string it is given — so this uses a
+mapping provider. With `GOOGLE_MAPS_API_KEY` set it uses Google (better Indian
+street-level data); without it, OpenStreetMap Nominatim, which needs no key but
+rate-limits to roughly one request per second. The call is proxied server-side
+so a key never reaches the browser. Permission denial and lookup failure both
+fall back to typing, with a message rather than a dead button.
+
+### Returning customers
+
+On a repeat visit the checkout pre-fills name, phone and address, shows a
+"Welcome back" line, and offers **Not you?** to clear it. Sources, best first:
+
+1. **PetPooja** — `fetchCustomer()` in `src/lib/petpooja.js`, the only source
+   that also knows about orders placed in-store or over the phone. Inactive
+   until `PETPOOJA_CUSTOMER_API_URL` and the credentials are set; the endpoint
+   and payload differ between PetPooja's POS and Ordering API tiers, so confirm
+   against the café's own account before enabling.
+2. **A recent order** for that phone number, via the in-memory store — which
+   works within a server instance but not across redeploys.
+3. **The browser's own memory** (`localStorage`), which is what makes the
+   feature work today with no backend. Stored on the customer's device and
+   cleared by them.
+
 ### PetPooja — not connected yet
 
 `src/lib/petpooja.js` builds the order in PetPooja's `save_order` shape and POSTs

@@ -39,3 +39,12 @@ export function getOrder(orderNumber) {
 export function listOrders() {
   return [...orders.values()].sort((a, b) => b.placedAt.localeCompare(a.placedAt));
 }
+
+/** Most recent order for a phone number, used to pre-fill a repeat order. */
+export function findOrderByPhone(phone) {
+  const digits = String(phone || '').replace(/[^\d]/g, '');
+  if (!digits) return null;
+  return (
+    listOrders().find((o) => String(o.customerPhone).replace(/[^\d]/g, '') === digits) || null
+  );
+}

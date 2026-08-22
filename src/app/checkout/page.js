@@ -1,10 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { placeOrder, formatINR } from '@/lib/api';
+import {
+  placeOrder,
+  formatINR,
+  validateCoupon,
+  reverseGeocode,
+  lookupCustomer,
+} from '@/lib/api';
+import { loadCustomer, saveCustomer, forgetCustomer } from '@/lib/customer';
 
 // Delivery is free — kept as a constant so reinstating a fee is one edit here
 // and one in the order API, which is the authority on what actually gets charged.
@@ -27,8 +34,20 @@ export default function CheckoutPage() {
   const [formError, setFormError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
+  const [couponInput, setCouponInput] = useState('');
+  const [coupon, setCoupon] = useState(null);       // { code, discount }
+  const [couponMsg, setCouponMsg] = useState('');
+  const [couponBusy, setCouponBusy] = useState(false);
+
+  const [locating, setLocating] = useState(false);
+  const [locateMsg, setLocateMsg] = useState('');
+
+  const [knownCustomer, setKnownCustomer] = useState(null);
+  const lookedUp = useRef(new Set());
+
   const deliveryCharge = orderType === 'delivery' ? DELIVERY_CHARGE : 0;
-  const total = subtotal + deliveryCharge;
+  const discount = coupon?.discount || 0;
+  const total = Math.max(0, subtotal - discount + deliveryCharge);
 
   // A few items the café only hands over at the counter.
   const pickupOnly = lines.filter((l) => l.deliveryAvailable === false);
@@ -43,6 +62,129 @@ export default function CheckoutPage() {
     setForm((f) => ({ ...f, [key]: e.target.value }));
     setFieldErrors((f) => ({ ...f, [key]: '' }));
   };
+
+  // ---- returning customer -------------------------------------------------
+
+  // Pre-fill from whatever this browser remembers, so a regular lands on a
+  // filled-in form. A server-side match (PetPooja, or a recent order) is
+  // preferred once a phone number is typed, since it also works on a new phone.
+  useEffect(() => {
+    const saved = loadCustomer();
+    if (!saved) return;
+    setKnownCustomer({ ...saved, source: 'device' });
+    setForm((f) => ({
+      ...f,
+      name: f.name || saved.name || '',
+      phone: f.phone || saved.phone || '',
+      address: f.address || saved.address || '',
+    }));
+  }, []);
+
+  const lookupByPhone = useCallback(
+    async (digits) => {
+      if (lookedUp.current.has(digits)) return;
+      lookedUp.current.add(digits);
+      try {
+        const { customer, source } = await lookupCustomer(digits);
+        if (!customer) return;
+        setKnownCustomer({ ...customer, source });
+        setForm((f) => ({
+          ...f,
+          name: f.name.trim() || customer.name || '',
+          address: f.address.trim() || customer.address || '',
+        }));
+      } catch {
+        // 404 just means we have not seen this number - not worth surfacing
+      }
+    },
+    []
+  );
+
+  // Look up once the number is complete, not on every keystroke.
+  useEffect(() => {
+    const digits = form.phone.replace(/[^\d]/g, '');
+    if (digits.length < 10) return undefined;
+    const t = setTimeout(() => lookupByPhone(digits), 500);
+    return () => clearTimeout(t);
+  }, [form.phone, lookupByPhone]);
+
+  function handleForget() {
+    forgetCustomer();
+    setKnownCustomer(null);
+    lookedUp.current.clear();
+    setForm({ name: '', phone: '', address: '', notes: form.notes });
+  }
+
+  // ---- location -----------------------------------------------------------
+
+  function handleUseLocation() {
+    if (!navigator.geolocation) {
+      setLocateMsg('This browser cannot share a location.');
+      return;
+    }
+    setLocating(true);
+    setLocateMsg('');
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const { address } = await reverseGeocode({
+            lat: pos.coords.latitude,
+            lon: pos.coords.longitude,
+          });
+          setForm((f) => ({ ...f, address }));
+          setFieldErrors((f) => ({ ...f, address: '' }));
+          setLocateMsg('Found you — add your flat or building number.');
+        } catch (err) {
+          setLocateMsg(err.message || 'Could not turn that into an address.');
+        } finally {
+          setLocating(false);
+        }
+      },
+      (err) => {
+        setLocating(false);
+        setLocateMsg(
+          err.code === err.PERMISSION_DENIED
+            ? 'Location permission denied — type the address instead.'
+            : 'Could not get your location — type the address instead.'
+        );
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    );
+  }
+
+  // ---- coupon -------------------------------------------------------------
+
+  async function handleApplyCoupon() {
+    const code = couponInput.trim();
+    if (!code) return;
+    setCouponBusy(true);
+    setCouponMsg('');
+    try {
+      const result = await validateCoupon({ code, subtotal, orderType });
+      setCoupon({ code: result.coupon.code, discount: result.discount });
+      setCouponMsg(result.message);
+    } catch (err) {
+      setCoupon(null);
+      setCouponMsg(err.message || "That code isn't valid.");
+    } finally {
+      setCouponBusy(false);
+    }
+  }
+
+  function handleRemoveCoupon() {
+    setCoupon(null);
+    setCouponInput('');
+    setCouponMsg('');
+  }
+
+  // A coupon can stop qualifying when the cart or order type changes, so drop
+  // it and make the customer re-apply rather than showing a stale discount.
+  useEffect(() => {
+    if (!coupon) return;
+    setCoupon(null);
+    setCouponMsg('Cart changed — apply your code again.');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subtotal, orderType]);
 
   function validate() {
     const errors = {};
@@ -82,6 +224,7 @@ export default function CheckoutPage() {
         customerAddress: orderType === 'delivery' ? form.address.trim() : '',
         orderType,
         paymentMethod,
+        couponCode: coupon?.code || null,
         notes: form.notes.trim(),
         items: lines.map((l) => ({
           menuItemId: l.id,
@@ -92,6 +235,11 @@ export default function CheckoutPage() {
         })),
       });
 
+      saveCustomer({
+        name: order.customerName,
+        phone: order.customerPhone,
+        address: order.customerAddress,
+      });
       sessionStorage.setItem('soulmenu_last_order', JSON.stringify(order));
       clearCart();
       router.push('/confirmation');
@@ -157,11 +305,58 @@ export default function CheckoutPage() {
             </div>
           ))}
 
+          <div className="coupon">
+            {coupon ? (
+              <div className="coupon__applied">
+                <span className="coupon__tag">🎟️ {coupon.code}</span>
+                <span className="coupon__saved">−{formatINR(coupon.discount)}</span>
+                <button type="button" className="coupon__remove" onClick={handleRemoveCoupon}>
+                  Remove
+                </button>
+              </div>
+            ) : (
+              <div className="coupon__row">
+                <input
+                  className="coupon__input"
+                  value={couponInput}
+                  onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handleApplyCoupon();
+                    }
+                  }}
+                  placeholder="Coupon code"
+                  aria-label="Coupon code"
+                  autoCapitalize="characters"
+                  autoComplete="off"
+                />
+                <button
+                  type="button"
+                  className="coupon__apply"
+                  onClick={handleApplyCoupon}
+                  disabled={couponBusy || !couponInput.trim()}
+                >
+                  {couponBusy ? '…' : 'Apply'}
+                </button>
+              </div>
+            )}
+            {couponMsg ? (
+              <p className={`coupon__msg${coupon ? ' coupon__msg--ok' : ''}`}>{couponMsg}</p>
+            ) : null}
+          </div>
+
           <div className="totals">
             <div className="totals__row">
               <span>Subtotal</span>
               <span>{formatINR(subtotal)}</span>
             </div>
+            {discount > 0 ? (
+              <div className="totals__row totals__row--discount">
+                <span>Discount · {coupon.code}</span>
+                <span>−{formatINR(discount)}</span>
+              </div>
+            ) : null}
             <div className="totals__row">
               <span>{orderType === 'delivery' ? 'Delivery' : 'Pickup'}</span>
               <span>{deliveryCharge ? formatINR(deliveryCharge) : 'Free'}</span>
@@ -224,6 +419,18 @@ export default function CheckoutPage() {
         <section className="block">
           <h2 className="block__title">Your Details</h2>
 
+          {knownCustomer ? (
+            <div className="welcome">
+              <span className="welcome__text">
+                👋 Welcome back{knownCustomer.name ? `, ${knownCustomer.name.split(' ')[0]}` : ''} —
+                we&apos;ve filled in your details.
+              </span>
+              <button type="button" className="welcome__clear" onClick={handleForget}>
+                Not you?
+              </button>
+            </div>
+          ) : null}
+
           <div className="field">
             <label className="field__label" htmlFor="name">
               Name
@@ -257,9 +464,19 @@ export default function CheckoutPage() {
 
           {orderType === 'delivery' ? (
             <div className="field">
-              <label className="field__label" htmlFor="address">
-                Delivery Address
-              </label>
+              <div className="field__labelrow">
+                <label className="field__label" htmlFor="address">
+                  Delivery Address
+                </label>
+                <button
+                  type="button"
+                  className="field__action"
+                  onClick={handleUseLocation}
+                  disabled={locating}
+                >
+                  {locating ? 'Locating…' : '📍 Use my location'}
+                </button>
+              </div>
               <textarea
                 id="address"
                 className={`field__textarea${fieldErrors.address ? ' field__textarea--error' : ''}`}
@@ -269,6 +486,7 @@ export default function CheckoutPage() {
                 autoComplete="street-address"
               />
               {fieldErrors.address ? <p className="field__error">{fieldErrors.address}</p> : null}
+              {locateMsg ? <p className="field__hint">{locateMsg}</p> : null}
             </div>
           ) : null}
 

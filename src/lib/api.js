@@ -34,4 +34,19 @@ export function verifyOrder(orderNumber) {
   return request(`/api/orders/verify/${encodeURIComponent(orderNumber)}`);
 }
 
+export function validateCoupon({ code, subtotal, orderType }) {
+  return request('/api/coupons/validate', {
+    method: 'POST',
+    body: JSON.stringify({ code, subtotal, orderType }),
+  });
+}
+
+export function reverseGeocode({ lat, lon }) {
+  return request(`/api/geocode?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`);
+}
+
+export function lookupCustomer(phone) {
+  return request(`/api/customers/${encodeURIComponent(phone)}`);
+}
+
 export const formatINR = (n) => `₹${Number(n || 0).toLocaleString('en-IN')}`;

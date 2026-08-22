@@ -1,0 +1,35 @@
+{
+  "coupons": [
+    {
+      "code": "SOUL10",
+      "type": "percent",
+      "value": 10,
+      "maxDiscount": 100,
+      "minSubtotal": 300,
+      "orderTypes": ["delivery", "pickup"],
+      "active": true,
+      "expiresOn": "2026-12-31",
+      "description": "10% off orders over ₹300, capped at ₹100"
+    },
+    {
+      "code": "FIRSTSIP",
+      "type": "flat",
+      "value": 75,
+      "minSubtotal": 400,
+      "orderTypes": ["delivery", "pickup"],
+      "active": true,
+      "expiresOn": "2026-12-31",
+      "description": "₹75 off your first order over ₹400"
+    },
+    {
+      "code": "PICKUP50",
+      "type": "flat",
+      "value": 50,
+      "minSubtotal": 250,
+      "orderTypes": ["pickup"],
+      "active": true,
+      "expiresOn": "2026-12-31",
+      "description": "₹50 off pickup orders over ₹250"
+    }
+  ]
+}

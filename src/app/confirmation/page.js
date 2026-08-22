@@ -62,6 +62,9 @@ export default function ConfirmationPage() {
       (i) => `${i.quantity} × ${i.itemName}${i.variation ? ` (${i.variation})` : ''} — ${formatINR(i.lineTotal)}`
     ),
     '',
+    ...(order.discount > 0
+      ? [`Discount${order.couponCode ? ` (${order.couponCode})` : ''}: -${formatINR(order.discount)}`]
+      : []),
     `Total: ${formatINR(order.total)}`,
   ].join('\n');
 
@@ -89,6 +92,12 @@ export default function ConfirmationPage() {
               <span>{formatINR(i.lineTotal)}</span>
             </div>
           ))}
+          {order.discount > 0 ? (
+            <div className="receipt__row receipt__row--discount">
+              <span>Discount{order.couponCode ? ` · ${order.couponCode}` : ''}</span>
+              <span>−{formatINR(order.discount)}</span>
+            </div>
+          ) : null}
           <div className="receipt__row">
             <span>{order.orderType === 'delivery' ? 'Delivery' : 'Pickup'}</span>
             <span>{order.deliveryCharge ? formatINR(order.deliveryCharge) : 'Free'}</span>

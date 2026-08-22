@@ -51,7 +51,7 @@ export function buildPetPoojaPayload(order) {
             payment_type: PAYMENT_CODE[order.paymentMethod]?.type ?? 1,
             table_no: '',
             no_of_persons: '0',
-            discount_total: '0',
+            discount_total: String(order.discount || 0),
             tax_total: '0',
             discount_type: '',
             total: String(order.total),
@@ -82,7 +82,18 @@ export function buildPetPoojaPayload(order) {
           })),
         },
         Tax: { details: [] },
-        Discount: { details: [] },
+        Discount: {
+          details: order.discount
+            ? [
+                {
+                  id: order.couponCode || 'COUPON',
+                  title: order.couponCode || 'Coupon',
+                  type: 'F',
+                  price: String(order.discount),
+                },
+              ]
+            : [],
+        },
       },
     },
   };
@@ -114,3 +125,59 @@ export async function pushToPetPooja(order) {
 }
 
 export const paymentLabel = (method) => PAYMENT_CODE[method]?.label || method;
+
+/**
+ * Look a customer up by phone so a returning order can be pre-filled.
+ *
+ * PetPooja keeps customer records against the restaurant, but reaching them
+ * needs the account's API credentials, and the exact endpoint differs between
+ * PetPooja's POS and Ordering APIs. Until the café's credentials and API tier
+ * are known this reports `configured: false`, and the checkout falls back to
+ * what the browser itself remembers.
+ *
+ * When the integration is turned on, replace the body with the real call and
+ * return { configured: true, customer: { name, phone, address } | null }.
+ */
+export async function fetchCustomer(phone) {
+  const configured = Boolean(
+    process.env.PETPOOJA_APP_KEY &&
+      process.env.PETPOOJA_ACCESS_TOKEN &&
+      process.env.PETPOOJA_CUSTOMER_API_URL
+  );
+
+  if (!configured) {
+    return { configured: false, customer: null, reason: 'PetPooja credentials not configured' };
+  }
+
+  try {
+    const res = await fetch(process.env.PETPOOJA_CUSTOMER_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        app_key: process.env.PETPOOJA_APP_KEY,
+        app_secret: process.env.PETPOOJA_APP_SECRET || '',
+        access_token: process.env.PETPOOJA_ACCESS_TOKEN,
+        restID: process.env.PETPOOJA_RESTAURANT_ID || '',
+        phone,
+      }),
+      cache: 'no-store',
+    });
+
+    if (!res.ok) return { configured: true, customer: null, reason: `POS returned ${res.status}` };
+
+    const data = await res.json().catch(() => null);
+    const found = data?.customer || data?.data || null;
+    if (!found) return { configured: true, customer: null };
+
+    return {
+      configured: true,
+      customer: {
+        name: found.name || found.customer_name || '',
+        phone: found.phone || phone,
+        address: found.address || found.customer_address || '',
+      },
+    };
+  } catch (err) {
+    return { configured: true, customer: null, reason: err.message };
+  }
+}
