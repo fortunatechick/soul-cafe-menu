@@ -771,8 +771,11 @@ a { color: inherit; text-decoration: none; }
 
 .footer__address { color: var(--text-muted); max-width: 300px; margin: 6px auto 0; }
 
+/* Three pills no longer fit one line on a small phone. Let the row wrap rather
+   than squeezing them until the label breaks inside the pill. */
 .footer__links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
   margin-top: 16px;
@@ -781,6 +784,7 @@ a { color: inherit; text-decoration: none; }
 .footer__link {
   display: inline-flex;
   align-items: center;
+  white-space: nowrap;
   gap: 7px;
   padding: 9px 15px;
   border-radius: var(--radius-full);

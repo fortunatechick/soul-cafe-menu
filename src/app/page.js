@@ -6,6 +6,7 @@ import { useCart } from '@/context/CartContext';
 import { fetchMenu, formatINR } from '@/lib/api';
 import mediaManifest from '@/data/media-manifest.json';
 import RecommendSheet from '@/components/RecommendSheet';
+import { WA_LINK, formatPhone } from '@/lib/contact';
 
 const STORE_NAME = process.env.NEXT_PUBLIC_STORE_NAME || 'Soul';
 
@@ -105,6 +106,24 @@ function BrewLoader() {
       <span className="brew__steam brew__steam--b" />
       <span className="brew__steam brew__steam--c" />
     </div>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg className="footer__icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M3.5 20.5l1.2-4.1a8 8 0 1 1 3 2.9l-4.2 1.2z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9 8.6c.3-.1.6 0 .8.3l.7 1.2c.1.3.1.6-.1.8l-.4.5c-.1.2-.2.4 0 .7.4.7 1.2 1.5 1.9 1.9.2.1.5.1.7-.1l.5-.4c.2-.2.5-.2.8-.1l1.2.7c.3.2.4.5.3.8-.2.7-.9 1.2-1.7 1.2-2.4 0-5.6-3.2-5.6-5.6 0-.8.4-1.6 1.2-1.8z"
+        fill="currentColor"
+      />
+    </svg>
   );
 }
 
@@ -738,6 +757,15 @@ export default function MenuPage() {
             >
               <InstagramIcon />
               Instagram
+            </a>
+            <a
+              className="footer__link"
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <WhatsAppIcon />
+              {formatPhone()}
             </a>
           </div>
         </div>

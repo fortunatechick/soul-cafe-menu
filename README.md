@@ -182,6 +182,12 @@ The originals in `menu_images/` are committed so the set can be re-synced at a
 different size later. If the photo library grows much beyond this, consider
 keeping originals out of git and syncing them from Drive instead.
 
+**Contact:** the WhatsApp number lives in `src/lib/contact.js` — the footer pill
+and the confirmation page's ordering link both read it from there, so it cannot
+be changed in one place and missed in the other. Override with
+`NEXT_PUBLIC_WA_NUMBER` (digits only, country code first); the displayed
+formatting is derived from it.
+
 **Logo:** `public/soul-logo-bgreemoved-upscaled.png` — the brand lockup supplied
 with its background already removed, so its transparency sits on whatever the
 page background is. 1326x752, shown at 300px wide in the hero, and reused as the
@@ -453,7 +459,7 @@ Project → Settings → Environment Variables.
 
 | Variable | Value | Required |
 |---|---|---|
-| `NEXT_PUBLIC_WA_NUMBER` | `917032257595` | Yes |
+| `NEXT_PUBLIC_WA_NUMBER` | `919326957595` | Yes |
 | `NEXT_PUBLIC_STORE_NAME` | `Soul` | Optional |
 | `NEXT_PUBLIC_API_URL` | *(blank)* | No — relative routes |
 | `PETPOOJA_*` | see `.env.example` | Only when the POS is wired up |

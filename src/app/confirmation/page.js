@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { formatINR } from '@/lib/api';
-
-const WA_NUMBER = process.env.NEXT_PUBLIC_WA_NUMBER || '917032257595';
+import { WA_NUMBER } from '@/lib/contact';
 
 const PAYMENT_LABEL = {
   upi: 'UPI',
