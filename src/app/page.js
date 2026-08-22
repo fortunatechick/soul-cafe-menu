@@ -9,6 +9,13 @@ import RecommendSheet from '@/components/RecommendSheet';
 
 const STORE_NAME = process.env.NEXT_PUBLIC_STORE_NAME || 'Soul';
 
+// The menu is a static JSON route and usually answers in well under a second —
+// not long enough to read "Curating the menu…", let alone watch the pour. Hold
+// the splash for one full pour cycle. Skipped for anyone who has asked for
+// reduced motion, where the animation is stilled and the wait would just be a
+// frozen screen.
+const SPLASH_MIN_MS = 1800;
+
 /* Category glyphs — cheap personality, and they make the collapsed list
    scannable at a glance instead of being 29 identical rows of text. */
 const CATEGORY_EMOJI = {
@@ -80,6 +87,24 @@ function InstagramIcon() {
       <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
       <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
     </svg>
+  );
+}
+
+/** Coffee pouring into a cup — the loading state, in place of a spinner. */
+function BrewLoader() {
+  return (
+    <div className="brew" role="img" aria-label="Pouring coffee">
+      <span className="brew__spout" />
+      <span className="brew__pour" />
+      <span className="brew__cup">
+        <span className="brew__fill" />
+      </span>
+      <span className="brew__handle" />
+      <span className="brew__saucer" />
+      <span className="brew__steam brew__steam--a" />
+      <span className="brew__steam brew__steam--b" />
+      <span className="brew__steam brew__steam--c" />
+    </div>
   );
 }
 
@@ -327,15 +352,25 @@ export default function MenuPage() {
   const load = useCallback(() => {
     setError('');
     setMenu(null);
+    const startedAt = Date.now();
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
     fetchMenu()
       .then((data) => {
-        setMenu(data);
-        const first = data.categories[0]?.id;
-        if (first) {
-          setOpen(new Set([first]));
-          setMounted(new Set([first]));
-          setActiveCat(first);
-        }
+        const show = () => {
+          setMenu(data);
+          const first = data.categories[0]?.id;
+          if (first) {
+            setOpen(new Set([first]));
+            setMounted(new Set([first]));
+            setActiveCat(first);
+          }
+        };
+        const wait = reduceMotion ? 0 : Math.max(0, SPLASH_MIN_MS - (Date.now() - startedAt));
+        if (wait) setTimeout(show, wait);
+        else show();
       })
       .catch((e) => setError(e.message || 'Could not load the menu.'));
   }, []);
@@ -464,7 +499,7 @@ export default function MenuPage() {
     return (
       <main className="page">
         <div className="state">
-          <div className="spinner" />
+          <BrewLoader />
           <p className="state__text">Curating the menu…</p>
         </div>
       </main>

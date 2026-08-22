@@ -249,7 +249,8 @@ is why each pick shows *why* it was chosen rather than a score.
 
 Mood and hot/cold are hard filters (a hot drink is a wrong answer to "cold",
 however well it scores); flavour and budget are scored, then relaxed in stages
-if nothing matches, with the relaxation named in the results. Results are capped
+if nothing matches, with the relaxation named in the results. Budget is two
+options — under ₹350, which covers 187 of 211 items, or no limit. Results are capped
 at two per category so the list does not come back as six cold brews.
 
 Keyword tagging needs care, and the tests caught real mistakes: `cheese` matched
@@ -257,6 +258,18 @@ inside *cheesecake*, `masala` made chai savoury, `toast` matched "**Toasted**
 croissant", and `nut` matched *coconut* and *nutmeg*. The patterns use
 lookarounds for these. When adding menu items with unusual names, check the
 traits look sane.
+
+### The loading screen
+
+`BrewLoader` in `src/app/page.js` is a CSS-only coffee pour — stream, filling
+cup, steam — on a 1.8s loop, in place of the old spinner. The menu is a static
+JSON route that normally answers in a fraction of that, so the splash is held
+for `SPLASH_MIN_MS` (1800ms, one full pour) before the menu renders. Anyone with
+`prefers-reduced-motion` skips the wait, since the animation is stilled for them
+and the hold would just be a frozen screen.
+
+Raise or drop `SPLASH_MIN_MS` to taste; set it to 0 to show the menu the moment
+it arrives.
 
 ### Coupons
 
