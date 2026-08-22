@@ -165,30 +165,18 @@ The originals in `menu_images/` are committed so the set can be re-synced at a
 different size later. If the photo library grows much beyond this, consider
 keeping originals out of git and syncing them from Drive instead.
 
-**Logo:** `public/soul-logo.png` is the supplied lockup, recoloured onto the
-site's `--bg-primary` and cropped to the artwork. The source square is ~40% empty
-above and below the mark; that dead band is trimmed (full width kept), leaving a
-1080x613 landscape lockup that sits flush on the page with no panel and no glow
-behind it. The crop follows the artwork's own extent plus padding rather than
-fixed pixel numbers, so it survives the source being re-exported.
+**Logo:** `public/soul-logo-bgreemoved-upscaled.png` — the brand lockup supplied
+with its background already removed, so its transparency sits on whatever the
+page background is. 1326x752, shown at 300px wide in the hero, and reused as the
+favicon and touch icon.
 
-Regenerate it from `soul_logo.jpg` with:
+Because the lockup already carries the name and the tagline, the hero's `<h1>`
+and tagline are `.sr-only` — present for search engines and screen readers, not
+drawn twice. `public/soul-logo.svg` remains only as the fallback if the PNG ever
+fails to load.
 
-```bash
-python scripts/make-logo.py
-```
-
-Rather than keying the old background out and recompositing (which leaves navy
-fringes around the letterforms), it applies the difference directly:
-`out = src + (1 - a) * (new_bg - old_bg)`, where `a` is each pixel's coverage.
-Fully-background pixels land exactly on the new colour, solid artwork is
-untouched, and anti-aliased edges blend without a halo. Verified by sampling the
-rendered image: corner `#0d2233`, matching the page exactly.
-
-The same file is the favicon and touch icon. Because the lockup already carries
-the name and the tagline, the hero's `<h1>` and tagline are `.sr-only` — present
-for search engines and screen readers, not drawn twice. `public/soul-logo.svg`
-remains only as the fallback if the PNG ever fails to load.
+To swap the logo, drop a new file into `public/` and update the two references
+(`src/app/page.js` for the hero, `src/app/layout.js` for the icons).
 
 ---
 
