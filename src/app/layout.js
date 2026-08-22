@@ -6,11 +6,15 @@ const DESCRIPTION =
   'Browse the menu and order from Soul — Speciality Coffees & Fusion Bakehouse.';
 
 // og:image has to be an absolute URL, so the deployed origin must be known at
-// build time. Vercel injects VERCEL_URL; set NEXT_PUBLIC_SITE_URL once a custom
-// domain is attached, since VERCEL_URL points at the per-deployment hostname.
+// build time — and it has to be the *stable* one. VERCEL_URL is deliberately
+// not used: it is the per-deployment hostname, which changes on every push,
+// and link previews are cached per URL. VERCEL_PROJECT_PRODUCTION_URL is the
+// production domain; NEXT_PUBLIC_SITE_URL overrides it for a custom domain.
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'https://soul-cafe-menu.vercel.app');
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),

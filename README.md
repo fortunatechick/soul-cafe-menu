@@ -192,10 +192,13 @@ composites transparency against an unpredictable colour and the artwork's dark
 navy detail would disappear on a white fill. It is a JPEG (19 KB) because
 WhatsApp skips previews over roughly 300 KB.
 
-`og:image` must be absolute, so the origin has to be known at build time.
-Vercel's `VERCEL_URL` covers preview deployments automatically; set
-`NEXT_PUBLIC_SITE_URL` once a custom domain is attached, since `VERCEL_URL`
-points at the per-deployment hostname rather than the domain people share.
+`og:image` must be absolute, so the origin has to be known at build time — and
+it has to be the *stable* origin. `VERCEL_URL` is deliberately not used: it is
+the per-deployment hostname (`soul-cafe-menu-45qzk....vercel.app`), which changes
+on every push, and previews are cached per URL. The origin resolves as
+`NEXT_PUBLIC_SITE_URL` → `VERCEL_PROJECT_PRODUCTION_URL` → the production
+`.vercel.app` domain. Set `NEXT_PUBLIC_SITE_URL` in Vercel once a custom domain
+is attached.
 
 WhatsApp caches previews for a long time, so a link shared before the site was
 deployed may keep showing the old (empty) preview. Adding `?v=2` to the URL
