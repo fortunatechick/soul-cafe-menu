@@ -234,8 +234,7 @@ export const QUESTIONS = [
     label: 'Keeping it under?',
     multi: false,
     options: [
-      { value: 250, label: '₹250', emoji: '🪙' },
-      { value: 350, label: '₹350', emoji: '💸' },
+      { value: 300, label: '₹300', emoji: '🪙' },
       { value: null, label: 'No limit', emoji: '✨' },
     ],
   },
