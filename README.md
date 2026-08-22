@@ -358,14 +358,39 @@ reverse-geocoded into the address field, sent with the order as
 to the WhatsApp message as a Google Maps link the rider can tap. If geocoding
 fails the pin is still kept — the map link is useful on its own.
 
+### Order limits
+
+`src/lib/limits.js` holds the caps, imported by both the cart and the order API
+so the two cannot disagree — the cart used to let a customer build a quantity
+the server then refused, which ended in a dead-end error at checkout.
+
+| Limit | Value |
+|---|---|
+| Per line | 50 |
+| Distinct lines | 40 |
+| Total units | 200 |
+| Order total | ₹25,000 |
+| Name / address / notes | 80 / 300 / 500 chars |
+
+Free-text fields are stripped of control characters and angle brackets. React
+escapes them on our own pages, but this text is also handed to PetPooja and
+pasted into a WhatsApp message, and neither needs `<script>` in a customer name.
+
+Quantity stepping goes through `stepQuantity(key, delta)` rather than passing a
+computed `quantity + 1`: the latter reads a value captured at render, so several
+quick taps all resolved to the same number and only one landed.
+
 ### Keeping bots out
 
 Order placement is gated twice, in `/api/orders/place`:
 
-1. **A per-IP rate limit** (`src/lib/ratelimit.js`) — 6 orders per 10 minutes,
-   checked before any parsing. This is what actually caps a flood of fake
-   tickets, and it needs no third party. In-memory, so it counts per serverless
-   instance; a shared store is the upgrade at real traffic.
+1. **Rate limits** (`src/lib/ratelimit.js`), checked before any parsing — 40
+   orders per 10 minutes per IP, and 4 per phone number. One IP is not one
+   customer: everyone on the café's own wifi shares a public address, as does
+   most of an Indian mobile network behind carrier-grade NAT, so a tight per-IP
+   cap locks out real people during a rush. The IP limit blunts a flood; the
+   phone limit is the one that approximates a person. In-memory, so it counts
+   per serverless instance; a shared store is the upgrade at real traffic.
 2. **A human check** (`src/lib/botcheck.js`). With `TURNSTILE_SECRET_KEY` and
    `NEXT_PUBLIC_TURNSTILE_SITE_KEY` set this is **Cloudflare Turnstile**, whose
    token is verified server-side — free keys, a few minutes to set up, and the

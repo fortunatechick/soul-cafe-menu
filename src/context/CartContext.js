@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { MAX_ITEM_QTY, clampQty } from '@/lib/limits';
 
 const STORAGE_KEY = 'soulmenu_cart';
 
@@ -43,7 +44,10 @@ export function CartProvider({ children }) {
     setLines((prev) => {
       const found = prev.find((l) => l.key === key);
       if (found) {
-        return prev.map((l) => (l.key === key ? { ...l, quantity: l.quantity + quantity } : l));
+        // Clamp here rather than letting the server refuse it at checkout.
+        return prev.map((l) =>
+          l.key === key ? { ...l, quantity: clampQty(l.quantity + quantity) } : l
+        );
       }
       return [
         ...prev,
@@ -56,7 +60,7 @@ export function CartProvider({ children }) {
           deliveryAvailable: item.deliveryAvailable !== false,
           variation: variation?.name || null,
           unitPrice: variation?.price ?? item.price,
-          quantity,
+          quantity: clampQty(quantity),
         },
       ];
     });
@@ -68,7 +72,23 @@ export function CartProvider({ children }) {
 
   function updateQuantity(key, quantity) {
     if (quantity <= 0) return removeItem(key);
-    setLines((prev) => prev.map((l) => (l.key === key ? { ...l, quantity } : l)));
+    const capped = clampQty(quantity);
+    setLines((prev) => prev.map((l) => (l.key === key ? { ...l, quantity: capped } : l)));
+  }
+
+  /**
+   * Step a line up or down. Callers passing `line.quantity + 1` read a value
+   * captured at render, so several quick taps all compute the same result and
+   * only one lands. This reads the current quantity inside the updater.
+   */
+  function stepQuantity(key, delta) {
+    setLines((prev) => {
+      const line = prev.find((l) => l.key === key);
+      if (!line) return prev;
+      const next = line.quantity + delta;
+      if (next <= 0) return prev.filter((l) => l.key !== key);
+      return prev.map((l) => (l.key === key ? { ...l, quantity: clampQty(next) } : l));
+    });
   }
 
   function clearCart() {
@@ -97,10 +117,12 @@ export function CartProvider({ children }) {
     addItem,
     removeItem,
     updateQuantity,
+    stepQuantity,
     clearCart,
     quantityOfItem,
     totalItems,
     subtotal,
+    maxItemQty: MAX_ITEM_QTY,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

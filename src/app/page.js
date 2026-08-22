@@ -254,7 +254,7 @@ function CatPanel({ open, id, children }) {
 }
 
 function MenuCard({ item, index, onAdd }) {
-  const { quantityOfItem, lines, updateQuantity } = useCart();
+  const { quantityOfItem, lines, stepQuantity } = useCart();
   const [bounce, setBounce] = useState(false);
   const qty = quantityOfItem(item.id);
   const photo = mediaManifest[item.slug];
@@ -297,7 +297,7 @@ function MenuCard({ item, index, onAdd }) {
           <div className="stepper">
             <button
               className="stepper__btn"
-              onClick={() => updateQuantity(soleLine[0].key, qty - 1)}
+              onClick={() => stepQuantity(soleLine[0].key, -1)}
               aria-label={`Remove one ${item.name}`}
             >
               −
@@ -305,7 +305,7 @@ function MenuCard({ item, index, onAdd }) {
             <span className="stepper__count">{qty}</span>
             <button
               className="stepper__btn"
-              onClick={() => updateQuantity(soleLine[0].key, qty + 1)}
+              onClick={() => stepQuantity(soleLine[0].key, 1)}
               aria-label={`Add one ${item.name}`}
             >
               +

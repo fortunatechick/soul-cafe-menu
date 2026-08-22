@@ -3,7 +3,17 @@ import { generateOrderNumber, saveOrder } from '@/lib/store';
 import { pushToPetPooja } from '@/lib/petpooja';
 import { evaluateCoupon } from '@/lib/coupons';
 import { verifyHuman } from '@/lib/botcheck';
-import { checkRateLimit, clientIp } from '@/lib/ratelimit';
+import { checkRateLimit, checkPhoneLimit, clientIp } from '@/lib/ratelimit';
+import {
+  MAX_ITEM_QTY,
+  MAX_LINES,
+  MAX_UNITS,
+  MAX_ORDER_TOTAL,
+  MAX_NAME,
+  MAX_ADDRESS,
+  MAX_NOTES,
+  cleanText,
+} from '@/lib/limits';
 
 export const dynamic = 'force-dynamic';
 
@@ -35,6 +45,10 @@ export async function POST(request) {
     );
   }
 
+  // A second, tighter limit keyed on the phone number goes in below, once the
+  // number has been read and validated — it is the closer stand-in for "one
+  // person ordering repeatedly", where the IP is not.
+
   let body;
   try {
     body = await request.json();
@@ -50,10 +64,12 @@ export async function POST(request) {
   });
   if (!human.ok) return bad(human.reason || 'Verification failed.');
 
-  const customerName = String(body.customerName || '').trim();
+  // Capped and stripped of control characters: this text is handed to PetPooja
+  // and pasted into a WhatsApp message, so an unbounded name is a real payload.
+  const customerName = cleanText(body.customerName, MAX_NAME);
   const customerPhone = String(body.customerPhone || '').replace(/[^\d+]/g, '');
-  const customerAddress = String(body.customerAddress || '').trim();
-  const notes = String(body.notes || '').trim().slice(0, 500);
+  const customerAddress = cleanText(body.customerAddress, MAX_ADDRESS);
+  const notes = cleanText(body.notes, MAX_NOTES);
   const orderType = ORDER_TYPES.includes(body.orderType) ? body.orderType : null;
   const paymentMethod = PAYMENT_METHODS.includes(body.paymentMethod) ? body.paymentMethod : null;
 
@@ -64,7 +80,18 @@ export async function POST(request) {
   if (orderType === 'delivery' && customerAddress.length < 10) {
     return bad('Please enter a delivery address.');
   }
+  const phoneLimit = checkPhoneLimit(customerPhone);
+  if (!phoneLimit.allowed) {
+    return Response.json(
+      { error: 'That number has just placed several orders. Please give it a few minutes.' },
+      { status: 429, headers: { 'Retry-After': String(phoneLimit.retryAfterSec) } }
+    );
+  }
+
   if (!Array.isArray(body.items) || body.items.length === 0) return bad('Your cart is empty.');
+  if (body.items.length > MAX_LINES) {
+    return bad(`An order can hold at most ${MAX_LINES} different items. Please split it.`);
+  }
 
   // Optional pinned coordinates. Rejected rather than silently dropped if
   // malformed, so a bad pin never reaches a rider as a plausible-looking link.
@@ -90,8 +117,8 @@ export async function POST(request) {
     }
 
     const quantity = Number(line.quantity);
-    if (!Number.isInteger(quantity) || quantity < 1 || quantity > 50) {
-      return bad(`Invalid quantity for "${item.name}".`);
+    if (!Number.isInteger(quantity) || quantity < 1 || quantity > MAX_ITEM_QTY) {
+      return bad(`"${item.name}" is limited to ${MAX_ITEM_QTY} per order.`);
     }
 
     let unitPrice = item.price;
@@ -120,6 +147,11 @@ export async function POST(request) {
     });
   }
 
+  const units = items.reduce((n, it) => n + it.quantity, 0);
+  if (units > MAX_UNITS) {
+    return bad(`That is ${units} items in one order. Please call the café for anything this large.`);
+  }
+
   const subtotal = items.reduce((n, it) => n + it.lineTotal, 0);
   const deliveryCharge = orderType === 'delivery' ? DELIVERY_CHARGE : 0;
 
@@ -135,6 +167,11 @@ export async function POST(request) {
   }
 
   const total = Math.max(0, subtotal - discount + deliveryCharge);
+  if (total > MAX_ORDER_TOTAL) {
+    return bad(
+      `Orders over ₹${MAX_ORDER_TOTAL.toLocaleString('en-IN')} need to go through the café directly.`
+    );
+  }
 
   const order = {
     orderNumber: generateOrderNumber(),

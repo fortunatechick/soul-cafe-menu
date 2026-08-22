@@ -12,7 +12,16 @@
  */
 
 const WINDOW_MS = 10 * 60 * 1000;
-const MAX_ORDERS = 6; // per IP per window — well above any real customer
+
+/**
+ * One IP is not one customer. Everyone on the café's own wifi shares a public
+ * address, as does most of an Indian mobile network behind carrier-grade NAT,
+ * so a tight per-IP cap locks out real people during a rush. The IP limit is
+ * therefore loose — it exists to blunt a flood, not to police customers — and
+ * the tight limit is per phone number, which is much closer to "one person".
+ */
+const MAX_PER_IP = 40;
+const MAX_PER_PHONE = 4;
 
 if (!globalThis.__soulRateBuckets) globalThis.__soulRateBuckets = new Map();
 
@@ -28,11 +37,11 @@ export function clientIp(request) {
 /**
  * @returns {{allowed: boolean, retryAfterSec: number}}
  */
-export function checkRateLimit(key) {
+export function checkRateLimit(key, max = MAX_PER_IP) {
   const now = Date.now();
   const hits = (buckets.get(key) || []).filter((t) => now - t < WINDOW_MS);
 
-  if (hits.length >= MAX_ORDERS) {
+  if (hits.length >= max) {
     const retryAfterSec = Math.ceil((WINDOW_MS - (now - hits[0])) / 1000);
     buckets.set(key, hits);
     return { allowed: false, retryAfterSec };
@@ -50,3 +59,12 @@ export function checkRateLimit(key) {
 
   return { allowed: true, retryAfterSec: 0 };
 }
+
+/** Same window, keyed on the phone number placing the order. */
+export function checkPhoneLimit(phone) {
+  const digits = String(phone || '').replace(/[^\d]/g, '');
+  if (!digits) return { allowed: true, retryAfterSec: 0 };
+  return checkRateLimit(`phone:${digits}`, MAX_PER_PHONE);
+}
+
+export const RATE_LIMITS = { MAX_PER_IP, MAX_PER_PHONE, WINDOW_MS };

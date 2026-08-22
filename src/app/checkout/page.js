@@ -12,6 +12,7 @@ import {
   lookupCustomer,
 } from '@/lib/api';
 import { loadCustomer, saveCustomer, forgetCustomer } from '@/lib/customer';
+import { MAX_ITEM_QTY } from '@/lib/limits';
 import MapPicker from '@/components/MapPicker';
 import HumanCheck from '@/components/HumanCheck';
 
@@ -31,7 +32,7 @@ const PAYMENT_OPTIONS = [
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { lines, hydrated, subtotal, updateQuantity, clearCart } = useCart();
+  const { lines, hydrated, subtotal, stepQuantity, clearCart } = useCart();
 
   const [orderType, setOrderType] = useState('delivery');
   const [paymentMethod, setPaymentMethod] = useState('upi');
@@ -55,6 +56,9 @@ export default function CheckoutPage() {
   const [verification, setVerification] = useState({});
   const [knownCustomer, setKnownCustomer] = useState(null);
   const lookedUp = useRef(new Set());
+  // A ref, not the `submitting` state: state updates are asynchronous, so four
+  // fast taps all read submitting === false and fired four separate orders.
+  const submitLock = useRef(false);
 
   const deliveryCharge = orderType === 'delivery' ? DELIVERY_CHARGE : 0;
   const discount = coupon?.discount || 0;
@@ -240,6 +244,7 @@ export default function CheckoutPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (submitLock.current) return; // a second tap must never become a second order
     setFormError('');
     if (blockedByDelivery) {
       setFormError(
@@ -257,6 +262,7 @@ export default function CheckoutPage() {
     }
     if (!validate()) return;
 
+    submitLock.current = true;
     setSubmitting(true);
     try {
       const { order } = await placeOrder({
@@ -292,6 +298,7 @@ export default function CheckoutPage() {
       setFormError(err.message || 'Could not place the order. Please try again.');
       setVerification({});
       setSubmitting(false);
+      submitLock.current = false; // the order did not happen; let them retry
     }
   }
 
@@ -332,7 +339,7 @@ export default function CheckoutPage() {
                 <button
                   type="button"
                   className="qty__btn"
-                  onClick={() => updateQuantity(l.key, l.quantity - 1)}
+                  onClick={() => stepQuantity(l.key, -1)}
                   aria-label={`Remove one ${l.name}`}
                 >
                   −
@@ -341,7 +348,9 @@ export default function CheckoutPage() {
                 <button
                   type="button"
                   className="qty__btn"
-                  onClick={() => updateQuantity(l.key, l.quantity + 1)}
+                  onClick={() => stepQuantity(l.key, 1)}
+                  disabled={l.quantity >= MAX_ITEM_QTY}
+                  title={l.quantity >= MAX_ITEM_QTY ? `${MAX_ITEM_QTY} is the most per item` : undefined}
                   aria-label={`Add one ${l.name}`}
                 >
                   +
