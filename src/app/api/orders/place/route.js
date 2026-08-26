@@ -20,7 +20,8 @@ export const dynamic = 'force-dynamic';
 // Delivery is free. The charge is kept as a field (at zero) because the order
 // shape feeds PetPooja's delivery_charges, and to make reinstating it one edit.
 const DELIVERY_CHARGE = 0;
-const PAYMENT_METHODS = ['upi', 'cash', 'card'];
+// UPI is the only method the cafe accepts.
+const PAYMENT_METHODS = ['upi'];
 const ORDER_TYPES = ['delivery', 'pickup'];
 
 // Flat lookup of every orderable item, built once per instance.

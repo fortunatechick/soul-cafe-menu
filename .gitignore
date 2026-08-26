@@ -14,3 +14,10 @@ yarn-error.log*
 
 # Local reference doc, deliberately not committed
 ARCHITECTURE.html
+
+# Generated descriptions workbook (regenerate with scripts/generate-descriptions.py)
+SOUL-menu-descriptions.xlsx
+
+# Python bytecode from the data scripts
+__pycache__/
+*.pyc

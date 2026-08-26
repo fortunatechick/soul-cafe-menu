@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
+import { useGroup } from '@/context/GroupContext';
 import {
   placeOrder,
   fetchMenu,
@@ -25,19 +26,17 @@ const CAFE_LATLON = { lat: 19.1197, lon: 72.8464 };
 // and one in the order API, which is the authority on what actually gets charged.
 const DELIVERY_CHARGE = 0;
 
-const PAYMENT_OPTIONS = [
-  { id: 'upi', emoji: '📱', label: 'UPI', hint: 'Pay online — link sent on WhatsApp' },
-  { id: 'cash', emoji: '💵', label: 'Cash', hint: 'Pay on delivery or at the counter' },
-  { id: 'card', emoji: '💳', label: 'Card', hint: 'Card machine at delivery or counter' },
-];
+// The cafe takes UPI only. The order API validates against its own list, so
+// changing the accepted methods means editing there too.
+const PAYMENT_METHOD = 'upi';
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { inGroup, isHost, hostName, close: closeGroup } = useGroup();
   const { lines, hydrated, subtotal, stepQuantity, setLinePrice, removeItem, clearCart } =
     useCart();
 
   const [orderType, setOrderType] = useState('delivery');
-  const [paymentMethod, setPaymentMethod] = useState('upi');
   const [form, setForm] = useState({ name: '', phone: '', address: '', notes: '' });
   const [fieldErrors, setFieldErrors] = useState({});
   const [formError, setFormError] = useState('');
@@ -334,7 +333,7 @@ export default function CheckoutPage() {
         customerPhone: form.phone.replace(/[^\d+]/g, ''),
         customerAddress: orderType === 'delivery' ? form.address.trim() : '',
         orderType,
-        paymentMethod,
+        paymentMethod: PAYMENT_METHOD,
         couponCode: coupon?.code || null,
         customerLat: pinnedAt?.lat ?? null,
         customerLon: pinnedAt?.lon ?? null,
@@ -356,6 +355,8 @@ export default function CheckoutPage() {
         address: order.customerAddress,
       });
       sessionStorage.setItem('soulmenu_last_order', JSON.stringify(order));
+      // The group is now an order, so nobody keeps adding to it.
+      if (isHost) await closeGroup(order.orderNumber);
       clearCart();
       router.push('/confirmation');
     } catch (err) {
@@ -364,6 +365,26 @@ export default function CheckoutPage() {
       setSubmitting(false);
       submitLock.current = false; // the order did not happen; let them retry
     }
+  }
+
+  // A guest reaching checkout directly still cannot place the group's order -
+  // the server would refuse to close the group, and two orders would be worse.
+  if (hydrated && inGroup && !isHost) {
+    return (
+      <main className="page">
+        <div className="state">
+          <span className="state__emoji">&#128101;</span>
+          <h1 className="state__title">{hostName} is placing this order</h1>
+          <p className="state__text">
+            You&rsquo;re in a group order, so everything you added is already on the shared bill.
+            One order goes to the kitchen, and {hostName} sends it.
+          </p>
+          <button className="btn btn--primary" onClick={() => router.push('/')}>
+            Back to the menu
+          </button>
+        </div>
+      </main>
+    );
   }
 
   if (!hydrated || lines.length === 0) {
@@ -524,22 +545,16 @@ export default function CheckoutPage() {
 
         <section className="block">
           <h2 className="block__title">Payment Method</h2>
-          <div className="segment segment--stack">
-            {PAYMENT_OPTIONS.map((o) => (
-              <button
-                key={o.id}
-                type="button"
-                className={`segment__opt${paymentMethod === o.id ? ' segment__opt--active' : ''}`}
-                onClick={() => setPaymentMethod(o.id)}
-                aria-pressed={paymentMethod === o.id}
-              >
-                <span className="segment__emoji">{o.emoji}</span>
-                <span className="segment__label">
-                  {o.label}
-                  <span className="segment__hint">{o.hint}</span>
-                </span>
-              </button>
-            ))}
+          {/* UPI is the only method the cafe takes, so this states it rather
+              than offering a choice of one. */}
+          <div className="paymethod">
+            <span className="paymethod__emoji" aria-hidden="true">&#128241;</span>
+            <span className="paymethod__label">
+              UPI
+              <span className="paymethod__hint">
+                We send a payment link on WhatsApp once the cafe confirms your order.
+              </span>
+            </span>
           </div>
         </section>
 

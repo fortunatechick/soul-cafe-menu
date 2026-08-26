@@ -13,8 +13,6 @@
 const PAYMENT_CODE = {
   // PetPooja expects its own payment type ids; these are placeholders.
   upi: { type: 2, label: 'UPI (online)' },
-  card: { type: 3, label: 'Card on delivery' },
-  cash: { type: 1, label: 'Cash on delivery' },
 };
 
 export function buildPetPoojaPayload(order) {
@@ -62,7 +60,7 @@ export function buildPetPoojaPayload(order) {
             enable_delivery: order.orderType === 'delivery' ? 1 : 0,
             min_prep_time: 20,
             callback_url: '',
-            collect_cash: order.paymentMethod === 'cash' ? String(order.total) : '0',
+            collect_cash: '0', // UPI only - nothing is collected on delivery
             otp: '',
           },
         },

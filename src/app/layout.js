@@ -1,5 +1,6 @@
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
+import { GroupProvider } from '@/context/GroupContext';
 
 const TITLE = 'Soul — Order from Soul Café';
 const DESCRIPTION =
@@ -56,7 +57,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          <GroupProvider>{children}</GroupProvider>
+        </CartProvider>
       </body>
     </html>
   );

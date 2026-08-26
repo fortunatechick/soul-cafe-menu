@@ -2,14 +2,18 @@
 "1289457905": {
 "flavours": [],
 "ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kcal": 140,
 "kind": "coffee",
+"sugar": 11.5,
 "temp": "cold",
 "type": "Beverage"
 },
 "1289457906": {
 "flavours": [],
 "ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kcal": 140,
 "kind": "coffee",
+"sugar": 11.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -121,7 +125,9 @@
 "1294564324": {
 "flavours": [],
 "ingredients": "frozen sweet potato fries, black pepper",
+"kcal": 625,
 "kind": "food",
+"sugar": 1.0,
 "temp": null,
 "type": "Food"
 },
@@ -150,7 +156,9 @@
 "caramel"
 ],
 "ingredients": "espresso, condensed milk",
+"kcal": 195,
 "kind": "coffee",
+"sugar": 32.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -159,7 +167,9 @@
 "caramel"
 ],
 "ingredients": "espresso, condensed milk",
+"kcal": 195,
 "kind": "coffee",
+"sugar": 32.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -168,7 +178,9 @@
 "fruity"
 ],
 "ingredients": "orange juice, tonic water, espresso",
+"kcal": 45,
 "kind": "coffee",
+"sugar": 10.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -177,7 +189,9 @@
 "fruity"
 ],
 "ingredients": "orange juice, tonic water, espresso",
+"kcal": 45,
 "kind": "coffee",
+"sugar": 10.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -187,7 +201,9 @@
 "caramel"
 ],
 "ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kcal": 180,
 "kind": "coffee",
+"sugar": 17.0,
 "temp": null,
 "type": "Beverage"
 },
@@ -197,7 +213,9 @@
 "caramel"
 ],
 "ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kcal": 180,
 "kind": "coffee",
+"sugar": 17.0,
 "temp": null,
 "type": "Beverage"
 },
@@ -207,7 +225,9 @@
 "caramel"
 ],
 "ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kcal": 180,
 "kind": "coffee",
+"sugar": 17.0,
 "temp": null,
 "type": "Beverage"
 },
@@ -217,7 +237,9 @@
 "caramel"
 ],
 "ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kcal": 180,
 "kind": "coffee",
+"sugar": 17.0,
 "temp": null,
 "type": "Beverage"
 },
@@ -226,7 +248,9 @@
 "spiced"
 ],
 "ingredients": "cold brew, ginger ale",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -235,7 +259,9 @@
 "spiced"
 ],
 "ingredients": "cold brew, ginger ale",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -262,7 +288,9 @@
 "caramel"
 ],
 "ingredients": "cold brew, vanilla syrup, whip cream",
+"kcal": 65,
 "kind": "coffee",
+"sugar": 6.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -271,7 +299,9 @@
 "caramel"
 ],
 "ingredients": "cold brew, vanilla syrup, whip cream",
+"kcal": 65,
 "kind": "coffee",
+"sugar": 6.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -280,7 +310,9 @@
 "nutty"
 ],
 "ingredients": "cold brew, hazelnut syrup, whip cream",
+"kcal": 65,
 "kind": "coffee",
+"sugar": 6.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -289,7 +321,9 @@
 "nutty"
 ],
 "ingredients": "cold brew, hazelnut syrup, whip cream",
+"kcal": 65,
 "kind": "coffee",
+"sugar": 6.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -309,7 +343,9 @@
 "floral"
 ],
 "ingredients": "4 pm purple tea leaves, tonic water, orange juice",
+"kcal": 45,
 "kind": "drink",
+"sugar": 10.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -382,7 +418,9 @@
 "savoury"
 ],
 "ingredients": "croissant, butter, confit garlic, cheese slice, oregano, chili flakes, mushroom, pepper, hot honey, bagel, cream cheese",
+"kcal": 555,
 "kind": "food",
+"sugar": 15.5,
 "temp": null,
 "type": "Food"
 },
@@ -399,7 +437,9 @@
 "floral"
 ],
 "ingredients": "butter croissant, paneer tikka filling, mint mayo, siracha sauce, mozzarella chesse, pickled onion",
+"kcal": 695,
 "kind": "food",
+"sugar": 1.5,
 "temp": null,
 "type": "Food"
 },
@@ -436,7 +476,9 @@
 "savoury"
 ],
 "ingredients": "bagel, butter, confit garlic, cheese slice, oregano, mushroom, pepper, hot honey",
+"kcal": 120,
 "kind": "food",
+"sugar": 8.5,
 "temp": null,
 "type": "Food"
 },
@@ -446,7 +488,9 @@
 "savoury"
 ],
 "ingredients": "bagel, pizza pasta sauce, mozzarella cheese, sundried tomato, olives, capsicum, olive oil, oregano sachet (serve seperately), chilli flakes sachet (serve seperately)",
+"kcal": 395,
 "kind": "food",
+"sugar": 7.5,
 "temp": null,
 "type": "Food"
 },
@@ -455,7 +499,9 @@
 "savoury"
 ],
 "ingredients": "bagel, gucamole, tomato, onion",
+"kcal": 265,
 "kind": "food",
+"sugar": 5.0,
 "temp": null,
 "type": "Food"
 },
@@ -465,7 +511,9 @@
 "caramel"
 ],
 "ingredients": "cold brew, orange juice, vanilla syrup",
+"kcal": 45,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -475,7 +523,9 @@
 "caramel"
 ],
 "ingredients": "cold brew, orange juice, vanilla syrup",
+"kcal": 45,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -502,7 +552,9 @@
 "caramel"
 ],
 "ingredients": "soda (bisleri/dukes), vanilla syrup, cold brew",
+"kcal": 40,
 "kind": "coffee",
+"sugar": 9.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -511,7 +563,9 @@
 "caramel"
 ],
 "ingredients": "soda (bisleri/dukes), vanilla syrup, cold brew",
+"kcal": 40,
 "kind": "coffee",
+"sugar": 9.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -538,7 +592,9 @@
 "chocolate"
 ],
 "ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, white ball topping, small chocolate ball topping",
+"kcal": 635,
 "kind": "sweet",
+"sugar": 53.5,
 "temp": null,
 "type": "Dessert"
 },
@@ -547,7 +603,9 @@
 "chocolate"
 ],
 "ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, white ball topping, small chocolate ball topping",
+"kcal": 635,
 "kind": "sweet",
+"sugar": 53.5,
 "temp": null,
 "type": "Dessert"
 },
@@ -556,7 +614,9 @@
 "chocolate"
 ],
 "ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, choco chip topping, small chocolate ball topping, chocolate stick",
+"kcal": 545,
 "kind": "sweet",
+"sugar": 44.5,
 "temp": null,
 "type": "Dessert"
 },
@@ -565,7 +625,9 @@
 "chocolate"
 ],
 "ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, choco chip topping, small chocolate ball topping, chocolate stick",
+"kcal": 545,
 "kind": "sweet",
+"sugar": 44.5,
 "temp": null,
 "type": "Dessert"
 },
@@ -614,7 +676,9 @@
 "chocolate"
 ],
 "ingredients": "milk chocolate sauce in bottom, sponge cake, coffee/ espresso, milk chocolate sauce on top, small white ball topping, small chocolate ball topping",
+"kcal": 365,
 "kind": "sweet",
+"sugar": 35.0,
 "temp": null,
 "type": "Dessert"
 },
@@ -623,7 +687,9 @@
 "chocolate"
 ],
 "ingredients": "milk chocolate sauce in bottom, sponge cake, coffee/ espresso, milk chocolate sauce on top, small white ball topping, small chocolate ball topping",
+"kcal": 365,
 "kind": "sweet",
+"sugar": 35.0,
 "temp": null,
 "type": "Dessert"
 },
@@ -1110,7 +1176,9 @@
 "fruity"
 ],
 "ingredients": "blueberry, cold brew",
+"kcal": 10,
 "kind": "coffee",
+"sugar": 1.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1119,7 +1187,9 @@
 "fruity"
 ],
 "ingredients": "blueberry, cold brew",
+"kcal": 10,
 "kind": "coffee",
+"sugar": 1.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1128,7 +1198,9 @@
 "fruity"
 ],
 "ingredients": "peach iced tea syrup",
+"kcal": 115,
 "kind": "drink",
+"sugar": 28.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1265,21 +1337,27 @@
 "1305301635": {
 "flavours": [],
 "ingredients": "coffee beans, filter",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "1305341596": {
 "flavours": [],
 "ingredients": "coffee beans, filter",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "1305341603": {
 "flavours": [],
 "ingredients": "coffee beans, filter",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1399,7 +1477,9 @@
 "savoury"
 ],
 "ingredients": "milk bread, garlic butter, mozarella cheese (pizza mozarella), green capsicum, yellow capsicum, corn, chilli flakes, oregano, tomato ketchup, chilli flakes sachet, oregano sachet",
+"kcal": 220,
 "kind": "food",
+"sugar": 7.0,
 "temp": "hot",
 "type": "Food"
 },
@@ -1408,7 +1488,9 @@
 "savoury"
 ],
 "ingredients": "spinach tortilla, spicy hummus, avocado, paneer tikka filling, lettuce, tomato, cucumber, pickled onion, pepper, sriracha schezwan dip",
+"kcal": 245,
 "kind": "food",
+"sugar": 5.0,
 "temp": null,
 "type": "Food"
 },
@@ -1418,7 +1500,9 @@
 "savoury"
 ],
 "ingredients": "frozen pizza pockets, ketchup, oregano, chilli flakes",
+"kcal": 5,
 "kind": "food",
+"sugar": 0.5,
 "temp": null,
 "type": "Food"
 },
@@ -1428,7 +1512,9 @@
 "savoury"
 ],
 "ingredients": "sourdough bread ( 1 piece), butter, pesto sauce, buffalo mozzarella, gucamole, pepper, onion, tomato, lemon, micro herbs, edible flower",
+"kcal": 335,
 "kind": "combo",
+"sugar": 2.5,
 "temp": null,
 "type": "Combo"
 },
@@ -1467,7 +1553,9 @@
 "fruity"
 ],
 "ingredients": "espresso, coconut milk, jaggery",
+"kcal": 260,
 "kind": "coffee",
+"sugar": 19.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1476,7 +1564,9 @@
 "fruity"
 ],
 "ingredients": "espresso, coconut milk, jaggery",
+"kcal": 260,
 "kind": "coffee",
+"sugar": 19.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1578,7 +1668,9 @@
 "savoury"
 ],
 "ingredients": "milk bread, garlic butter, mozarella cheese (pizza mozarella), green capsicum, yellow capsicum, corn, chilli flakes, oregano, tomato ketchup, chilli flakes sachet, oregano sachet",
+"kcal": 220,
 "kind": "food",
+"sugar": 7.0,
 "temp": "hot",
 "type": "Food"
 },
@@ -1662,7 +1754,9 @@
 "fruity"
 ],
 "ingredients": "espresso, coconut milk, jaggery",
+"kcal": 260,
 "kind": "coffee",
+"sugar": 19.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1671,7 +1765,9 @@
 "fruity"
 ],
 "ingredients": "espresso, coconut milk, jaggery",
+"kcal": 260,
 "kind": "coffee",
+"sugar": 19.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -1691,7 +1787,9 @@
 "savoury"
 ],
 "ingredients": "sourdough bread ( 1 piece), butter, pesto sauce, buffalo mozzarella, gucamole, pepper, onion, tomato, lemon, micro herbs, edible flower",
+"kcal": 335,
 "kind": "food",
+"sugar": 2.5,
 "temp": "hot",
 "type": "Food"
 },
@@ -1700,7 +1798,9 @@
 "savoury"
 ],
 "ingredients": "sourdough bread ( 1 piece), butter, confit garlic, buffala mozarella, roquette leaves (aragula leaves), sauted mushroom, pepper, hot honey",
+"kcal": 225,
 "kind": "food",
+"sugar": 10.0,
 "temp": "hot",
 "type": "Food"
 },
@@ -1730,7 +1830,9 @@
 "savoury"
 ],
 "ingredients": "korean bun, thecha, cream cheese, mozzarella, parsley, pepper, oregano, chilli flakes, garlic butter",
+"kcal": 315,
 "kind": "food",
+"sugar": 3.0,
 "temp": null,
 "type": "Food"
 },
@@ -1766,7 +1868,9 @@
 "savoury"
 ],
 "ingredients": "beetroot tortilla, spicy hummus, falafel, lettuce, tomato, cucumber, pickled onion, pepper, spicy hummus dip",
+"kcal": 245,
 "kind": "food",
+"sugar": 1.5,
 "temp": null,
 "type": "Food"
 },
@@ -1776,7 +1880,9 @@
 "floral"
 ],
 "ingredients": "spinach tortilla, mint mayo sauce, sriracha schezwan dip, tandoori paneer, lettuce, tomato, capsicum, pickled onion, onion, pepper, cilantro mayo dip",
+"kcal": 445,
 "kind": "food",
+"sugar": 4.0,
 "temp": null,
 "type": "Food"
 },
@@ -1786,7 +1892,9 @@
 "savoury"
 ],
 "ingredients": "butter croissant, pesto, arugula / rocquette leaves, cherry tomato, buffalo mozzarella, microgreens, black pepper, edible flowers",
+"kcal": 615,
 "kind": "food",
+"sugar": 1.5,
 "temp": null,
 "type": "Food"
 },
@@ -1796,7 +1904,9 @@
 "savoury"
 ],
 "ingredients": "bagel, pesto, arugula, cherry tomato, buffalo mozzarella, microgreens, edible flowers",
+"kcal": 410,
 "kind": "food",
+"sugar": 6.0,
 "temp": null,
 "type": "Food"
 },
@@ -1857,7 +1967,9 @@
 "chocolate"
 ],
 "ingredients": "butter croissant",
+"kcal": 430,
 "kind": "sweet",
+"sugar": 0.0,
 "temp": null,
 "type": "Dessert"
 },
@@ -1956,7 +2068,9 @@
 "159721724": {
 "flavours": [],
 "ingredients": "frozen potato fries",
+"kcal": 500,
 "kind": "food",
+"sugar": 1.0,
 "temp": null,
 "type": "Food"
 },
@@ -1965,7 +2079,9 @@
 "spiced"
 ],
 "ingredients": "frozen potato fries, peri peri masala",
+"kcal": 500,
 "kind": "food",
+"sugar": 1.0,
 "temp": null,
 "type": "Food"
 },
@@ -1982,21 +2098,27 @@
 "159721728": {
 "flavours": [],
 "ingredients": "espresso",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721729": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup (as per requirement)",
+"kcal": 40,
 "kind": "coffee",
+"sugar": 3.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721730": {
 "flavours": [],
 "ingredients": "espresso, 1 tbsp milk foam, syrup (as per requirement)",
+"kcal": 5,
 "kind": "coffee",
+"sugar": 0.5,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2005,7 +2127,9 @@
 "caramel"
 ],
 "ingredients": "espresso, vanilla ice cream",
+"kcal": 105,
 "kind": "sweet",
+"sugar": 10.5,
 "temp": null,
 "type": "Dessert"
 },
@@ -2046,7 +2170,9 @@
 "chocolate"
 ],
 "ingredients": "milk, frappe powder, espresso, chocolate sauce",
+"kcal": 190,
 "kind": "coffee",
+"sugar": 25.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2055,7 +2181,9 @@
 "fruity"
 ],
 "ingredients": "milk, frappe powder, espresso, strawberry syrup",
+"kcal": 190,
 "kind": "coffee",
+"sugar": 30.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2073,7 +2201,9 @@
 "nutty"
 ],
 "ingredients": "milk, frappe powder, espresso, hazelnut syrup",
+"kcal": 190,
 "kind": "coffee",
+"sugar": 30.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2082,7 +2212,9 @@
 "caramel"
 ],
 "ingredients": "milk, frappe powder, espresso, tiramisu syrup",
+"kcal": 190,
 "kind": "coffee",
+"sugar": 30.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2091,7 +2223,9 @@
 "caramel"
 ],
 "ingredients": "milk, frappe powder, espresso, caramel syrup",
+"kcal": 190,
 "kind": "coffee",
+"sugar": 30.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2110,7 +2244,9 @@
 "floral"
 ],
 "ingredients": "green tea",
+"kcal": 0,
 "kind": "drink",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2119,7 +2255,9 @@
 "floral"
 ],
 "ingredients": "green tea",
+"kcal": 0,
 "kind": "drink",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2128,7 +2266,9 @@
 "floral"
 ],
 "ingredients": "green tea",
+"kcal": 0,
 "kind": "tea",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2137,7 +2277,9 @@
 "floral"
 ],
 "ingredients": "green tea",
+"kcal": 0,
 "kind": "tea",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2146,7 +2288,9 @@
 "floral"
 ],
 "ingredients": "green tea",
+"kcal": 0,
 "kind": "drink",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2155,7 +2299,9 @@
 "floral"
 ],
 "ingredients": "green tea",
+"kcal": 0,
 "kind": "drink",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2164,7 +2310,9 @@
 "fruity"
 ],
 "ingredients": "lemon iced tea syrup",
+"kcal": 80,
 "kind": "drink",
+"sugar": 18.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2173,7 +2321,9 @@
 "fruity"
 ],
 "ingredients": "peach iced tea syrup",
+"kcal": 80,
 "kind": "drink",
+"sugar": 18.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2191,7 +2341,9 @@
 "floral"
 ],
 "ingredients": "cool green ocean tea, honey",
+"kcal": 90,
 "kind": "drink",
+"sugar": 24.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2200,7 +2352,9 @@
 "floral"
 ],
 "ingredients": "4 pm purple tea, honey",
+"kcal": 90,
 "kind": "drink",
+"sugar": 24.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2223,7 +2377,9 @@
 "fruity"
 ],
 "ingredients": "matcha blend, strawberry syrup",
+"kcal": 65,
 "kind": "tea",
+"sugar": 4.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2237,56 +2393,72 @@
 "159721795": {
 "flavours": [],
 "ingredients": "espresso",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721796": {
 "flavours": [],
 "ingredients": "espresso",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721797": {
 "flavours": [],
 "ingredients": "espresso, milk, milk foam, syrup (as per requirement), ice for cold",
+"kcal": 105,
 "kind": "coffee",
+"sugar": 8.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721798": {
 "flavours": [],
 "ingredients": "espresso, milk, milk foam, syrup (as per requirement), ice for cold",
+"kcal": 105,
 "kind": "coffee",
+"sugar": 8.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721799": {
 "flavours": [],
 "ingredients": "espresso, milk, foam, syrup (as per requirement), ice for cold",
+"kcal": 115,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721800": {
 "flavours": [],
 "ingredients": "espresso, milk, foam, syrup (as per requirement), ice for cold",
+"kcal": 115,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721801": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup (as per requirement), ice for cold",
+"kcal": 125,
 "kind": "coffee",
+"sugar": 9.5,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721802": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup (as per requirement), ice for cold",
+"kcal": 125,
 "kind": "coffee",
+"sugar": 9.5,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2295,7 +2467,9 @@
 "chocolate"
 ],
 "ingredients": "espresso, milk, chocolate sauce, ice for cold",
+"kcal": 135,
 "kind": "coffee",
+"sugar": 13.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2304,7 +2478,9 @@
 "chocolate"
 ],
 "ingredients": "espresso, milk, chocolate sauce, ice for cold",
+"kcal": 135,
 "kind": "coffee",
+"sugar": 13.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2313,7 +2489,9 @@
 "chocolate"
 ],
 "ingredients": "espresso, milk, chocolate sauce",
+"kcal": 170,
 "kind": "coffee",
+"sugar": 15.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2322,7 +2500,9 @@
 "chocolate"
 ],
 "ingredients": "espresso, milk, chocolate sauce",
+"kcal": 170,
 "kind": "coffee",
+"sugar": 15.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2349,7 +2529,9 @@
 "chocolate"
 ],
 "ingredients": "chocolate sauce, milk",
+"kcal": 225,
 "kind": "drink",
+"sugar": 22.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2358,7 +2540,9 @@
 "chocolate"
 ],
 "ingredients": "chocolate sauce, milk",
+"kcal": 225,
 "kind": "drink",
+"sugar": 22.0,
 "temp": "hot",
 "type": "Beverage"
 },
@@ -2403,84 +2587,108 @@
 "159721815": {
 "flavours": [],
 "ingredients": "coffee beans, filter",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721816": {
 "flavours": [],
 "ingredients": "coffee beans, filter",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "hot",
 "type": "Beverage"
 },
 "159721817": {
 "flavours": [],
 "ingredients": "espresso",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721818": {
 "flavours": [],
 "ingredients": "espresso",
+"kcal": 0,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721819": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup if any",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 6.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721820": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup if any",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 6.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721821": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup if any",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 6.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721822": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup if any",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 6.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721823": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup if any",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 6.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721824": {
 "flavours": [],
 "ingredients": "espresso, milk, syrup if any",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 6.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721825": {
 "flavours": [],
 "ingredients": "milk, frappe powder, espresso, syrup (if any)",
+"kcal": 230,
 "kind": "coffee",
+"sugar": 31.5,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721826": {
 "flavours": [],
 "ingredients": "milk, frappe powder, espresso, syrup (if any)",
+"kcal": 230,
 "kind": "coffee",
+"sugar": 31.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2503,7 +2711,9 @@
 "chocolate"
 ],
 "ingredients": "milk, espresso, chocolate sauce",
+"kcal": 95,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2512,7 +2722,9 @@
 "chocolate"
 ],
 "ingredients": "milk, espresso, chocolate sauce",
+"kcal": 95,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2537,14 +2749,18 @@
 "159721833": {
 "flavours": [],
 "ingredients": "cold brew",
+"kcal": 5,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721834": {
 "flavours": [],
 "ingredients": "cold brew",
+"kcal": 5,
 "kind": "coffee",
+"sugar": 0.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2553,7 +2769,9 @@
 "fruity"
 ],
 "ingredients": "pineapple juice, whip cream, espresso",
+"kcal": 155,
 "kind": "coffee",
+"sugar": 10.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2562,7 +2780,9 @@
 "fruity"
 ],
 "ingredients": "pineapple juice, whip cream, espresso",
+"kcal": 155,
 "kind": "coffee",
+"sugar": 10.5,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2586,7 +2806,9 @@
 "floral"
 ],
 "ingredients": "tonic water, suger syrup, lemon, mint, cascara brew",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 18.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2596,7 +2818,9 @@
 "floral"
 ],
 "ingredients": "tonic water, suger syrup, lemon, mint, cascara brew",
+"kcal": 75,
 "kind": "coffee",
+"sugar": 18.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2625,7 +2849,9 @@
 "floral"
 ],
 "ingredients": "condensed milk, espresso, milk, cinnamon powder, mint",
+"kcal": 135,
 "kind": "coffee",
+"sugar": 19.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2636,7 +2862,9 @@
 "floral"
 ],
 "ingredients": "condensed milk, espresso, milk, cinnamon powder, mint",
+"kcal": 135,
 "kind": "coffee",
+"sugar": 19.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2663,7 +2891,9 @@
 "chocolate"
 ],
 "ingredients": "milk, espresso, chocolate sauce, sea salt",
+"kcal": 95,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2672,7 +2902,9 @@
 "chocolate"
 ],
 "ingredients": "milk, espresso, chocolate sauce, sea salt",
+"kcal": 95,
 "kind": "coffee",
+"sugar": 9.0,
 "temp": "cold",
 "type": "Beverage"
 },
@@ -2697,28 +2929,36 @@
 "159721851": {
 "flavours": [],
 "ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kcal": 140,
 "kind": "coffee",
+"sugar": 11.5,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721852": {
 "flavours": [],
 "ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kcal": 140,
 "kind": "coffee",
+"sugar": 11.5,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721853": {
 "flavours": [],
 "ingredients": "tonic water, espresso, blue curacao",
+"kcal": 35,
 "kind": "coffee",
+"sugar": 8.5,
 "temp": "cold",
 "type": "Beverage"
 },
 "159721854": {
 "flavours": [],
 "ingredients": "tonic water, espresso, blue curacao",
+"kcal": 35,
 "kind": "coffee",
+"sugar": 8.5,
 "temp": "cold",
 "type": "Beverage"
 }

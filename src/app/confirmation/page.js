@@ -7,8 +7,6 @@ import { WA_NUMBER } from '@/lib/contact';
 
 const PAYMENT_LABEL = {
   upi: 'UPI',
-  cash: 'Cash',
-  card: 'Card',
 };
 
 export default function ConfirmationPage() {

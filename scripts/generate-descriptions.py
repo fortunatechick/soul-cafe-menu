@@ -20,6 +20,7 @@ import re
 import unicodedata
 from difflib import SequenceMatcher
 
+import nutrition
 import openpyxl
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
@@ -306,6 +307,10 @@ def build():
             )
             full = '; '.join(f'{n.strip()} — {q}'.strip(' —') for n, q in ingredients)
 
+            # Only where a recipe actually matched, and only where enough of it
+            # was understood - see scripts/nutrition.py.
+            nut = nutrition.estimate(recipe) if recipe and confidence != 'Review' else None
+
             rows.append({
                 'id': item['id'],
                 'variation_ids': ', '.join(v['id'] for v in item.get('variations', [])),
@@ -320,6 +325,9 @@ def build():
                 'key_ingredients': key_ing,
                 'flavours': ', '.join(flavour_tags(blob, kind)),
                 'temperature': temp,
+                'kcal': nut['kcal'] if nut else '',
+                'sugar_g': nut['sugar'] if nut else '',
+                'nutrition_coverage': f"{int(nut['coverage'] * 100)}%" if nut else '',
                 'full_recipe': full,
                 'method': (recipe['method'] if recipe else '')[:900],
                 'confidence': confidence,
@@ -343,6 +351,9 @@ COLUMNS = [
     ('Key Ingredients', 'key_ingredients', 46),
     ('Flavour Tags', 'flavours', 26),
     ('Temperature', 'temperature', 12),
+    ('Approx kcal', 'kcal', 12),
+    ('Approx sugar (g)', 'sugar_g', 16),
+    ('Nutrition Confidence', 'nutrition_coverage', 20),
     ('Full Recipe', 'full_recipe', 60),
     ('Method', 'method', 60),
     ('Recipe Match', 'confidence', 16),
@@ -458,6 +469,9 @@ def write_traits(rows):
             'ingredients': row['key_ingredients'].lower(),
             'type': row['type'],
         }
+        if row['kcal'] != '':
+            out[row['id']]['kcal'] = row['kcal']
+            out[row['id']]['sugar'] = row['sugar_g']
         for vid in (v.strip() for v in row['variation_ids'].split(',') if v.strip()):
             out[vid] = out[row['id']]
 
@@ -487,3 +501,4 @@ if __name__ == '__main__':
     print('  engine kinds    :', dict(collections.Counter(t['kind'] for t in traits.values())))
     print('  with flavours   :', sum(1 for t in traits.values() if t['flavours']))
     print('  with temperature:', sum(1 for t in traits.values() if t['temp']))
+    print('  with calories   :', sum(1 for t in traits.values() if 'kcal' in t))

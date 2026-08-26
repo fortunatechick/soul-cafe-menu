@@ -4,8 +4,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { fetchMenu, formatINR } from '@/lib/api';
+import { nutritionFor, formatKcal, formatSugar } from '@/lib/nutrition';
 import mediaManifest from '@/data/media-manifest.json';
 import RecommendSheet from '@/components/RecommendSheet';
+import GroupOrder from '@/components/GroupOrder';
+import { useGroup } from '@/context/GroupContext';
 import { WA_LINK, formatPhone } from '@/lib/contact';
 
 const STORE_NAME = process.env.NEXT_PUBLIC_STORE_NAME || 'Soul';
@@ -52,6 +55,44 @@ const CATEGORY_EMOJI = {
 };
 
 const emojiFor = (id) => CATEGORY_EMOJI[id] || '🍴';
+
+/* Each family of categories gets its own bit of motion - steam rises off the
+   hot drinks, the cold ones shiver, sweets bounce. It only plays on the open
+   section and on hover, because 29 rows all moving at once is a fidget rather
+   than a flourish. */
+const CATEGORY_MOTION = {
+  'hot-bevarages': 'steam',
+  tea: 'steam',
+  matcha: 'steam',
+  toast: 'steam',
+  'iced-bevarages': 'chill',
+  'cold-brews': 'chill',
+  'ice-tea': 'chill',
+  frappes: 'chill',
+  'summer-specials': 'spin',
+  'monsoon-menu': 'rain',
+  'soul-specials-bevarages': 'sparkle',
+  'soul-combos': 'sparkle',
+  'soul-cake-bowl-cake': 'pop',
+  cookies: 'pop',
+  muffins: 'pop',
+  desserts: 'pop',
+  croissants: 'pop',
+  puffs: 'pop',
+  burgers: 'sizzle',
+  'pizza-flat-breads': 'sizzle',
+  'fries-and-pockets': 'sizzle',
+  wraps: 'sizzle',
+  bagels: 'sizzle',
+  'sourdough-sandwiches': 'sizzle',
+  'croissant-sandwiches': 'sizzle',
+  'soul-special-fusion-food': 'sizzle',
+  dips: 'sizzle',
+  'protein-series': 'flex',
+  'alternative-milks': 'pour',
+};
+
+const motionFor = (id) => `cat__emoji--${CATEGORY_MOTION[id] || 'pop'}`;
 
 /* ---------------------------------- bits ---------------------------------- */
 
@@ -282,6 +323,8 @@ function MenuCard({ item, index, onAdd }) {
   const soleLine = lines.filter((l) => l.id === item.id);
   const canStep = soleLine.length === 1;
 
+  const nutrition = nutritionFor(item.id);
+
   function handleAdd() {
     setBounce(true);
     setTimeout(() => setBounce(false), 400);
@@ -299,6 +342,15 @@ function MenuCard({ item, index, onAdd }) {
           <h3 className="card__name">{item.name}</h3>
         </div>
         {item.description ? <p className="card__desc">{item.description}</p> : null}
+        {nutrition ? (
+          /* Estimated from the kitchen recipe, so it is labelled as such
+             rather than presented as a measured value. */
+          <p className="card__nutri" title="Approximate, calculated from the recipe">
+            <span className="card__nutri-item">~{formatKcal(nutrition.kcal)}</span>
+            <span className="card__nutri-dot" aria-hidden="true">&middot;</span>
+            <span className="card__nutri-item">~{formatSugar(nutrition.sugar)}</span>
+          </p>
+        ) : null}
         <p className="card__price">
           {hasVariations ? <span className="card__price-from">from</span> : null}
           {formatINR(item.price)}
@@ -364,7 +416,22 @@ export default function MenuPage() {
   const [activeCat, setActiveCat] = useState('');
   const [sheetItem, setSheetItem] = useState(null);
   const [recommendOpen, setRecommendOpen] = useState(false);
+  const [groupOpen, setGroupOpen] = useState(false);
+  const { inGroup, isHost, hostName, group } = useGroup();
   const [leaving, setLeaving] = useState(false);
+
+  /* Every item by its own id and by each of its variation ids, so a line added
+     on someone else's phone resolves whichever id that phone used. */
+  const menuIndex = useMemo(() => {
+    const index = new Map();
+    for (const category of menu?.categories || []) {
+      for (const item of category.items) {
+        index.set(String(item.id), item);
+        for (const v of item.variations || []) index.set(String(v.id), item);
+      }
+    }
+    return index;
+  }, [menu]);
   // Revealed rows are React state, not a class poked onto the DOM: .cat's
   // className is React-managed, so opening a section or typing in search would
   // rewrite it and strip an imperative class straight back off.
@@ -616,7 +683,7 @@ export default function MenuPage() {
               className={`chip${activeCat === c.id ? ' chip--active' : ''}`}
               onClick={() => jumpTo(c.id)}
             >
-              <span className="chip__emoji">{emojiFor(c.id)}</span>
+              <span className={`chip__emoji ${motionFor(c.id)}`}>{emojiFor(c.id)}</span>
               {c.name}
             </button>
           ))}
@@ -642,6 +709,28 @@ export default function MenuPage() {
             ) : null}
           </div>
         </div>
+
+        {!searching ? (
+          <button
+            className={`groupcta${inGroup ? ' groupcta--live' : ''}`}
+            onClick={() => setGroupOpen(true)}
+          >
+            <span className="groupcta__icon" aria-hidden="true">
+              👥
+            </span>
+            <span className="groupcta__text">
+              <strong>{inGroup ? `Group order · ${group?.id}` : 'Ordering with others?'}</strong>
+              <span>
+                {inGroup
+                  ? `${group?.members.length} people, one bill`
+                  : 'Share a link — everyone adds from their own phone'}
+              </span>
+            </span>
+            <span className="helpme__go" aria-hidden="true">
+              →
+            </span>
+          </button>
+        ) : null}
 
         {!searching ? (
           <button className="helpme" onClick={() => setRecommendOpen(true)}>
@@ -702,7 +791,7 @@ export default function MenuPage() {
                     aria-expanded={openNow}
                     aria-controls={`panel-${c.id}`}
                   >
-                    <span className="cat__emoji">{emojiFor(c.id)}</span>
+                    <span className={`cat__emoji ${motionFor(c.id)}`}>{emojiFor(c.id)}</span>
                     <h2 className="cat__name">{c.name}</h2>
                     <span className="cat__count">{c.items.length}</span>
                     <span className="cat__chevron" aria-hidden="true">
@@ -773,14 +862,33 @@ export default function MenuPage() {
 
       {totalItems > 0 ? (
         <div className="fab-wrap">
-          <button className={`fab${leaving ? ' fab--leaving' : ''}`} onClick={goToCheckout}>
-            <span className="fab__left">
-              🛒 <span className="fab__badge">{totalItems}</span> View Cart
-            </span>
-            <span>{formatINR(subtotal)}</span>
-          </button>
+          {inGroup && !isHost ? (
+            /* One order, placed by the host - so a guest gets the basket, not a
+               checkout button that would only be refused. */
+            <button className="fab fab--group" onClick={() => setGroupOpen(true)}>
+              <span className="fab__left">
+                👥 <span className="fab__badge">{totalItems}</span> In the group
+              </span>
+              <span className="fab__note">{hostName} orders</span>
+            </button>
+          ) : (
+            <button className={`fab${leaving ? ' fab--leaving' : ''}`} onClick={goToCheckout}>
+              <span className="fab__left">
+                🛒 <span className="fab__badge">{totalItems}</span>{' '}
+                {inGroup ? 'Group cart' : 'View Cart'}
+              </span>
+              <span>{formatINR(subtotal)}</span>
+            </button>
+          )}
         </div>
       ) : null}
+
+      <GroupOrder
+        open={groupOpen}
+        onClose={() => setGroupOpen(false)}
+        menuIndex={menuIndex}
+        onCheckout={goToCheckout}
+      />
 
       {recommendOpen ? (
         <RecommendSheet
