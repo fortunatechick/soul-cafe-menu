@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useGroup } from '@/context/GroupContext';
+import GroupOrder from '@/components/GroupOrder';
 import {
   placeOrder,
   fetchMenu,
@@ -32,7 +33,11 @@ const PAYMENT_METHOD = 'upi';
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { inGroup, isHost, hostName, close: closeGroup } = useGroup();
+  const {
+    inGroup, isHost, hostName, otherLines, othersTotal, memberName,
+    close: closeGroup,
+  } = useGroup();
+  const [groupOpen, setGroupOpen] = useState(false);
   const { lines, hydrated, subtotal, stepQuantity, setLinePrice, removeItem, clearCart } =
     useCart();
 
@@ -65,7 +70,13 @@ export default function CheckoutPage() {
 
   const deliveryCharge = orderType === 'delivery' ? DELIVERY_CHARGE : 0;
   const discount = coupon?.discount || 0;
-  const total = Math.max(0, subtotal - discount + deliveryCharge);
+
+  // As host, the bill is the whole table's. Everyone else's lines stay on the
+  // group rather than being copied into this cart: copying them meant the sync
+  // pushed them back up as the host's own, and the table saw everything twice.
+  const groupExtras = isHost ? otherLines : [];
+  const orderSubtotal = subtotal + (isHost ? othersTotal : 0);
+  const total = Math.max(0, orderSubtotal - discount + deliveryCharge);
 
   // A few items the café only hands over at the counter.
   const pickupOnly = lines.filter((l) => l.deliveryAvailable === false);
@@ -264,7 +275,7 @@ export default function CheckoutPage() {
     setCouponBusy(true);
     setCouponMsg('');
     try {
-      const result = await validateCoupon({ code, subtotal, orderType });
+      const result = await validateCoupon({ code, subtotal: orderSubtotal, orderType });
       setCoupon({ code: result.coupon.code, discount: result.discount });
       setCouponMsg(result.message);
     } catch (err) {
@@ -288,7 +299,7 @@ export default function CheckoutPage() {
     setCoupon(null);
     setCouponMsg('Cart changed — apply your code again.');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subtotal, orderType]);
+  }, [orderSubtotal, orderType]);
 
   function validate() {
     const errors = {};
@@ -340,13 +351,22 @@ export default function CheckoutPage() {
         turnstileToken: verification.turnstileToken || null,
         challengeToken: verification.challengeToken || null,
         notes: form.notes.trim(),
-        items: lines.map((l) => ({
-          menuItemId: l.id,
-          itemName: l.name,
-          variation: l.variation,
-          unitPrice: l.unitPrice,
-          quantity: l.quantity,
-        })),
+        items: [
+          ...lines.map((l) => ({
+            menuItemId: l.id,
+            itemName: l.name,
+            variation: l.variation,
+            unitPrice: l.unitPrice,
+            quantity: l.quantity,
+          })),
+          ...groupExtras.map((l) => ({
+            menuItemId: l.itemId,
+            itemName: l.name,
+            variation: l.variation,
+            unitPrice: l.unitPrice,
+            quantity: l.quantity,
+          })),
+        ],
       });
 
       saveCustomer({
@@ -382,7 +402,11 @@ export default function CheckoutPage() {
           <button className="btn btn--primary" onClick={() => router.push('/')}>
             Back to the menu
           </button>
+          <button className="btn btn--outline" onClick={() => setGroupOpen(true)}>
+            See the group basket
+          </button>
         </div>
+        <GroupOrder open={groupOpen} onClose={() => setGroupOpen(false)} />
       </main>
     );
   }
@@ -411,6 +435,28 @@ export default function CheckoutPage() {
       <form className="container checkout" onSubmit={handleSubmit}>
         <section className="block">
           <h2 className="block__title">Your Order</h2>
+
+          <button
+            type="button"
+            className={`groupcta${inGroup ? ' groupcta--live' : ''}`}
+            onClick={() => setGroupOpen(true)}
+          >
+            <span className="groupcta__icon" aria-hidden="true">
+              &#128101;
+            </span>
+            <span className="groupcta__text">
+              <strong>{inGroup ? 'Group order' : 'Ordering with others?'}</strong>
+              <span>
+                {inGroup
+                  ? 'Everyone’s items are on this bill'
+                  : 'Share a link — everyone adds from their own phone'}
+              </span>
+            </span>
+            <span className="helpme__go" aria-hidden="true">
+              &rarr;
+            </span>
+          </button>
+
           {cartNotice ? (
             <p className="cart-notice">
               {cartNotice}{' '}
@@ -450,6 +496,22 @@ export default function CheckoutPage() {
                 </button>
               </div>
               <span className="lineitem__price">{formatINR(l.unitPrice * l.quantity)}</span>
+            </div>
+          ))}
+
+          {groupExtras.map((l) => (
+            <div className="lineitem lineitem--group" key={l.key}>
+              <div className="lineitem__body">
+                <p className="lineitem__name">
+                  {l.name}
+                  <span className="group__who">{memberName(l.memberId)}</span>
+                </p>
+                <p className="lineitem__meta">
+                  {l.variation ? `${l.variation} · ` : ''}
+                  {formatINR(l.unitPrice)} each &middot; {l.quantity} added
+                </p>
+              </div>
+              <span className="lineitem__price">{formatINR(l.lineTotal)}</span>
             </div>
           ))}
 
@@ -497,7 +559,7 @@ export default function CheckoutPage() {
           <div className="totals">
             <div className="totals__row">
               <span>Subtotal</span>
-              <span>{formatINR(subtotal)}</span>
+              <span>{formatINR(orderSubtotal)}</span>
             </div>
             {discount > 0 ? (
               <div className="totals__row totals__row--discount">
@@ -698,6 +760,8 @@ export default function CheckoutPage() {
           </button>
         </div>
       </div>
+
+      <GroupOrder open={groupOpen} onClose={() => setGroupOpen(false)} />
     </main>
   );
 }

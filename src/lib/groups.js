@@ -1,46 +1,85 @@
 /**
  * Group ordering: one basket, several phones, a single order at the end.
  *
- * A group holds item ids and quantities and nothing else — no prices. The order
- * API already re-prices everything from menu.json when the order is placed, so
- * there is no value in a guest's phone quoting a price, and no way for one to
- * push a cheaper number into the bill.
+ * A group is stored as a hash of small fields rather than one document:
  *
- * Only the host can place the order. That is enforced with a host token handed
- * out once, when the group is created, and never returned by the read endpoint,
- * so possession of the share link buys you a seat at the table but not the
- * ability to close the bill.
+ *   meta        {id, hostToken, hostId, createdAt, closed, orderNumber}
+ *   m:<id>      {id, name, host}          one per person
+ *   l:<id>      [{itemId, variation, quantity}]   one per person
  *
- * Storage matches src/lib/store.js: in-process memory, which on Vercel means one
- * instance's memory. A group is short-lived and chatty enough that this holds
- * for a single sitting, and it moves to the same database the orders do.
+ * Each phone only ever writes its own `l:` field, so two people adding at the
+ * same moment cannot overwrite one another. Read-modify-write on a single blob
+ * would drop whichever landed second, and in a shared basket that reads as
+ * someone's coffee quietly disappearing.
+ *
+ * Prices are not stored. The order API re-prices from menu.json when the order
+ * is placed, so a guest's phone quoting a number cannot change the bill; the
+ * prices returned here are for display and come from the same file.
+ *
+ * Only the host can place the order, enforced with a host token handed out once
+ * at creation and never included in the state everyone polls.
  */
 
 import menu from '@/data/menu.json';
 import { MAX_ITEM_QTY, MAX_LINES, clampQty, cleanText } from '@/lib/limits';
-
-const globalForGroups = globalThis;
-
-if (!globalForGroups.__soulGroups) {
-  globalForGroups.__soulGroups = new Map();
-}
-
-/** @type {Map<string, object>} */
-const groups = globalForGroups.__soulGroups;
+import * as kv from '@/lib/kv';
 
 export const MAX_MEMBERS = 12;
 export const MAX_MEMBER_NAME = 24;
-const TTL_MS = 3 * 60 * 60 * 1000; // a long lunch, then it lapses
+const TTL_SECONDS = 3 * 60 * 60; // a long lunch, then it lapses
+
+/** True when groups are shared across instances rather than held in memory. */
+export const shared = kv.ready;
+
+/* ------------------------------- storage -------------------------------- */
+
+const globalForGroups = globalThis;
+if (!globalForGroups.__soulGroupFields) globalForGroups.__soulGroupFields = new Map();
+
+/** @type {Map<string, {fields: object, createdAt: number}>} */
+const memory = globalForGroups.__soulGroupFields;
+
+const keyFor = (id) => `soulgroup:${id}`;
+
+function sweepMemory() {
+  const cutoff = Date.now() - TTL_SECONDS * 1000;
+  for (const [id, entry] of memory) {
+    if (entry.createdAt < cutoff) memory.delete(id);
+  }
+}
+
+async function readFields(id) {
+  if (kv.ready) return kv.hgetall(keyFor(id));
+  sweepMemory();
+  return memory.get(id)?.fields || null;
+}
+
+async function writeField(id, field, value) {
+  if (kv.ready) return kv.hset(keyFor(id), field, value, TTL_SECONDS);
+  const entry = memory.get(id) || { fields: {}, createdAt: Date.now() };
+  entry.fields[field] = value;
+  memory.set(id, entry);
+  return true;
+}
+
+async function removeField(id, field) {
+  if (kv.ready) return kv.hdel(keyFor(id), field);
+  const entry = memory.get(id);
+  if (entry) delete entry.fields[field];
+  return true;
+}
+
+/* -------------------------------- helpers -------------------------------- */
 
 const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no I/O/0/1, it gets read aloud
 
 const code = (n) =>
   Array.from({ length: n }, () => ALPHABET[Math.floor(Math.random() * ALPHABET.length)]).join('');
 
-/** Long random token — this is the thing that says who may place the order. */
+/** Long random token — the one thing that says who may place the order. */
 const token = () => code(8) + code(8) + code(8) + code(8);
 
-/** Every orderable item, so a group line can be checked against the real menu. */
+/** Every orderable item, so a line can be checked and priced against the menu. */
 const ITEMS = new Map();
 for (const category of menu.categories) {
   for (const item of category.items) {
@@ -49,40 +88,56 @@ for (const category of menu.categories) {
   }
 }
 
-function sweep() {
-  const now = Date.now();
-  for (const [id, g] of groups) {
-    if (now - g.createdAt > TTL_MS) groups.delete(id);
+/** Assemble the flat fields back into a group. */
+function assemble(fields) {
+  if (!fields || !fields.meta) return null;
+  const members = [];
+  const lines = [];
+
+  for (const [field, value] of Object.entries(fields)) {
+    if (field.startsWith('m:')) members.push(value);
+    else if (field.startsWith('l:')) {
+      const memberId = field.slice(2);
+      for (const line of value || []) lines.push({ ...line, memberId });
+    }
   }
+
+  members.sort((a, b) => (b.host ? 1 : 0) - (a.host ? 1 : 0));
+  return { ...fields.meta, members, lines };
 }
 
-export function createGroup(hostName) {
-  sweep();
-  let id = code(6);
-  while (groups.has(id)) id = code(6);
+export async function getGroup(id) {
+  const clean = String(id || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!clean) return null;
+  return assemble(await readFields(clean));
+}
 
+/* ------------------------------- operations ------------------------------ */
+
+export async function createGroup(hostName) {
+  const id = code(6);
   const hostId = code(10);
-  const group = {
+  const meta = {
     id,
     hostToken: token(),
     hostId,
     createdAt: Date.now(),
-    members: [{ id: hostId, name: cleanText(hostName, MAX_MEMBER_NAME) || 'Host', host: true }],
-    lines: [],
     closed: false,
     orderNumber: null,
   };
-  groups.set(id, group);
-  return group;
+
+  await writeField(id, 'meta', meta);
+  await writeField(id, `m:${hostId}`, {
+    id: hostId,
+    name: cleanText(hostName, MAX_MEMBER_NAME) || 'Host',
+    host: true,
+  });
+
+  return { ...meta, members: [{ id: hostId, name: hostName, host: true }], lines: [] };
 }
 
-export function getGroup(id) {
-  sweep();
-  return groups.get(String(id || '').toUpperCase()) || null;
-}
-
-export function joinGroup(id, name) {
-  const group = getGroup(id);
+export async function joinGroup(id, name) {
+  const group = await getGroup(id);
   if (!group) return { error: 'That group has expired or does not exist.' };
   if (group.closed) return { error: 'This group order has already been placed.' };
   if (group.members.length >= MAX_MEMBERS) {
@@ -93,74 +148,140 @@ export function joinGroup(id, name) {
   if (!clean) return { error: 'Please add your name so the others know whose order is whose.' };
 
   const member = { id: code(10), name: clean, host: false };
-  group.members.push(member);
-  return { group, member };
-}
+  await writeField(group.id, `m:${member.id}`, member);
 
-const isMember = (group, memberId) => group.members.some((m) => m.id === memberId);
+  return { group: await getGroup(group.id), member };
+}
 
 /**
  * Set one member's quantity for one item. Quantity 0 removes the line.
  *
- * A member may only touch their own lines; the host may clear anyone's, which is
- * the one asymmetry — somebody has to be able to take the extra latte off the
- * bill before it is placed.
+ * A member edits their own lines. The host may edit anyone's, which is the one
+ * asymmetry: somebody has to be able to take the extra latte off the bill before
+ * it is placed, and it may as well be whoever is paying.
  */
-export function setGroupLine(id, memberId, { itemId, variation, quantity, hostToken }) {
-  const group = getGroup(id);
+export async function setGroupLine(id, memberId, opts = {}) {
+  const { itemId, variation, quantity, hostToken, targetMemberId } = opts;
+
+  const group = await getGroup(id);
   if (!group) return { error: 'That group has expired or does not exist.' };
   if (group.closed) return { error: 'This group order has already been placed.' };
 
-  const host = Boolean(hostToken) && hostToken === group.hostToken;
-  if (!host && !isMember(group, memberId)) return { error: 'Join the group before adding items.' };
+  const isHost = Boolean(hostToken) && hostToken === group.hostToken;
+
+  // Asking to touch someone else's line without the host token is refused
+  // outright rather than quietly redirected at your own lines, which reported
+  // success for something that had not happened.
+  if (targetMemberId && targetMemberId !== memberId && !isHost) {
+    return { error: 'Only the host can change someone else’s items.' };
+  }
+
+  const owner = isHost && targetMemberId ? targetMemberId : memberId;
+  if (!group.members.some((m) => m.id === owner)) {
+    return { error: 'Join the group before adding items.' };
+  }
 
   const item = ITEMS.get(String(itemId));
   if (!item) return { error: 'That item is no longer on the menu.' };
   if (item.available === false) return { error: `${item.name} is sold out.` };
 
   const variationName = variation ? cleanText(variation, 40) : null;
-  const key = `${itemId}::${variationName || ''}::${memberId}`;
   const qty = Number(quantity);
 
-  const existing = group.lines.findIndex((l) => l.key === key);
+  const fields = await readFields(group.id);
+  const own = (fields?.[`l:${owner}`] || []).filter(Boolean);
+  const at = own.findIndex(
+    (l) => String(l.itemId) === String(itemId) && (l.variation || null) === variationName
+  );
 
   if (!qty || qty <= 0) {
-    if (existing >= 0) group.lines.splice(existing, 1);
-    return { group };
+    if (at >= 0) own.splice(at, 1);
+  } else if (at >= 0) {
+    own[at].quantity = clampQty(qty);
+  } else {
+    if (group.lines.length >= MAX_LINES) {
+      return { error: `A group order can hold ${MAX_LINES} different items.` };
+    }
+    own.push({
+      itemId: String(itemId),
+      variation: variationName,
+      quantity: Math.min(MAX_ITEM_QTY, clampQty(qty)),
+    });
   }
 
-  if (existing >= 0) {
-    group.lines[existing].quantity = clampQty(qty);
-    return { group };
-  }
+  if (own.length) await writeField(group.id, `l:${owner}`, own);
+  else await removeField(group.id, `l:${owner}`);
 
-  if (group.lines.length >= MAX_LINES) {
-    return { error: `A group order can hold ${MAX_LINES} different items.` };
-  }
-
-  group.lines.push({
-    key,
-    memberId,
-    itemId: String(itemId),
-    variation: variationName,
-    quantity: Math.min(MAX_ITEM_QTY, clampQty(qty)),
-  });
-  return { group };
-}
-
-/** Mark the group placed so no one keeps adding to an order already in the kitchen. */
-export function closeGroup(id, hostToken, orderNumber) {
-  const group = getGroup(id);
-  if (!group) return { error: 'That group has expired or does not exist.' };
-  if (hostToken !== group.hostToken) return { error: 'Only the host can place the group order.' };
-  group.closed = true;
-  group.orderNumber = orderNumber || null;
-  return { group };
+  return { group: await getGroup(group.id) };
 }
 
 /**
- * The public shape. Deliberately omits hostToken — this is what every phone in
- * the group polls, and the token is the only thing separating host from guest.
+ * Replace one member's whole set of lines.
+ *
+ * A phone's cart is the truth about what that person wants, so it is sent whole.
+ * Syncing item by item meant a removal could be missed and the item lingered on
+ * everyone else's screen; sending the entire list cannot leave a stale line
+ * behind, because whatever is absent is absent.
+ */
+export async function replaceMemberLines(id, memberId, rawLines) {
+  const group = await getGroup(id);
+  if (!group) return { error: 'That group has expired or does not exist.' };
+  if (group.closed) return { error: 'This group order has already been placed.' };
+  if (!group.members.some((m) => m.id === memberId)) {
+    return { error: 'Join the group before adding items.' };
+  }
+
+  const seen = new Set();
+  const clean = [];
+
+  for (const raw of Array.isArray(rawLines) ? rawLines : []) {
+    const item = ITEMS.get(String(raw?.itemId));
+    if (!item || item.available === false) continue;
+
+    const variationName = raw.variation ? cleanText(raw.variation, 40) : null;
+    const dedupe = `${raw.itemId}::${variationName || ''}`;
+    if (seen.has(dedupe)) continue;
+    seen.add(dedupe);
+
+    const qty = Number(raw.quantity);
+    if (!qty || qty <= 0) continue;
+
+    clean.push({
+      itemId: String(raw.itemId),
+      variation: variationName,
+      quantity: Math.min(MAX_ITEM_QTY, clampQty(qty)),
+    });
+    if (clean.length >= MAX_LINES) break;
+  }
+
+  if (clean.length) await writeField(group.id, `l:${memberId}`, clean);
+  else await removeField(group.id, `l:${memberId}`);
+
+  return { group: await getGroup(group.id) };
+}
+
+/** Host only: the group is now an order, so nobody keeps adding to it. */
+export async function closeGroup(id, hostToken, orderNumber) {
+  const group = await getGroup(id);
+  if (!group) return { error: 'That group has expired or does not exist.' };
+  if (hostToken !== group.hostToken) return { error: 'Only the host can place the group order.' };
+
+  const fields = await readFields(group.id);
+  await writeField(group.id, 'meta', {
+    ...fields.meta,
+    closed: true,
+    orderNumber: orderNumber || null,
+  });
+
+  return { group: await getGroup(group.id) };
+}
+
+/**
+ * The public shape. Deliberately omits hostToken — this is what every phone
+ * polls, and the token is the only thing separating host from guest.
+ *
+ * Lines carry a name and price so a phone can show the basket without holding
+ * the whole menu; the order API still prices the real order itself.
  */
 export function publicGroup(group) {
   return {
@@ -168,12 +289,22 @@ export function publicGroup(group) {
     closed: group.closed,
     orderNumber: group.orderNumber,
     members: group.members.map((m) => ({ id: m.id, name: m.name, host: m.host })),
-    lines: group.lines.map((l) => ({
-      key: l.key,
-      memberId: l.memberId,
-      itemId: l.itemId,
-      variation: l.variation,
-      quantity: l.quantity,
-    })),
+    lines: group.lines.map((l) => {
+      const item = ITEMS.get(String(l.itemId));
+      const variation = l.variation
+        ? (item?.variations || []).find((v) => v.name === l.variation)
+        : null;
+      const unitPrice = variation?.price ?? item?.price ?? 0;
+      return {
+        key: `${l.itemId}::${l.variation || ''}::${l.memberId}`,
+        memberId: l.memberId,
+        itemId: l.itemId,
+        variation: l.variation,
+        quantity: l.quantity,
+        name: item?.name || 'Item',
+        unitPrice,
+        lineTotal: unitPrice * l.quantity,
+      };
+    }),
   };
 }

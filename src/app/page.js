@@ -7,8 +7,8 @@ import { fetchMenu, formatINR } from '@/lib/api';
 import { nutritionFor, formatKcal, formatSugar } from '@/lib/nutrition';
 import mediaManifest from '@/data/media-manifest.json';
 import RecommendSheet from '@/components/RecommendSheet';
-import GroupOrder from '@/components/GroupOrder';
 import { useGroup } from '@/context/GroupContext';
+import GroupOrder from '@/components/GroupOrder';
 import { WA_LINK, formatPhone } from '@/lib/contact';
 
 const STORE_NAME = process.env.NEXT_PUBLIC_STORE_NAME || 'Soul';
@@ -416,22 +416,9 @@ export default function MenuPage() {
   const [activeCat, setActiveCat] = useState('');
   const [sheetItem, setSheetItem] = useState(null);
   const [recommendOpen, setRecommendOpen] = useState(false);
-  const [groupOpen, setGroupOpen] = useState(false);
-  const { inGroup, isHost, hostName, group } = useGroup();
+  const { inGroup, isHost, hostName } = useGroup();
   const [leaving, setLeaving] = useState(false);
 
-  /* Every item by its own id and by each of its variation ids, so a line added
-     on someone else's phone resolves whichever id that phone used. */
-  const menuIndex = useMemo(() => {
-    const index = new Map();
-    for (const category of menu?.categories || []) {
-      for (const item of category.items) {
-        index.set(String(item.id), item);
-        for (const v of item.variations || []) index.set(String(v.id), item);
-      }
-    }
-    return index;
-  }, [menu]);
   // Revealed rows are React state, not a class poked onto the DOM: .cat's
   // className is React-managed, so opening a section or typing in search would
   // rewrite it and strip an imperative class straight back off.
@@ -711,28 +698,6 @@ export default function MenuPage() {
         </div>
 
         {!searching ? (
-          <button
-            className={`groupcta${inGroup ? ' groupcta--live' : ''}`}
-            onClick={() => setGroupOpen(true)}
-          >
-            <span className="groupcta__icon" aria-hidden="true">
-              👥
-            </span>
-            <span className="groupcta__text">
-              <strong>{inGroup ? `Group order · ${group?.id}` : 'Ordering with others?'}</strong>
-              <span>
-                {inGroup
-                  ? `${group?.members.length} people, one bill`
-                  : 'Share a link — everyone adds from their own phone'}
-              </span>
-            </span>
-            <span className="helpme__go" aria-hidden="true">
-              →
-            </span>
-          </button>
-        ) : null}
-
-        {!searching ? (
           <button className="helpme" onClick={() => setRecommendOpen(true)}>
             <span className="helpme__spark" aria-hidden="true">
               ✨
@@ -865,7 +830,7 @@ export default function MenuPage() {
           {inGroup && !isHost ? (
             /* One order, placed by the host - so a guest gets the basket, not a
                checkout button that would only be refused. */
-            <button className="fab fab--group" onClick={() => setGroupOpen(true)}>
+            <button className="fab fab--group" onClick={goToCheckout}>
               <span className="fab__left">
                 👥 <span className="fab__badge">{totalItems}</span> In the group
               </span>
@@ -883,12 +848,9 @@ export default function MenuPage() {
         </div>
       ) : null}
 
-      <GroupOrder
-        open={groupOpen}
-        onClose={() => setGroupOpen(false)}
-        menuIndex={menuIndex}
-        onCheckout={goToCheckout}
-      />
+      {/* Group ordering lives on the checkout page, but a shared link lands
+          here — this stays mounted to catch it and renders nothing otherwise. */}
+      <GroupOrder open={false} onClose={() => {}} />
 
       {recommendOpen ? (
         <RecommendSheet

@@ -6,17 +6,21 @@ import { useCart } from '@/context/CartContext';
 import { formatINR } from '@/lib/api';
 
 /**
- * Group ordering UI: the start/share sheet, the join prompt, and the running
+ * Group ordering UI: start or join a group, share the link, and see the running
  * basket of what everyone has added.
  *
+ * It lives on the checkout page, which is where a shared bill belongs — the menu
+ * is for choosing, and putting this in front of someone browsing on their own
+ * was noise.
+ *
  * The rule the whole thing turns on is that one order gets placed, by the host.
- * Guests get a basket they can add to and a clear statement of who is closing
- * the bill, rather than a checkout button that would fail.
+ * A guest gets the basket and a clear statement of who is closing the bill,
+ * rather than a checkout button that would be refused.
  */
-export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
+export default function GroupOrder({ open, onClose }) {
   const {
-    ready, group, inGroup, isHost, memberId, otherLines, memberName, hostName,
-    error, clearError, start, join, leave, collectForCheckout,
+    ready, group, inGroup, isHost, connected, otherLines, othersTotal,
+    memberName, hostName, error, clearError, start, join, leave, removeLine,
   } = useGroup();
   const { lines: myLines, subtotal: mySubtotal } = useCart();
 
@@ -25,7 +29,7 @@ export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // A shared link lands as /?group=ABC123 — pick it up and offer to join.
+  // A shared link lands as ?group=ABC123 — pick it up and offer to join.
   useEffect(() => {
     if (!ready) return;
     const params = new URLSearchParams(window.location.search);
@@ -50,29 +54,6 @@ export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
     [group]
   );
 
-  /* Everyone else's lines, priced from the menu this device already has. */
-  const others = useMemo(() => {
-    return otherLines
-      .map((l) => {
-        const item = menuIndex.get(String(l.itemId));
-        if (!item) return null;
-        const variation = l.variation
-          ? (item.variations || []).find((v) => v.name === l.variation)
-          : null;
-        const unit = variation?.price ?? item.price;
-        return {
-          key: l.key,
-          name: item.name,
-          variation: l.variation,
-          quantity: l.quantity,
-          total: unit * l.quantity,
-          who: memberName(l.memberId),
-        };
-      })
-      .filter(Boolean);
-  }, [otherLines, menuIndex, memberName]);
-
-  const othersTotal = others.reduce((sum, l) => sum + l.total, 0);
   const groupTotal = othersTotal + mySubtotal;
 
   async function handleStart() {
@@ -109,19 +90,19 @@ export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
     }
   }
 
-  function handleHostCheckout() {
-    collectForCheckout(menuIndex);
-    onClose();
-    // Give the cart update a frame to land before the page changes under it.
-    setTimeout(() => onCheckout(), 60);
-  }
-
   if (!open && !pendingJoin) return null;
 
   const showJoinPrompt = Boolean(pendingJoin) && !inGroup;
 
+  // An invite prompt opens itself, so dismissing has to clear it here as well
+  // as telling the page to close.
+  function handleClose() {
+    setPendingJoin(null);
+    onClose();
+  }
+
   return (
-    <div className="sheet-backdrop" onClick={onClose} role="presentation">
+    <div className="sheet-backdrop" onClick={handleClose} role="presentation">
       <div
         className="sheet sheet--group"
         onClick={(e) => e.stopPropagation()}
@@ -186,11 +167,17 @@ export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
           <>
             <h2 className="sheet__title">
               Group order
-              <span className="group__code">{group.id}</span>
+              {group ? <span className="group__code">{group.id}</span> : null}
             </h2>
 
+            {!connected ? (
+              <p className="group__offline">
+                Can&rsquo;t reach the group right now — still trying. Your items are safe.
+              </p>
+            ) : null}
+
             <div className="group__people">
-              {group.members.map((m) => (
+              {(group?.members || []).map((m) => (
                 <span key={m.id} className={`group__person${m.host ? ' group__person--host' : ''}`}>
                   {m.name}
                   {m.host ? ' · host' : ''}
@@ -210,8 +197,8 @@ export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
             <div className="group__basket">
               <h3 className="group__basket-title">Everyone&rsquo;s basket</h3>
 
-              {myLines.length === 0 && others.length === 0 ? (
-                <p className="group__empty">Nothing added yet. Start picking.</p>
+              {myLines.length === 0 && otherLines.length === 0 ? (
+                <p className="group__empty">Nothing added yet.</p>
               ) : null}
 
               {myLines.map((l) => (
@@ -226,15 +213,26 @@ export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
                 </div>
               ))}
 
-              {others.map((l) => (
+              {otherLines.map((l) => (
                 <div className="group__line" key={l.key}>
                   <span className="group__qty">{l.quantity}&times;</span>
                   <span className="group__item">
                     {l.name}
                     {l.variation ? <span className="group__var"> · {l.variation}</span> : null}
-                    <span className="group__who">{l.who}</span>
+                    <span className="group__who">{memberName(l.memberId)}</span>
                   </span>
-                  <span className="group__total">{formatINR(l.total)}</span>
+                  <span className="group__total">{formatINR(l.lineTotal)}</span>
+                  {isHost ? (
+                    /* Somebody has to be able to take the extra latte off before
+                       the order goes in, and it may as well be whoever pays. */
+                    <button
+                      className="group__strike"
+                      onClick={() => removeLine(l)}
+                      aria-label={`Remove ${l.name} added by ${memberName(l.memberId)}`}
+                    >
+                      &times;
+                    </button>
+                  ) : null}
                 </div>
               ))}
 
@@ -244,24 +242,15 @@ export default function GroupOrder({ open, onClose, menuIndex, onCheckout }) {
               </div>
             </div>
 
-            {group.closed ? (
+            {group?.closed ? (
               <p className="group__note">
                 This group order has been placed{group.orderNumber ? ` — ${group.orderNumber}` : ''}.
               </p>
             ) : isHost ? (
-              <>
-                <button
-                  className="btn btn--primary"
-                  onClick={handleHostCheckout}
-                  disabled={groupTotal <= 0}
-                >
-                  Place the group order &middot; {formatINR(groupTotal)}
-                </button>
-                <p className="group__note">
-                  You started this group, so the order is yours to place. Everyone else&rsquo;s items
-                  are added to your cart at checkout.
-                </p>
-              </>
+              <p className="group__note">
+                You started this group, so the order is yours to place. Everyone else&rsquo;s items
+                are on the bill below.
+              </p>
             ) : (
               <p className="group__note group__note--wait">
                 Add whatever you like — {hostName} places the order for everyone.

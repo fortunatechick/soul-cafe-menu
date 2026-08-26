@@ -463,6 +463,17 @@ Project → Settings → Environment Variables.
 | `NEXT_PUBLIC_STORE_NAME` | `Soul` | Optional |
 | `NEXT_PUBLIC_API_URL` | *(blank)* | No — relative routes |
 | `PETPOOJA_*` | see `.env.example` | Only when the POS is wired up |
+| `KV_REST_API_URL` | from Vercel KV / Upstash | **Yes, for group ordering** |
+| `KV_REST_API_TOKEN` | from Vercel KV / Upstash | **Yes, for group ordering** |
+
+Group ordering needs the last two. Several phones have to see the same basket,
+and in-process memory cannot do that on Vercel — each request may land on a
+different serverless instance, so one phone's group is invisible to the next.
+Create a store under Vercel → Storage → KV (or an Upstash Redis database) and
+paste the two values it gives you; nothing else changes, and no package is
+added, since `src/lib/kv.js` talks to the REST endpoint with plain `fetch`.
+Without them groups fall back to memory: fine locally, unreliable across devices
+in production.
 
 ---
 

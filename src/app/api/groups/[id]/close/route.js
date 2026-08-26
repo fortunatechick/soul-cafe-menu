@@ -12,7 +12,7 @@ export async function POST(request, { params }) {
     return Response.json({ error: 'Invalid request.' }, { status: 400 });
   }
 
-  const result = closeGroup(id, body.hostToken, body.orderNumber);
+  const result = await closeGroup(id, body.hostToken, body.orderNumber);
   if (result.error) return Response.json({ error: result.error }, { status: 403 });
   return Response.json({ group: publicGroup(result.group) });
 }

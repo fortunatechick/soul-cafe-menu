@@ -1,35 +1,48 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { useCart, lineKey } from '@/context/CartContext';
+import { useCart } from '@/context/CartContext';
 
 const STORAGE_KEY = 'soulmenu_group';
 const POLL_MS = 3500;
+const SLOW_POLL_MS = 15000;
+const MISSES_BEFORE_BACKOFF = 4;
 
 const GroupContext = createContext(null);
 
 /**
  * Group ordering across several phones.
  *
- * Each person keeps using their own cart exactly as before — the steppers, the
- * variation picker, all of it. This provider mirrors whatever is in that cart up
- * to the group on the server, and polls back everyone else's lines. So a member
- * sees their own items live and the rest of the table a few seconds behind,
- * which is the right trade: the thing you just tapped never lags.
+ * Each person keeps using their own cart exactly as before — steppers, variation
+ * picker, all of it. This provider mirrors that cart up to the group and polls
+ * everyone else's lines back, so what you just tapped never lags while the rest
+ * of the table is a few seconds behind.
  *
- * Only the host can place the order. The host token that proves it is handed out
- * once, when the group is created, and is never part of the polled state.
+ * Two rules earned by getting them wrong:
+ *
+ * 1. The whole cart is sent, not a diff. Syncing item by item meant one dropped
+ *    request could leave an item everyone else still saw after it was removed.
+ *    Sending the full list makes absence meaningful — whatever is not in it is
+ *    gone.
+ *
+ * 2. A failed poll never clears the membership. It used to: a 404 was read as
+ *    "the group is gone", when on Vercel it usually means the request reached an
+ *    instance that had never seen it. That silently dropped the host out of
+ *    their own group on refresh, taking the host token with it, and every later
+ *    change stopped reaching anyone. Now a failure only marks the group
+ *    unreachable and keeps trying.
  */
 export function GroupProvider({ children }) {
-  const { lines, addItem, clearCart, hydrated } = useCart();
+  const { lines, hydrated } = useCart();
 
   const [membership, setMembership] = useState(null); // { id, memberId, name, hostToken? }
   const [group, setGroup] = useState(null);
   const [ready, setReady] = useState(false);
+  const [connected, setConnected] = useState(true);
   const [error, setError] = useState('');
 
-  // What we last told the server, so a cart change syncs only what changed.
-  const syncedRef = useRef(new Map());
+  const missesRef = useRef(0);
+  const syncedRef = useRef(''); // signature of what the server was last told
 
   useEffect(() => {
     try {
@@ -47,36 +60,58 @@ export function GroupProvider({ children }) {
       if (membership) localStorage.setItem(STORAGE_KEY, JSON.stringify(membership));
       else localStorage.removeItem(STORAGE_KEY);
     } catch {
-      // storage blocked — the group simply won't survive a reload
+      // storage blocked — the group won't survive a reload, but this session works
     }
   }, [membership, ready]);
 
   /* ------------------------------- polling ------------------------------- */
 
   const refresh = useCallback(async (groupId) => {
-    const id = groupId || membership?.id;
-    if (!id) return null;
+    if (!groupId) return null;
     try {
-      const res = await fetch(`/api/groups/${id}`, { cache: 'no-store' });
-      if (res.status === 404) {
-        // Expired or served by an instance that never had it.
-        setMembership(null);
-        setGroup(null);
+      const res = await fetch(`/api/groups/${groupId}`, { cache: 'no-store' });
+      if (!res.ok) {
+        // Never destructive. An unreachable group is not a deleted one.
+        missesRef.current += 1;
+        setConnected(false);
         return null;
       }
       const data = await res.json();
-      if (data.group) setGroup(data.group);
-      return data.group || null;
+      if (data.group) {
+        missesRef.current = 0;
+        setConnected(true);
+        setGroup(data.group);
+        return data.group;
+      }
+      return null;
     } catch {
-      return null; // a dropped poll is not worth surfacing; the next one retries
+      missesRef.current += 1;
+      setConnected(false);
+      return null;
     }
-  }, [membership?.id]);
+  }, []);
 
   useEffect(() => {
-    if (!membership?.id) return undefined;
-    refresh(membership.id);
-    const timer = setInterval(() => refresh(membership.id), POLL_MS);
-    return () => clearInterval(timer);
+    const id = membership?.id;
+    if (!id) return undefined;
+
+    let timer;
+    let cancelled = false;
+
+    const tick = async () => {
+      await refresh(id);
+      if (cancelled) return;
+      // Back off once it is clearly not answering, so a lapsed group left open
+      // in a tab does not poll every few seconds for hours.
+      const wait = missesRef.current >= MISSES_BEFORE_BACKOFF ? SLOW_POLL_MS : POLL_MS;
+      timer = setTimeout(tick, wait);
+    };
+
+    tick();
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, [membership?.id, refresh]);
 
   /* -------------------------- cart -> group sync -------------------------- */
@@ -84,41 +119,33 @@ export function GroupProvider({ children }) {
   useEffect(() => {
     if (!membership?.id || !hydrated || group?.closed) return;
 
-    const current = new Map(lines.map((l) => [lineKey(l.id, l.variation), l]));
-    const previous = syncedRef.current;
-    const pending = [];
+    const payload = lines.map((l) => ({
+      itemId: l.id,
+      variation: l.variation,
+      quantity: l.quantity,
+    }));
+    const signature = JSON.stringify(payload);
+    if (signature === syncedRef.current) return;
 
-    for (const [key, line] of current) {
-      if (previous.get(key) !== line.quantity) {
-        pending.push({ itemId: line.id, variation: line.variation, quantity: line.quantity });
-      }
-    }
-    for (const [key] of previous) {
-      if (!current.has(key)) {
-        const [itemId, variation] = key.split('::');
-        pending.push({ itemId, variation: variation || null, quantity: 0 });
-      }
-    }
-    if (!pending.length) return;
-
-    // Record first: a failed post retries on the next cart change, and this
-    // stops one slow request re-firing every render in the meantime.
-    syncedRef.current = new Map([...current].map(([k, l]) => [k, l.quantity]));
+    syncedRef.current = signature;
 
     (async () => {
-      for (const change of pending) {
-        try {
-          const res = await fetch(`/api/groups/${membership.id}/items`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...change, memberId: membership.memberId }),
-          });
-          const data = await res.json();
-          if (data.group) setGroup(data.group);
-          else if (data.error) setError(data.error);
-        } catch {
-          // offline — the next cart change re-sends
+      try {
+        const res = await fetch(`/api/groups/${membership.id}/sync`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ memberId: membership.memberId, lines: payload }),
+        });
+        const data = await res.json();
+        if (data.group) {
+          setGroup(data.group);
+          setConnected(true);
+        } else if (data.error) {
+          setError(data.error);
+          syncedRef.current = ''; // let the next change try again
         }
+      } catch {
+        syncedRef.current = ''; // offline — retry on the next cart change
       }
     })();
   }, [lines, membership, hydrated, group?.closed]);
@@ -127,71 +154,90 @@ export function GroupProvider({ children }) {
 
   const start = useCallback(async (name) => {
     setError('');
-    const res = await fetch('/api/groups', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name }),
-    });
-    const data = await res.json();
-    if (data.error) {
-      setError(data.error);
+    try {
+      const res = await fetch('/api/groups', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name }),
+      });
+      const data = await res.json();
+      if (data.error) {
+        setError(data.error);
+        return null;
+      }
+      syncedRef.current = ''; // push the existing cart up to the new group
+      missesRef.current = 0;
+      setMembership({
+        id: data.group.id,
+        memberId: data.memberId,
+        name,
+        hostToken: data.hostToken,
+      });
+      setGroup(data.group);
+      return data.group;
+    } catch {
+      setError('Could not start the group. Check your connection and try again.');
       return null;
     }
-    syncedRef.current = new Map(); // push the existing cart up to the new group
-    setMembership({
-      id: data.group.id,
-      memberId: data.memberId,
-      name,
-      hostToken: data.hostToken,
-    });
-    setGroup(data.group);
-    return data.group;
   }, []);
 
   const join = useCallback(async (id, name) => {
     setError('');
-    const res = await fetch(`/api/groups/${id}/join`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name }),
-    });
-    const data = await res.json();
-    if (data.error) {
-      setError(data.error);
+    try {
+      const res = await fetch(`/api/groups/${id}/join`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name }),
+      });
+      const data = await res.json();
+      if (data.error) {
+        setError(data.error);
+        return null;
+      }
+      syncedRef.current = '';
+      missesRef.current = 0;
+      setMembership({ id: data.group.id, memberId: data.memberId, name });
+      setGroup(data.group);
+      return data.group;
+    } catch {
+      setError('Could not join the group. Check your connection and try again.');
       return null;
     }
-    syncedRef.current = new Map();
-    setMembership({ id: data.group.id, memberId: data.memberId, name });
-    setGroup(data.group);
-    return data.group;
   }, []);
 
   const leave = useCallback(() => {
-    // Their lines stay on the group — someone walking away from a shared basket
-    // has usually already ordered, and the host can clear anything unwanted.
     setMembership(null);
     setGroup(null);
-    syncedRef.current = new Map();
+    setError('');
+    missesRef.current = 0;
+    syncedRef.current = '';
   }, []);
 
-  /** Host only: pull everyone else's items into this device's cart to check out. */
-  const collectForCheckout = useCallback(
-    (menuIndex) => {
-      if (!group || !membership?.hostToken) return 0;
-      let added = 0;
-      for (const line of group.lines) {
-        if (line.memberId === membership.memberId) continue; // already in this cart
-        const item = menuIndex.get(String(line.itemId));
-        if (!item) continue;
-        const variation = line.variation
-          ? (item.variations || []).find((v) => v.name === line.variation) || null
-          : null;
-        addItem(item, variation, line.quantity);
-        added += line.quantity;
+  /** Host only: take somebody else's item off the bill before it is placed. */
+  const removeLine = useCallback(
+    async (line) => {
+      if (!membership?.hostToken) return;
+      try {
+        const res = await fetch(`/api/groups/${membership.id}/items`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            memberId: membership.memberId,
+            hostToken: membership.hostToken,
+            targetMemberId: line.memberId,
+            itemId: line.itemId,
+            variation: line.variation,
+            quantity: 0,
+          }),
+        });
+        const data = await res.json();
+        if (data.group) setGroup(data.group);
+        else if (data.error) setError(data.error);
+      } catch {
+        setError('Could not remove that item. Please try again.');
       }
-      return added;
     },
-    [group, membership, addItem]
+    [membership]
   );
 
   /** Host only: the group is now an order. */
@@ -207,28 +253,30 @@ export function GroupProvider({ children }) {
       } catch {
         // The order is already placed; the group lapsing on its own is fine.
       }
-      setMembership(null);
-      setGroup(null);
-      syncedRef.current = new Map();
+      leave();
     },
-    [membership]
+    [membership, leave]
   );
 
   const value = useMemo(() => {
     const isHost = Boolean(membership?.hostToken);
     const memberId = membership?.memberId || null;
 
-    // Everyone else's lines — this member's own come from their cart, live.
+    // Everyone else's lines. This member's own come from their cart, live, so
+    // the two never overlap and nothing is counted twice.
     const otherLines = (group?.lines || []).filter((l) => l.memberId !== memberId);
+    const othersTotal = otherLines.reduce((sum, l) => sum + l.lineTotal, 0);
 
     return {
       ready,
       group,
       membership,
       isHost,
-      inGroup: Boolean(membership?.id && group),
+      inGroup: Boolean(membership?.id),
+      connected,
       memberId,
       otherLines,
+      othersTotal,
       memberName: (id) => group?.members.find((m) => m.id === id)?.name || 'Someone',
       hostName: group?.members.find((m) => m.host)?.name || 'the host',
       error,
@@ -237,11 +285,10 @@ export function GroupProvider({ children }) {
       join,
       leave,
       refresh,
-      collectForCheckout,
+      removeLine,
       close,
-      clearCart,
     };
-  }, [ready, group, membership, error, start, join, leave, refresh, collectForCheckout, close, clearCart]);
+  }, [ready, group, membership, connected, error, start, join, leave, refresh, removeLine, close]);
 
   return <GroupContext.Provider value={value}>{children}</GroupContext.Provider>;
 }

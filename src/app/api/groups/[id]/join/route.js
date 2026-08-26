@@ -17,7 +17,7 @@ export async function POST(request, { params }) {
     return Response.json({ error: 'Invalid request.' }, { status: 400 });
   }
 
-  const result = joinGroup(id, body.name);
+  const result = await joinGroup(id, body.name);
   if (result.error) return Response.json({ error: result.error }, { status: 400 });
 
   return Response.json({ group: publicGroup(result.group), memberId: result.member.id });

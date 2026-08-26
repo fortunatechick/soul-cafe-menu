@@ -22,7 +22,7 @@ export async function POST(request) {
   const name = cleanText(body.name, MAX_MEMBER_NAME);
   if (!name) return Response.json({ error: 'Please add your name first.' }, { status: 400 });
 
-  const group = createGroup(name);
+  const group = await createGroup(name);
 
   // The token goes back exactly once, to the device that made the group.
   return Response.json({
