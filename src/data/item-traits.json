@@ -1,0 +1,2725 @@
+{
+"1289457905": {
+"flavours": [],
+"ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1289457906": {
+"flavours": [],
+"ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1289691363": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1289865271": {
+"flavours": [
+"caramel"
+],
+"ingredients": "whip cream, milk, tiramisu syrup of cold foam, tiramisu syrup for milk, espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1289949183": {
+"flavours": [],
+"ingredients": "",
+"kind": "addon",
+"temp": null,
+"type": "Add-on"
+},
+"1289949184": {
+"flavours": [],
+"ingredients": "",
+"kind": "addon",
+"temp": null,
+"type": "Add-on"
+},
+"1290020445": {
+"flavours": [],
+"ingredients": "",
+"kind": "addon",
+"temp": null,
+"type": "Add-on"
+},
+"1290357071": {
+"flavours": [],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1293713215": {
+"flavours": [],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1293996306": {
+"flavours": [],
+"ingredients": "",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294529788": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "croissant, butter, confit garlic, cheese slice, oregano, chili flakes, mushroom, pepper, hot honey, bagel, cream cheese",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1294529789": {
+"flavours": [
+"savoury"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1294529790": {
+"flavours": [
+"savoury",
+"floral"
+],
+"ingredients": "butter croissant, paneer tikka filling, mint mayo, siracha sauce, mozzarella chesse, pickled onion",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1294561433": {
+"flavours": [
+"savoury"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1294561434": {
+"flavours": [
+"savoury"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1294564324": {
+"flavours": [],
+"ingredients": "frozen sweet potato fries, black pepper",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1294567340": {
+"flavours": [
+"chocolate",
+"floral"
+],
+"ingredients": "step 1 - brew for 5 minutes, cool grean ocean tea",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1294567341": {
+"flavours": [
+"chocolate",
+"floral"
+],
+"ingredients": "step 1 - brew for 5 minutes, cool grean ocean tea",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1294567367": {
+"flavours": [
+"caramel"
+],
+"ingredients": "espresso, condensed milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294567374": {
+"flavours": [
+"caramel"
+],
+"ingredients": "espresso, condensed milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294567437": {
+"flavours": [
+"fruity"
+],
+"ingredients": "orange juice, tonic water, espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294567438": {
+"flavours": [
+"fruity"
+],
+"ingredients": "orange juice, tonic water, espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294567509": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1294567510": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1294568065": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1294568066": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "espresso, milk, caramel sauce, chocolate sauce",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1294568203": {
+"flavours": [
+"spiced"
+],
+"ingredients": "cold brew, ginger ale",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294568204": {
+"flavours": [
+"spiced"
+],
+"ingredients": "cold brew, ginger ale",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294568632": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "cold brew, chocolate syrup, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294568633": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "cold brew, chocolate syrup, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294569709": {
+"flavours": [
+"caramel"
+],
+"ingredients": "cold brew, vanilla syrup, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294569710": {
+"flavours": [
+"caramel"
+],
+"ingredients": "cold brew, vanilla syrup, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294569890": {
+"flavours": [
+"nutty"
+],
+"ingredients": "cold brew, hazelnut syrup, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294569891": {
+"flavours": [
+"nutty"
+],
+"ingredients": "cold brew, hazelnut syrup, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1294588509": {
+"flavours": [
+"chocolate",
+"nutty"
+],
+"ingredients": "pistachio croissant, pista, pistachio butter, dark chocolate compound",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1294971365": {
+"flavours": [
+"fruity",
+"floral"
+],
+"ingredients": "4 pm purple tea leaves, tonic water, orange juice",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"1295098434": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"1295461689": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"1295461690": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"1296789497": {
+"flavours": [],
+"ingredients": "",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"1298276239": {
+"flavours": [
+"fruity",
+"nutty"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1298532298": {
+"flavours": [
+"fruity"
+],
+"ingredients": "lemon iced tea syrup",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"1298700198": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "flat bread, pizza pasta sauce, mozzarella cheese, onions, paneer tikka filling, oregano sachet (serve seperately), chilli flakes sachet (serve seperately)",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1298890974": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "croissant, butter, confit garlic, cheese slice, oregano, chili flakes, mushroom, pepper, hot honey, bagel, cream cheese",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1298905499": {
+"flavours": [],
+"ingredients": "beans, milk",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"1299231643": {
+"flavours": [
+"savoury",
+"floral"
+],
+"ingredients": "butter croissant, paneer tikka filling, mint mayo, siracha sauce, mozzarella chesse, pickled onion",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1300578964": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": "hot",
+"type": "Beverage"
+},
+"1300578965": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": "hot",
+"type": "Beverage"
+},
+"1300578966": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": "hot",
+"type": "Beverage"
+},
+"1301467782": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "bagel, butter, confit garlic, cheese slice, oregano, mushroom, pepper, hot honey",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1301467783": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "bagel, pizza pasta sauce, mozzarella cheese, sundried tomato, olives, capsicum, olive oil, oregano sachet (serve seperately), chilli flakes sachet (serve seperately)",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1301510878": {
+"flavours": [
+"savoury"
+],
+"ingredients": "bagel, gucamole, tomato, onion",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1301607351": {
+"flavours": [
+"fruity",
+"caramel"
+],
+"ingredients": "cold brew, orange juice, vanilla syrup",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301607356": {
+"flavours": [
+"fruity",
+"caramel"
+],
+"ingredients": "cold brew, orange juice, vanilla syrup",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301607369": {
+"flavours": [
+"floral"
+],
+"ingredients": "lavender syrup, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301607370": {
+"flavours": [
+"floral"
+],
+"ingredients": "lavender syrup, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301607372": {
+"flavours": [
+"caramel"
+],
+"ingredients": "soda (bisleri/dukes), vanilla syrup, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301607373": {
+"flavours": [
+"caramel"
+],
+"ingredients": "soda (bisleri/dukes), vanilla syrup, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301607380": {
+"flavours": [
+"caramel"
+],
+"ingredients": "cold brew, tiramisu syrup, milk, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301607381": {
+"flavours": [
+"caramel"
+],
+"ingredients": "cold brew, tiramisu syrup, milk, whip cream",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1301790316": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, white ball topping, small chocolate ball topping",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790317": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, white ball topping, small chocolate ball topping",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790318": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, choco chip topping, small chocolate ball topping, chocolate stick",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790319": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "chocolate sauce in bottom, sponge cake, whipping cream, chocolate sauce on top, choco chip topping, small chocolate ball topping, chocolate stick",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790320": {
+"flavours": [
+"chocolate",
+"nutty"
+],
+"ingredients": "soul bowl, nutella sauce in bottom, sponge cake, whipping cream, nutella sauce on top, hazelnut peices, lotus biscoff sauce in bottom, lotus biscoff sauce on top, biscuit crumbs, lotus biscoff biscuit",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790321": {
+"flavours": [
+"chocolate",
+"nutty"
+],
+"ingredients": "soul bowl, nutella sauce in bottom, sponge cake, whipping cream, nutella sauce on top, hazelnut peices, lotus biscoff sauce in bottom, lotus biscoff sauce on top, biscuit crumbs, lotus biscoff biscuit",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790322": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "lotus biscoff sauce in bottom, sponge cake, whipping cream, lotus biscoff sauce on top, biscuit crumbs, lotus biscoff biscuit",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790323": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "lotus biscoff sauce in bottom, sponge cake, whipping cream, lotus biscoff sauce on top, biscuit crumbs, lotus biscoff biscuit",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790324": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "milk chocolate sauce in bottom, sponge cake, coffee/ espresso, milk chocolate sauce on top, small white ball topping, small chocolate ball topping",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790325": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "milk chocolate sauce in bottom, sponge cake, coffee/ espresso, milk chocolate sauce on top, small white ball topping, small chocolate ball topping",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790326": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "milk chocolate sauce in bottom, sponge cake, coffee/ espresso, milk chocolate sauce on spong cake, mascarpone cheese, whipping cream, tiramisu syrup, coco powder, sponge cake, maida, sugar powder, baking soda, baking powder, milk, vinegar, vanilla essence, fresh cream",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301790327": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "milk chocolate sauce in bottom, sponge cake, coffee/ espresso, milk chocolate sauce on spong cake, mascarpone cheese, whipping cream, tiramisu syrup, coco powder, sponge cake, maida, sugar powder, baking soda, baking powder, milk, vinegar, vanilla essence, fresh cream",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1301890234": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301890235": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301914888": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301914889": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301914890": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301914891": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301924741": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1301924742": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1301924743": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1301924744": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1301924745": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1301924746": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1301926809": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301926810": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301926811": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301926812": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301926813": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301926814": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1301930018": {
+"flavours": [
+"savoury"
+],
+"ingredients": "",
+"kind": "addon",
+"temp": "hot",
+"type": "Add-on"
+},
+"1302049205": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302049207": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302049208": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302049209": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302049210": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302049211": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302055188": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1302055189": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1302055190": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1302055191": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1302055192": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1302055193": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1302078973": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302078974": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302078975": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302084111": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302084112": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302084113": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302084114": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302084115": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302084116": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302086683": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302086684": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302086685": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302086686": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302086687": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302086688": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090651": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090652": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090653": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090654": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090655": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090657": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090658": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090659": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302090660": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302092454": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302094528": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302094529": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302094530": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302094532": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302094533": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1302254882": {
+"flavours": [
+"fruity",
+"nutty",
+"spiced"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1302457025": {
+"flavours": [
+"fruity"
+],
+"ingredients": "blueberry, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1302457026": {
+"flavours": [
+"fruity"
+],
+"ingredients": "blueberry, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1302460190": {
+"flavours": [
+"fruity"
+],
+"ingredients": "peach iced tea syrup",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"1302794859": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "drink",
+"temp": null,
+"type": "Beverage"
+},
+"1302794860": {
+"flavours": [
+"chocolate",
+"fruity"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1302794861": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1302794862": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1302794863": {
+"flavours": [
+"fruity"
+],
+"ingredients": "espresso, milk, syrup if any",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1302794864": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1302794865": {
+"flavours": [
+"fruity",
+"floral"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": "cold",
+"type": "Beverage"
+},
+"1302794866": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": null,
+"type": "Beverage"
+},
+"1302794867": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": null,
+"type": "Beverage"
+},
+"1302794868": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1302794869": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1303384428": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": "hot",
+"type": "Beverage"
+},
+"1303772655": {
+"flavours": [
+"chocolate",
+"fruity"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1303772656": {
+"flavours": [
+"chocolate",
+"fruity"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1305301635": {
+"flavours": [],
+"ingredients": "coffee beans, filter",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1305341596": {
+"flavours": [],
+"ingredients": "coffee beans, filter",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1305341603": {
+"flavours": [],
+"ingredients": "coffee beans, filter",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1306752125": {
+"flavours": [],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1307827506": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1308558968": {
+"flavours": [
+"caramel"
+],
+"ingredients": "condensed milk, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309302349": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "brioche, brown sugar powder, milk, butter, espresso, mascaporne, whipping cream, condensed milk, instant coffee poswer, coco powder",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1309302350": {
+"flavours": [
+"fruity",
+"nutty"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1309471963": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309570367": {
+"flavours": [],
+"ingredients": "",
+"kind": "food",
+"temp": "cold",
+"type": "Food"
+},
+"1309570368": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1309570369": {
+"flavours": [],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1309654404": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1309706106": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": null,
+"type": "Beverage"
+},
+"1309706107": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "tea",
+"temp": null,
+"type": "Beverage"
+},
+"1309706108": {
+"flavours": [
+"fruity",
+"savoury"
+],
+"ingredients": "sourdough bread (1 piece), butter, cherry tomato, buffala mozarella, cucumber, olives, lemon juice, hummus, pepper, micro herbs, edible flower, sesame seeds",
+"kind": "food",
+"temp": "hot",
+"type": "Food"
+},
+"1309706109": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "milk bread, garlic butter, mozarella cheese (pizza mozarella), green capsicum, yellow capsicum, corn, chilli flakes, oregano, tomato ketchup, chilli flakes sachet, oregano sachet",
+"kind": "food",
+"temp": "hot",
+"type": "Food"
+},
+"1309706110": {
+"flavours": [
+"savoury"
+],
+"ingredients": "spinach tortilla, spicy hummus, avocado, paneer tikka filling, lettuce, tomato, cucumber, pickled onion, pepper, sriracha schezwan dip",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1309706113": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "frozen pizza pockets, ketchup, oregano, chilli flakes",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"1309706114": {
+"flavours": [
+"fruity",
+"savoury"
+],
+"ingredients": "sourdough bread ( 1 piece), butter, pesto sauce, buffalo mozzarella, gucamole, pepper, onion, tomato, lemon, micro herbs, edible flower",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1309706115": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1309706116": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1309706117": {
+"flavours": [],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1309706118": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "cold",
+"type": "Combo"
+},
+"1309706123": {
+"flavours": [
+"fruity"
+],
+"ingredients": "espresso, coconut milk, jaggery",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309706124": {
+"flavours": [
+"fruity"
+],
+"ingredients": "espresso, coconut milk, jaggery",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309706125": {
+"flavours": [
+"fruity",
+"caramel"
+],
+"ingredients": "orange juice, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309706126": {
+"flavours": [
+"fruity",
+"caramel"
+],
+"ingredients": "orange juice, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309706127": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309706128": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309970913": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": null,
+"type": "Beverage"
+},
+"1309999097": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1309999098": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1310151882": {
+"flavours": [],
+"ingredients": "",
+"kind": "drink",
+"temp": null,
+"type": "Beverage"
+},
+"1310216670": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1310216671": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1310993660": {
+"flavours": [
+"fruity",
+"savoury"
+],
+"ingredients": "sourdough bread (1 piece), butter, cherry tomato, buffala mozarella, cucumber, olives, lemon juice, hummus, pepper, micro herbs, edible flower, sesame seeds",
+"kind": "food",
+"temp": "hot",
+"type": "Food"
+},
+"1311605561": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "milk bread, garlic butter, mozarella cheese (pizza mozarella), green capsicum, yellow capsicum, corn, chilli flakes, oregano, tomato ketchup, chilli flakes sachet, oregano sachet",
+"kind": "food",
+"temp": "hot",
+"type": "Food"
+},
+"1311803528": {
+"flavours": [
+"chocolate",
+"nutty"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1311804191": {
+"flavours": [
+"chocolate",
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "hot",
+"type": "Combo"
+},
+"1311804335": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1311804336": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": "hot",
+"type": "Combo"
+},
+"1311804337": {
+"flavours": [
+"chocolate",
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1311804338": {
+"flavours": [
+"spiced"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1311804339": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "",
+"kind": "combo",
+"temp": null,
+"type": "Combo"
+},
+"1312914264": {
+"flavours": [],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"1313279669": {
+"flavours": [
+"fruity"
+],
+"ingredients": "espresso, coconut milk, jaggery",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1313279670": {
+"flavours": [
+"fruity"
+],
+"ingredients": "espresso, coconut milk, jaggery",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"1314079509": {
+"flavours": [
+"fruity",
+"caramel"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721691": {
+"flavours": [
+"fruity",
+"savoury"
+],
+"ingredients": "sourdough bread ( 1 piece), butter, pesto sauce, buffalo mozzarella, gucamole, pepper, onion, tomato, lemon, micro herbs, edible flower",
+"kind": "food",
+"temp": "hot",
+"type": "Food"
+},
+"159721692": {
+"flavours": [
+"savoury"
+],
+"ingredients": "sourdough bread ( 1 piece), butter, confit garlic, buffala mozarella, roquette leaves (aragula leaves), sauted mushroom, pepper, hot honey",
+"kind": "food",
+"temp": "hot",
+"type": "Food"
+},
+"159721693": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "regular (white) tortilla wrap, butter, thecha, batata wada tikki (2), pickled red cabbage, pickled red onion, cilantro mayo, vara pav dry chutney, green chilli, sriracha schezwan dip",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721694": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "regular (white) tortilla wrap, soy sauce, schezwan sauce, grilled capsicum, samosa, mozzarella cheese, butter, schezwan sriracha dip, green chilli",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721695": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "korean bun, thecha, cream cheese, mozzarella, parsley, pepper, oregano, chilli flakes, garlic butter",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721697": {
+"flavours": [
+"savoury"
+],
+"ingredients": "mini knots, garlic butter, amul cheese cube, cheese sauce",
+"kind": "food",
+"temp": "hot",
+"type": "Food"
+},
+"159721699": {
+"flavours": [
+"savoury"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721700": {
+"flavours": [
+"savoury"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721701": {
+"flavours": [
+"savoury"
+],
+"ingredients": "beetroot tortilla, spicy hummus, falafel, lettuce, tomato, cucumber, pickled onion, pepper, spicy hummus dip",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721702": {
+"flavours": [
+"savoury",
+"floral"
+],
+"ingredients": "spinach tortilla, mint mayo sauce, sriracha schezwan dip, tandoori paneer, lettuce, tomato, capsicum, pickled onion, onion, pepper, cilantro mayo dip",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721703": {
+"flavours": [
+"caramel",
+"savoury"
+],
+"ingredients": "butter croissant, pesto, arugula / rocquette leaves, cherry tomato, buffalo mozzarella, microgreens, black pepper, edible flowers",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721704": {
+"flavours": [
+"caramel",
+"savoury"
+],
+"ingredients": "bagel, pesto, arugula, cherry tomato, buffalo mozzarella, microgreens, edible flowers",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721705": {
+"flavours": [
+"savoury"
+],
+"ingredients": "bagel, gucamole, tomato, onion",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721706": {
+"flavours": [
+"savoury"
+],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721708": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "flat bread, pesto sauce, mozzarella cheese, cherry tomato, rocket, black olives, capsicum, oregano sachet separate, chilli flakes sachet separate",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721709": {
+"flavours": [],
+"ingredients": "",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721710": {
+"flavours": [],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721711": {
+"flavours": [
+"nutty",
+"caramel"
+],
+"ingredients": "croissant, almond butter, almond flakes",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721712": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "butter croissant",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721713": {
+"flavours": [
+"fruity",
+"spiced"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721714": {
+"flavours": [
+"chocolate",
+"fruity"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721715": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721716": {
+"flavours": [
+"caramel"
+],
+"ingredients": "cream cheese, milkmaid, fresh cream, maida, corn flour, vanilla essence, biscuits, burnt basque cheesecake, curd / yogurt",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721717": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721718": {
+"flavours": [
+"chocolate",
+"nutty"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721719": {
+"flavours": [
+"caramel"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721720": {
+"flavours": [
+"chocolate",
+"caramel"
+],
+"ingredients": "pizzokie, vanilla ice cream, chocolate sauce",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721721": {
+"flavours": [],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721723": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721724": {
+"flavours": [],
+"ingredients": "frozen potato fries",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721725": {
+"flavours": [
+"spiced"
+],
+"ingredients": "frozen potato fries, peri peri masala",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721726": {
+"flavours": [
+"spiced",
+"savoury"
+],
+"ingredients": "frozen potato fries, peri peri masala, cheese sauce, milk",
+"kind": "food",
+"temp": null,
+"type": "Food"
+},
+"159721728": {
+"flavours": [],
+"ingredients": "espresso",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721729": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup (as per requirement)",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721730": {
+"flavours": [],
+"ingredients": "espresso, 1 tbsp milk foam, syrup (as per requirement)",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721751": {
+"flavours": [
+"caramel"
+],
+"ingredients": "espresso, vanilla ice cream",
+"kind": "sweet",
+"temp": null,
+"type": "Dessert"
+},
+"159721769": {
+"flavours": [
+"nutty"
+],
+"ingredients": "",
+"kind": "addon",
+"temp": null,
+"type": "Add-on"
+},
+"159721770": {
+"flavours": [],
+"ingredients": "",
+"kind": "addon",
+"temp": null,
+"type": "Add-on"
+},
+"159721771": {
+"flavours": [],
+"ingredients": "",
+"kind": "addon",
+"temp": null,
+"type": "Add-on"
+},
+"159721772": {
+"flavours": [
+"fruity"
+],
+"ingredients": "",
+"kind": "addon",
+"temp": null,
+"type": "Add-on"
+},
+"159721773": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "milk, frappe powder, espresso, chocolate sauce",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721774": {
+"flavours": [
+"fruity"
+],
+"ingredients": "milk, frappe powder, espresso, strawberry syrup",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721775": {
+"flavours": [
+"caramel"
+],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721776": {
+"flavours": [
+"nutty"
+],
+"ingredients": "milk, frappe powder, espresso, hazelnut syrup",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721777": {
+"flavours": [
+"caramel"
+],
+"ingredients": "milk, frappe powder, espresso, tiramisu syrup",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721778": {
+"flavours": [
+"caramel"
+],
+"ingredients": "milk, frappe powder, espresso, caramel syrup",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721779": {
+"flavours": [
+"chocolate",
+"nutty"
+],
+"ingredients": "milk, frappe powder, espresso, chocolate sauce",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721780": {
+"flavours": [
+"floral"
+],
+"ingredients": "green tea",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721781": {
+"flavours": [
+"floral"
+],
+"ingredients": "green tea",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721782": {
+"flavours": [
+"floral"
+],
+"ingredients": "green tea",
+"kind": "tea",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721783": {
+"flavours": [
+"floral"
+],
+"ingredients": "green tea",
+"kind": "tea",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721784": {
+"flavours": [
+"floral"
+],
+"ingredients": "green tea",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721785": {
+"flavours": [
+"floral"
+],
+"ingredients": "green tea",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721786": {
+"flavours": [
+"fruity"
+],
+"ingredients": "lemon iced tea syrup",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721787": {
+"flavours": [
+"fruity"
+],
+"ingredients": "peach iced tea syrup",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721788": {
+"flavours": [
+"floral"
+],
+"ingredients": "blue pea tea flowers, milk, whip cream, espresso",
+"kind": "tea",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721789": {
+"flavours": [
+"floral"
+],
+"ingredients": "cool green ocean tea, honey",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721790": {
+"flavours": [
+"floral"
+],
+"ingredients": "4 pm purple tea, honey",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721791": {
+"flavours": [],
+"ingredients": "",
+"kind": "tea",
+"temp": null,
+"type": "Beverage"
+},
+"159721792": {
+"flavours": [],
+"ingredients": "",
+"kind": "tea",
+"temp": null,
+"type": "Beverage"
+},
+"159721793": {
+"flavours": [
+"fruity"
+],
+"ingredients": "matcha blend, strawberry syrup",
+"kind": "tea",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721794": {
+"flavours": [],
+"ingredients": "",
+"kind": "tea",
+"temp": null,
+"type": "Beverage"
+},
+"159721795": {
+"flavours": [],
+"ingredients": "espresso",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721796": {
+"flavours": [],
+"ingredients": "espresso",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721797": {
+"flavours": [],
+"ingredients": "espresso, milk, milk foam, syrup (as per requirement), ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721798": {
+"flavours": [],
+"ingredients": "espresso, milk, milk foam, syrup (as per requirement), ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721799": {
+"flavours": [],
+"ingredients": "espresso, milk, foam, syrup (as per requirement), ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721800": {
+"flavours": [],
+"ingredients": "espresso, milk, foam, syrup (as per requirement), ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721801": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup (as per requirement), ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721802": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup (as per requirement), ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721803": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "espresso, milk, chocolate sauce, ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721804": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "espresso, milk, chocolate sauce, ice for cold",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721805": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "espresso, milk, chocolate sauce",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721806": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "espresso, milk, chocolate sauce",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721807": {
+"flavours": [
+"spiced"
+],
+"ingredients": "espresso, milk, foam, cinnamon, nutmeg",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721808": {
+"flavours": [
+"spiced"
+],
+"ingredients": "espresso, milk, foam, cinnamon, nutmeg",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721809": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "chocolate sauce, milk",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721810": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "chocolate sauce, milk",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721811": {
+"flavours": [
+"chocolate",
+"floral"
+],
+"ingredients": "",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721812": {
+"flavours": [
+"chocolate",
+"floral"
+],
+"ingredients": "",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721813": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "callebeaut, milk, chocolate sauce",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721814": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "callebeaut, milk, chocolate sauce",
+"kind": "drink",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721815": {
+"flavours": [],
+"ingredients": "coffee beans, filter",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721816": {
+"flavours": [],
+"ingredients": "coffee beans, filter",
+"kind": "coffee",
+"temp": "hot",
+"type": "Beverage"
+},
+"159721817": {
+"flavours": [],
+"ingredients": "espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721818": {
+"flavours": [],
+"ingredients": "espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721819": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup if any",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721820": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup if any",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721821": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup if any",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721822": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup if any",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721823": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup if any",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721824": {
+"flavours": [],
+"ingredients": "espresso, milk, syrup if any",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721825": {
+"flavours": [],
+"ingredients": "milk, frappe powder, espresso, syrup (if any)",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721826": {
+"flavours": [],
+"ingredients": "milk, frappe powder, espresso, syrup (if any)",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721827": {
+"flavours": [],
+"ingredients": "beans, milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721828": {
+"flavours": [],
+"ingredients": "beans, milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721829": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "milk, espresso, chocolate sauce",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721830": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "milk, espresso, chocolate sauce",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721831": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "iced, milk, chocolate sauce",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721832": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "iced, milk, chocolate sauce",
+"kind": "drink",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721833": {
+"flavours": [],
+"ingredients": "cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721834": {
+"flavours": [],
+"ingredients": "cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721835": {
+"flavours": [
+"fruity"
+],
+"ingredients": "pineapple juice, whip cream, espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721836": {
+"flavours": [
+"fruity"
+],
+"ingredients": "pineapple juice, whip cream, espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721837": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721838": {
+"flavours": [],
+"ingredients": "",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721839": {
+"flavours": [
+"fruity",
+"floral"
+],
+"ingredients": "tonic water, suger syrup, lemon, mint, cascara brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721840": {
+"flavours": [
+"fruity",
+"floral"
+],
+"ingredients": "tonic water, suger syrup, lemon, mint, cascara brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721841": {
+"flavours": [
+"caramel"
+],
+"ingredients": "condensed milk, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721842": {
+"flavours": [
+"caramel"
+],
+"ingredients": "condensed milk, cold brew",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721843": {
+"flavours": [
+"caramel",
+"spiced",
+"floral"
+],
+"ingredients": "condensed milk, espresso, milk, cinnamon powder, mint",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721844": {
+"flavours": [
+"caramel",
+"spiced",
+"floral"
+],
+"ingredients": "condensed milk, espresso, milk, cinnamon powder, mint",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721845": {
+"flavours": [
+"floral"
+],
+"ingredients": "blue pea tea flowers, milk, whip cream, espresso",
+"kind": "tea",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721846": {
+"flavours": [
+"floral"
+],
+"ingredients": "blue pea tea flowers, milk, whip cream, espresso",
+"kind": "tea",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721847": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "milk, espresso, chocolate sauce, sea salt",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721848": {
+"flavours": [
+"chocolate"
+],
+"ingredients": "milk, espresso, chocolate sauce, sea salt",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721849": {
+"flavours": [
+"caramel"
+],
+"ingredients": "whip cream, milk, tiramisu syrup of cold foam, tiramisu syrup for milk, espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721850": {
+"flavours": [
+"caramel"
+],
+"ingredients": "whip cream, milk, tiramisu syrup of cold foam, tiramisu syrup for milk, espresso",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721851": {
+"flavours": [],
+"ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721852": {
+"flavours": [],
+"ingredients": "whip cream, honey, espresso for cold form, milk, espresso for milk",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721853": {
+"flavours": [],
+"ingredients": "tonic water, espresso, blue curacao",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+},
+"159721854": {
+"flavours": [],
+"ingredients": "tonic water, espresso, blue curacao",
+"kind": "coffee",
+"temp": "cold",
+"type": "Beverage"
+}
+}

@@ -1,9 +1,18 @@
+import itemTraits from '@/data/item-traits.json';
+
 /**
  * Menu recommendation scoring.
  *
- * The POS export carries no tags — an item is a name, a description, a price
- * and a category — so the traits are derived here from the category plus
- * keywords in the name and description. That keeps the menu the single source
+ * Traits now come from the kitchen's own recipe sheet: scripts/generate-
+ * descriptions.py reads every recipe, works out what each dish is actually made
+ * of, and writes src/data/item-traits.json keyed on the PetPooja ItemID. An
+ * item's flavours therefore come from its ingredients rather than from guessing
+ * at its name — "Bombon" tells a keyword matcher nothing, but its recipe says
+ * condensed milk, so it reads as caramel-sweet.
+ *
+ * The keyword derivation below stays as the fallback for anything missing from
+ * that file, so a new item added to the POS still gets sensible traits before
+ * anyone re-runs the script. That keeps the menu the single source
  * of truth: new items are tagged automatically on the next export, with no
  * parallel list to maintain. The trade-off is that a badly named item gets
  * badly tagged, which is why the reasons are shown to the customer rather than
@@ -64,8 +73,37 @@ const NO_CAFFEINE = ['hot chocolate', 'chocolate', 'aamras', 'juice', 'soda', 'm
 
 const haystack = (item) => `${item.name} ${item.description || ''}`.toLowerCase();
 
-/** Traits for one item, derived from its category and wording. */
+/** Traits for one item: learned from the recipe sheet, else derived. */
 export function traitsFor(item, categoryId) {
+  const learned = itemTraits[item.id];
+  if (learned) {
+    const text = `${haystack(item)} ${learned.ingredients || ''}`;
+    // Tags come from the recipe; the patterns still run over the ingredient
+    // list so a flavour nobody tagged is not lost.
+    const extra = Object.entries(FLAVOUR_PATTERNS)
+      .filter(([name, pattern]) => !learned.flavours.includes(name) && pattern.test(text))
+      // Cream cheese in a cheesecake is not a savoury note; the pattern cannot
+      // tell the two uses apart, so a dessert never picks savoury up this way.
+      .filter(([name]) => !(name === 'savoury' && learned.kind === 'sweet'))
+      .map(([name]) => name);
+
+    // Not every recipe says how it is served. Where it doesn't, the category
+    // still does: everything in Cold Brews is cold whatever the sheet says.
+    const fallback = derivedTraits(item, categoryId);
+
+    return {
+      kind: learned.kind,
+      temp: learned.temp || fallback.temp,
+      flavours: [...learned.flavours, ...extra],
+      categoryId,
+      source: 'recipe',
+    };
+  }
+  return derivedTraits(item, categoryId);
+}
+
+/** The original name/category heuristic, kept as the fallback. */
+function derivedTraits(item, categoryId) {
   const text = haystack(item);
   let kind = KIND_BY_CATEGORY[categoryId];
   if (!kind) {
@@ -93,7 +131,7 @@ export function traitsFor(item, categoryId) {
 
   const caffeineFree = NO_CAFFEINE.some((w) => text.includes(w)) && kind !== 'coffee';
 
-  return { kind, temp, flavours, caffeineFree, categoryId };
+  return { kind, temp, flavours, caffeineFree, categoryId, source: 'derived' };
 }
 
 /**
@@ -119,9 +157,24 @@ export function recommend(categories, prefs, { limit = 6, hasPhoto = () => false
     let points = 0;
     const reasons = [];
 
+    // Never suggest a jug of oat milk or a pot of dip as something to order.
+    if (traits.kind === 'addon') return null;
+
     if (prefs.kinds.length) {
-      if (!prefs.kinds.includes(traits.kind)) return null; // a hard filter, not a nudge
-      points += 5;
+      const wantsDrink = prefs.kinds.includes('coffee') || prefs.kinds.includes('tea');
+      if (prefs.kinds.includes(traits.kind)) {
+        points += 5;
+      } else if (traits.kind === 'drink' && wantsDrink) {
+        // Hot chocolate and lime soda are neither coffee nor tea, but someone
+        // after a drink should still be able to reach them — just not first.
+        points += 2;
+      } else if (traits.kind === 'combo') {
+        points += 2; // a combo contains whatever they asked for, plus more
+      } else {
+        return null;
+      }
+    } else if (traits.kind === 'combo') {
+      points += 1;
     }
 
     if (prefs.temp && prefs.temp !== 'either') {
@@ -135,7 +188,7 @@ export function recommend(categories, prefs, { limit = 6, hasPhoto = () => false
     if (useFlavour && prefs.flavours.length) {
       const hits = traits.flavours.filter((f) => prefs.flavours.includes(f));
       if (hits.length) {
-        points += 3 * hits.length;
+        points += (traits.source === 'recipe' ? 4 : 3) * hits.length;
         reasons.push(hits.join(' + '));
       }
     }
@@ -227,6 +280,7 @@ export const QUESTIONS = [
       { value: 'caramel', label: 'Caramel & vanilla', emoji: '🍮' },
       { value: 'spiced', label: 'Spiced', emoji: '🫚' },
       { value: 'savoury', label: 'Savoury', emoji: '🧀' },
+      { value: 'floral', label: 'Floral & herbal', emoji: '🌸' },
     ],
   },
   {
