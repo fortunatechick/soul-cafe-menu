@@ -48,3 +48,20 @@ export function findOrderByPhone(phone) {
     listOrders().find((o) => String(o.customerPhone).replace(/[^\d]/g, '') === digits) || null
   );
 }
+
+/**
+ * Record that the customer says they have paid.
+ *
+ * Deliberately a claim, not a fact. A UPI deep link or QR gives the site no way
+ * to learn whether money actually moved — that needs a payment gateway and a
+ * webhook — so this stores what the customer reported, with the reference
+ * number if they had one, for the café to check against its own UPI account.
+ * Nothing downstream should treat it as settled.
+ */
+export function recordPaymentClaim(orderNumber, { utr } = {}) {
+  const order = orders.get(orderNumber);
+  if (!order) return null;
+  order.paymentStatus = 'claimed';
+  order.paymentClaim = { utr: utr || '', at: new Date().toISOString() };
+  return order;
+}

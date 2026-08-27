@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { formatINR } from '@/lib/api';
 import { WA_NUMBER } from '@/lib/contact';
+import UpiPayment from '@/components/UpiPayment';
 
 const PAYMENT_LABEL = {
   upi: 'UPI',
@@ -13,6 +14,7 @@ export default function ConfirmationPage() {
   const router = useRouter();
   const [order, setOrder] = useState(null);
   const [missing, setMissing] = useState(false);
+  const [paidRef, setPaidRef] = useState(null); // what the customer reported
 
   useEffect(() => {
     try {
@@ -59,6 +61,9 @@ export default function ConfirmationPage() {
         ]
       : []),
     `Payment: ${PAYMENT_LABEL[order.paymentMethod] || order.paymentMethod}`,
+    ...(paidRef !== null
+      ? [`Paid via UPI${paidRef ? ` — reference ${paidRef}` : ' (no reference given)'}`]
+      : []),
     '',
     ...order.items.map(
       (i) => `${i.quantity} × ${i.itemName}${i.variation ? ` (${i.variation})` : ''} — ${formatINR(i.lineTotal)}`
@@ -83,6 +88,8 @@ export default function ConfirmationPage() {
           <p className="ordercard__label">Order Number</p>
           <p className="ordercard__number">{order.orderNumber}</p>
         </div>
+
+        <UpiPayment order={order} onReported={(ref) => setPaidRef(ref)} />
 
         <div className="receipt">
           {order.items.map((i) => (
@@ -124,7 +131,9 @@ export default function ConfirmationPage() {
         </div>
 
         <p className="confirm__note">
-          Send the WhatsApp message so the café can confirm your order and share payment details.
+          {paidRef !== null
+            ? 'Send the WhatsApp message so the café can match your payment and start the order.'
+            : 'Pay above, then send the WhatsApp message so the café can confirm your order.'}
         </p>
       </div>
     </main>

@@ -184,6 +184,10 @@ export async function POST(request) {
     customerLocation: orderType === 'delivery' ? location : null,
     orderType,
     paymentMethod,
+    // UPI is collected after the order is placed, from the confirmation screen.
+    // Nothing here can verify it, so an order starts unpaid and stays that way
+    // until the cafe checks its own UPI account.
+    paymentStatus: 'awaiting',
     notes,
     items,
     subtotal,
