@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { reverseGeocode } from '@/lib/api';
+
 /**
  * Drag-to-pin location picker.
  *
@@ -46,6 +48,14 @@ export default function MapPicker({ initial, onCancel, onConfirm, busy, error })
   const boxRef = useRef(null);
   const drag = useRef(null);
 
+  // What is under the pin right now, in words. Panning a map to an unfamiliar
+  // rooftop is much easier to check against a street name than against six
+  // decimal places of latitude.
+  const [preview, setPreview] = useState('');
+  const [previewBusy, setPreviewBusy] = useState(false);
+  const [locating, setLocating] = useState(false);
+  const lookupSeq = useRef(0);
+
   // Measure the viewport so exactly the visible tiles are requested.
   useEffect(() => {
     const el = boxRef.current;
@@ -59,6 +69,38 @@ export default function MapPicker({ initial, onCancel, onConfirm, busy, error })
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  useEffect(() => {
+    const { lat, lon } = toLatLon(center.x, center.y, zoom);
+    const seq = ++lookupSeq.current;
+    setPreviewBusy(true);
+    const timer = setTimeout(async () => {
+      try {
+        const { address } = await reverseGeocode({ lat, lon });
+        // Panning fires this constantly; only the newest answer may win, or a
+        // slow earlier request overwrites a fresher one.
+        if (seq === lookupSeq.current) setPreview(address);
+      } catch {
+        if (seq === lookupSeq.current) setPreview('');
+      } finally {
+        if (seq === lookupSeq.current) setPreviewBusy(false);
+      }
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [center, zoom]);
+
+  function locateMe() {
+    if (!navigator.geolocation) return;
+    setLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setCenter(toWorldPx(pos.coords.latitude, pos.coords.longitude, zoom));
+        setLocating(false);
+      },
+      () => setLocating(false),
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }
 
   function changeZoom(delta) {
     setZoom((z) => {
@@ -152,6 +194,18 @@ export default function MapPicker({ initial, onCancel, onConfirm, busy, error })
             📍
           </span>
 
+          <button
+            type="button"
+            className="mappick__locate"
+            onClick={(e) => {
+              e.stopPropagation();
+              locateMe();
+            }}
+            aria-label="Centre on my location"
+          >
+            {locating ? '…' : '◎'}
+          </button>
+
           <div className="mappick__zoom">
             <button type="button" onClick={() => changeZoom(1)} aria-label="Zoom in">
               +
@@ -172,9 +226,15 @@ export default function MapPicker({ initial, onCancel, onConfirm, busy, error })
           </a>
         </div>
 
-        <p className="mappick__coords">
-          {lat.toFixed(5)}, {lon.toFixed(5)}
-        </p>
+        <div className="mappick__readout">
+          <p className="mappick__address">
+            {previewBusy && !preview ? 'Finding the address…' : preview || 'Drag to choose a spot'}
+          </p>
+          <p className="mappick__coords">
+            {lat.toFixed(5)}, {lon.toFixed(5)}
+            {previewBusy && preview ? ' · updating…' : ''}
+          </p>
+        </div>
 
         {error ? <p className="form-error">{error}</p> : null}
 

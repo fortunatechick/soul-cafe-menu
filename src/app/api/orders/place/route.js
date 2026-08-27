@@ -2,7 +2,7 @@ import menu from '@/data/menu.json';
 import { generateOrderNumber, saveOrder } from '@/lib/store';
 import { pushToPetPooja } from '@/lib/petpooja';
 import { evaluateCoupon } from '@/lib/coupons';
-import { verifyHuman } from '@/lib/botcheck';
+import { verifyHuman, turnstileConfigured } from '@/lib/botcheck';
 import { checkRateLimit, checkPhoneLimit, clientIp } from '@/lib/ratelimit';
 import {
   MAX_ITEM_QTY,
@@ -57,13 +57,16 @@ export async function POST(request) {
     return bad('Malformed request body.');
   }
 
-  // Then prove a human is behind it, before anything is priced or recorded.
-  const human = await verifyHuman({
-    turnstileToken: body.turnstileToken,
-    challengeToken: body.challengeToken,
-    ip,
-  });
-  if (!human.ok) return bad(human.reason || 'Verification failed.');
+  // A human check runs only when Cloudflare Turnstile is configured. The old
+  // fallback was a tick-box backed by a token the server handed to anyone who
+  // asked, so it stopped no real script while making every customer click
+  // something. Rate limiting above and the per-phone cap below are what
+  // actually bound the damage; setting TURNSTILE_SECRET_KEY turns a genuine
+  // check back on without touching this file.
+  if (turnstileConfigured()) {
+    const human = await verifyHuman({ turnstileToken: body.turnstileToken, ip });
+    if (!human.ok) return bad(human.reason || 'Verification failed.');
+  }
 
   // Capped and stripped of control characters: this text is handed to PetPooja
   // and pasted into a WhatsApp message, so an unbounded name is a real payload.

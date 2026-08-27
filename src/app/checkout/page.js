@@ -48,12 +48,16 @@ export default function CheckoutPage() {
   const [submitting, setSubmitting] = useState(false);
 
   const [couponInput, setCouponInput] = useState('');
-  const [coupon, setCoupon] = useState(null);       // { code, discount }
+  const [coupon, setCoupon] = useState(null);       // { code, label, discount }
   const [couponMsg, setCouponMsg] = useState('');
   const [couponBusy, setCouponBusy] = useState(false);
 
   const [locating, setLocating] = useState(false);
   const [locateMsg, setLocateMsg] = useState('');
+  // Denied, rather than merely failed: the page cannot grant itself permission,
+  // so this switches to telling the customer what will actually work.
+  const [locateBlocked, setLocateBlocked] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
   const [pinnedAt, setPinnedAt] = useState(null);   // { lat, lon }
   const [mapOpen, setMapOpen] = useState(false);
   const [mapBusy, setMapBusy] = useState(false);
@@ -211,13 +215,31 @@ export default function CheckoutPage() {
 
   // ---- location -----------------------------------------------------------
 
-  function handleUseLocation() {
+  async function handleUseLocation() {
     if (!navigator.geolocation) {
       setLocateMsg('This browser cannot share a location.');
+      setLocateBlocked(true);
       return;
     }
+
+    // An in-app browser is the common case here: a WhatsApp link on iOS opens
+    // inside WhatsApp, where location is often refused outright and the prompt
+    // never appears. Asking first tells us that before the customer sits
+    // watching a spinner.
+    try {
+      const status = await navigator.permissions?.query({ name: 'geolocation' });
+      if (status?.state === 'denied') {
+        setLocateMsg('Location is blocked in this browser.');
+        setLocateBlocked(true);
+        return;
+      }
+    } catch {
+      // Permissions API missing (older Safari) — just try and handle the error.
+    }
+
     setLocating(true);
     setLocateMsg('');
+    setLocateBlocked(false);
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
         try {
@@ -237,11 +259,12 @@ export default function CheckoutPage() {
       },
       (err) => {
         setLocating(false);
-        setLocateMsg(
-          err.code === err.PERMISSION_DENIED
-            ? 'Location permission denied — type the address instead.'
-            : 'Could not get your location — type the address instead.'
-        );
+        if (err.code === err.PERMISSION_DENIED) {
+          setLocateMsg('Location is blocked in this browser.');
+          setLocateBlocked(true);
+        } else {
+          setLocateMsg('Could not get your location — pin it on the map or type it below.');
+        }
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
     );
@@ -276,7 +299,11 @@ export default function CheckoutPage() {
     setCouponMsg('');
     try {
       const result = await validateCoupon({ code, subtotal: orderSubtotal, orderType });
-      setCoupon({ code: result.coupon.code, discount: result.discount });
+      // Keep what the customer typed, not what came back. A coupon stored as a
+      // hash answers with a display label instead of its code, and sending that
+      // label to the order API re-evaluates as invalid — the discount vanished
+      // between the total on screen and the total charged.
+      setCoupon({ code, label: result.coupon.code, discount: result.discount });
       setCouponMsg(result.message);
     } catch (err) {
       setCoupon(null);
@@ -330,10 +357,6 @@ export default function CheckoutPage() {
       );
       return;
     }
-    if (!verification.turnstileToken && !verification.challengeToken) {
-      setFormError('Please complete the verification below first.');
-      return;
-    }
     if (!validate()) return;
 
     submitLock.current = true;
@@ -349,7 +372,6 @@ export default function CheckoutPage() {
         customerLat: pinnedAt?.lat ?? null,
         customerLon: pinnedAt?.lon ?? null,
         turnstileToken: verification.turnstileToken || null,
-        challengeToken: verification.challengeToken || null,
         notes: form.notes.trim(),
         items: [
           ...lines.map((l) => ({
@@ -518,7 +540,7 @@ export default function CheckoutPage() {
           <div className="coupon">
             {coupon ? (
               <div className="coupon__applied">
-                <span className="coupon__tag">🎟️ {coupon.code}</span>
+                <span className="coupon__tag">🎟️ {coupon.label || coupon.code}</span>
                 <span className="coupon__saved">−{formatINR(coupon.discount)}</span>
                 <button type="button" className="coupon__remove" onClick={handleRemoveCoupon}>
                   Remove
@@ -563,7 +585,7 @@ export default function CheckoutPage() {
             </div>
             {discount > 0 ? (
               <div className="totals__row totals__row--discount">
-                <span>Discount · {coupon.code}</span>
+                <span>Discount · {coupon.label || coupon.code}</span>
                 <span>−{formatINR(discount)}</span>
               </div>
             ) : null}
@@ -702,7 +724,74 @@ export default function CheckoutPage() {
                 autoComplete="street-address"
               />
               {fieldErrors.address ? <p className="field__error">{fieldErrors.address}</p> : null}
-              {locateMsg ? <p className="field__hint">{locateMsg}</p> : null}
+              {locateMsg && !locateBlocked ? (
+                <p className="field__hint">{locateMsg}</p>
+              ) : null}
+
+              {locateBlocked ? (
+                /* A page cannot grant itself location permission, and inside
+                   WhatsApp on iOS there is often no prompt to grant. So rather
+                   than repeating "denied", offer the two routes that do work. */
+                <div className="locblock">
+                  <p className="locblock__title">Location is blocked here</p>
+                  <p className="locblock__text">
+                    Opening a link inside WhatsApp or Instagram usually blocks location on
+                    iPhone. Pin your address on the map instead — it works everywhere — or
+                    open this page in Safari or Chrome and try again.
+                  </p>
+                  <div className="locblock__actions">
+                    <button
+                      type="button"
+                      className="btn btn--primary"
+                      onClick={() => {
+                        setMapError('');
+                        setMapOpen(true);
+                      }}
+                    >
+                      🗺️ Pin on map instead
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn--outline"
+                      onClick={async () => {
+                        try {
+                          await navigator.clipboard.writeText(window.location.href);
+                          setLinkCopied(true);
+                          setTimeout(() => setLinkCopied(false), 2500);
+                        } catch {
+                          // clipboard blocked too — the address bar still has it
+                        }
+                      }}
+                    >
+                      {linkCopied ? 'Link copied — paste in Safari' : 'Copy link for Safari'}
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+              {pinnedAt ? (
+                /* Google's keyless embed, so the customer checks the pin on the
+                   map they actually recognise. It is display-only — picking a
+                   point needs the Maps JavaScript API, which needs a billing
+                   account — so the OpenStreetMap picker still does the choosing. */
+                <div className="pinmap">
+                  <iframe
+                    className="pinmap__frame"
+                    title="Your pinned delivery location"
+                    src={`https://maps.google.com/maps?q=${pinnedAt.lat.toFixed(6)},${pinnedAt.lon.toFixed(6)}&z=17&output=embed`}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <a
+                    className="pinmap__open"
+                    href={`https://www.google.com/maps/search/?api=1&query=${pinnedAt.lat.toFixed(6)},${pinnedAt.lon.toFixed(6)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open in Google Maps ↗
+                  </a>
+                </div>
+              ) : null}
+
               {pinnedAt ? (
                 <p className="field__hint field__hint--pinned">
                   📍 Location pinned ({pinnedAt.lat.toFixed(5)}, {pinnedAt.lon.toFixed(5)}) — sent
@@ -732,6 +821,7 @@ export default function CheckoutPage() {
             />
           </div>
 
+          {/* Renders nothing unless Turnstile is configured. */}
           <HumanCheck onToken={handleVerified} />
 
           {formError ? <p className="form-error">{formError}</p> : null}

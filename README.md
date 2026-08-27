@@ -416,21 +416,18 @@ Order placement is gated twice, in `/api/orders/place`:
    cap locks out real people during a rush. The IP limit blunts a flood; the
    phone limit is the one that approximates a person. In-memory, so it counts
    per serverless instance; a shared store is the upgrade at real traffic.
-2. **A human check** (`src/lib/botcheck.js`). With `TURNSTILE_SECRET_KEY` and
-   `NEXT_PUBLIC_TURNSTILE_SITE_KEY` set this is **Cloudflare Turnstile**, whose
-   token is verified server-side — free keys, a few minutes to set up, and the
-   only one of the two that is real protection.
+2. **A human check** (`src/lib/botcheck.js`) — **only when Cloudflare Turnstile
+   is configured.** Set `TURNSTILE_SECRET_KEY` and `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+   and the order API starts requiring a token it verifies server-side. Free keys,
+   a few minutes to set up.
 
-Without Turnstile keys the form falls back to a tick-box backed by an
-HMAC-signed, 15-minute token plus a minimum fill time. **Be clear-eyed about
-this**: it stops blind POSTing and replay, but a script that fetches a token
-before each order will pass it. It exists so the form is not wide open before
-the keys are added — it is not a substitute for them.
-
-The token is only ever a claim; it is verified server-side before an order
-exists. Verified by posting directly at the API: no token, an invented token and
-a forged signature are all rejected, and a genuine token used faster than a human
-could type is rejected too.
+There used to be a fallback when those keys were absent: an "I'm not a robot"
+tick-box backed by an HMAC-signed token. It has been removed. The server handed
+that token to anyone who asked for one, so it stopped no real script while asking
+every genuine customer to click something — a checkbox that only inconveniences
+honest people. **Without Turnstile keys there is now no human check at all**, and
+rate limiting is what bounds abuse. That is a deliberate trade, and adding the
+keys reverses it without touching any code.
 
 ### PetPooja — not connected yet
 

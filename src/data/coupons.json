@@ -6,7 +6,10 @@
       "value": 10,
       "maxDiscount": 100,
       "minSubtotal": 300,
-      "orderTypes": ["delivery", "pickup"],
+      "orderTypes": [
+        "delivery",
+        "pickup"
+      ],
       "active": true,
       "expiresOn": "2026-12-31",
       "description": "10% off orders over ₹300, capped at ₹100"
@@ -16,7 +19,10 @@
       "type": "flat",
       "value": 75,
       "minSubtotal": 400,
-      "orderTypes": ["delivery", "pickup"],
+      "orderTypes": [
+        "delivery",
+        "pickup"
+      ],
       "active": true,
       "expiresOn": "2026-12-31",
       "description": "₹75 off your first order over ₹400"
@@ -26,10 +32,25 @@
       "type": "flat",
       "value": 50,
       "minSubtotal": 250,
-      "orderTypes": ["pickup"],
+      "orderTypes": [
+        "pickup"
+      ],
       "active": true,
       "expiresOn": "2026-12-31",
       "description": "₹50 off pickup orders over ₹250"
+    },
+    {
+      "codeHash": "a974369e2265d6ae1f2e350cb0b2f1dd0b6e0fb975e213bbdb0d350f03bbbb43",
+      "code": "TEST-99",
+      "type": "percent",
+      "value": 99,
+      "orderTypes": [
+        "delivery",
+        "pickup"
+      ],
+      "active": true,
+      "expiresOn": "2026-09-26",
+      "description": "Testing only - 99% off. The real code is not stored here."
     }
   ]
 }

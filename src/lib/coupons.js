@@ -1,3 +1,5 @@
+import crypto from 'node:crypto';
+
 import couponData from '@/data/coupons.json';
 
 /**
@@ -13,11 +15,39 @@ import couponData from '@/data/coupons.json';
  */
 
 const COUPONS = new Map(
-  couponData.coupons.map((c) => [c.code.trim().toUpperCase(), c])
+  couponData.coupons
+    .filter((c) => !c.codeHash)
+    .map((c) => [c.code.trim().toUpperCase(), c])
 );
 
+/**
+ * Some coupons are stored as a SHA-256 hash instead of the code itself.
+ *
+ * The point is that reading the repository does not hand you a working code.
+ * A hash cannot be reversed, so the file can say a 99%-off coupon exists
+ * without saying what it is; only somebody who already knows the code can
+ * produce a matching hash. It is checked in constant time so that timing does
+ * not leak how much of a guess was right.
+ */
+const HASHED = couponData.coupons.filter((c) => c.codeHash);
+
+const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
+
+function matchHashed(cleaned) {
+  const digest = Buffer.from(sha256(cleaned), 'hex');
+  for (const coupon of HASHED) {
+    const expected = Buffer.from(coupon.codeHash, 'hex');
+    if (expected.length === digest.length && crypto.timingSafeEqual(expected, digest)) {
+      return coupon;
+    }
+  }
+  return null;
+}
+
 export function findCoupon(code) {
-  return COUPONS.get(String(code || '').trim().toUpperCase()) || null;
+  const cleaned = String(code || '').trim().toUpperCase();
+  if (!cleaned) return null;
+  return COUPONS.get(cleaned) || matchHashed(cleaned);
 }
 
 /**

@@ -2320,3 +2320,91 @@ a { color: inherit; text-decoration: none; }
   font-size: 1.2rem;
 }
 .pay__note { font-size: 0.8rem; line-height: 1.55; color: var(--text-muted); margin-top: 6px; }
+
+/* Confirm-your-payment block: the step that turns a held order into a real one,
+   so it stays on screen rather than hiding behind a button. */
+.pay__confirm {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+}
+
+/* Lit up when they come back from a UPI app, because nothing else marks the
+   moment — the app does not return them here. */
+.pay__confirm--live { border-color: var(--border-accent); background: var(--accent-glow); }
+
+.pay__confirm-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+.pay__confirm-hint {
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.pay__confirm .btn { width: 100%; margin-top: 4px; }
+.pay__confirm .field__hint { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Shown when the browser refuses location outright — inside WhatsApp on iOS,
+   most often. Nothing the page does can change that, so it points at the two
+   routes that do work. */
+.locblock {
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: var(--radius-md);
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+}
+.locblock__title { font-size: 0.84rem; font-weight: 600; margin-bottom: 5px; }
+.locblock__text { font-size: 0.75rem; line-height: 1.5; color: var(--text-secondary); }
+.locblock__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+.locblock__actions .btn { flex: 1 1 150px; font-size: 0.78rem; padding: 9px 12px; }
+
+/* Google's keyless embed, confirming the pin on a map people recognise. */
+.pinmap {
+  margin-top: 10px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.pinmap__frame { display: block; width: 100%; height: 170px; border: 0; }
+.pinmap__open {
+  display: block;
+  padding: 9px 12px;
+  background: var(--bg-glass);
+  border-top: 1px solid var(--border);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.pinmap__open:hover { color: var(--text-primary); }
+
+/* Map picker: the address readout matters more than the coordinates. */
+.mappick__readout { margin: 10px 0 4px; text-align: center; }
+.mappick__address {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-primary);
+  min-height: 1.3em;
+}
+.mappick__coords {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mappick__locate {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(13, 34, 51, 0.85);
+  border: 1px solid var(--border-accent);
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1;
+  backdrop-filter: blur(6px);
+}

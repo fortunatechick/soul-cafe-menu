@@ -14,16 +14,53 @@ export default function ConfirmationPage() {
   const router = useRouter();
   const [order, setOrder] = useState(null);
   const [missing, setMissing] = useState(false);
-  const [paidRef, setPaidRef] = useState(null); // what the customer reported
+  const [paidRef, setPaidRef] = useState(null); // transaction ID the customer gave
+
+  // Confirmed means the customer has given us a transaction ID, here or on an
+  // earlier visit. It does not mean the money has been verified — only the café
+  // can do that, against its own UPI account.
+  const confirmed = paidRef !== null || order?.paymentStatus === 'claimed';
 
   useEffect(() => {
+    let saved = null;
     try {
-      const saved = sessionStorage.getItem('soulmenu_last_order');
-      if (saved) setOrder(JSON.parse(saved));
-      else setMissing(true);
+      const raw = sessionStorage.getItem('soulmenu_last_order');
+      if (raw) saved = JSON.parse(raw);
     } catch {
-      setMissing(true);
+      // corrupt payload — treated as no order below
     }
+    if (!saved) {
+      setMissing(true);
+      return;
+    }
+    setOrder(saved);
+
+    // The copy in sessionStorage was written when the order was placed, so it
+    // still says "awaiting" even after the payment has been confirmed. Ask the
+    // server, which is the one that knows, or a reload sends the customer back
+    // to a payment screen for something they have already paid.
+    (async () => {
+      try {
+        const res = await fetch(`/api/orders/verify/${saved.orderNumber}`, { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        const live = data.order || data;
+        if (!live?.paymentStatus) return;
+        const merged = {
+          ...saved,
+          paymentStatus: live.paymentStatus,
+          paymentClaim: live.paymentClaim || saved.paymentClaim || null,
+        };
+        setOrder(merged);
+        try {
+          sessionStorage.setItem('soulmenu_last_order', JSON.stringify(merged));
+        } catch {
+          // storage full — the in-memory copy is still correct for this view
+        }
+      } catch {
+        // offline — the stored copy is what we have
+      }
+    })();
   }, []);
 
   if (missing) {
@@ -80,16 +117,41 @@ export default function ConfirmationPage() {
   return (
     <main className="page page-enter">
       <div className="container confirm">
-        <span className="confirm__emoji">🎉</span>
-        <h1 className="confirm__title">Order Placed!</h1>
-        <p className="confirm__sub">Thank you, {order.customerName}!</p>
+        {/* An order is not "placed" until it is paid for. Saying so before the
+            money moves is the kind of small lie a customer notices later, at
+            the counter, when nothing is ready. */}
+        <span className="confirm__emoji">{confirmed ? '🎉' : '💳'}</span>
+        <h1 className="confirm__title">
+          {confirmed ? 'Order confirmed' : 'Almost there — pay to confirm'}
+        </h1>
+        <p className="confirm__sub">
+          {confirmed
+            ? `Thanks ${order.customerName}! The café is checking your payment and will start your order.`
+            : `${order.customerName}, we're holding this order. Pay below and enter your transaction ID to confirm it.`}
+        </p>
 
         <div className="ordercard">
           <p className="ordercard__label">Order Number</p>
           <p className="ordercard__number">{order.orderNumber}</p>
         </div>
 
-        <UpiPayment order={order} onReported={(ref) => setPaidRef(ref)} />
+        <UpiPayment
+          order={order}
+          onReported={(ref) => {
+            setPaidRef(ref);
+            const merged = {
+              ...order,
+              paymentStatus: 'claimed',
+              paymentClaim: { utr: ref, at: new Date().toISOString() },
+            };
+            setOrder(merged);
+            try {
+              sessionStorage.setItem('soulmenu_last_order', JSON.stringify(merged));
+            } catch {
+              // storage full — this view is already correct
+            }
+          }}
+        />
 
         <div className="receipt">
           {order.items.map((i) => (

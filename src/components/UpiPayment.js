@@ -20,8 +20,9 @@ import { UPI_ID, PAYEE_NAME, upiUri, upiAmount, appLinks, isValidUtr } from '@/l
  * so what the customer reports is recorded as a claim and the café checks it.
  */
 export default function UpiPayment({ order, onReported }) {
-  const [state, setState] = useState('idle'); // idle | returned | reported
-  const [utr, setUtr] = useState('');
+  const [state, setState] = useState('idle'); // idle | reported
+  const [returned, setReturned] = useState(false); // came back from a UPI app
+  const [utr, setUtr] = useState(order.paymentClaim?.utr || '');
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState('');
   const [error, setError] = useState('');
@@ -53,7 +54,10 @@ export default function UpiPayment({ order, onReported }) {
     function onVisible() {
       if (document.visibilityState === 'visible' && leftForApp.current && state === 'idle') {
         leftForApp.current = false;
-        setState('returned');
+        setReturned(true);
+        // Put the cursor where the next action is, since nothing brought them
+        // back here automatically.
+        setTimeout(() => document.getElementById('utr')?.focus(), 300);
       }
     }
     document.addEventListener('visibilitychange', onVisible);
@@ -83,13 +87,9 @@ export default function UpiPayment({ order, onReported }) {
     }
   }
 
-  async function report(paid) {
-    if (!paid) {
-      setState('idle');
-      return;
-    }
-    if (utr.trim() && !isValidUtr(utr)) {
-      setError('A UPI reference number is 12 digits. Leave it blank if you can’t find it.');
+  async function report() {
+    if (!isValidUtr(utr)) {
+      setError('Enter the 12-digit transaction ID from your UPI app.');
       return;
     }
     setError('');
@@ -116,14 +116,21 @@ export default function UpiPayment({ order, onReported }) {
     setBusy(false);
   }
 
-  if (state === 'reported') {
+  // Derived, not initial state: the order's payment status arrives from the
+  // server a moment after this mounts, and a useState initialiser would have
+  // already run with the stale value — leaving a paid order still asking to be
+  // paid.
+  const done = state === 'reported' || order.paymentStatus === 'claimed';
+  const reference = utr || order.paymentClaim?.utr || '';
+
+  if (done) {
     return (
       <div className="pay pay--done">
         <span className="pay__tick" aria-hidden="true">✓</span>
         <h2 className="pay__title">Payment reported</h2>
         <p className="pay__note">
           The café checks {formatINR(amount)} against its UPI account before starting your order.
-          {utr ? ` Reference ${utr}.` : ''} Send the WhatsApp message below so they see it straight away.
+          {reference ? ` Reference ${reference}.` : ''} Send the WhatsApp message below so they see it straight away.
         </p>
       </div>
     );
@@ -166,53 +173,61 @@ export default function UpiPayment({ order, onReported }) {
         </button>
       </div>
 
-      {state === 'returned' ? (
-        <div className="pay__back">
-          <p className="pay__back-q">Did the payment go through?</p>
-          <div className="field">
-            <label className="field__label" htmlFor="utr">
-              UPI reference number <span className="pay__optional">optional, helps the café find it</span>
-            </label>
-            <input
-              id="utr"
-              className="field__input"
-              value={utr}
-              onChange={(e) => setUtr(e.target.value.replace(/[^0-9]/g, '').slice(0, 12))}
-              placeholder="12 digits from your UPI app"
-              inputMode="numeric"
-            />
-          </div>
-          {error ? <p className="field__error">{error}</p> : null}
-          <div className="pay__back-actions">
-            <button className="btn btn--primary" onClick={() => report(true)} disabled={busy}>
-              {busy ? 'Sending…' : 'Yes, I’ve paid'}
-            </button>
-            <button className="btn btn--outline" onClick={() => report(false)} disabled={busy}>
-              Not yet
-            </button>
-          </div>
-        </div>
-      ) : (
-        <>
-          <a className="btn btn--primary pay__go" href={link} onClick={openApp}>
-            Open a UPI app
+      <a className="btn btn--primary pay__go" href={link} onClick={openApp}>
+        Open a UPI app
+      </a>
+      <div className="pay__apps">
+        {apps.map((app) => (
+          <a key={app.id} className="pay__app" href={app.href} onClick={openApp}>
+            {app.label}
           </a>
-          <div className="pay__apps">
-            {apps.map((app) => (
-              <a key={app.id} className="pay__app" href={app.href} onClick={openApp}>
-                {app.label}
-              </a>
-            ))}
-          </div>
-          <button type="button" className="pay__already" onClick={() => setState('returned')}>
-            I’ve already paid
-          </button>
-        </>
-      )}
+        ))}
+      </div>
+
+      {/* Always on screen rather than behind an "already paid?" button. This is
+          the step that turns a held order into a confirmed one, so it should
+          never need finding. */}
+      <div className={`pay__confirm${returned ? ' pay__confirm--live' : ''}`}>
+        <h3 className="pay__confirm-title">
+          {returned ? 'Welcome back — confirm your payment' : 'Already paid? Confirm it here'}
+        </h3>
+        <p className="pay__confirm-hint">
+          Your UPI app shows a 12-digit transaction ID (sometimes called UTR or
+          reference number) on the receipt. Enter it and the café can match your
+          payment to this order.
+        </p>
+        <div className="field">
+          <label className="field__label" htmlFor="utr">
+            Transaction ID
+          </label>
+          <input
+            id="utr"
+            className="field__input"
+            value={utr}
+            onChange={(e) => {
+              setUtr(e.target.value.replace(/[^0-9]/g, '').slice(0, 12));
+              if (error) setError('');
+            }}
+            placeholder="12 digits"
+            inputMode="numeric"
+            autoComplete="off"
+          />
+          <p className="field__hint">{utr.length}/12</p>
+        </div>
+        {error ? <p className="field__error">{error}</p> : null}
+        <button
+          className="btn btn--primary"
+          onClick={report}
+          disabled={busy || utr.length !== 12}
+        >
+          {busy ? 'Confirming…' : 'Confirm payment'}
+        </button>
+      </div>
 
       <p className="pay__fineprint">
         Amount and order number are built into the QR, so there is nothing to type.
-        The café confirms the payment in its own UPI account before making your order.
+        The café checks the transaction ID against its own UPI account before making
+        your order — entering it here is what confirms the order, not the payment itself.
       </p>
     </div>
   );
