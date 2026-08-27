@@ -20,6 +20,7 @@ export default function ConfirmationPage() {
   // earlier visit. It does not mean the money has been verified — only the café
   // can do that, against its own UPI account.
   const confirmed = paidRef !== null || order?.paymentStatus === 'claimed';
+  const itemCount = (order?.items || []).reduce((n, i) => n + i.quantity, 0);
 
   useEffect(() => {
     let saved = null;
@@ -153,35 +154,54 @@ export default function ConfirmationPage() {
           }}
         />
 
-        <div className="receipt">
-          {order.items.map((i) => (
-            <div className="receipt__row" key={`${i.menuItemId}-${i.variation || ''}`}>
-              <span>
-                {i.itemName}
-                {i.variation ? ` · ${i.variation}` : ''} × {i.quantity}
-              </span>
-              <span>{formatINR(i.lineTotal)}</span>
+        {/* A receipt, not a list of database rows: what you ordered reads
+            differently from what it cost, and the quantity is a badge rather
+            than something buried in the middle of the item name. */}
+        <section className="orderdetail">
+          <header className="orderdetail__head">
+            <h2 className="orderdetail__title">Your order</h2>
+            <span className="orderdetail__count">
+              {itemCount} item{itemCount === 1 ? '' : 's'}
+            </span>
+          </header>
+
+          <ul className="orderdetail__items">
+            {order.items.map((i) => (
+              <li className="oitem" key={`${i.menuItemId}-${i.variation || ''}`}>
+                <span className="oitem__qty">{i.quantity}</span>
+                <span className="oitem__body">
+                  <span className="oitem__name">{i.itemName}</span>
+                  {i.variation ? <span className="oitem__var">{i.variation}</span> : null}
+                </span>
+                <span className="oitem__price">{formatINR(i.lineTotal)}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="orderdetail__lines">
+            {order.discount > 0 ? (
+              <>
+                <div className="oline">
+                  <span>Subtotal</span>
+                  <span>{formatINR(order.subtotal)}</span>
+                </div>
+                <div className="oline oline--save">
+                  <span>Discount{order.couponCode ? ` · ${order.couponCode}` : ''}</span>
+                  <span>−{formatINR(order.discount)}</span>
+                </div>
+              </>
+            ) : null}
+            <div className="oline">
+              <span>{order.orderType === 'delivery' ? 'Delivery' : 'Pickup'}</span>
+              <span>{order.deliveryCharge ? formatINR(order.deliveryCharge) : 'Free'}</span>
             </div>
-          ))}
-          {order.discount > 0 ? (
-            <div className="receipt__row receipt__row--discount">
-              <span>Discount{order.couponCode ? ` · ${order.couponCode}` : ''}</span>
-              <span>−{formatINR(order.discount)}</span>
-            </div>
-          ) : null}
-          <div className="receipt__row">
-            <span>{order.orderType === 'delivery' ? 'Delivery' : 'Pickup'}</span>
-            <span>{order.deliveryCharge ? formatINR(order.deliveryCharge) : 'Free'}</span>
           </div>
-          <div className="receipt__row">
-            <span>Payment</span>
-            <span>{PAYMENT_LABEL[order.paymentMethod] || order.paymentMethod}</span>
-          </div>
-          <div className="receipt__row receipt__row--total">
+
+          <div className="orderdetail__total">
             <span>Total</span>
             <span>{formatINR(order.total)}</span>
           </div>
-        </div>
+        </section>
 
         <div className="confirm__actions">
           <a className="btn btn--whatsapp" href={waUrl} target="_blank" rel="noopener noreferrer">

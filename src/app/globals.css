@@ -2321,6 +2321,7 @@ a { color: inherit; text-decoration: none; }
 
 .pay__fineprint {
   margin-top: 14px;
+  text-align: center;
   font-size: 0.7rem;
   line-height: 1.5;
   color: var(--text-muted);
@@ -2362,13 +2363,8 @@ a { color: inherit; text-decoration: none; }
    moment — the app does not return them here. */
 .pay__confirm--live { border-color: var(--border-accent); background: var(--accent-glow); }
 
-.pay__confirm-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
-.pay__confirm-hint {
-  font-size: 0.74rem;
-  line-height: 1.5;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
+/* Sits directly above the field now that the explainer is gone. */
+.pay__confirm-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
 .pay__confirm .btn { width: 100%; margin-top: 4px; }
 .pay__confirm .field__hint { text-align: right; font-variant-numeric: tabular-nums; }
 
@@ -2451,3 +2447,117 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
 }
 .utr__paste:hover { background: var(--accent-glow-strong); }
+
+/* ------------------------------ order details ----------------------------- */
+/* The old receipt printed items, charges and the total in one undifferentiated
+   grey list, so what you ordered looked exactly like what it cost. */
+
+.orderdetail {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 22px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.orderdetail__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.orderdetail__title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+
+.orderdetail__count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.orderdetail__items { list-style: none; margin: 0; padding: 0; }
+
+.oitem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.oitem:last-child { border-bottom: none; }
+
+/* The quantity was buried mid-sentence in the item name. As a badge it is the
+   first thing you can check. */
+.oitem__qty {
+  flex: 0 0 auto;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.oitem__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.oitem__name { font-size: 0.87rem; color: var(--text-primary); line-height: 1.35; }
+.oitem__var { font-size: 0.72rem; color: var(--text-muted); }
+
+.oitem__price {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+/* Charges sit apart from the food, quieter and tighter. */
+.orderdetail__lines {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.oline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.oline span:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.oline--save { color: var(--green); }
+
+.orderdetail__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-accent);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.orderdetail__total span:last-child {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}

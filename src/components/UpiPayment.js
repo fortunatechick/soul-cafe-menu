@@ -224,11 +224,6 @@ export default function UpiPayment({ order, onReported }) {
         <h3 className="pay__confirm-title">
           {returned ? 'Welcome back — confirm your payment' : 'Already paid? Confirm it here'}
         </h3>
-        <p className="pay__confirm-hint">
-          If your UPI app gave you a reference, copy it and hit Paste — it helps
-          the café find your payment faster. Not required: your order number is
-          already on the payment, so you can just confirm.
-        </p>
         <div className="field">
           <label className="field__label" htmlFor="utr">
             Transaction ID <span className="pay__optional">optional</span>
@@ -265,11 +260,7 @@ export default function UpiPayment({ order, onReported }) {
         </button>
       </div>
 
-      <p className="pay__fineprint">
-        Amount and order number are built into the QR, so there is nothing to type.
-        The café checks the transaction ID against its own UPI account before making
-        your order — entering it here is what confirms the order, not the payment itself.
-      </p>
+      <p className="pay__fineprint">The café confirms your payment before starting the order.</p>
     </div>
   );
 }
