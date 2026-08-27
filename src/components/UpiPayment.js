@@ -118,8 +118,11 @@ export default function UpiPayment({ order, onReported }) {
   }
 
   async function report() {
-    if (!isValidUtr(utr)) {
-      setError('Enter the 12-digit transaction ID from your UPI app.');
+    // The reference is optional. Every payment already carries the order number
+    // in its note, so the café can match it without one; requiring twelve digits
+    // just stopped people confirming an order they had genuinely paid for.
+    if (utr && !isValidUtr(utr)) {
+      setError('A transaction ID is 12 digits. Clear it, or paste the full reference.');
       return;
     }
     setError('');
@@ -170,8 +173,8 @@ export default function UpiPayment({ order, onReported }) {
     <div className="pay">
       <div className="pay__head">
         <div>
-          <h2 className="pay__title">Pay {formatINR(amount)}</h2>
-          <p className="pay__sub">UPI · {PAYEE_NAME}</p>
+          <h2 className="pay__title">Pay by UPI</h2>
+          <p className="pay__sub">{PAYEE_NAME}</p>
         </div>
         <span className="pay__amount">{formatINR(amount)}</span>
       </div>
@@ -222,13 +225,13 @@ export default function UpiPayment({ order, onReported }) {
           {returned ? 'Welcome back — confirm your payment' : 'Already paid? Confirm it here'}
         </h3>
         <p className="pay__confirm-hint">
-          Copy the reference from your UPI receipt and hit Paste — it is the
-          12-digit number, sometimes called UTR. The café uses it to match your
-          payment to this order.
+          If your UPI app gave you a reference, copy it and hit Paste — it helps
+          the café find your payment faster. Not required: your order number is
+          already on the payment, so you can just confirm.
         </p>
         <div className="field">
           <label className="field__label" htmlFor="utr">
-            Transaction ID
+            Transaction ID <span className="pay__optional">optional</span>
           </label>
           <div className="utr">
             <input
@@ -249,14 +252,14 @@ export default function UpiPayment({ order, onReported }) {
             </button>
           </div>
           <p className="field__hint">
-            {pasteHint || `${utr.length}/12`}
+            {pasteHint || (utr ? `${utr.length}/12` : 'Leave blank if you can’t find it')}
           </p>
         </div>
         {error ? <p className="field__error">{error}</p> : null}
         <button
           className="btn btn--primary"
           onClick={report}
-          disabled={busy || utr.length !== 12}
+          disabled={busy}
         >
           {busy ? 'Confirming…' : 'Confirm payment'}
         </button>

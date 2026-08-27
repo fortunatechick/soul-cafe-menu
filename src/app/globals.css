@@ -1501,7 +1501,11 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 44px 0;
+  /* This element is also .container, whose 16px side padding lives in a
+     shorthand that this rule would otherwise wipe out — which left the receipt,
+     the order card and the payment panel all flush against both edges of a
+     phone. Set all four sides here so the gutters survive. */
+  padding: 44px 16px;
 }
 
 .confirm__emoji { font-size: 3.4rem; animation: confirmPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -2197,7 +2201,11 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------------------------------- UPI pay -------------------------------- */
 
+/* The confirmation page centres its children, so without a width this panel
+   shrink-wrapped its contents and sat narrower than the receipt beneath it —
+   two ragged edges down the middle of a phone screen. */
 .pay {
+  width: 100%;
   margin: 18px 0 20px;
   padding: 18px;
   border-radius: var(--radius-lg);
@@ -2206,7 +2214,13 @@ a { color: inherit; text-decoration: none; }
   text-align: left;
 }
 
-.pay__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.pay__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 .pay__title { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); }
 .pay__sub { font-size: 0.76rem; color: var(--text-muted); margin-top: 2px; }
 .pay__amount {
@@ -2264,11 +2278,18 @@ a { color: inherit; text-decoration: none; }
 .pay__go { width: 100%; }
 
 /* Named apps, because iOS never claims the generic upi:// scheme. */
-.pay__apps { display: flex; gap: 8px; margin-top: 9px; }
+/* An even three across at every width. Wrapping them left the odd one out
+   stretched across a whole row, which read as a mistake. */
+.pay__apps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 9px;
+}
 .pay__app {
-  flex: 1;
   text-align: center;
-  padding: 9px 6px;
+  padding: 9px 4px;
+  min-width: 0;
   border-radius: var(--radius-md);
   background: var(--bg-glass);
   border: 1px solid var(--border);
@@ -2306,6 +2327,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 .pay--done { text-align: center; }
+
+@media (max-width: 380px) {
+  .pay { padding: 14px 12px; }
+  .pay__confirm { padding: 12px 10px; }
+  .pay__vpa { padding: 9px 10px; }
+}
 .pay__tick {
   display: inline-flex;
   align-items: center;
