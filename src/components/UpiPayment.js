@@ -26,6 +26,7 @@ export default function UpiPayment({ order, onReported }) {
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState('');
   const [error, setError] = useState('');
+  const [pasteHint, setPasteHint] = useState('');
   const leftForApp = useRef(false);
 
   const amount = order.total;
@@ -84,6 +85,35 @@ export default function UpiPayment({ order, onReported }) {
       setTimeout(() => setCopied(''), 2000);
     } catch {
       // clipboard blocked — the value is on screen to copy by hand
+    }
+  }
+
+  /**
+   * Pull the transaction ID off the clipboard.
+   *
+   * Every UPI app offers a copy or share on its receipt, and what comes across
+   * is usually a whole line — "UPI Ref No 123456789012" — rather than the bare
+   * number, so the first twelve-digit run is taken out of whatever is there.
+   * The browser asks the customer before handing the clipboard over, which is
+   * why this is a button and not something that happens on its own.
+   */
+  async function pasteReference() {
+    setError('');
+    try {
+      const text = await navigator.clipboard.readText();
+      const found = String(text || '').match(/\d{12}/);
+      if (!found) {
+        setPasteHint(
+          text?.trim()
+            ? "That doesn't look like a transaction ID — copy it from your UPI receipt."
+            : 'Nothing on the clipboard yet — copy the reference from your UPI app first.'
+        );
+        return;
+      }
+      setUtr(found[0]);
+      setPasteHint('');
+    } catch {
+      setPasteHint('This browser won’t share the clipboard — type the 12 digits instead.');
     }
   }
 
@@ -192,27 +222,35 @@ export default function UpiPayment({ order, onReported }) {
           {returned ? 'Welcome back — confirm your payment' : 'Already paid? Confirm it here'}
         </h3>
         <p className="pay__confirm-hint">
-          Your UPI app shows a 12-digit transaction ID (sometimes called UTR or
-          reference number) on the receipt. Enter it and the café can match your
+          Copy the reference from your UPI receipt and hit Paste — it is the
+          12-digit number, sometimes called UTR. The café uses it to match your
           payment to this order.
         </p>
         <div className="field">
           <label className="field__label" htmlFor="utr">
             Transaction ID
           </label>
-          <input
-            id="utr"
-            className="field__input"
-            value={utr}
-            onChange={(e) => {
-              setUtr(e.target.value.replace(/[^0-9]/g, '').slice(0, 12));
-              if (error) setError('');
-            }}
-            placeholder="12 digits"
-            inputMode="numeric"
-            autoComplete="off"
-          />
-          <p className="field__hint">{utr.length}/12</p>
+          <div className="utr">
+            <input
+              id="utr"
+              className="field__input"
+              value={utr}
+              onChange={(e) => {
+                setUtr(e.target.value.replace(/[^0-9]/g, '').slice(0, 12));
+                if (error) setError('');
+                if (pasteHint) setPasteHint('');
+              }}
+              placeholder="12 digits"
+              inputMode="numeric"
+              autoComplete="off"
+            />
+            <button type="button" className="utr__paste" onClick={pasteReference}>
+              Paste
+            </button>
+          </div>
+          <p className="field__hint">
+            {pasteHint || `${utr.length}/12`}
+          </p>
         </div>
         {error ? <p className="field__error">{error}</p> : null}
         <button

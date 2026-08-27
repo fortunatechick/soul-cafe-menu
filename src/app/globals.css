@@ -2408,3 +2408,19 @@ a { color: inherit; text-decoration: none; }
   line-height: 1;
   backdrop-filter: blur(6px);
 }
+
+/* Transaction ID with a paste button — one tap beats copying twelve digits by
+   eye off a receipt screen. */
+.utr { display: flex; gap: 8px; align-items: stretch; }
+.utr .field__input { flex: 1; min-width: 0; letter-spacing: 0.06em; }
+.utr__paste {
+  flex: 0 0 auto;
+  padding: 0 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-accent);
+  background: var(--accent-glow);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.utr__paste:hover { background: var(--accent-glow-strong); }
