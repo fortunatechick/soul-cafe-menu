@@ -21,7 +21,7 @@
  */
 
 /** The café's collecting account. Overridable without touching code. */
-export const UPI_ID = process.env.NEXT_PUBLIC_UPI_ID || 'paytm.s241pp3@pty';
+export const UPI_ID = process.env.NEXT_PUBLIC_UPI_ID || 'paytm.s1wylvd@pty';
 export const PAYEE_NAME = process.env.NEXT_PUBLIC_UPI_NAME || 'Soul Cafe';
 
 /**

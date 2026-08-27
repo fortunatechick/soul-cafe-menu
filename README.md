@@ -462,7 +462,7 @@ Project → Settings → Environment Variables.
 | `PETPOOJA_*` | see `.env.example` | Only when the POS is wired up |
 | `KV_REST_API_URL` | from Vercel KV / Upstash | **Yes, for group ordering** |
 | `KV_REST_API_TOKEN` | from Vercel KV / Upstash | **Yes, for group ordering** |
-| `NEXT_PUBLIC_UPI_ID` | `paytm.s241pp3@pty` | Only to change the account |
+| `NEXT_PUBLIC_UPI_ID` | `paytm.s1wylvd@pty` | Only to change the account |
 | `NEXT_PUBLIC_UPI_NAME` | `Soul Cafe` | Only to change the payee name |
 
 Group ordering needs the last two. Several phones have to see the same basket,
